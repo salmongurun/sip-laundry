@@ -1,30 +1,33 @@
-package siplaundry.Entity;
+package siplaundry.entity;
 
 public class TransactionDetailEntity extends Entity {
     public static String tableName = "transaction_details";
 
-    private transactionsEntity transaction_id;
+    private TransactionEntity transaction_id;
     private LaundryEntity laundry_id;
     private int qty;
 
-    
     public TransactionDetailEntity() {
     }
 
-    public TransactionDetailEntity(transactionsEntity transaction, LaundryEntity laundry_id, int qty) {
+    public TransactionDetailEntity(TransactionEntity transaction, LaundryEntity laundry_id, int qty) {
         this.transaction_id = transaction;
         this.laundry_id = laundry_id;
         this.qty = qty;
     }
-    public transactionsEntity getTransactionID() {
+
+    public TransactionEntity getTransactionID() {
         return transaction_id;
     }
-    public void setTransactionID(transactionsEntity transaction) {
+
+    public void setTransactionID(TransactionEntity transaction) {
         this.transaction_id = transaction;
     }
+
     public LaundryEntity getLaundry_id() {
         return laundry_id;
     }
+
     public void setLaundry_id(LaundryEntity laundry_id) {
         this.laundry_id = laundry_id;
     }
@@ -36,8 +39,5 @@ public class TransactionDetailEntity extends Entity {
     public void setQty(int qty) {
         this.qty = qty;
     }
- 
 
-
-    
 }

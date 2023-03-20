@@ -1,8 +1,8 @@
-package siplaundry.Entity;
+package siplaundry.entity;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class LaundryEntity extends Entity{
+public class LaundryEntity extends Entity {
 
     public static String tableName = "laundries";
 
@@ -17,45 +17,45 @@ public class LaundryEntity extends Entity{
     @NotBlank(message = "Nama harus diisi")
     private String name;
 
-    public LaundryEntity(){}
+    public LaundryEntity() {
+    }
 
-    public LaundryEntity(String unit, Integer cost, String nama){
+    public LaundryEntity(String unit, Integer cost, String nama) {
         this.unit = unit;
         this.cost = cost;
         this.name = nama;
     }
-    
 
-    public int getid(){
+    public int getid() {
         return laundry_id;
     }
 
-    public void setid(int id){
+    public void setid(int id) {
         this.laundry_id = id;
     }
 
-    public String getunit(){
+    public String getunit() {
         return this.unit;
     }
 
-    public void setunit(String unit){
+    public void setunit(String unit) {
         this.unit = unit;
     }
 
-    public int getcost(){
+    public int getcost() {
         return this.cost;
     }
 
-    public void setcost(int cost){
+    public void setcost(int cost) {
         this.cost = cost;
     }
 
-    public String getname(){
+    public String getname() {
         return this.name;
     }
 
-    public void setname(String name){
+    public void setname(String name) {
         this.name = name;
     }
-    
+
 }

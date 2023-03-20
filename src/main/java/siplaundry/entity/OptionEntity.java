@@ -1,21 +1,20 @@
-package siplaundry.Entity;
+package siplaundry.entity;
 
 import jakarta.validation.constraints.NotBlank;
 
 public class OptionEntity extends Entity {
-    
 
     public static String tableName = "option";
 
     @NotBlank(message = "Harus diisi")
     private String key;
 
-    @NotBlank 
+    @NotBlank
     private String value;
 
     public OptionEntity() {
     }
-    
+
     public OptionEntity(String key, String value) {
         this.key = key;
         this.value = value;
@@ -28,7 +27,6 @@ public class OptionEntity extends Entity {
     public static void setTableName(String tableName) {
         OptionEntity.tableName = tableName;
     }
-
 
     public String getKey() {
         return key;
@@ -45,6 +43,5 @@ public class OptionEntity extends Entity {
     public void setValue(String value) {
         this.value = value;
     }
-    
-    
+
 }

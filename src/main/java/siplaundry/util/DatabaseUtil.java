@@ -1,4 +1,4 @@
-package siplaundry.Util;
+package siplaundry.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ import com.mysql.cj.jdbc.Driver;
 
 import siplaundry.data.Config;
 
-public class DatabaseUtil{
+public class DatabaseUtil {
     private static Connection conn;
     Config config = new Config();
 
@@ -24,7 +24,9 @@ public class DatabaseUtil{
             DriverManager.registerDriver(driver);
 
             conn = DriverManager.getConnection(jdbcUrl, Config.username, Config.password);
-        } catch (SQLException e) { throw new Error(e.getMessage()); }
+        } catch (SQLException e) {
+            throw new Error(e.getMessage());
+        }
     }
 
     public static Connection getConnection() {
@@ -34,7 +36,7 @@ public class DatabaseUtil{
     public static void prepareStmt(PreparedStatement stmt, Map<String, Object> values) throws SQLException {
         int i = 1;
 
-        for(String key: values.keySet()) {
+        for (String key : values.keySet()) {
             Object value = values.get(key);
             setValues(stmt, i++, value);
         }
@@ -43,17 +45,16 @@ public class DatabaseUtil{
     public static void prepareStmt(PreparedStatement stmt, List<Object> values) throws SQLException {
         int i = 1;
 
-        for(Object value: values) {
+        for (Object value : values) {
             setValues(stmt, i++, value);
         }
     }
 
     private static void setValues(PreparedStatement stmt, int row, Object value) throws SQLException {
-        System.out.println(value);
-        if(value instanceof String) stmt.setString(row, String.valueOf(value));
-        if(value instanceof Integer) stmt.setInt(row, (Integer) value);
-        // if(value instanceof TransactionStatus) stmt.setString(row, String.valueOf(value));
-        // if(value instanceof Date) stmt.setDate(row, new java.sql.Date(((Date) value).getTime()));
-    }
+        if (value instanceof String)
+            stmt.setString(row, String.valueOf(value));
 
+        if (value instanceof Integer)
+            stmt.setInt(row, (Integer) value);
+    }
 }

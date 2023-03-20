@@ -1,4 +1,4 @@
-package siplaundry.Entity;
+package siplaundry.entity;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -14,37 +14,36 @@ public class CustomerEntity extends Entity {
     @Size(max = 12, min = 11, message = "No telepon harus valid")
     private String phone;
 
-    public CustomerEntity(){};
+    public CustomerEntity() {
+    };
 
-    public CustomerEntity(String name, String phone){
+    public CustomerEntity(String name, String phone) {
         this.name = name;
         this.phone = phone;
     };
 
-    public int getid(){
+    public int getid() {
         return this.cust_id;
     }
 
-    public void setid(int id){
+    public void setid(int id) {
         this.cust_id = id;
     }
 
-    public String getname(){
+    public String getname() {
         return this.name;
     }
 
-    public void setname(String name){
+    public void setname(String name) {
         this.name = name;
     }
 
-    public String getphone(){
+    public String getphone() {
         return this.phone;
     }
 
-    public void setphone(String phone){
+    public void setphone(String phone) {
         this.phone = phone;
     }
-
-
 
 }

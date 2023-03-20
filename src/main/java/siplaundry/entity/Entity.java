@@ -1,5 +1,5 @@
-package siplaundry.Entity;
+package siplaundry.entity;
 
 public abstract class Entity {
-    
+
 }

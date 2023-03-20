@@ -1,23 +1,22 @@
-package siplaundry.Entity;
+package siplaundry.entity;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class VerivicationEntity extends Entity{
+public class VerificationEntity extends Entity {
     public static String tableName = "verivications";
 
     @NotBlank(message = "harus diisi")
     private UserEntity user_id;
 
     private String code;
-    
-    public VerivicationEntity() {
+
+    public VerificationEntity() {
     }
 
-    public VerivicationEntity( UserEntity user_id, String code) {
+    public VerificationEntity(UserEntity user_id, String code) {
         this.user_id = user_id;
         this.code = code;
     }
-
 
     public UserEntity getUserID() {
         return user_id;
@@ -34,7 +33,5 @@ public class VerivicationEntity extends Entity{
     public void setCode(String code) {
         this.code = code;
     }
-    
-
 
 }

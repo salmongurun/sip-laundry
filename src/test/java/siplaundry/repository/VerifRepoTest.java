@@ -1,4 +1,4 @@
-package siplaundry.Repository;
+package siplaundry.repository;
 
 import java.util.Map;
 
@@ -13,14 +13,12 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import siplaundry.Entity.UserEntity;
-import siplaundry.Entity.VerivicationEntity;
 import siplaundry.data.AccountRole;
-import siplaundry.repository.UsersRepo;
-import siplaundry.repository.VerivicationRepo;
+import siplaundry.entity.UserEntity;
+import siplaundry.entity.VerificationEntity;
 
 public class VerifRepoTest {
-    private static VerivicationRepo repo = new VerivicationRepo();
+    private static VerificationRepo repo = new VerificationRepo();
     private static UsersRepo userRepo = new UsersRepo();
     private static Map<String, Object> keywords;
 
@@ -31,14 +29,15 @@ public class VerifRepoTest {
     @BeforeAll
     public static void init() {
         userId = userRepo.add(new UserEntity(
-            "Ahkam", "54545343", "ahkam", "jember", AccountRole.admin
-        ));
+                "Ahkam", "54545343", "ahkam", "jember", AccountRole.admin));
 
         user = userRepo.get(userId);
-        keywords = new HashMap<String, Object>() {{
-            put("user_id", userId);
-            put("code", code);
-        }};
+        keywords = new HashMap<String, Object>() {
+            {
+                put("user_id", userId);
+                put("code", code);
+            }
+        };
     }
 
     @AfterAll
@@ -46,39 +45,42 @@ public class VerifRepoTest {
         userRepo.delete(userId);
     }
 
-    @Test @Order(1)
+    @Test
+    @Order(1)
     public void testAdd() {
-        VerivicationEntity verify = new VerivicationEntity(
-            user,
-            "087653"
-        );
+        VerificationEntity verify = new VerificationEntity(
+                user,
+                "087653");
 
         assertTrue(repo.add(verify) != 0);
     }
 
-    @Test @Order(2)
+    @Test
+    @Order(2)
     public void testGet() {
-        VerivicationEntity verify = repo.get(keywords).get(0);
+        VerificationEntity verify = repo.get(keywords).get(0);
 
         assertEquals(code, verify.getCode());
     }
 
-    @Test @Order(3)
+    @Test
+    @Order(3)
     public void testGetAll() {
         String code2 = "087653";
-        VerivicationEntity verify = new VerivicationEntity(user, code2);
+        VerificationEntity verify = new VerificationEntity(user, code2);
 
         repo.add(verify);
-        List<VerivicationEntity> verifies = repo.get();
+        List<VerificationEntity> verifies = repo.get();
 
         assertTrue(verifies.size() > 1);
-        assertEquals(code, verifies.get(1).getCode());  //tpi nilainya ngga berubah
+        assertEquals(code, verifies.get(1).getCode()); // tpi nilainya ngga berubah
     }
 
-    @Test @Order(4)
+    @Test
+    @Order(4)
     public void testUpdate() {
         String codeNew = "087656";
-        VerivicationEntity verify = repo.get(keywords).get(0);
+        VerificationEntity verify = repo.get(keywords).get(0);
 
         verify.setCode(codeNew);
         keywords.put("code", codeNew);
@@ -89,15 +91,16 @@ public class VerifRepoTest {
         code = codeNew;
     }
 
-    @Test @Order(5)
+    @Test
+    @Order(5)
     public void testDeleteverify() {
-        VerivicationEntity verify = repo.get(keywords).get(0);
+        VerificationEntity verify = repo.get(keywords).get(0);
         assertTrue(repo.delete(verify));
     }
 
-    @Test @Order(6)
-    public void testDeleteId(){
+    @Test
+    @Order(6)
+    public void testDeleteId() {
         assertTrue(repo.delete(userId));
-
     }
 }

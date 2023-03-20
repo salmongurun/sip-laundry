@@ -8,26 +8,27 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
-import siplaundry.Entity.TransactionDetailEntity;
-import siplaundry.Util.DatabaseUtil;
+import siplaundry.entity.TransactionDetailEntity;
+import siplaundry.util.DatabaseUtil;
 
-public class TransactionDetailsRepo extends Repo<TransactionDetailEntity> {
+public class TransactionDetailRepo extends Repo<TransactionDetailEntity> {
 
     final Connection conn = DatabaseUtil.getConnection();
     private static String tableName = TransactionDetailEntity.tableName;
 
-
     public Integer add(TransactionDetailEntity detail) {
-        String sql = "INSERT INTO "+ tableName +" (`transaction_id`, `laundry_id`, `qty`) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO " + tableName + " (`transaction_id`, `laundry_id`, `qty`) VALUES (?, ?, ?)";
 
-        try(PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+        try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1, detail.getTransactionID().getid());
             stmt.setInt(2, detail.getLaundry_id().getid());
             stmt.setInt(3, detail.getQty());
 
             stmt.executeUpdate();
             return 1;
-        } catch(SQLException e) { e.printStackTrace(); }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
         return 0;
     }
@@ -49,12 +50,10 @@ public class TransactionDetailsRepo extends Repo<TransactionDetailEntity> {
         int LaundryId = result.getInt("laundry_id");
 
         TransactionDetailEntity detail = new TransactionDetailEntity(
-            new TransactionRepo().get(transId),
-            new LaundryRepo().get(LaundryId),
-            result.getInt("qty")
-        );
+                new TransactionRepo().get(transId),
+                new LaundryRepo().get(LaundryId),
+                result.getInt("qty"));
         return detail;
     }
 
-    
 }

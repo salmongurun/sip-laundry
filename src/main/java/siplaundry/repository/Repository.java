@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
-import siplaundry.Entity.Entity;
-import siplaundry.Util.DatabaseUtil;
+import siplaundry.entity.Entity;
+import siplaundry.util.DatabaseUtil;
 
 public interface Repository<E extends Entity> {
     final Connection conn = DatabaseUtil.getConnection();
@@ -23,6 +23,5 @@ public interface Repository<E extends Entity> {
     public boolean Update(E entity);
 
     public boolean delete(int id);
-
 
 }

@@ -1,7 +1,6 @@
-package siplaundry.Repository;
+package siplaundry.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
@@ -12,62 +11,51 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
-import siplaundry.Entity.CustomerEntity;
-import siplaundry.Entity.LaundryEntity;
-import siplaundry.Entity.TransactionDetailEntity;
-import siplaundry.Entity.UserEntity;
-import siplaundry.Entity.transactionsEntity;
 import siplaundry.data.AccountRole;
 import siplaundry.data.LaundryStatus;
 import siplaundry.data.PaymentStatus;
-import siplaundry.repository.CustomerRepo;
-import siplaundry.repository.LaundryRepo;
-import siplaundry.repository.Repository;
-import siplaundry.repository.TransactionDetailsRepo;
-import siplaundry.repository.TransactionRepo;
-import siplaundry.repository.UsersRepo;
+import siplaundry.entity.CustomerEntity;
+import siplaundry.entity.LaundryEntity;
+import siplaundry.entity.TransactionDetailEntity;
+import siplaundry.entity.UserEntity;
+import siplaundry.entity.TransactionEntity;
 
 public class TransDetailRepoTest {
     private static CustomerEntity customer;
     private static UserEntity user;
     private static LaundryEntity laundry;
-    private static transactionsEntity transaction;
+    private static TransactionEntity transaction;
 
     private static LaundryRepo laundryRepo = new LaundryRepo();
     private static UsersRepo userRepo = new UsersRepo();
     private static CustomerRepo custRepo = new CustomerRepo();
     private static TransactionRepo transRepo = new TransactionRepo();
-    private static TransactionDetailsRepo repo = new TransactionDetailsRepo();
+    private static TransactionDetailRepo repo = new TransactionDetailRepo();
     private static Integer userId, customerId, laundryId, transactionId, detailId;
-
 
     @BeforeAll
     public static void init() {
         userId = userRepo.add(new UserEntity(
-            "David","324567","david","jember", AccountRole.cashier
-        ));
+                "David", "324567", "david", "jember", AccountRole.cashier));
 
         customerId = custRepo.add(new CustomerEntity(
-            "Angel", "098765897652"
-        ));
+                "Angel", "098765897652"));
 
         laundryId = laundryRepo.add(new LaundryEntity(
-            "biji",50000, "Batik"
-        ));
+                "biji", 50000, "Batik"));
 
         user = userRepo.get(userId);
         customer = custRepo.get(customerId);
         laundry = laundryRepo.get(laundryId);
 
-        transactionId = transRepo.add(new transactionsEntity(
-            new Date(),
-            new Date(),
-            LaundryStatus.Finish,
-            PaymentStatus.Paid,
-            23,
-            user,
-            customer
-        ));
+        transactionId = transRepo.add(new TransactionEntity(
+                new Date(),
+                new Date(),
+                LaundryStatus.Finish,
+                PaymentStatus.Paid,
+                23,
+                user,
+                customer));
 
         transaction = transRepo.get(transactionId);
     }
@@ -80,27 +68,29 @@ public class TransDetailRepoTest {
         laundryRepo.delete(laundryId);
     }
 
-    @Test @Order(1)
+    @Test
+    @Order(1)
     public void testAdd() {
         TransactionDetailEntity detail = new TransactionDetailEntity(
-            transaction,
-            laundry,
-            3
-        );
+                transaction,
+                laundry,
+                3);
 
         assertTrue(repo.add(detail) != 0);
     }
 
-    @Test @Order(2)
+    @Test
+    @Order(2)
     public void testGetAll() {
         TransactionDetailEntity detail = new TransactionDetailEntity(
-            transaction,
-            laundry,
-            5
-        );
-        TransactionDetailEntity detail2 = repo.get(new HashMap<String, Object>() {{
-            put("transaction_id", transactionId);
-        }}).get(0);
+                transaction,
+                laundry,
+                5);
+        TransactionDetailEntity detail2 = repo.get(new HashMap<String, Object>() {
+            {
+                put("transaction_id", transactionId);
+            }
+        }).get(0);
 
         assertTrue(repo.add(detail) > 0);
         assertTrue(repo.get().size() > 1);
@@ -108,11 +98,14 @@ public class TransDetailRepoTest {
 
     }
 
-    @Test @Order(3)
-    public void testSearch(){
-        TransactionDetailEntity detail2 = repo.search(new HashMap<String, Object>() {{
-            put("transaction_id", transactionId);
-        }}).get(0);
+    @Test
+    @Order(3)
+    public void testSearch() {
+        TransactionDetailEntity detail2 = repo.search(new HashMap<String, Object>() {
+            {
+                put("transaction_id", transactionId);
+            }
+        }).get(0);
 
         assertEquals(3, detail2.getQty());
     }
