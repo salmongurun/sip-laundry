@@ -31,7 +31,7 @@ public class TransDetailRepoTest {
     private static CustomerRepo custRepo = new CustomerRepo();
     private static TransactionRepo transRepo = new TransactionRepo();
     private static TransactionDetailRepo repo = new TransactionDetailRepo();
-    private static Integer userId, customerId, laundryId, transactionId, detailId;
+    private static Integer userId, customerId, laundryId, transactionId;
 
     @BeforeAll
     public static void init() {
