@@ -1,4 +1,4 @@
-package siplaundry.repository;
+package siplaundry.repo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
 import siplaundry.entity.CustomerEntity;
+import siplaundry.repository.CustomerRepo;
 
 public class CustomerRepoTest {
     private static CustomerRepo repo = new CustomerRepo();

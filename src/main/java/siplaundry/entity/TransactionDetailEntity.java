@@ -6,14 +6,16 @@ public class TransactionDetailEntity extends Entity {
     private TransactionEntity transaction_id;
     private LaundryEntity laundry_id;
     private int qty;
+    private int subtotal;
 
     public TransactionDetailEntity() {
     }
 
-    public TransactionDetailEntity(TransactionEntity transaction, LaundryEntity laundry_id, int qty) {
+    public TransactionDetailEntity(TransactionEntity transaction, LaundryEntity laundry_id, int qty, int subtotal) {
         this.transaction_id = transaction;
         this.laundry_id = laundry_id;
         this.qty = qty;
+        this.subtotal = subtotal;
     }
 
     public TransactionEntity getTransactionID() {
@@ -38,6 +40,14 @@ public class TransactionDetailEntity extends Entity {
 
     public void setQty(int qty) {
         this.qty = qty;
+    }
+
+    public int getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(int subtotal) {
+        this.subtotal = subtotal;
     }
 
 }

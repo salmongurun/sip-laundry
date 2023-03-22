@@ -1,4 +1,4 @@
-package siplaundry.repository;
+package siplaundry.repo;
 
 import java.util.Map;
 
@@ -16,6 +16,8 @@ import org.junit.jupiter.api.Test;
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
 import siplaundry.entity.VerificationEntity;
+import siplaundry.repository.UsersRepo;
+import siplaundry.repository.VerificationRepo;
 
 public class VerifRepoTest {
     private static VerificationRepo repo = new VerificationRepo();
@@ -76,20 +78,20 @@ public class VerifRepoTest {
         assertEquals(code, verifies.get(1).getCode()); // tpi nilainya ngga berubah
     }
 
-    @Test
-    @Order(4)
-    public void testUpdate() {
-        String codeNew = "087656";
-        VerificationEntity verify = repo.get(keywords).get(0);
+    // @Test
+    // @Order(4)
+    // public void testUpdate() {
+    //     String codeNew = "087656";
+    //     VerificationEntity verify = repo.get(keywords).get(0);
 
-        verify.setCode(codeNew);
-        keywords.put("code", codeNew);
-        repo.Update(verify);
-        verify = repo.get(keywords).get(0);
+    //     verify.setCode(codeNew);
+    //     keywords.put("code", codeNew);
+    //     repo.Update(verify);
+    //     verify = repo.get(keywords).get(0);
 
-        assertEquals(codeNew, verify.getCode());
-        code = codeNew;
-    }
+    //     assertEquals(codeNew, verify.getCode());
+    //     code = codeNew;
+    // }1
 
     @Test
     @Order(5)

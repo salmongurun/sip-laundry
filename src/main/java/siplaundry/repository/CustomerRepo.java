@@ -24,6 +24,7 @@ public class CustomerRepo extends Repo<CustomerEntity> {
 
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next())
+                System.out.println(stmt.toString());
                 return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();

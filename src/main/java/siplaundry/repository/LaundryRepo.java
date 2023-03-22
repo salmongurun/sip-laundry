@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
+import siplaundry.data.Laundryunit;
 import siplaundry.entity.LaundryEntity;
 
 public class LaundryRepo extends Repo<LaundryEntity> {
@@ -17,7 +18,7 @@ public class LaundryRepo extends Repo<LaundryEntity> {
         String sql = "INSERT INTO " + tableName + " (`unit`, `cost`, `name`) VALUES (?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, cust.getunit());
+            stmt.setString(1, cust.getunit().toString());
             stmt.setInt(2, cust.getcost());
             stmt.setString(3, cust.getname());
 
@@ -53,7 +54,7 @@ public class LaundryRepo extends Repo<LaundryEntity> {
         String sql = "UPDATE " + tableName + " SET unit = ?, cost = ?, name = ? WHERE laundry_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, cust.getunit());
+            stmt.setString(1, cust.getunit().toString());
             stmt.setInt(2, cust.getcost());
             stmt.setString(3, cust.getname());
 
@@ -72,7 +73,7 @@ public class LaundryRepo extends Repo<LaundryEntity> {
 
     public LaundryEntity mapToEntity(ResultSet result) throws SQLException {
         LaundryEntity laundry = new LaundryEntity(
-                result.getString("unit"),
+                Laundryunit.valueOf(result.getString("unit")),
                 result.getInt("cost"),
                 result.getString("name"));
 

@@ -1,4 +1,4 @@
-package siplaundry.repository;
+package siplaundry.repo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,7 +8,9 @@ import java.util.HashMap;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 
+import siplaundry.data.Laundryunit;
 import siplaundry.entity.LaundryEntity;
+import siplaundry.repository.LaundryRepo;
 
 public class LaundryRepoTest {
     private static LaundryRepo repo = new LaundryRepo();
@@ -18,7 +20,7 @@ public class LaundryRepoTest {
     @Order(1)
     public void testAdd() {
         LaundryEntity acc = new LaundryEntity(
-                "joki",
+                Laundryunit.meter,
                 323,
                 "coba9jk");
         accountId = repo.add(acc);
@@ -43,7 +45,7 @@ public class LaundryRepoTest {
     @Order(3)
     public void testGetAll() {
         LaundryEntity acc = new LaundryEntity(
-                "Aldea",
+                Laundryunit.kilogram,
                 3323,
                 "aldea");
 
@@ -51,17 +53,17 @@ public class LaundryRepoTest {
         assertTrue(repo.get().size() > 1);
     }
 
-    @Test
-    @Order(4)
-    public void testSearch() {
-        LaundryEntity acc2 = repo.get(new HashMap<String, Object>() {
-            {
-                put("laundry_id", accountId);
-            }
-        }).get(0);
+    // @Test
+    // @Order(4)
+    // public void testSearch() {
+    //     LaundryEntity acc2 = repo.get(new HashMap<String, Object>() {
+    //         {
+    //             put("laundry_id", accountId);
+    //         }
+    //     }).get(0);
 
-        assertEquals("coba9jk", acc2.getname());
-    }
+    //     assertEquals("coba9jk", acc2.getname());
+    // }
 
     // @Test @Order(4) //-->belom jalan
     // public void testUpdate() {

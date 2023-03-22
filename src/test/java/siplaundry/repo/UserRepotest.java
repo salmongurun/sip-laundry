@@ -1,4 +1,4 @@
-package siplaundry.repository;
+package siplaundry.repo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
+import siplaundry.repository.UsersRepo;
 
 //@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserRepotest {

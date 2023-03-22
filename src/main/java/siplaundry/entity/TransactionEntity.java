@@ -19,6 +19,7 @@ public class TransactionEntity extends Entity {
 
     @NotBlank(message = "jenis pembayaran harus diisi")
     private PaymentStatus payment_status;
+    
     private int amount;
 
     private UserEntity userID;

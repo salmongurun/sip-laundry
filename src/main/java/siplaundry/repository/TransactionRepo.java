@@ -26,7 +26,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
                 + " (`transaction_date`, `pickup_date`, `status`, `payment_status`, `amount`, `user_id`, `customer_id`) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-
+            
             stmt.setDate(1, new Date(trans.gettransactionDate().getTime()));
             stmt.setDate(2, new Date(trans.getpickupDate().getTime()));
             stmt.setString(3, trans.getstatus().toString());
@@ -34,16 +34,18 @@ public class TransactionRepo extends Repo<TransactionEntity> {
             stmt.setInt(5, trans.getamount());
             stmt.setInt(6, trans.getUserID().getID());
             stmt.setInt(7, trans.getCustomerID().getid());
-
+            
             if (trans.getCustomerID() == null) {
-                stmt.setNull(3, Types.DATE);
+                stmt.setNull(2, Types.DATE);
             } else {
                 stmt.setDate(2, new Date(trans.getpickupDate().getTime()));
             }
+            System.out.println(stmt.toString());
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next())
+                
                 return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
