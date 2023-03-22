@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 20, 2023 at 03:42 PM
+-- Generation Time: Mar 23, 2023 at 05:23 AM
 -- Server version: 10.6.12-MariaDB-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.11
 
@@ -70,7 +70,7 @@ CREATE TABLE `transactions` (
   `pickup_date` datetime NOT NULL,
   `status` enum('process','finish','taken') NOT NULL,
   `payment_status` enum('paid','unpaid') NOT NULL,
-  `amount` int(11) NOT NULL,
+  `amount` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -82,11 +82,27 @@ CREATE TABLE `transactions` (
 --
 
 CREATE TABLE `transaction_details` (
-  `transaction_id` int(11) NOT NULL,
-  `laundry_id` int(11) NOT NULL,
   `qty` int(11) NOT NULL,
-  `subtotal` int(11) NOT NULL
+  `subtotal` int(11) NOT NULL DEFAULT 0,
+  `transaction_id` int(11) NOT NULL,
+  `laundry_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Triggers `transaction_details`
+--
+DELIMITER $$
+CREATE TRIGGER `add_amount` AFTER INSERT ON `transaction_details` FOR EACH ROW UPDATE `transactions` SET `transactions`.`amount` = `transactions`.`amount` + NEW.`subtotal` WHERE `transactions`.`transaction_id` = NEW.`transaction_id`
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `del_amount` AFTER DELETE ON `transaction_details` FOR EACH ROW UPDATE `transactions` SET `transactions`.`amount` = `transactions`.`amount` - OLD.`subtotal` WHERE `transactions`.`transaction_id` = OLD.`transaction_id`
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `update_amount` AFTER UPDATE ON `transaction_details` FOR EACH ROW UPDATE `transactions` SET `transactions`.`amount` = `transactions`.`amount` - OLD.`subtotal` + NEW.`subtotal` WHERE `transactions`.`transaction_id` = OLD.`transaction_id`
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -148,8 +164,8 @@ ALTER TABLE `transactions`
 -- Indexes for table `transaction_details`
 --
 ALTER TABLE `transaction_details`
-  ADD KEY `transaction_id` (`transaction_id`),
-  ADD KEY `laundry_id` (`laundry_id`);
+  ADD PRIMARY KEY (`transaction_id`,`laundry_id`),
+  ADD KEY `transaction_details_ibfk_2` (`laundry_id`);
 
 --
 -- Indexes for table `users`

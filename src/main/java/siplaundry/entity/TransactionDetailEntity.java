@@ -3,35 +3,42 @@ package siplaundry.entity;
 public class TransactionDetailEntity extends Entity {
     public static String tableName = "transaction_details";
 
-    private TransactionEntity transaction_id;
-    private LaundryEntity laundry_id;
+    private TransactionEntity transaction;
+    private LaundryEntity laundry;
     private int qty;
     private int subtotal;
 
     public TransactionDetailEntity() {
     }
 
-    public TransactionDetailEntity(TransactionEntity transaction, LaundryEntity laundry_id, int qty, int subtotal) {
-        this.transaction_id = transaction;
-        this.laundry_id = laundry_id;
+    public TransactionDetailEntity(TransactionEntity transaction, LaundryEntity laundry, int qty, int subtotal) {
+        this.transaction = transaction;
+        this.laundry = laundry;
         this.qty = qty;
         this.subtotal = subtotal;
     }
 
-    public TransactionEntity getTransactionID() {
-        return transaction_id;
+    public TransactionDetailEntity(TransactionEntity transaction, LaundryEntity laundry, int qty) {
+        this.transaction = transaction;
+        this.laundry = laundry;
+        this.qty = qty;
+        this.subtotal = laundry.getcost() * qty;
     }
 
-    public void setTransactionID(TransactionEntity transaction) {
-        this.transaction_id = transaction;
+    public TransactionEntity getTransaction() {
+        return transaction;
     }
 
-    public LaundryEntity getLaundry_id() {
-        return laundry_id;
+    public void setTransaction(TransactionEntity transaction) {
+        this.transaction = transaction;
     }
 
-    public void setLaundry_id(LaundryEntity laundry_id) {
-        this.laundry_id = laundry_id;
+    public LaundryEntity getLaundry() {
+        return laundry;
+    }
+
+    public void setLaundry(LaundryEntity laundry) {
+        this.laundry = laundry;
     }
 
     public int getQty() {
