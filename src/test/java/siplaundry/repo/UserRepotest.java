@@ -6,14 +6,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 
-//@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UserRepotest {
     private static UsersRepo repo = new UsersRepo();
     private static Integer userId;
@@ -52,14 +54,20 @@ public class UserRepotest {
     @Test
     @Order(3)
     public void testGetAll() {
-        UserEntity acc = new UserEntity(
-                "Aldea",
-                "33232323",
-                "aldea",
-                "aldea123",
-                AccountRole.admin);
+        UserEntity acc2 = new UserEntity(
+            // "aldea",
+            // "2323232",
+            // "haikamu",
+            // "jember",
+            // AccountRole.cashier
+        );
+        acc2.setFullname("aldea");
+        acc2.setPhone("3232333333");
+        acc2.setPassword("haikamu");
+        acc2.setAddress("jember");
+        acc2.setRole(AccountRole.cashier);
 
-        assertTrue(repo.add(acc) > 0);
+        assertTrue(repo.add(acc2) > 0);
         assertTrue(repo.get().size() > 1);
     }
 

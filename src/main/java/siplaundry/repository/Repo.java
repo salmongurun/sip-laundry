@@ -90,7 +90,7 @@ public abstract class Repo<E> {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             DatabaseUtil.prepareStmt(stmt, values);
-            ;
+            
             ResultSet rs = stmt.executeQuery();
             System.out.println(stmt.toString());
 

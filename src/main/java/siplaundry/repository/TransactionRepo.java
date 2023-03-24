@@ -40,12 +40,11 @@ public class TransactionRepo extends Repo<TransactionEntity> {
             } else {
                 stmt.setDate(2, new Date(trans.getpickupDate().getTime()));
             }
-            System.out.println(stmt.toString());
+
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next())
-                
                 return rs.getInt(1);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -91,7 +90,6 @@ public class TransactionRepo extends Repo<TransactionEntity> {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                System.out.println("search" + stmt.toString());
                 transactions.add(mapToEntity(rs));
             }
         } catch (SQLException e) {

@@ -17,16 +17,17 @@ public class TransactionDetailRepo extends Repo<TransactionDetailEntity> {
     private static String tableName = TransactionDetailEntity.tableName;
 
     public Integer add(TransactionDetailEntity detail) {
-        String sql = "INSERT INTO " + tableName + " (`transaction_id`, `laundry_id`, `qty`, `subtotal`) VALUES (?, ?, ?,?)";
+        String sql = "INSERT INTO " + tableName + " (`transaction_id`, `laundry_id`, `qty`, `subtotal`) VALUES (?, ?, ?, ?)";
         
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setInt(1, detail.getTransactionID().getid());
-            stmt.setInt(2, detail.getLaundry_id().getid());
+            stmt.setInt(1, detail.getTransaction().getid());
+            stmt.setInt(2, detail.getLaundry().getid());
             stmt.setInt(3, detail.getQty());
             stmt.setInt(4, detail.getSubtotal());
-            
-            stmt.executeUpdate();
-            return 1;
+            System.out.println("THIS " + stmt.toString());
+           // stmt.executeUpdate();
+            return stmt.executeUpdate();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -47,14 +48,15 @@ public class TransactionDetailRepo extends Repo<TransactionDetailEntity> {
     }
 
     public TransactionDetailEntity mapToEntity(ResultSet result) throws SQLException {
-        // int transId = result.getInt("transaction_id");
-        // int LaundryId = result.getInt("laundry_id");
+        int transId = result.getInt("transaction_id");
+        int LaundryId = result.getInt("laundry_id");
 
-        // TransactionDetailEntity detail = new TransactionDetailEntity(
-        //         new TransactionRepo().get(transId),
-        //         new LaundryRepo().get(LaundryId),
-        //         result.getInt("qty"),
-        //         );
+        TransactionDetailEntity detail = new TransactionDetailEntity(
+                new TransactionRepo().get(transId),
+                new LaundryRepo().get(LaundryId),
+                result.getInt("qty"),
+                result.getInt("subtotal")
+        );
          return detail;
     }
 

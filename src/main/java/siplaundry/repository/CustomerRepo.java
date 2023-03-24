@@ -51,13 +51,14 @@ public class CustomerRepo extends Repo<CustomerEntity> {
 
     public boolean Update(CustomerEntity cust) {
         String sql = "UPDATE " + tableName + " SET name = ?, phone = ? WHERE customer_id = ?";
-
+        System.out.println("jalan");
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, cust.getname());
             stmt.setString(2, cust.getphone());
             stmt.setInt(3, cust.getid());
 
             stmt.executeUpdate();
+            System.out.println(stmt.toString());
             return stmt.getUpdateCount() > 0;
         } catch (SQLException e) {
             e.printStackTrace();

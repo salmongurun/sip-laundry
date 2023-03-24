@@ -18,7 +18,7 @@ public class VerificationRepo extends Repo<VerificationEntity> {
     private static String getid = "user_id";
 
     public Integer add(VerificationEntity verify) {
-        String sql = "INSERT INTO verivications (`user_id`, `code`) VALUES (?, ?)";
+        String sql = "INSERT INTO verifications (`user_id`, `code`) VALUES (?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1, verify.getUserID().getID());
@@ -80,7 +80,8 @@ public class VerificationRepo extends Repo<VerificationEntity> {
     public VerificationEntity mapToEntity(ResultSet rs) throws SQLException {
         return new VerificationEntity(
                 new UsersRepo().get(rs.getInt("user_id")),
-                rs.getString("code"));
+                rs.getString("code")
+        );
     }
 
 }

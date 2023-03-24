@@ -1,17 +1,21 @@
 package siplaundry.repo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import siplaundry.data.Laundryunit;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.LaundryRepo;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LaundryRepoTest {
     private static LaundryRepo repo = new LaundryRepo();
     private static Integer accountId;
@@ -37,7 +41,7 @@ public class LaundryRepoTest {
             }
         }).get(0);
 
-        assertEquals("joki", acc.getunit());
+        assertEquals(323, acc.getcost());
         assertEquals("coba9jk", acc2.getname());
     }
 
@@ -53,29 +57,28 @@ public class LaundryRepoTest {
         assertTrue(repo.get().size() > 1);
     }
 
-    // @Test
-    // @Order(4)
-    // public void testSearch() {
-    //     LaundryEntity acc2 = repo.get(new HashMap<String, Object>() {
-    //         {
-    //             put("laundry_id", accountId);
-    //         }
-    //     }).get(0);
+    @Test
+    @Order(4)
+    public void testSearch() {
+        LaundryEntity acc2 = repo.search(new HashMap<String, Object>() {
+            {
+                put("laundry_id", accountId);
+            }
+        }).get(0);
 
-    //     assertEquals("coba9jk", acc2.getname());
-    // }
+        assertEquals("coba9jk", acc2.getname());
+    }
 
-    // @Test @Order(4) //-->belom jalan
-    // public void testUpdate() {
-    // LaundryEntity user = repo.get(accountId);
-    // user.setunit("Joh");
+    @Test @Order(4) //-->belom jalan
+    public void testUpdate() {
+    LaundryEntity user = repo.get(accountId);
+    user.setcost(23333);
 
-    // repo.Update(user);
-    // user = repo.get(accountId);
+    repo.Update(user);
+    user = repo.get(accountId);
 
-    // assertNotEquals("joki", user.getunit());
-    // assertEquals("Joh", user.getunit());
-    // }
+    assertEquals(23333, user.getcost());
+    }
 
     @Test
     @Order(5)

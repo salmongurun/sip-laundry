@@ -3,7 +3,7 @@ package siplaundry.entity;
 import jakarta.validation.constraints.NotBlank;
 
 public class VerificationEntity extends Entity {
-    public static String tableName = "verivications";
+    public static String tableName = "verifications";
 
     @NotBlank(message = "harus diisi")
     private UserEntity user_id;

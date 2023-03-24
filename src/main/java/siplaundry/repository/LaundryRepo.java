@@ -57,6 +57,7 @@ public class LaundryRepo extends Repo<LaundryEntity> {
             stmt.setString(1, cust.getunit().toString());
             stmt.setInt(2, cust.getcost());
             stmt.setString(3, cust.getname());
+            stmt.setInt(4, cust.getid());
 
             stmt.executeUpdate();
             return stmt.getUpdateCount() > 0;

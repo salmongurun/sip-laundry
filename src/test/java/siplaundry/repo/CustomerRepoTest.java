@@ -1,16 +1,20 @@
 package siplaundry.repo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import siplaundry.entity.CustomerEntity;
 import siplaundry.repository.CustomerRepo;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CustomerRepoTest {
     private static CustomerRepo repo = new CustomerRepo();
     private static Integer accountId;
@@ -53,25 +57,27 @@ public class CustomerRepoTest {
         assertTrue(repo.get().size() > 1);
     }
 
-    // @Test @Order(4) //kalau mau nyoba ini jangan disatuin sama delete
-    // public void testSearch(){
-    // CustomerEntity acc2 = repo.search(new HashMap<String, Object>() {{
-    // put("customer_id", accountId);
-    // }}).get(0);
-    // assertEquals("081238560", acc2.getphone());
-    // }
+    @Test @Order(4) //kalau mau nyoba ini jangan disatuin sama delete
+    public void testSearch(){
+    CustomerEntity acc2 = repo.search(new HashMap<String, Object>() {{
+        put("customer_id", accountId);
+    }}).get(0);
+    
+    assertEquals("081238560", acc2.getphone());
+    }
 
-    // @Test @Order(5)
-    // public void testUpdate() {
-    // CustomerEntity user = repo.get(accountId);
-    // user.setname("john wick");
+    @Test @Order(5)
+    public void testUpdate() {
+        System.out.println();
+    CustomerEntity user = repo.get(accountId);
+    user.setname("john wick");
 
-    // repo.Update(user);
-    // user = repo.get(accountId);
+    repo.Update(user);
+    user = repo.get(accountId);
 
-    // assertNotEquals("John", user.getname());
-    // assertEquals("john wick", user.getname());
-    // }
+    assertNotEquals("John", user.getname());
+    assertEquals("john wick", user.getname());
+    }
 
     @Test
     @Order(6)

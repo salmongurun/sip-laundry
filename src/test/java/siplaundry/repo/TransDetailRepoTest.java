@@ -29,7 +29,8 @@ import siplaundry.entity.TransactionEntity;
 public class TransDetailRepoTest {
     private static CustomerEntity customer;
     private static UserEntity user;
-    private static LaundryEntity laundry;
+    private static LaundryEntity laundry1;
+    private static LaundryEntity laundry2;
     private static TransactionEntity transaction;
 
     private static LaundryRepo laundryRepo = new LaundryRepo();
@@ -37,22 +38,26 @@ public class TransDetailRepoTest {
     private static CustomerRepo custRepo = new CustomerRepo();
     private static TransactionRepo transRepo = new TransactionRepo();
     private static TransactionDetailRepo repo = new TransactionDetailRepo();
-    private static Integer userId, customerId, laundryId, transactionId;
+    private static Integer userId, customerId, laundryId1, laundryId2, transactionId;
 
     @BeforeAll
     public static void init() {
         userId = userRepo.add(new UserEntity(
-                "David", "324567", "david", "jember", AccountRole.cashier));
+                "David1", "324567", "david", "jember", AccountRole.cashier));
 
         customerId = custRepo.add(new CustomerEntity(
-                "Angel", "098765897652"));
+                "Angel1", "098765897652"));
 
-        laundryId = laundryRepo.add(new LaundryEntity(
+        laundryId1 = laundryRepo.add(new LaundryEntity(
                 Laundryunit.pcs, 50000, "Batik"));
+
+        laundryId2 = laundryRepo.add(new LaundryEntity(
+                Laundryunit.meter, 5000, "korden"));
 
         user = userRepo.get(userId);
         customer = custRepo.get(customerId);
-        laundry = laundryRepo.get(laundryId);
+        laundry1 = laundryRepo.get(laundryId1);
+        laundry2 = laundryRepo.get(laundryId2);
 
         transactionId = transRepo.add(new TransactionEntity(
                 new Date(),
@@ -71,7 +76,8 @@ public class TransDetailRepoTest {
         transRepo.delete(transactionId);
         custRepo.delete(customerId);
         userRepo.delete(userId);
-        laundryRepo.delete(laundryId);
+        laundryRepo.delete(laundryId1);
+        laundryRepo.delete(laundryId2);
     }
 
     @Test
@@ -79,41 +85,51 @@ public class TransDetailRepoTest {
     public void testAdd() {
         TransactionDetailEntity detail = new TransactionDetailEntity(
                 transaction,
-                laundry,
-                3,
-                0);
+                laundry1,
+                3);
 
-        assertTrue(repo.add(detail) != 0);
+        int coba = repo.add(detail);
+        assertTrue(coba != 0);
+        System.out.println(coba);
     }
 
-    // @Test
-    // @Order(2)
-    // public void testGetAll() {
-    //     TransactionDetailEntity detail = new TransactionDetailEntity(
-    //             transaction,
-    //             laundry,
-    //             5);
-    //     TransactionDetailEntity detail2 = repo.get(new HashMap<String, Object>() {
-    //         {
-    //             put("transaction_id", transactionId);
-    //         }
-    //     }).get(0);
+    @Test
+    @Order(2)
+    public void testGetAll() {
+        TransactionDetailEntity detail = new TransactionDetailEntity(
+                transaction,
+                laundry2,
+                5);
 
-    //     assertTrue(repo.add(detail) > 0);
-    //     assertTrue(repo.get().size() > 1);
-    //     assertEquals(3, detail2.getQty());
+        assertEquals(5, detail.getQty());
+        assertTrue(repo.add(detail) != 0);
+        assertTrue(repo.get().size() > 1);
 
-    // }
+    }
 
-    // @Test
-    // @Order(3)
-    // public void testSearch() {
-    //     TransactionDetailEntity detail2 = repo.search(new HashMap<String, Object>() {
-    //         {
-    //             put("transaction_id", transactionId);
-    //         }
-    //     }).get(0);
+    @Test
+    @Order(3)
+    public void testGet(){
+    TransactionDetailEntity detail2 = repo.get(new HashMap<String, Object>() {
+        {
+            put("transaction_id", transactionId);
+        }
+    }).get(0);
 
-    //     assertEquals(3, detail2.getQty());
-    // }
+    assertEquals(3, detail2.getQty());
+
+
+    }
+
+    @Test
+    @Order(3)
+    public void testSearch() {
+        TransactionDetailEntity detail2 = repo.search(new HashMap<String, Object>() {
+            {
+                put("transaction_id", transactionId);
+            }
+        }).get(0);
+
+        assertEquals(3, detail2.getQty());
+    }
 }

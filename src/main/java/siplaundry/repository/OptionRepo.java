@@ -10,12 +10,13 @@ import java.util.List;
 import siplaundry.entity.OptionEntity;
 import siplaundry.util.DatabaseUtil;
 
+
 public class OptionRepo extends Repo<OptionEntity> {
     final Connection conn = DatabaseUtil.getConnection();
-    public static String tableName = "option";
+    public static String tableName = "options";
 
     public Integer add(OptionEntity option) {
-        String sql = "INSERT INTO " + tableName + " (`key_option`, `value`) VALUES (?, ?)";
+        String sql = "INSERT INTO " + tableName + " (`key`, `value`) VALUES (?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, option.getKey());
@@ -36,13 +37,13 @@ public class OptionRepo extends Repo<OptionEntity> {
     }
 
     public OptionEntity get(String key) {
-        String sql = "SELECT * FROM " + tableName + " WHERE key_option = ?";
+        String sql = "SELECT * FROM " + tableName + " WHERE `key` = ?";
         OptionEntity keyOption = new OptionEntity();
 
         try (PreparedStatement stmt = conn.prepareStatement(sql);) {
-            stmt.setString(1, key); // ngga yakin
+            stmt.setString(1, key); 
             ResultSet rs = stmt.executeQuery();
-            System.out.println(stmt.toString());
+
             if (rs.next()) {
                 return mapToEntity(rs);
             }
@@ -53,7 +54,7 @@ public class OptionRepo extends Repo<OptionEntity> {
     }
 
     public boolean delete(String key) {
-        String sql = "DELETE FROM " + tableName + " WHERE key_option = ?";
+        String sql = "DELETE FROM " + tableName + " WHERE `key` = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, key);
@@ -69,7 +70,7 @@ public class OptionRepo extends Repo<OptionEntity> {
 
     public OptionEntity mapToEntity(ResultSet result) throws SQLException {
         OptionEntity account = new OptionEntity(
-                result.getString("key_option"),
+                result.getString("key"),
                 result.getString("value"));
 
         return account;
