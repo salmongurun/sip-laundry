@@ -1,11 +1,16 @@
 package siplaundry.util;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.mysql.cj.jdbc.Driver;
 
@@ -16,15 +21,24 @@ public class DatabaseUtil {
     Config config = new Config();
 
     static {
-
-        String jdbcUrl = "jdbc:mysql://" + Config.host + ":" + Config.port + "/" + Config.database;
+      //  String jdbcUrl = "jdbc:mysql://" + Config.host + ":" + Config.port + "/" + Config.database;
 
         try {
+            Properties properti = new Properties();
+            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("database.properties");
+            properti.load(inputStream);
+            
+            String jdbcUrl = "jdbc:mysql://" + 
+                            properti.getProperty("db.host") + ":" +
+                            properti.getProperty("db.port") + "/" +
+                            properti.getProperty("db.database");
+
+            
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
 
-            conn = DriverManager.getConnection(jdbcUrl, Config.username, Config.password);
-        } catch (SQLException e) {
+            conn = DriverManager.getConnection(jdbcUrl, properti.getProperty("db.username"), properti.getProperty("db.password"));
+        } catch (SQLException | IOException e) {
             throw new Error(e.getMessage());
         }
     }
