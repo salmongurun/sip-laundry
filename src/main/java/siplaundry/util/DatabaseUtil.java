@@ -25,15 +25,15 @@ public class DatabaseUtil {
 
         try {
             Properties properti = new Properties();
-            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("database.properties");
+            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("app.properties");
             properti.load(inputStream);
-            
-            String jdbcUrl = "jdbc:mysql://" + 
+
+            String jdbcUrl = "jdbc:mysql://" +
                             properti.getProperty("db.host") + ":" +
                             properti.getProperty("db.port") + "/" +
                             properti.getProperty("db.database");
 
-            
+
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
 
