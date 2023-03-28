@@ -23,22 +23,20 @@ public class DatabaseUtil {
     static {
       //  String jdbcUrl = "jdbc:mysql://" + Config.host + ":" + Config.port + "/" + Config.database;
 
-        try {
-            Properties properti = new Properties();
-            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("database.properties");
-            properti.load(inputStream);
-            
-            String jdbcUrl = "jdbc:mysql://" + 
-                            properti.getProperty("db.host") + ":" +
-                            properti.getProperty("db.port") + "/" +
-                            properti.getProperty("db.database");
+        String dbhost = ConfigUtil.get("db.host");
+        String dbport = ConfigUtil.get("db.port");
+        String dbdatabase = ConfigUtil.get("db.database");
+        String dbusername = ConfigUtil.get("db.username");
+        String dbpassword = ConfigUtil.get("db.password");
 
-            
+        String jdbcUrl = "jdbc:mysql://" + dbhost + ":" + dbport + "/" + dbdatabase;
+
+        try {
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
 
-            conn = DriverManager.getConnection(jdbcUrl, properti.getProperty("db.username"), properti.getProperty("db.password"));
-        } catch (SQLException | IOException e) {
+            conn = DriverManager.getConnection(jdbcUrl, dbusername, dbpassword);
+        } catch (SQLException e) {
             throw new Error(e.getMessage());
         }
     }
