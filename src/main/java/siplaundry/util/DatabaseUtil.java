@@ -21,8 +21,6 @@ public class DatabaseUtil {
     Config config = new Config();
 
     static {
-      //  String jdbcUrl = "jdbc:mysql://" + Config.host + ":" + Config.port + "/" + Config.database;
-
         String dbhost = ConfigUtil.get("db.host");
         String dbport = ConfigUtil.get("db.port");
         String dbdatabase = ConfigUtil.get("db.database");
@@ -32,15 +30,6 @@ public class DatabaseUtil {
         String jdbcUrl = "jdbc:mysql://" + dbhost + ":" + dbport + "/" + dbdatabase;
 
         try {
-            Properties properti = new Properties();
-            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("app.properties");
-            properti.load(inputStream);
-
-            String jdbcUrl = "jdbc:mysql://" +
-                            properti.getProperty("db.host") + ":" +
-                            properti.getProperty("db.port") + "/" +
-                            properti.getProperty("db.database");
-
             Driver driver = new Driver();
             DriverManager.registerDriver(driver);
 

@@ -10,9 +10,9 @@ public class ConfigUtil {
     static{
         try {
             Properties properti = new Properties();
-            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("database.properties");
+            InputStream inputStream = ClassLoader.getSystemClassLoader().getResourceAsStream("app.properties");
             properti.load(inputStream);
-            
+
             config = properti;
 
         }  catch (IOException e) {
