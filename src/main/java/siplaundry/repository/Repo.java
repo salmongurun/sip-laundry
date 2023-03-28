@@ -19,7 +19,6 @@ public abstract class Repo<E> {
         List<E> table = new ArrayList<>();
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
-            System.out.println(statement.toString());
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
@@ -64,13 +63,9 @@ public abstract class Repo<E> {
         try (PreparedStatement stmt = conn.prepareStatement(sql);) {
             stmt.setInt(1, id);
             ResultSet rs = stmt.executeQuery();
-            System.out.println(stmt.toString());
 
-            if (rs.next()) {
-                return mapToEntity(rs);
-            }
-        } catch (SQLException e) {
-        }
+            if (rs.next()) return mapToEntity(rs);
+        } catch (SQLException e) { e.printStackTrace(); }
 
         return customer;
     }
@@ -91,15 +86,13 @@ public abstract class Repo<E> {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             DatabaseUtil.prepareStmt(stmt, values);
-            
+
             ResultSet rs = stmt.executeQuery();
-            System.out.println(stmt.toString());
 
             while (rs.next()) {
                 table.add(mapToEntity(rs));
             }
-        } catch (SQLException e) {
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
 
         return table;
     }
@@ -112,9 +105,7 @@ public abstract class Repo<E> {
             stmt.executeUpdate();
 
             return stmt.getUpdateCount() > 0;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException e) { e.printStackTrace(); }
 
         return false;
     }

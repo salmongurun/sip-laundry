@@ -41,7 +41,6 @@ public class CustomerRepoTest {
         }).get(0);
 
         assertTrue(repo.add(acc) > 0);
-        System.out.println(repo.add(acc));
         assertEquals("joki", acc.getname());
         assertEquals("081238560", acc2.getphone());
     }
@@ -62,21 +61,20 @@ public class CustomerRepoTest {
     CustomerEntity acc2 = repo.search(new HashMap<String, Object>() {{
         put("customer_id", accountId);
     }}).get(0);
-    
+
     assertEquals("081238560", acc2.getphone());
     }
 
     @Test @Order(5)
     public void testUpdate() {
-        System.out.println();
-    CustomerEntity user = repo.get(accountId);
-    user.setname("john wick");
+        CustomerEntity user = repo.get(accountId);
+        user.setname("john wick");
 
-    repo.Update(user);
-    user = repo.get(accountId);
+        repo.Update(user);
+        user = repo.get(accountId);
 
-    assertNotEquals("John", user.getname());
-    assertEquals("john wick", user.getname());
+        assertNotEquals("John", user.getname());
+        assertEquals("john wick", user.getname());
     }
 
     @Test

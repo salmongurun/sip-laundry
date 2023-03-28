@@ -18,13 +18,12 @@ public class TransactionDetailRepo extends Repo<TransactionDetailEntity> {
 
     public Integer add(TransactionDetailEntity detail) {
         String sql = "INSERT INTO " + tableName + " (`transaction_id`, `laundry_id`, `qty`, `subtotal`) VALUES (?, ?, ?, ?)";
-        
+
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setInt(1, detail.getTransaction().getid());
             stmt.setInt(2, detail.getLaundry().getid());
             stmt.setInt(3, detail.getQty());
             stmt.setInt(4, detail.getSubtotal());
-            System.out.println("THIS " + stmt.toString());
            // stmt.executeUpdate();
             return stmt.executeUpdate();
 

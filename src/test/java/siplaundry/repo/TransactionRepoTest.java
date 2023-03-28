@@ -44,7 +44,6 @@ public class TransactionRepoTest {
         user = accRepo.get(userId);
 
         customer = custRepo.get(customerId);
-        System.out.println(customer.getid());
     }
 
     @AfterAll

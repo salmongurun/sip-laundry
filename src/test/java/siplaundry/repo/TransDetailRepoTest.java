@@ -90,7 +90,6 @@ public class TransDetailRepoTest {
 
         int coba = repo.add(detail);
         assertTrue(coba != 0);
-        System.out.println(coba);
     }
 
     @Test

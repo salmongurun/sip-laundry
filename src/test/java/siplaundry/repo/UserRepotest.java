@@ -32,7 +32,6 @@ public class UserRepotest {
 
         userId = repo.add(acc);
         assertTrue(userId > 0);
-        System.out.println(userId);
     }
 
     @Test
@@ -45,7 +44,6 @@ public class UserRepotest {
             }
         }).get(0);
 
-        System.out.println(acc.getID());
         assertEquals("joki", acc.getFullname());
         assertEquals(AccountRole.cashier, acc.getRole());
         assertEquals("coba9jk", acc2.getPassword());
@@ -74,11 +72,9 @@ public class UserRepotest {
     @Test
     @Order(4)
     public void testSearch() {
-        UserEntity acc2 = repo.get(new HashMap<String, Object>() {
-            {
+        UserEntity acc2 = repo.get(new HashMap<String, Object>() {{
                 put("user_id", userId);
-            }
-        }).get(0);
+        }}).get(0);
 
         assertEquals("coba9jk", acc2.getPassword());
     }
