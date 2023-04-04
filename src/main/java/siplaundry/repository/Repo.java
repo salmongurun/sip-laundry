@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import siplaundry.entity.Entity;
 import siplaundry.util.DatabaseUtil;
 
 public abstract class Repo<E> {

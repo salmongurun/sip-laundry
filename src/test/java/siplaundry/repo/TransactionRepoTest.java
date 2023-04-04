@@ -97,6 +97,7 @@ public class TransactionRepoTest {
 
         assertTrue(repo.add(trans) > 0);
         assertTrue(repo.get().size() > 1);
+        System.out.println(repo.get());
     }
 
     @Test
