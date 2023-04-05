@@ -3,6 +3,7 @@ package siplaundry.Service;
 import java.util.HashMap;
 import java.util.List;
 
+import siplaundry.data.SessionData;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 
@@ -20,8 +21,8 @@ public class AuthService {
 
         if(acc.size() > 0){
             return true;
-        } else{
-            return false;
-        }
+        } 
+        SessionData.user = acc.get(0);
+        return false;
     }
 }
