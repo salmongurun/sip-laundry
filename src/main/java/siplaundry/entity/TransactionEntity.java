@@ -11,9 +11,11 @@ public class TransactionEntity extends Entity {
 
     private int transaction_id;
 
-    private java.util.Date transaction_Date;
+    private Date transaction_Date;
 
-    private java.util.Date pickup_date;
+    private int ritard;
+
+    private Date pickup_date;
 
     private LaundryStatus status;
 
@@ -32,9 +34,10 @@ public class TransactionEntity extends Entity {
     public TransactionEntity() {
     }
 
-    public TransactionEntity(Date transactionDate, Date pickup_Date, LaundryStatus status,
+    public TransactionEntity(Date transactionDate,int ritard, Date pickup_Date, LaundryStatus status,
             PaymentStatus payment_status, int amount, UserEntity user_id, CustomerEntity customer_id) {
         this.transaction_Date = transactionDate;
+        this.ritard = ritard;
         this.pickup_date = pickup_Date;
         this.status = status;
         this.payment_status = payment_status;
@@ -51,12 +54,21 @@ public class TransactionEntity extends Entity {
         this.transaction_id = id;
     }
 
-    public java.util.Date gettransactionDate() {
+    public Date gettransactionDate() {
         return transaction_Date;
     }
 
     public void settransactionDate(Date transactionDate) {
         this.transaction_Date = transactionDate;
+    }
+
+    
+    public int getRitard() {
+        return ritard;
+    }
+
+    public void setRitard(int ritard) {
+        this.ritard = ritard;
     }
 
     public java.util.Date getpickupDate() {
@@ -106,4 +118,5 @@ public class TransactionEntity extends Entity {
     public void setCustomerID(CustomerEntity customerID) {
         this.customerID = customerID;
     }
+
 }

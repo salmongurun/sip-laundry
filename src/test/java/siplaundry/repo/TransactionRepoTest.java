@@ -57,6 +57,7 @@ public class TransactionRepoTest {
     public void testAdd() {
         TransactionEntity transaksi = new TransactionEntity(
                 new Date(),
+                1,
                 new Date(),
                 LaundryStatus.finish,
                 PaymentStatus.paid,
@@ -88,6 +89,7 @@ public class TransactionRepoTest {
     public void testGetAll() {
         TransactionEntity trans = new TransactionEntity(
                 new Date(),
+                2,
                 new Date(),
                 LaundryStatus.process,
                 PaymentStatus.unpaid,

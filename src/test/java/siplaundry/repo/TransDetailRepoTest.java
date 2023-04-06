@@ -49,10 +49,10 @@ public class TransDetailRepoTest {
                 "Angel1", "098765897652"));
 
         laundryId1 = laundryRepo.add(new LaundryEntity(
-                Laundryunit.pcs, 50000, "Batik"));
+                Laundryunit.pcs, 50000, "Batik", true));
 
         laundryId2 = laundryRepo.add(new LaundryEntity(
-                Laundryunit.meter, 5000, "korden"));
+                Laundryunit.meter, 5000, "korden", false));
 
         user = userRepo.get(userId);
         customer = custRepo.get(customerId);
@@ -61,6 +61,7 @@ public class TransDetailRepoTest {
 
         transactionId = transRepo.add(new TransactionEntity(
                 new Date(),
+                1,
                 new Date(),
                 LaundryStatus.finish,
                 PaymentStatus.paid,

@@ -23,22 +23,23 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
     public Integer add(TransactionEntity trans) {
         String sql = "INSERT INTO " + tableName
-                + " (`transaction_date`, `pickup_date`, `status`, `payment_status`, `amount`, `user_id`, `customer_id`) VALUES (?, ?, ?, ?, ?, ?, ?)";
+                + " (`transaction_date`,`ritard` ,`pickup_date`, `status`, `payment_status`, `amount`, `user_id`, `customer_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
             stmt.setDate(1, new Date(trans.gettransactionDate().getTime()));
-            stmt.setDate(2, new Date(trans.getpickupDate().getTime()));
-            stmt.setString(3, trans.getstatus().toString());
-            stmt.setString(4, trans.getPaymentStatus().toString());
-            stmt.setInt(5, trans.getamount());
-            stmt.setInt(6, trans.getUserID().getID());
-            stmt.setInt(7, trans.getCustomerID().getid());
+            stmt.setInt(2, trans.getRitard());
+            stmt.setDate(3, new Date(trans.getpickupDate().getTime()));
+            stmt.setString(4, trans.getstatus().toString());
+            stmt.setString(5, trans.getPaymentStatus().toString());
+            stmt.setInt(6, trans.getamount());
+            stmt.setInt(7, trans.getUserID().getID());
+            stmt.setInt(8, trans.getCustomerID().getid());
             
             if (trans.getCustomerID() == null) {
-                stmt.setNull(2, Types.DATE);
+                stmt.setNull(3, Types.DATE);
             } else {
-                stmt.setDate(2, new Date(trans.getpickupDate().getTime()));
+                stmt.setDate(3, new Date(trans.getpickupDate().getTime()));
             }
 
             stmt.executeUpdate();
@@ -100,17 +101,18 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
     public boolean Update(TransactionEntity trans) {
         String sql = "UPDATE " + tableName
-                + " SET transaction_date = ?, pickup_date = ?, status = ?, payment_status = ?, amount = ?, user_id = ?, customer_id = ? WHERE transaction_id = ?";
+                + " SET transaction_date = ?, ritard = ?, pickup_date = ?, status = ?, payment_status = ?, amount = ?, user_id = ?, customer_id = ? WHERE transaction_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setDate(1, new Date(trans.gettransactionDate().getTime()));
-            stmt.setDate(2, new Date(trans.getpickupDate().getTime()));
-            stmt.setString(3, trans.getstatus().toString());
-            stmt.setString(4, trans.getPaymentStatus().toString());
-            stmt.setInt(5, trans.getamount());
-            stmt.setInt(6, trans.getUserID().getID());
-            stmt.setInt(7, trans.getCustomerID().getid());
-            stmt.setInt(8, trans.getid());
+            stmt.setInt(2, trans.getRitard());
+            stmt.setDate(3, new Date(trans.getpickupDate().getTime()));
+            stmt.setString(4, trans.getstatus().toString());
+            stmt.setString(5, trans.getPaymentStatus().toString());
+            stmt.setInt(6, trans.getamount());
+            stmt.setInt(7, trans.getUserID().getID());
+            stmt.setInt(8, trans.getCustomerID().getid());
+            stmt.setInt(9, trans.getid());
 
             stmt.executeUpdate();
 
@@ -132,6 +134,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
         TransactionEntity transaction = new TransactionEntity(
                 result.getDate("transaction_date"),
+                result.getInt("ritard"),
                 result.getDate("pickup_date"),
                 LaundryStatus.valueOf(result.getString("status")),
                 PaymentStatus.valueOf(result.getString("payment_status")),
