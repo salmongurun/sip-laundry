@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2023 at 08:45 PM
+-- Generation Time: Apr 06, 2023 at 08:51 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -33,16 +33,6 @@ CREATE TABLE `customers` (
   `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`customer_id`, `name`, `phone`) VALUES
-(36, 'sasa', '087546534211'),
-(37, 'sinta', '087546534211'),
-(38, 'sisi', '087546534211'),
-(39, 'nana', '087546534211');
-
 -- --------------------------------------------------------
 
 --
@@ -56,16 +46,6 @@ CREATE TABLE `laundries` (
   `name` varchar(150) NOT NULL,
   `IsExpress` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `laundries`
---
-
-INSERT INTO `laundries` (`laundry_id`, `unit`, `cost`, `name`, `IsExpress`) VALUES
-(29, 'meter', 3000, 'korden', NULL),
-(30, 'pcs', 7000, 'boneka', NULL),
-(31, 'kilogram', 5000, 'baju', NULL),
-(32, 'meter', 4000, 'karpet', NULL);
 
 -- --------------------------------------------------------
 
@@ -97,16 +77,6 @@ CREATE TABLE `transactions` (
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `transactions`
---
-
-INSERT INTO `transactions` (`transaction_id`, `transaction_date`, `ritard`, `pickup_date`, `status`, `payment_status`, `amount`, `user_id`, `customer_id`) VALUES
-(22, '2023-04-03 13:09:45', NULL, '2023-04-08 13:09:45', 'finish', 'paid', 18000, 8, 36),
-(23, '2023-04-01 13:14:43', NULL, '2023-04-03 13:14:43', 'finish', 'unpaid', 14000, 19, 38),
-(24, '2023-04-02 13:16:48', NULL, '2023-04-02 13:16:48', 'finish', 'unpaid', 8000, 20, 37),
-(25, '2023-04-02 13:23:13', NULL, '2023-04-02 13:23:13', 'taken', 'unpaid', 20000, 20, 39);
-
 -- --------------------------------------------------------
 
 --
@@ -119,17 +89,6 @@ CREATE TABLE `transaction_details` (
   `transaction_id` int(11) NOT NULL,
   `laundry_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `transaction_details`
---
-
-INSERT INTO `transaction_details` (`qty`, `subtotal`, `transaction_id`, `laundry_id`) VALUES
-(1, 3000, 22, 29),
-(3, 15000, 22, 31),
-(2, 14000, 23, 30),
-(2, 8000, 24, 32),
-(4, 20000, 25, 31);
 
 --
 -- Triggers `transaction_details`
@@ -161,20 +120,6 @@ CREATE TABLE `users` (
   `address` mediumtext NOT NULL,
   `role` enum('admin','cashier') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`user_id`, `fullname`, `phone`, `password`, `address`, `role`) VALUES
-(8, 'aldea', '3232333333', 'haikamu', 'jember', 'cashier'),
-(19, 'sinta', '089787675654', 'kamu', 'jember', 'admin'),
-(20, 'sinta', '089787675654', 'kamu', 'jember', 'admin'),
-(21, 'sinta', '089787675654', 'kamu', 'jember', 'admin'),
-(26, 'sinta', '089787675654', 'kamu', 'jember', 'admin'),
-(31, 'sinta', '089787675654', 'kamu', 'jember', 'admin'),
-(37, 'aldea', '3232333333', 'haikamu', 'jember', 'cashier'),
-(38, 'sinta', '089787675654', 'kamu', 'jember', 'admin');
 
 -- --------------------------------------------------------
 
