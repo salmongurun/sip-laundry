@@ -18,14 +18,20 @@ public class LaundryEntity extends Entity {
     @NotBlank(message = "Nama harus diisi")
     private String name;
 
+    @NotBlank(message = "Harap diisi")
+    private boolean IsExpress;
+
+    
     public LaundryEntity() {
     }
-
-    public LaundryEntity(Laundryunit unit, Integer cost, String nama) {
+    
+    public LaundryEntity(Laundryunit unit, Integer cost, String name, boolean isExpress) {
         this.unit = unit;
         this.cost = cost;
-        this.name = nama;
+        this.name = name;
+        IsExpress = isExpress;
     }
+    
 
     public int getid() {
         return laundry_id;
@@ -55,8 +61,19 @@ public class LaundryEntity extends Entity {
         return this.name;
     }
 
+    public boolean getIsExpress() {
+        return IsExpress;
+    }
+
+    public void setIsExpress(boolean isExpress) {
+        IsExpress = isExpress;
+
+    }
+
     public void setname(String name) {
         this.name = name;
     }
+
+    
 
 }

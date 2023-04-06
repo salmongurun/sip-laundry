@@ -26,7 +26,9 @@ public class LaundryRepoTest {
         LaundryEntity acc = new LaundryEntity(
                 Laundryunit.meter,
                 323,
-                "coba9jk");
+                "coba9jk",
+                true
+                );
         accountId = repo.add(acc);
         assertTrue(accountId > 0);
     }
@@ -51,7 +53,9 @@ public class LaundryRepoTest {
         LaundryEntity acc = new LaundryEntity(
                 Laundryunit.kilogram,
                 3323,
-                "aldea");
+                "aldea",
+                false
+                );
 
         assertTrue(repo.add(acc) > 0);
         assertTrue(repo.get().size() > 1);

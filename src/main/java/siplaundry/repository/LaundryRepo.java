@@ -15,15 +15,16 @@ public class LaundryRepo extends Repo<LaundryEntity> {
     private static String getid = "laundry_id";
 
     public Integer add(LaundryEntity cust) {
-        String sql = "INSERT INTO " + tableName + " (`unit`, `cost`, `name`) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO " + tableName + " (`unit`, `cost`, `name`, `IsExpress`) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, cust.getunit().toString());
             stmt.setInt(2, cust.getcost());
             stmt.setString(3, cust.getname());
+            stmt.setBoolean(4, cust.getIsExpress());
+            System.out.println(stmt.toString());
 
             stmt.executeUpdate();
-
             ResultSet rs = stmt.getGeneratedKeys();
             if (rs.next())
                 return rs.getInt(1);
@@ -51,13 +52,14 @@ public class LaundryRepo extends Repo<LaundryEntity> {
     }
 
     public boolean Update(LaundryEntity cust) {
-        String sql = "UPDATE " + tableName + " SET unit = ?, cost = ?, name = ? WHERE laundry_id = ?";
+        String sql = "UPDATE " + tableName + " SET unit = ?, cost = ?, name = ?, IsExpress = ? WHERE laundry_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, cust.getunit().toString());
             stmt.setInt(2, cust.getcost());
             stmt.setString(3, cust.getname());
-            stmt.setInt(4, cust.getid());
+            stmt.setBoolean(4, cust.getIsExpress());
+            stmt.setInt(5, cust.getid());
 
             stmt.executeUpdate();
             return stmt.getUpdateCount() > 0;
@@ -76,7 +78,9 @@ public class LaundryRepo extends Repo<LaundryEntity> {
         LaundryEntity laundry = new LaundryEntity(
                 Laundryunit.valueOf(result.getString("unit")),
                 result.getInt("cost"),
-                result.getString("name"));
+                result.getString("name"),
+                result.getBoolean("IsExpress")
+                );
 
         laundry.setid(result.getInt("laundry_id"));
         return laundry;
