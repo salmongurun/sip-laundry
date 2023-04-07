@@ -9,17 +9,21 @@ import siplaundry.Service.StatusService;
 public class App {
     public static void main(String[] args) {
 
-        Timer timer = new Timer();
-        TimerTask task = new TimerTask() {
+        // Timer timer = new Timer();
+        // TimerTask task = new TimerTask() {
 
-            @Override
-            public void run() {
-                StatusService coba = new StatusService();
-                coba.ChangeToFinish();      
-            }
+        //     @Override
+        //     public void run() {
+        //         StatusService coba = new StatusService();
+        //         coba.ChangeToFinish();      
+        //     }
             
-        };
-        timer.schedule(task, 0, 10000);
+        // };
+        // timer.schedule(task, 0, 10000);
+
+        StatusService coba1 = new StatusService();
+        coba1.ChangeToFinishAuto();
+      //  coba1.ChangeToFinishManual(42);
 
         
     }
