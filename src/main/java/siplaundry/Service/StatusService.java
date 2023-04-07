@@ -38,4 +38,16 @@ public class StatusService {
         }
     }
 
+    public void ChangeToPaid(int id){
+        String sql = "UPDATE `transactions` SET `payment_status` = 'paid' WHERE `transaction_id` = ? ";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, id);
+            System.out.println(stmt.toString());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
