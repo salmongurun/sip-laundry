@@ -14,7 +14,7 @@ import siplaundry.repository.OptionRepo;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class OptionRepoTest {
     private static OptionRepo repo = new OptionRepo();
-    private static String key, key2;
+    private static String key2;
 
     @Test
     @Order(1)
@@ -22,7 +22,6 @@ public class OptionRepoTest {
         OptionEntity option = new OptionEntity(
                 "alamat20",
                 "sumbersari");
-        key = option.getKey();
         assertTrue(repo.add(option) != 0);
     }
 
