@@ -13,7 +13,7 @@ public class TransactionEntity extends Entity {
 
     private Date transaction_Date;
 
-    private int ritard;
+    private int retard;
 
     private Date pickup_date;
 
@@ -34,10 +34,10 @@ public class TransactionEntity extends Entity {
     public TransactionEntity() {
     }
 
-    public TransactionEntity(Date transactionDate,int ritard, Date pickup_Date, LaundryStatus status,
+    public TransactionEntity(Date transactionDate,int retard, Date pickup_Date, LaundryStatus status,
             PaymentStatus payment_status, int amount, UserEntity user_id, CustomerEntity customer_id) {
         this.transaction_Date = transactionDate;
-        this.ritard = ritard;
+        this.retard = retard;
         this.pickup_date = pickup_Date;
         this.status = status;
         this.payment_status = payment_status;
@@ -63,12 +63,12 @@ public class TransactionEntity extends Entity {
     }
 
     
-    public int getRitard() {
-        return ritard;
+    public int getRetard() {
+        return retard;
     }
 
-    public void setRitard(int ritard) {
-        this.ritard = ritard;
+    public void setRetard(int retard) {
+        this.retard = retard;
     }
 
     public java.util.Date getpickupDate() {
