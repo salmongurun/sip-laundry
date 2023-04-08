@@ -1,23 +1,25 @@
 package siplaundry.Service;
 
+import java.text.SimpleDateFormat;
 import java.sql.Connection;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import siplaundry.util.DatabaseUtil;
 
 public class StatusService {
     final Connection conn = DatabaseUtil.getConnection();
+    Date date = new Date();
+    
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String dateString = sdf.format(date);
     
     public void ChangeToFinishAuto(){
-        LocalDate deadline = LocalDate.now();
-
-        String sql = " UPDATE `transactions` JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` JOIN `laundries` ON `laundries`.`laundry_id` = `transaction_details`.`laundry_id` SET `transactions`.`status` = 'finish' WHERE `transactions`.`status` = 'process' AND ( (`laundries`.`IsExpress` = 1 AND `transactions`.`transaction_date` <= DATE_SUB( ?, INTERVAL(`transactions`.`retard` + 2)DAY)) OR (`laundries`.`IsExpress` = 0 AND `transactions`.`transaction_date` <= DATE_SUB( ?, INTERVAL(`transactions`.`retard` + 2)DAY))); ";
+        String sql = "UPDATE `transactions` INNER JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` INNER JOIN `laundries` ON `transaction_details`.`laundry_id` = `laundries`.`laundry_id` SET `transactions`.`status` = 'finish' WHERE `transactions`.`status` = 'process' AND `transactions`.`transaction_date` <= (DATE_SUB(?, INTERVAL(CASE WHEN `laundries`.`IsExpress` = 1 THEN `transactions`.`retard` + 1 ELSE `transactions`.`retard` + 3 END)DAY))";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
-           stmt.setString(1, deadline.toString());
-           stmt.setString(2, deadline.toString());
+           stmt.setString(1, dateString);
            stmt.executeUpdate();
             
         } catch (SQLException e) {
