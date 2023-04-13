@@ -1,0 +1,19 @@
+.main-color {
+    -fx-background-color: #5585B5;
+}
+
+.secondary-color {
+    -fx-background-color: #53A8B6;
+}
+
+.third-color {
+    -fx-background-color: #79C2D0;
+}
+
+.last-color {
+    -fx-background-color: #F9F9F9;
+}
+
+.main-text-color {
+    -fx-text-fill: #5585B5;
+}
