@@ -40,6 +40,17 @@ public class StatusService {
         }
     }
 
+    public void CancelToBeFinished(int id){  
+        String sql = "UPDATE `transactions` SET `status` = 'process' WHERE transaction_id = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public void ChangeToPaid(int id){
         String sql = "UPDATE `transactions` SET `payment_status` = 'paid' WHERE `transaction_id` = ? ";
 
@@ -51,5 +62,18 @@ public class StatusService {
             e.printStackTrace();
         }
     }
+
+    public void CancelTransaction(int id){  
+        String sql = "UPDATE transactions SET status = 'cancelled' WHERE transaction_id = ?";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 }
