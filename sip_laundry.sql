@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2023 at 07:25 PM
+-- Generation Time: Apr 20, 2023 at 06:16 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -65,7 +65,9 @@ CREATE TABLE `options` (
 
 INSERT INTO `options` (`option_id`, `key`, `value`) VALUES
 (15, 'alamat20', 'sumbersari'),
-(17, 'alamat20', 'sumbersari');
+(17, 'alamat20', 'sumbersari'),
+(19, 'alamat20', 'sumbersari'),
+(21, 'alamat20', 'sumbersari');
 
 -- --------------------------------------------------------
 
@@ -78,7 +80,7 @@ CREATE TABLE `transactions` (
   `transaction_date` datetime NOT NULL,
   `retard` int(11) NOT NULL DEFAULT 0,
   `pickup_date` datetime NOT NULL,
-  `status` enum('process','finish','taken') DEFAULT 'process',
+  `status` enum('process','finish','taken','canceled') DEFAULT 'process',
   `payment_status` enum('paid','unpaid') NOT NULL,
   `amount` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL,
@@ -197,37 +199,37 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 
 --
 -- AUTO_INCREMENT for table `laundries`
 --
 ALTER TABLE `laundries`
-  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT for table `verifications`
 --
 ALTER TABLE `verifications`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
 
 --
 -- Constraints for dumped tables
