@@ -38,8 +38,8 @@ public class DatabaseUtil {
         return conn;
     }
 
-    public static void prepareStmt(PreparedStatement stmt, Map<String, Object> values) throws SQLException {
-        int i = 1;
+    public static void prepareStmt(PreparedStatement stmt, Map<String, Object> values, int addition) throws SQLException {
+        int i = 1 + addition;
 
         for (String key : values.keySet()) {
             Object value = values.get(key);

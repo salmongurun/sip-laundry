@@ -86,7 +86,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
         sql += ") AND user_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            DatabaseUtil.prepareStmt(stmt, values);
+            DatabaseUtil.prepareStmt(stmt, values, 0);
             stmt.setInt(values.keySet().size() + 1, user.getID());
             ResultSet rs = stmt.executeQuery();
 
@@ -123,6 +123,44 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
         return false;
     }
+
+    public boolean Update(Map<String, Object> setValues, Map<String, Object> whereValues){
+        int setCount = 0;
+        int whereCount = 0;
+        String sql = "UPDATE " + tableName + " SET ";
+
+        for (String setValueKey : setValues.keySet()) {
+            if (setCount > 0)
+                sql += ", ";
+            sql += setValueKey + " = ?";
+            setCount++;
+        }
+
+        if (whereValues != null && !whereValues.isEmpty()) {
+            sql += " WHERE ";
+            for (String whereValueKey : whereValues.keySet()) {
+                if (whereCount > 0)
+                    sql += " AND ";
+                sql += whereValueKey + " = ?";
+
+
+                whereCount++;
+            }
+        }
+
+        try(PreparedStatement stmt = conn.prepareStatement(sql)) {
+            DatabaseUtil.prepareStmt(stmt, setValues, 0);
+            DatabaseUtil.prepareStmt(stmt, whereValues, setCount);
+            System.out.println(stmt.toString());
+            stmt.executeUpdate();
+
+            return stmt.getUpdateCount() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    } 
 
     public boolean delete(int id) {
         return super.delete(tableName, getid, id);

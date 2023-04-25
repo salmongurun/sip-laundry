@@ -43,7 +43,7 @@ public abstract class Repo<E> {
         }
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            DatabaseUtil.prepareStmt(stmt, values);
+            DatabaseUtil.prepareStmt(stmt, values, 0);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -84,7 +84,7 @@ public abstract class Repo<E> {
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            DatabaseUtil.prepareStmt(stmt, values);
+            DatabaseUtil.prepareStmt(stmt, values, 0);
 
             ResultSet rs = stmt.executeQuery();
 

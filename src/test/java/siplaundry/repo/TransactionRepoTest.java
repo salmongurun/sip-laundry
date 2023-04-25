@@ -141,6 +141,19 @@ public class TransactionRepoTest {
 
     @Test
     @Order(7)
+    public void testUpdate2() {
+      //  TransactionEntity trans = repo.get(transactionId);
+        assertTrue(repo.Update(
+            new HashMap<String, Object>(){{
+                put("amount", 78);
+            }},
+            new HashMap<String, Object>(){{
+                put("customer_id", customerId);
+            }}));
+    }
+
+    @Test
+    @Order(8)
     public void testDelete() {
         assertTrue(repo.delete(transactionId));
     }
