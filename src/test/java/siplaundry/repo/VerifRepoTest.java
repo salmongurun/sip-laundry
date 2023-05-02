@@ -36,9 +36,9 @@ public class VerifRepoTest {
     @BeforeAll
     public static void init() {
         userId1 = userRepo.add(new UserEntity(
-                "Ahkam", "54545343", "ahkam", "jember", AccountRole.admin));
+                "Ahkam1", "Ahkam Hafidz", "54545343", "ahkam", "jember", AccountRole.admin));
         userId2 = userRepo.add(new UserEntity(
-                "Ahkam2", "54545343", "ahkam", "jember", AccountRole.admin));
+                "Ahkam2", "Ahkam Hafidz", "54545343", "ahkam", "jember", AccountRole.admin));
 
         user1 = userRepo.get(userId1);
         user2 = userRepo.get(userId2);

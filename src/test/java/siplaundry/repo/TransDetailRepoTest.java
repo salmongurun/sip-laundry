@@ -43,7 +43,7 @@ public class TransDetailRepoTest {
     @BeforeAll
     public static void init() {
         userId = userRepo.add(new UserEntity(
-                "David1", "324567", "david", "jember", AccountRole.cashier));
+                "David", "David Ahkam", "324567", "david", "jember", AccountRole.cashier));
 
         customerId = custRepo.add(new CustomerEntity(
                 "Angel1", "098765897652"));
