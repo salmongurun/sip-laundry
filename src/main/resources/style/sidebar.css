@@ -1,0 +1,45 @@
+.sidebar-container {
+    -fx-background-radius: 0 60px 0 0;
+    -fx-background-color: #414F8C;
+}
+
+.sidebar-item {
+    -fx-background-radius: 20px 0 0 20px;
+    -fx-padding: 13px 25px;
+    -fx-spacing: 10;
+    -fx-cursor: hand;
+}
+
+.sidebar-item .sidebar-icon {
+    -fx-fill: white;
+}
+
+.sidebar-item .sidebar-text {
+    -fx-fill: white;
+    -fx-font-family: 'Poppins SemiBold';
+    -fx-font-size: 14px;
+    -fx-translate-y: 1;
+}
+
+.sidebar-item.active {
+    -fx-background-color: #F5F9FC;
+}
+
+.sidebar-item.active .sidebar-icon {
+    -fx-fill: #414F8C;
+}
+
+.sidebar-item.active .sidebar-text {
+    -fx-fill: #414F8C;
+}
+
+.logout-container {
+    -fx-border-color: #9a9da1 transparent transparent transparent;
+}
+
+.logout-container .logout-btn {
+    -fx-padding: 10px 0;
+    -fx-background-radius: 20px;
+    -fx-background-color: white;
+    -fx-cursor: hand;
+}
