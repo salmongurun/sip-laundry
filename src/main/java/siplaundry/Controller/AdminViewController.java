@@ -1,4 +1,4 @@
-package siplaundry.view;
+package siplaundry.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
