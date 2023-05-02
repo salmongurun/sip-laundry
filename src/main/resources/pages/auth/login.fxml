@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.Controller.LoginController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -60,7 +60,7 @@
                                     <Font name="Poppins Medium" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField minHeight="35.0" styleClass="form-control" />
+                              <TextField fx:id="TxtUserName" minHeight="35.0" styleClass="form-control" />
                            </children>
                         </VBox>
                         <VBox layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="500.0" spacing="5.0">
@@ -70,7 +70,7 @@
                                     <Font name="Poppins Medium" size="18.0" />
                                  </font>
                               </Label>
-                              <TextField minHeight="35.0" styleClass="form-control" />
+                              <TextField fx:id="TxtPassword" minHeight="35.0" styleClass="form-control" />
                            </children>
                         </VBox>
                         <Text fill="#5585b5" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Lupa Password?" textAlignment="RIGHT" wrappingWidth="492.600341796875">
@@ -80,7 +80,7 @@
                         </Text>
                      </children>
                   </VBox>
-                  <Button mnemonicParsing="false" text="Login">
+                  <Button fx:id="BtnLogin" mnemonicParsing="false" onAction="#ButtonLoginAction" text="Login">
                      <styleClass>
                         <String fx:value="btn-submit" />
                         <String fx:value="main-color" />

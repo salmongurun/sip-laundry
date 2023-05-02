@@ -19,10 +19,10 @@ public class AuthService {
             }
         });
 
-        if(acc.size() > 0){
-            return true;
+        if(acc.size() < 1){
+            return false;
         }
         SessionData.user = acc.get(0);
-        return false;
+        return true;
     }
 }

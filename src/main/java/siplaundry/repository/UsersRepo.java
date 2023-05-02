@@ -17,14 +17,15 @@ public class UsersRepo extends Repo<UserEntity> {
 
     public Integer add(UserEntity cust) {
         String sql = "INSERT INTO " + tableName
-                + " (`fullname`, `phone`, `password` , `address`, `role`) VALUES (?, ?, ?, ?, ?)";
+                + " (`username`, `fullname`, `phone`, `password` , `address`, `role`) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            stmt.setString(1, cust.getFullname());
-            stmt.setString(2, cust.getPhone());
-            stmt.setString(3, cust.getPassword());
-            stmt.setString(4, cust.getAddress());
-            stmt.setString(5, cust.getRole().toString());
+            stmt.setString(1, cust.getUsername());
+            stmt.setString(2, cust.getFullname());
+            stmt.setString(3, cust.getPhone());
+            stmt.setString(4, cust.getPassword());
+            stmt.setString(5, cust.getAddress());
+            stmt.setString(6, cust.getRole().toString());
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
@@ -55,14 +56,15 @@ public class UsersRepo extends Repo<UserEntity> {
 
     public boolean Update(UserEntity cust) {
         String sql = "UPDATE " + tableName
-                + " SET fullname = ?, phone = ?, password = ?, address = ? WHERE user_id = ?";
+                + " SET username = ?, fullname = ?, phone = ?, password = ?, address = ? WHERE user_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, cust.getFullname());
-            stmt.setString(2, cust.getPhone());
-            stmt.setString(3, cust.getPassword());
-            stmt.setString(4, cust.getAddress());
-            stmt.setInt(5, cust.getID());
+            stmt.setString(1, cust.getUsername());
+            stmt.setString(2, cust.getFullname());
+            stmt.setString(3, cust.getPhone());
+            stmt.setString(4, cust.getPassword());
+            stmt.setString(5, cust.getAddress());
+            stmt.setInt(6, cust.getID());
 
             stmt.executeUpdate();
             return stmt.getUpdateCount() > 0;
@@ -80,6 +82,7 @@ public class UsersRepo extends Repo<UserEntity> {
     @Override
     public UserEntity mapToEntity(ResultSet result) throws SQLException {
         UserEntity user = new UserEntity(
+                result.getString("username"),
                 result.getString("fullname"),
                 result.getString("phone"),
                 result.getString("password"),

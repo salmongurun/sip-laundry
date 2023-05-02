@@ -9,6 +9,9 @@ public class UserEntity extends Entity {
 
     private Integer user_id;
 
+    @NotBlank(message = "Harap diisi")
+    private String username;
+
     @NotBlank(message = "Nama lengkap harus diisi")
     private String fullname;
 
@@ -29,7 +32,8 @@ public class UserEntity extends Entity {
     public UserEntity() {
     };
 
-    public UserEntity(String fullname, String phone, String password, String address, AccountRole role) {
+    public UserEntity(String username, String fullname, String phone, String password, String address, AccountRole role) {
+        this.username = username;
         this.fullname = fullname;
         this.phone = phone;
         this.password = password;
@@ -44,6 +48,14 @@ public class UserEntity extends Entity {
     public void setID(int id) {
         this.user_id = id;
     };
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
     public String getFullname() {
         return this.fullname;
