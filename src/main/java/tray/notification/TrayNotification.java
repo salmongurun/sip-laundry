@@ -1,4 +1,4 @@
-package siplaundry.tray.notification;
+package tray.notification;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -13,8 +13,9 @@ import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
-import siplaundry.tray.animations.*;
-import siplaundry.tray.models.CustomStage;
+import tray.animations.*;
+import tray.models.CustomStage;
+import tray.animations.*;
 
 import java.io.IOException;
 import java.net.URL;

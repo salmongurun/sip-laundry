@@ -1,4 +1,4 @@
-package siplaundry.tray.models;
+package tray.models;
 
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.geometry.Rectangle2D;

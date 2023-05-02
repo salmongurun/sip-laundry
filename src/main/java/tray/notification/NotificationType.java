@@ -1,4 +1,4 @@
-package siplaundry.tray.notification;
+package tray.notification;
 
 public enum NotificationType {
     INFORMATION,

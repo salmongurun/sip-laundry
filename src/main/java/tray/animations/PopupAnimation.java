@@ -1,7 +1,7 @@
-package siplaundry.tray.animations;
+package tray.animations;
 
 import javafx.animation.*;
-import siplaundry.tray.models.CustomStage;
+import tray.models.CustomStage;
 import javafx.util.Duration;
 
 public class PopupAnimation implements TrayAnimation {

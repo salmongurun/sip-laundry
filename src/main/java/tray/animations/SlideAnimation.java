@@ -1,8 +1,8 @@
-package siplaundry.tray.animations;
+package tray.animations;
 
 import javafx.animation.*;
 import javafx.util.Duration;
-import siplaundry.tray.models.CustomStage;
+import tray.models.CustomStage;
 
 public class SlideAnimation implements TrayAnimation {
 
