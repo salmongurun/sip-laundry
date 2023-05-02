@@ -1,4 +1,4 @@
-package siplaundry.tray.animations;
+package tray.animations;
 
 import javafx.util.Duration;
 

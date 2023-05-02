@@ -1,4 +1,4 @@
-package siplaundry.tray.animations;
+package tray.animations;
 
 import java.util.ArrayList;
 import java.util.Collections;

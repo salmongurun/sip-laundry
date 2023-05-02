@@ -1,11 +1,11 @@
-package siplaundry.tray.animations;
+package tray.animations;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.SequentialTransition;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import siplaundry.tray.models.CustomStage;
+import tray.models.CustomStage;
 
 public class FadeAnimation implements TrayAnimation {
 

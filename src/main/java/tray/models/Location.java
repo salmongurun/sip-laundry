@@ -1,4 +1,4 @@
-package siplaundry.tray.models;
+package tray.models;
 
 public class Location {
 
