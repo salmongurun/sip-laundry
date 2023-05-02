@@ -73,7 +73,7 @@
          </children>
       </AnchorPane>
       <Pane layoutX="1204.0" layoutY="-72.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #414F8C; -fx-background-radius: 20px;" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="11.0" />
-      <Text layoutX="1204.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="22.5">
+      <Text fx:id="topbar_name" layoutX="1204.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="22.5">
          <font>
             <Font name="Poppins SemiBold" size="14.0" />
          </font>

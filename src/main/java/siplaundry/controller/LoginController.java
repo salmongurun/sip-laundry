@@ -4,11 +4,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import siplaundry.service.AuthService;
+import siplaundry.view.AdminView;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
+
+import java.io.IOException;
 
 public class LoginController {
 
@@ -19,11 +23,11 @@ public class LoginController {
     @FXML
     private TextField TxtPassword;
 
-    public void ButtonLoginAction(ActionEvent ex){
-        System.out.println("Ping");
+    public void ButtonLoginAction(ActionEvent ex) throws IOException {
         String title = "sign in";
         String message1 = "username atau password yang anda masukkan salah";
         String message2 = "username atau password yang anda masukkan benar";
+        Stage stage = (Stage) TxtUserName.getScene().getWindow();
 
         TrayNotification tray = new TrayNotification();
         AnimationType type = AnimationType.POPUP;
@@ -44,6 +48,8 @@ public class LoginController {
 
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(3000));
+
+        (new AdminView()).start(stage);
     }
 
 }

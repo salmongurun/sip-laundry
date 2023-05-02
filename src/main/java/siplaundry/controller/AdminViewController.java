@@ -5,6 +5,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import siplaundry.data.SessionData;
 import siplaundry.view.admin.*;
 
 import java.io.IOException;
@@ -29,8 +31,12 @@ public class AdminViewController {
     private BorderPane parent_root;
 
     @FXML
+    private Text topbar_name;
+
+    @FXML
     void initialize() throws IOException {
         parent_root.setCenter(new DashboardView());
+        topbar_name.setText(SessionData.user.getFullname());
     }
 
     @FXML

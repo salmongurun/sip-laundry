@@ -14,7 +14,7 @@ public class AuthService {
     public boolean login(String name, String password){
         List<UserEntity> acc =  srv.get(new HashMap<String, Object>(){
             {
-            put("fullname", name);
+            put("username", name);
             put("password", password);
             }
         });
