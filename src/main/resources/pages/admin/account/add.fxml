@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="630.0" style="-fx-background-radius: 20; -fx-border-radius: 20;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.controller.admin.account.AddAccountController">
+   <children>
+      <Text layoutX="23.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah Akun" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="20.0">
+         <font>
+            <Font name="Poppins SemiBold" size="30.0" />
+         </font>
+      </Text>
+      <GridPane hgap="15.0" layoutX="30.0" layoutY="93.0" prefHeight="265.0" prefWidth="570.0" styleClass="form-control" vgap="10.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="93.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints fillHeight="false" maxHeight="194.5" minHeight="10.0" prefHeight="65.5" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="143.5" minHeight="0.0" prefHeight="66.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="111.5" minHeight="0.0" prefHeight="111.5" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="form-control">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                     <font>
+                        <Font name="Poppins SemiBold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField styleClass="input" />
+               </children>
+            </VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="form-control" GridPane.columnIndex="1">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nama Lengkap">
+                     <font>
+                        <Font name="Poppins SemiBold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField styleClass="input" />
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="form-control" GridPane.rowIndex="1">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="No HP">
+                     <font>
+                        <Font name="Poppins SemiBold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField styleClass="input" />
+               </children>
+            </VBox>
+            <VBox layoutX="10.0" layoutY="87.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="form-control" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password">
+                     <font>
+                        <Font name="Poppins SemiBold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextField styleClass="input" />
+               </children>
+            </VBox>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <FontIcon iconColor="#414f8c" iconLiteral="fas-user-cog" iconSize="35" />
+                        <RadioButton mnemonicParsing="false" text="Admin">
+                           <font>
+                              <Font name="Poppins SemiBold" size="13.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="100.0" spacing="10.0">
+                     <children>
+                        <FontIcon iconColor="#414f8c" iconLiteral="fas-user-tag" iconSize="35" />
+                        <RadioButton mnemonicParsing="false" text="Kasir">
+                           <font>
+                              <Font name="Poppins SemiBold" size="13.0" />
+                           </font>
+                        </RadioButton>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <VBox layoutX="10.0" layoutY="87.0" prefHeight="200.0" prefWidth="100.0" spacing="5.0" styleClass="form-control" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alamat">
+                     <font>
+                        <Font name="Poppins SemiBold" size="14.0" />
+                     </font>
+                  </Text>
+                  <TextArea prefHeight="200.0" prefWidth="200.0" style="-fx-box-border: none;" styleClass="input" />
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+      <HBox layoutX="491.0" layoutY="398.0">
+         <children>
+            <FontIcon iconLiteral="bx-save" styleClass="icon" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Simpan" />
+         </children>
+         <styleClass>
+            <String fx:value="icon-button" />
+            <String fx:value="primary-background" />
+         </styleClass>
+      </HBox>
+      <Button fx:id="close_btn" layoutX="582.0" layoutY="6.0" mnemonicParsing="false" onMouseClicked="#closeModal" style="-fx-background-color: transparent; -fx-cursor: hand;" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
+         <graphic>
+            <FontIcon iconLiteral="bx-x" iconSize="25" text="" />
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>

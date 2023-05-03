@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
-
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1094.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Manajemen Akun" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <HBox fx:id="btn_add_account" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddAccount" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+         <styleClass>
+            <String fx:value="icon-button" />
+            <String fx:value="btn-outline" />
+            <String fx:value="primary-outline" />
+         </styleClass>
+         <children>
+            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Akun" />
+         </children>
+      </HBox>
    </children>
 </fx:root>

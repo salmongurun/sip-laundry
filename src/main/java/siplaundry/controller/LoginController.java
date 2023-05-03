@@ -49,6 +49,7 @@ public class LoginController {
         tray.setNotificationType(NotificationType.SUCCESS);
         tray.showAndDismiss(Duration.millis(3000));
 
+        stage.setTitle("Administrator - SIP Laundry");
         (new AdminView()).start(stage);
     }
 

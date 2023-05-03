@@ -2,7 +2,6 @@ package siplaundry.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -34,9 +33,13 @@ public class AdminViewController {
     private Text topbar_name;
 
     @FXML
+    private BorderPane shadow;
+
+    @FXML
     void initialize() throws IOException {
         parent_root.setCenter(new DashboardView());
         topbar_name.setText(SessionData.user.getFullname());
+        shadow.setVisible(false);
     }
 
     @FXML
@@ -52,7 +55,7 @@ public class AdminViewController {
         removeAllStates();
         btn_sb_accounts.getStyleClass().add("active");
 
-        parent_root.setCenter(new AccountView());
+        parent_root.setCenter(new AccountView(shadow));
     }
 
     @FXML

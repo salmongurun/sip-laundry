@@ -34,7 +34,7 @@ public class AuthSrvTest {
 
     @Test
     public void LoginTest(){
-        login = Auth.login(userEn.getFullname(), userEn.getPassword());
+        login = Auth.login(userEn.getUsername(), userEn.getPassword());
         assertTrue(login);
     }
 

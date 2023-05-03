@@ -1,6 +1,6 @@
 .sidebar-container {
     -fx-background-radius: 0 60px 0 0;
-    -fx-background-color: #414F8C;
+    -fx-background-color: #005F82;
 }
 
 .sidebar-item {
@@ -26,11 +26,11 @@
 }
 
 .sidebar-item.active .sidebar-icon {
-    -fx-fill: #414F8C;
+    -fx-fill: #005F82;
 }
 
 .sidebar-item.active .sidebar-text {
-    -fx-fill: #414F8C;
+    -fx-fill: #005F82;
 }
 
 .logout-container {

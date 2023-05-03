@@ -23,7 +23,7 @@
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="main-color">
+      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color">
          <children>
             <Text fill="WHITE" layoutX="41.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet consectetur. Varius massa aenean sapien euismod semper sit." wrappingWidth="601.1118307387633">
                <font>

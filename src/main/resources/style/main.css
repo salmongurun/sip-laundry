@@ -1,13 +1,13 @@
 .main-color {
-    -fx-background-color: #5585B5;
+    -fx-background-color: #036280;
 }
 
 .secondary-color {
-    -fx-background-color: #53A8B6;
+    -fx-background-color: #378BA4;
 }
 
 .third-color {
-    -fx-background-color: #79C2D0;
+    -fx-background-color: #81BECE;
 }
 
 .last-color {
@@ -15,5 +15,5 @@
 }
 
 .main-text-color {
-    -fx-text-fill: #5585B5;
+    -fx-text-fill: #036280;
 }
