@@ -1,5 +1,7 @@
 package siplaundry.controller;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -47,10 +49,18 @@ public class LoginController {
         tray.setMessage(message2);
 
         tray.setNotificationType(NotificationType.SUCCESS);
-        tray.showAndDismiss(Duration.millis(3000));
+        tray.showAndDismiss(Duration.millis(500));
 
-        stage.setTitle("Administrator - SIP Laundry");
-        (new AdminView()).start(stage);
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2500), ae -> {
+            try {
+                stage.setTitle("Administrator - SIP Laundry");
+                (new AdminView()).start(stage);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }));
+        timeline.play();
+        // (new AdminView()).start(stage);
     }
 
 }

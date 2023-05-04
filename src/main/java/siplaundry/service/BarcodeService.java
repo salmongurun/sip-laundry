@@ -9,7 +9,7 @@ public class BarcodeService {
         return date + "-" + newId;
     }
 
-    private void generate(String IdBarcode){
+    // private void generate(String IdBarcode){
         
-    }
+    // }
 }
