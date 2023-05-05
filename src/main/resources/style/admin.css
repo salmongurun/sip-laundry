@@ -53,3 +53,8 @@
     -fx-border-radius: 10;
     -fx-background-radius: 10;
 }
+
+.form-control .label {
+    -fx-font-family: "Poppins Medium";
+    -fx-fill: #374151;
+}
