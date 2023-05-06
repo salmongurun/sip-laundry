@@ -158,6 +158,12 @@ public final class TrayNotification {
         setMessage(message);
         setNotificationType(type);
     }
+    public void setTray(String title, String message, NotificationType Notiftype, AnimationType AnimType) {
+        setTitle(title);
+        setMessage(message);
+        setNotificationType(Notiftype);
+        setAnimationType(AnimType);
+    }
 
     public void setTray(String title, String message, Image img, Paint rectangleFill, AnimationType animType) {
         setTitle(title);

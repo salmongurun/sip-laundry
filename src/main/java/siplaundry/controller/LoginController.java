@@ -26,29 +26,16 @@ public class LoginController {
     private TextField TxtPassword;
 
     public void ButtonLoginAction(ActionEvent ex) throws IOException {
-        String title = "sign in";
-        String message1 = "username atau password yang anda masukkan salah";
-        String message2 = "username atau password yang anda masukkan benar";
         Stage stage = (Stage) TxtUserName.getScene().getWindow();
-
         TrayNotification tray = new TrayNotification();
-        AnimationType type = AnimationType.POPUP;
         
          if(!new AuthService().login(TxtUserName.getText(), TxtPassword.getText())){
-             tray.setAnimationType(type);
-             tray.setTitle(title);
-             tray.setMessage(message1);
-
-             tray.setNotificationType(NotificationType.WARNING);
-             tray.showAndDismiss(Duration.millis(1000));
+            tray.setTray("sign in","username atau password yang anda masukkan salah", NotificationType.WARNING, AnimationType.POPUP);
+            tray.showAndDismiss(Duration.millis(500));
              return;
          }
 
-        tray.setAnimationType(type);
-        tray.setTitle(title);
-        tray.setMessage(message2);
-
-        tray.setNotificationType(NotificationType.SUCCESS);
+        tray.setTray("sign in","Berhasil Login", NotificationType.SUCCESS, AnimationType.POPUP);
         tray.showAndDismiss(Duration.millis(500));
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2500), ae -> {
@@ -60,7 +47,6 @@ public class LoginController {
             }
         }));
         timeline.play();
-        // (new AdminView()).start(stage);
     }
 
 }
