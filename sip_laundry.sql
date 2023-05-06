@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 01:54 AM
+-- Generation Time: May 06, 2023 at 04:48 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -47,6 +47,19 @@ CREATE TABLE `laundries` (
   `IsExpress` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `laundries`
+--
+
+INSERT INTO `laundries` (`laundry_id`, `unit`, `cost`, `name`, `IsExpress`) VALUES
+(77, 'kilogram', 3323, 'aldea', 0),
+(81, 'kilogram', 3323, 'aldea', 0),
+(85, 'kilogram', 3323, 'aldea', 0),
+(89, 'kilogram', 3323, 'aldea', 0),
+(93, 'kilogram', 3323, 'aldea', 0),
+(97, 'kilogram', 3323, 'aldea', 0),
+(101, 'kilogram', 3323, 'aldea', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -72,7 +85,14 @@ INSERT INTO `options` (`option_id`, `key`, `value`) VALUES
 (25, 'alamat20', 'sumbersari'),
 (27, 'alamat20', 'sumbersari'),
 (29, 'alamat20', 'sumbersari'),
-(31, 'alamat20', 'sumbersari');
+(31, 'alamat20', 'sumbersari'),
+(33, 'alamat20', 'sumbersari'),
+(35, 'alamat20', 'sumbersari'),
+(37, 'alamat20', 'sumbersari'),
+(39, 'alamat20', 'sumbersari'),
+(41, 'alamat20', 'sumbersari'),
+(43, 'alamat20', 'sumbersari'),
+(45, 'alamat20', 'sumbersari');
 
 -- --------------------------------------------------------
 
@@ -86,7 +106,7 @@ CREATE TABLE `transactions` (
   `retard` int(11) NOT NULL DEFAULT 0,
   `pickup_date` datetime NOT NULL,
   `status` enum('process','finish','taken','canceled') DEFAULT 'process',
-  `payment_status` enum('paid','unpaid') NOT NULL,
+  `payment_status` enum('paid','unpaid','instalment') NOT NULL,
   `amount` int(11) NOT NULL DEFAULT 0,
   `user_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL
@@ -205,37 +225,37 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT for table `laundries`
 --
 ALTER TABLE `laundries`
-  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=72;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=102;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
 
 --
 -- AUTO_INCREMENT for table `verifications`
 --
 ALTER TABLE `verifications`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
 
 --
 -- Constraints for dumped tables
