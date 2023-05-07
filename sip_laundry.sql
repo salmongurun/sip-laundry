@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2023 at 04:48 PM
+-- Generation Time: May 07, 2023 at 06:53 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -36,6 +36,20 @@ CREATE TABLE `customers` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `expense`
+--
+
+CREATE TABLE `expense` (
+  `expense_id` int(11) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `expense_date` date NOT NULL,
+  `amount` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `laundries`
 --
 
@@ -46,19 +60,6 @@ CREATE TABLE `laundries` (
   `name` varchar(150) NOT NULL,
   `IsExpress` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `laundries`
---
-
-INSERT INTO `laundries` (`laundry_id`, `unit`, `cost`, `name`, `IsExpress`) VALUES
-(77, 'kilogram', 3323, 'aldea', 0),
-(81, 'kilogram', 3323, 'aldea', 0),
-(85, 'kilogram', 3323, 'aldea', 0),
-(89, 'kilogram', 3323, 'aldea', 0),
-(93, 'kilogram', 3323, 'aldea', 0),
-(97, 'kilogram', 3323, 'aldea', 0),
-(101, 'kilogram', 3323, 'aldea', 0);
 
 -- --------------------------------------------------------
 
@@ -92,7 +93,11 @@ INSERT INTO `options` (`option_id`, `key`, `value`) VALUES
 (39, 'alamat20', 'sumbersari'),
 (41, 'alamat20', 'sumbersari'),
 (43, 'alamat20', 'sumbersari'),
-(45, 'alamat20', 'sumbersari');
+(45, 'alamat20', 'sumbersari'),
+(47, 'alamat20', 'sumbersari'),
+(49, 'alamat20', 'sumbersari'),
+(51, 'alamat20', 'sumbersari'),
+(53, 'alamat20', 'sumbersari');
 
 -- --------------------------------------------------------
 
@@ -179,6 +184,13 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
 
 --
+-- Indexes for table `expense`
+--
+ALTER TABLE `expense`
+  ADD PRIMARY KEY (`expense_id`),
+  ADD KEY `expense_ibfk_1` (`user_id`);
+
+--
 -- Indexes for table `laundries`
 --
 ALTER TABLE `laundries`
@@ -225,41 +237,53 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+
+--
+-- AUTO_INCREMENT for table `expense`
+--
+ALTER TABLE `expense`
+  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `laundries`
 --
 ALTER TABLE `laundries`
-  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=104;
+  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=93;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=151;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
 
 --
 -- AUTO_INCREMENT for table `verifications`
 --
 ALTER TABLE `verifications`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=149;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `expense`
+--
+ALTER TABLE `expense`
+  ADD CONSTRAINT `expense_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`user_id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `transactions`
