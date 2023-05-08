@@ -65,6 +65,13 @@
       <artifactId>jakarta.el</artifactId>
       <version>5.0.0-M1</version>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/jakarta.el/jakarta.el-api -->
+<dependency>
+    <groupId>jakarta.el</groupId>
+    <artifactId>jakarta.el-api</artifactId>
+    <version>5.0.1</version>
+</dependency>
+
 
     <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit -->
     <dependency>
