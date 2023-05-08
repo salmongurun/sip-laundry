@@ -77,6 +77,8 @@
 .form-control .input.text-area:focused
 {
     -fx-border-color: #005F82;
+    -fx-font-size: 14;
+    -fx-text-fill: #005F82;
 }
 
 .form-control .label {
