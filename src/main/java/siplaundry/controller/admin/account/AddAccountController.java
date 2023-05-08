@@ -73,6 +73,6 @@ public class AddAccountController {
         trayNotif.setMessage(message);
 
         trayNotif.setNotificationType(type);
-        trayNotif.showAndDismiss(Duration.millis(100));
+        trayNotif.showAndDismiss(Duration.millis(1000));
     }
 }
