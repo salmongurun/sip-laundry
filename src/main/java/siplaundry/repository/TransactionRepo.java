@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -71,32 +70,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
     }
 
     public List<TransactionEntity> searchByUser(UserEntity user, Map<String, Object> values) {
-        int iterate = 0;
-        String sql = "SELECT * FROM " + tableName + " WHERE (";
-        List<TransactionEntity> transactions = new ArrayList<>();
-
-        for (String valueKey : values.keySet()) {
-            if (iterate > 0)
-                sql += " OR ";
-            sql += valueKey + " LIKE CONCAT( '%',?,'%')";
-
-            iterate++;
-        }
-
-        sql += ") AND user_id = ?";
-
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            DatabaseUtil.prepareStmt(stmt, values, 0);
-            stmt.setInt(values.keySet().size() + 1, user.getID());
-            ResultSet rs = stmt.executeQuery();
-
-            while (rs.next()) {
-                transactions.add(mapToEntity(rs));
-            }
-        } catch (SQLException e) {
-        }
-
-        return transactions;
+        return super.searchByUser(tableName, user, values);
     }
 
     public boolean Update(TransactionEntity trans) {

@@ -63,16 +63,7 @@ public class AddAccountController {
         );
 
         userRepo.add(user);
-        showToast("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS);
+        trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
         closeModal();
-    }
-
-    void showToast(String title, String message, NotificationType type) {
-        trayNotif.setAnimationType(AnimationType.POPUP);
-        trayNotif.setTitle(title);
-        trayNotif.setMessage(message);
-
-        trayNotif.setNotificationType(type);
-        trayNotif.showAndDismiss(Duration.millis(1000));
     }
 }
