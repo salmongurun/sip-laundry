@@ -64,7 +64,6 @@
       <groupId>org.glassfish</groupId>
       <artifactId>jakarta.el</artifactId>
       <version>5.0.0-M1</version>
-     <scope>test</scope>
     </dependency>
 
     <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/retrofit -->
