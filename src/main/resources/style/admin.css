@@ -1,9 +1,9 @@
 .primary-background {
-    -fx-background-color: #414F8C;
+    -fx-background-color: #005F82;
 }
 
 .primary-outline {
-    -fx-border-color: #414F8C;
+    -fx-border-color: #005F82;
 }
 
 .page-title {
@@ -13,8 +13,8 @@
 }
 
 .icon-button {
-    -fx-background-radius: 15;
-    -fx-border-radius: 15;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
     -fx-padding: 10px 20px;
     -fx-spacing: 10;
     -fx-cursor: hand;
@@ -26,8 +26,8 @@
 }
 
 .icon-button .text {
-    -fx-font-family: "Poppins ExtraBold";
-    -fx-font-size: 10px;
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12px;
     -fx-fill: white;
     -fx-translate-y: 1;
 }
@@ -51,19 +51,37 @@
 
 /* Form Area */
 .form-control {
-    -fx-spacing: 5;
+    -fx-spacing: 10;
 }
 
 .form-control .input {
-    -fx-font-family: Poppins;
-    -fx-font-size: 14px;
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12px;
     -fx-padding: 10px 10px;
-    -fx-border-radius: 10;
-    -fx-background-radius: 10;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-border-color: #CBCBCB;
+}
+
+.form-control .input.text-area {
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-border-color: #CBCBCB;
+}
+
+.form-control .input.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.form-control .input:focused,
+.form-control .input.text-area:focused
+{
+    -fx-border-color: #005F82;
 }
 
 .form-control .label {
     -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12;
     -fx-fill: #374151;
 }
 

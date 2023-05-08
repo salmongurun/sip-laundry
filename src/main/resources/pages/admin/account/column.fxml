@@ -29,7 +29,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" styleClass="delete-button">
                <children>
-                  <FontIcon iconLiteral="bx-trash-alt" iconSize="18" styleClass="icon" />
+                  <FontIcon iconLiteral="bx-trash" iconSize="18" styleClass="icon" />
                </children>
             </HBox>
          </children>
