@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleShape="false" styleClass="table-content" stylesheets="@../../../style/admin.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <CheckBox mnemonicParsing="false" styleClass="check-item" />
+      <Text fx:id="txt_username" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="username" wrappingWidth="175.0" />
+      <HBox alignment="CENTER_LEFT" prefWidth="150.0">
+         <children>
+            <HBox fx:id="role_background" alignment="CENTER" prefWidth="70.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: fef4f4;">
+               <children>
+                  <Text fx:id="txt_role" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="admin" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Text fx:id="txt_phone" layoutX="40.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="081234567890" wrappingWidth="175.0" />
+      <Text fx:id="txt_fullname" layoutX="202.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Kucing Administrator" wrappingWidth="225.0" />
+      <HBox styleClass="table-action">
+         <children>
+            <HBox styleClass="edit-button">
+               <children>
+                  <FontIcon iconLiteral="bx-pencil" iconSize="18" styleClass="icon" text="" />
+               </children>
+            </HBox>
+            <HBox layoutX="10.0" layoutY="10.0" styleClass="delete-button">
+               <children>
+                  <FontIcon iconLiteral="bx-trash-alt" iconSize="18" styleClass="icon" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</fx:root>

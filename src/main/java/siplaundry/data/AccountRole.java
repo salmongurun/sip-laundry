@@ -2,5 +2,12 @@ package siplaundry.data;
 
 public enum AccountRole {
     admin,
-    cashier
+    cashier,
+    ;
+
+    @Override
+    public String toString() {
+        if(this == admin) return "Admin";
+        return "Kasir";
+    }
 }

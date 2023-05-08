@@ -41,6 +41,14 @@
     -fx-fill: #414F8C;
 }
 
+.card {
+    -fx-background-color: white;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-border-color: #e3e3e3;
+    -fx-padding: 15 10;
+}
+
 /* Form Area */
 .form-control {
     -fx-spacing: 5;
@@ -57,4 +65,86 @@
 .form-control .label {
     -fx-font-family: "Poppins Medium";
     -fx-fill: #374151;
+}
+
+.table-header {
+    -fx-background-color: #E0F4FB;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 10 20;
+    -fx-spacing: 30;
+}
+
+.table-header .check-header {
+    -fx-pref-height: 16;
+    -fx-pref-width: 16;
+}
+
+.table-header .label {
+    -fx-font-family: "Ubuntu";
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-fill: #278AA6;
+}
+
+.table-scroll {
+    -fx-border-color: transparent;
+    -fx-background-insets: none;
+    -fx-background: white;
+}
+
+.table-scroll .table-content-container {
+    -fx-spacing: 5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-color: #F1F1F1;
+}
+
+.table-content {
+    -fx-padding: 8 20 12 20;
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-spacing: 30;
+    -fx-border-color: transparent transparent #F1F1F1 transparent;
+}
+
+.table-content:hover {
+    -fx-background-color: #eff9fd;
+}
+
+.table-content .check-item {
+    -fx-pref-height: 16;
+    -fx-pref-width: 16;
+}
+
+.table-content .text {
+    -fx-font-family: "Lexend Medium";
+    -fx-font-size: 12;
+    -fx-wrap-text: true;
+    -fx-fill: #7f7f7f;
+}
+
+.table-content .table-action {
+    -fx-spacing: 5;
+    -fx-cursor: hand;
+}
+
+.table-content .table-action .delete-button {
+    -fx-background-color: #fceff1;
+    -fx-padding: 6 12;
+    -fx-background-radius: 20;
+}
+
+.table-content .table-action .edit-button {
+    -fx-background-color: #f0f4f4;
+    -fx-padding: 6 12;
+    -fx-background-radius: 20;
+}
+
+.table-content .table-action .delete-button .icon {
+    -fx-fill: #E96479
+}
+
+.table-content .table-action .edit-button .icon {
+    -fx-fill: #7DB9B6
 }
