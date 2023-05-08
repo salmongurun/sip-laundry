@@ -1,6 +1,7 @@
 package siplaundry.entity;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import siplaundry.data.AccountRole;
 
@@ -26,7 +27,7 @@ public class UserEntity extends Entity {
     @NotBlank(message = "Alamat harus diisi")
     private String address;
 
-    @NotBlank(message = "Harus diisi")
+    @NotNull(message = "Harus diisi")
     private AccountRole role;
 
     public UserEntity() {

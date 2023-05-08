@@ -1,5 +1,6 @@
 package siplaundry.controller.admin.account;
 
+import jakarta.validation.ConstraintViolation;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Window;
@@ -10,9 +11,12 @@ import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 
+import siplaundry.util.ValidationUtil;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
+
+import java.util.Set;
 
 public class AddAccountController {
     @FXML
@@ -45,6 +49,8 @@ public class AddAccountController {
 
     @FXML
     public void initialize(){
+        chs_admin.setSelected(true);
+
         roleGroup.selectedToggleProperty().addListener((observable, oldVal, newVal) -> {
             if(newVal == chs_admin) accRole = AccountRole.admin;
             if(newVal == chs_cashier) accRole = AccountRole.cashier;
@@ -61,6 +67,15 @@ public class AddAccountController {
             txt_address.getText(),
             accRole
         );
+
+        Set<ConstraintViolation<UserEntity>> vols = ValidationUtil.validate(user);
+
+        for(ConstraintViolation<UserEntity> vol: vols) {
+            if(vol.getPropertyPath().toString().equals("username")) txt_username.getStyleClass().add("error");
+            if(vol.getPropertyPath().toString().equals("fullname")) txt_fullname.getStyleClass().add("error");
+        }
+
+        if(vols.size() > 0) return;
 
         userRepo.add(user);
         trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);

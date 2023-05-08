@@ -64,6 +64,10 @@
     -fx-border-color: #CBCBCB;
 }
 
+.form-control .input.error {
+    -fx-border-color: #E96479;
+}
+
 .form-control .input.text-area {
     -fx-background-color: transparent, white, transparent, white;
     -fx-border-color: #CBCBCB;
