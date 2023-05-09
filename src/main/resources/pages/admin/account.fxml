@@ -3,6 +3,7 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -26,7 +27,7 @@
       </HBox>
       <AnchorPane layoutY="120.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
-            <HBox alignment="CENTER_LEFT" layoutX="14.0" layoutY="43.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="50.0">
+            <HBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="115.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
                <children>
                   <CheckBox mnemonicParsing="false" styleClass="check-header" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Username" wrappingWidth="175.0" />
@@ -36,16 +37,22 @@
                   <Text layoutX="668.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="130.0" />
                </children>
             </HBox>
-            <ScrollPane layoutX="20.0" layoutY="128.0" prefHeight="375.0" prefWidth="200.0" styleClass="table-scroll" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0">
-               <content>
-                  <VBox fx:id="account_table" prefHeight="39.0" prefWidth="1030.0" styleClass="table-content-container" />
-               </content>
-            </ScrollPane>
             <Text fx:id="total_text" fill="#7f7f7f" layoutX="24.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data akun">
                <font>
                   <Font name="Poppins Medium" size="12.0" />
                </font>
             </Text>
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">
+               <children>
+                  <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" styleClass="icon" />
+                  <TextField prefWidth="200.0" promptText="Cari di sini..." styleClass="input" />
+               </children>
+            </HBox>
+            <ScrollPane layoutX="29.0" layoutY="177.0" prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="135.0">
+               <content>
+                  <VBox fx:id="account_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
+               </content>
+            </ScrollPane>
          </children>
       </AnchorPane>
    </children>

@@ -22,12 +22,12 @@
       <Text fx:id="txt_fullname" layoutX="202.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Kucing Administrator" wrappingWidth="225.0" />
       <HBox styleClass="table-action">
          <children>
-            <HBox styleClass="edit-button">
+            <HBox fx:id="edit_btn" styleClass="edit-button">
                <children>
                   <FontIcon iconLiteral="bx-pencil" iconSize="18" styleClass="icon" text="" />
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" styleClass="delete-button">
+            <HBox fx:id="delete_btn" layoutX="10.0" layoutY="10.0" styleClass="delete-button">
                <children>
                   <FontIcon iconLiteral="bx-trash" iconSize="18" styleClass="icon" />
                </children>

@@ -172,3 +172,15 @@
 .table-content .table-action .edit-button .icon {
     -fx-fill: #7DB9B6
 }
+
+.table-search {
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 6;
+    -fx-padding: 7 15;
+}
+
+.table-search .input {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12;
+    -fx-background-color: transparent, transparent, transparent, transparent;
+}

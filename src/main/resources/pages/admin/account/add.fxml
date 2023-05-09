@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="658.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: white;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.controller.admin.account.AddAccountController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="658.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: white;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="19.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buat Akun Baru" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
          <font>

@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
-import javafx.util.Duration;
 
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
@@ -18,7 +17,7 @@ import tray.notification.TrayNotification;
 
 import java.util.Set;
 
-public class AddAccountController {
+public class AccountModalController {
     @FXML
     private Button close_btn;
 
@@ -55,30 +54,5 @@ public class AddAccountController {
             if(newVal == chs_admin) accRole = AccountRole.admin;
             if(newVal == chs_cashier) accRole = AccountRole.cashier;
         });
-    }
-
-    @FXML
-    void saveAction() {
-        UserEntity user = new UserEntity(
-            txt_username.getText(),
-            txt_fullname.getText(),
-            txt_phone.getText(),
-            txt_password.getText(),
-            txt_address.getText(),
-            accRole
-        );
-
-        Set<ConstraintViolation<UserEntity>> vols = ValidationUtil.validate(user);
-
-        for(ConstraintViolation<UserEntity> vol: vols) {
-            if(vol.getPropertyPath().toString().equals("username")) txt_username.getStyleClass().add("error");
-            if(vol.getPropertyPath().toString().equals("fullname")) txt_fullname.getStyleClass().add("error");
-        }
-
-        if(vols.size() > 0) return;
-
-        userRepo.add(user);
-        trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
-        closeModal();
     }
 }

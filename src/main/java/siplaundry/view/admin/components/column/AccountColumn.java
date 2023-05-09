@@ -2,10 +2,12 @@ package siplaundry.view.admin.components.column;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
+import siplaundry.view.admin.components.modal.AccountModal;
 
 import java.io.IOException;
 
@@ -14,13 +16,17 @@ public class AccountColumn extends HBox {
     private Text txt_username, txt_phone, txt_fullname, txt_role;
 
     @FXML
-    private HBox role_background;
-    private UserEntity user;
+    private HBox role_background, edit_btn, delete_btn;
 
-    public AccountColumn(UserEntity user) {
+    private UserEntity user;
+    private BorderPane shadowRoot;
+
+    public AccountColumn(BorderPane shadowRoot, UserEntity user) {
+        this.user = user;
+        this.shadowRoot = shadowRoot;
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/admin/account/column.fxml"));
 
-        this.user = user;
         loader.setRoot(this);
         loader.setController(this);
 
@@ -37,6 +43,10 @@ public class AccountColumn extends HBox {
         txt_username.setText(user.getUsername());
         txt_phone.setText(user.getPhone());
         txt_role.setText(user.getRole().toString());
+
+        edit_btn.setOnMouseClicked(event -> {
+            new AccountModal(shadowRoot, user);
+        });
     }
 
     void setRoleColor() {
