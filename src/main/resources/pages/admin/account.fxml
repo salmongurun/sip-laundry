@@ -45,7 +45,7 @@
             <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">
                <children>
                   <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" styleClass="icon" />
-                  <TextField prefWidth="200.0" promptText="Cari di sini..." styleClass="input" />
+                  <TextField fx:id="txt_keyword" onKeyReleased="#searchAction" prefWidth="200.0" promptText="Cari di sini..." styleClass="input" />
                </children>
             </HBox>
             <ScrollPane layoutX="29.0" layoutY="177.0" prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="135.0">

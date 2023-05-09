@@ -145,6 +145,8 @@ public class AccountModal {
         account.setRole(accRole);
 
         userRepo.Update(account);
+
+        trayNotif.setTray("Sukses", "Berhasil mengupdate akun", NotificationType.SUCCESS, AnimationType.POPUP);
         closeModal();
     }
 }

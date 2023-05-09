@@ -1,6 +1,8 @@
 package siplaundry.controller.admin;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -11,6 +13,7 @@ import siplaundry.repository.UsersRepo;
 import siplaundry.view.admin.components.column.AccountColumn;
 import siplaundry.view.admin.components.modal.AccountModal;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class AccountController {
@@ -24,6 +27,8 @@ public class AccountController {
 
     @FXML
     private Text total_text;
+    @FXML
+    private TextField txt_keyword;
 
     private UsersRepo userRepo = new UsersRepo();
 
@@ -34,10 +39,7 @@ public class AccountController {
     @FXML
     void initialize() {
         List<UserEntity> users = userRepo.get();
-
-        for(UserEntity user: users) {
-            this.account_table.getChildren().add(new AccountColumn(shadowRoot, user));
-        }
+        showTable(users);
 
         total_text.setText("Menampilkan total "+ users.size() +" data akun");
     }
@@ -45,5 +47,23 @@ public class AccountController {
     @FXML
     void showAddAccount(MouseEvent event) {
         new AccountModal(shadowRoot, null);
+    }
+
+    @FXML
+    void searchAction(KeyEvent event) {
+        String keyword = txt_keyword.getText();
+        List<UserEntity> users = userRepo.search(new HashMap<>() {{
+            put("fullname", keyword);
+            put("phone", keyword);
+            put("username", keyword);
+        }});
+
+        showTable(users);
+    }
+
+    void showTable(List<UserEntity> users) {
+        account_table.getChildren().clear();
+
+        for(UserEntity user: users) { account_table.getChildren().add(new AccountColumn(shadowRoot, user)); }
     }
 }
