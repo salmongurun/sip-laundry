@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.*;
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
@@ -21,6 +22,8 @@ import java.io.IOException;
 import java.util.Set;
 
 public class AccountModal {
+    @FXML
+    private Text modal_title, modal_subtitle;
     @FXML
     private Button close_btn;
 
@@ -59,6 +62,7 @@ public class AccountModal {
         });
 
         chs_admin.setSelected(true);
+        if(this.account != null) changeUpdate();
     }
 
     @FXML
@@ -69,13 +73,18 @@ public class AccountModal {
 
     @FXML
     void saveAction() {
+        if(account != null) {
+            saveUpdate();
+            return;
+        }
+
         UserEntity user = new UserEntity(
-                txt_username.getText(),
-                txt_fullname.getText(),
-                txt_phone.getText(),
-                txt_password.getText(),
-                txt_address.getText(),
-                accRole
+            txt_username.getText(),
+            txt_fullname.getText(),
+            txt_phone.getText(),
+            txt_password.getText(),
+            txt_address.getText(),
+            accRole
         );
 
         Set<ConstraintViolation<UserEntity>> vols = ValidationUtil.validate(user);
@@ -84,8 +93,6 @@ public class AccountModal {
             if(vol.getPropertyPath().toString().equals("username")) txt_username.getStyleClass().add("error");
             if(vol.getPropertyPath().toString().equals("fullname")) txt_fullname.getStyleClass().add("error");
         }
-
-//        if(vols.size() > 0) return;
 
         userRepo.add(user);
         trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
@@ -114,5 +121,30 @@ public class AccountModal {
             shadowRoot.setVisible(true);
             modalStage.showAndWait();
         } catch(IOException e) { e.printStackTrace(); }
+    }
+
+    private void changeUpdate() {
+        modal_title.setText("Edit Data Akun");
+        modal_subtitle.setText("Perbarui Informasi");
+
+        txt_username.setText(account.getUsername());
+        txt_password.setText(account.getPassword());
+        txt_phone.setText(account.getPhone());
+        txt_fullname.setText(account.getFullname());
+        txt_address.setText(account.getAddress());
+
+        if(account.getRole() == AccountRole.cashier) chs_cashier.setSelected(true);
+    }
+
+    private void saveUpdate() {
+        account.setFullname(txt_fullname.getText());
+        account.setPhone(txt_phone.getText());
+        account.setUsername(txt_username.getText());
+        account.setPassword(txt_password.getText());
+        account.setAddress(txt_address.getText());
+        account.setRole(accRole);
+
+        userRepo.Update(account);
+        closeModal();
     }
 }
