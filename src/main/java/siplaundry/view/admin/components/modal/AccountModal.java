@@ -99,6 +99,10 @@ public class AccountModal {
             put("address", txt_address);
         }};
 
+        for(Map.Entry<String, Node> field: fields.entrySet()) {
+            field.getValue().getStyleClass().remove("error");
+        }
+
         for(ConstraintViolation<UserEntity> vol: vols) {
             String field = vol.getPropertyPath().toString();
 

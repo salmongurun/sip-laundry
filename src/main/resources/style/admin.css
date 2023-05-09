@@ -64,10 +64,6 @@
     -fx-border-color: #CBCBCB;
 }
 
-.form-control .input.error {
-    -fx-border-color: #E96479;
-}
-
 .form-control .input.text-area {
     -fx-background-color: transparent, white, transparent, white;
     -fx-border-color: #CBCBCB;
@@ -83,6 +79,10 @@
     -fx-border-color: #005F82;
     -fx-font-size: 14;
     -fx-text-fill: #005F82;
+}
+
+.form-control .input.error {
+    -fx-border-color: #E96479;
 }
 
 .form-control .label {
