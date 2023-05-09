@@ -19,6 +19,8 @@ import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class AccountModal {
@@ -89,10 +91,24 @@ public class AccountModal {
 
         Set<ConstraintViolation<UserEntity>> vols = ValidationUtil.validate(user);
 
+        Map<String, Node> fields = new HashMap<>() {{
+            put("username", txt_username);
+            put("fullname", txt_fullname);
+            put("phone", txt_phone);
+            put("password", txt_password);
+            put("address", txt_address);
+        }};
+
         for(ConstraintViolation<UserEntity> vol: vols) {
-            if(vol.getPropertyPath().toString().equals("username")) txt_username.getStyleClass().add("error");
-            if(vol.getPropertyPath().toString().equals("fullname")) txt_fullname.getStyleClass().add("error");
+            String field = vol.getPropertyPath().toString();
+
+            if(fields.containsKey(field)) {
+                Node input = fields.get(field);
+                input.getStyleClass().add("error");
+            }
         }
+
+        if(vols.size() > 0) return;
 
         userRepo.add(user);
         trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
