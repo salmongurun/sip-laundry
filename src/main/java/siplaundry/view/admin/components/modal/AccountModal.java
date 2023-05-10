@@ -84,12 +84,14 @@ public class AccountModal {
 
     @FXML
     void saveAction() {
+        System.out.println("Savedddd");
         if(account != null) {
             saveUpdate();
             return;
         }
 
-        userRepo.add(validateAccount());
+//        userRepo.add(validateAccount());
+        validateAccount();
         trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
         closeModal();
     }

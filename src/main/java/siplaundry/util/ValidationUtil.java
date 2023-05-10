@@ -8,6 +8,7 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -43,6 +44,10 @@ public class ValidationUtil {
 
         for(Map.Entry<String, Node> field: fields.entrySet()) {
             field.getValue().getStyleClass().remove("error");
+
+            if(field.getValue().getParent() instanceof VBox) {
+                removeErrorMessage((VBox) field.getValue().getParent());
+            }
         }
 
         for(ConstraintViolation<T> vol: violations) {
@@ -58,10 +63,20 @@ public class ValidationUtil {
 
                 input.getStyleClass().add("error");
                 parent.getChildren().add(text);
+
                 validatedFields.add(field);
             }
         }
 
         if(violations.size() > 0) throw new ValidationException("Account");
+    }
+
+    private static void removeErrorMessage(VBox parent) {
+        ObservableList<Node> childs = parent.getChildren();
+        int lastIndex = childs.size() - 1;
+
+        if(childs.get(lastIndex) instanceof Text) {
+            parent.getChildren().remove(lastIndex);
+        }
     }
 }
