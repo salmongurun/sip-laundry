@@ -1,5 +1,6 @@
 package siplaundry.util;
 
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -8,7 +9,8 @@ import jakarta.validation.Validation;
 import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import javafx.scene.Node;
-import siplaundry.entity.UserEntity;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import siplaundry.exceptions.ValidationException;
 
 public class ValidationUtil {
@@ -37,6 +39,8 @@ public class ValidationUtil {
     }
 
     public static <T> void renderErrors(Set<ConstraintViolation<T>> violations, Map<String, Node> fields) {
+        Set<String> validatedFields = new HashSet<>();
+
         for(Map.Entry<String, Node> field: fields.entrySet()) {
             field.getValue().getStyleClass().remove("error");
         }
@@ -44,9 +48,17 @@ public class ValidationUtil {
         for(ConstraintViolation<T> vol: violations) {
             String field = vol.getPropertyPath().toString();
 
+            if(validatedFields.contains(field)) continue;
+
             if(fields.containsKey(field)) {
                 Node input = fields.get(field);
+                VBox parent = (VBox) input.getParent();
+                Text text = new Text(vol.getMessage());
+                text.getStyleClass().add("error-message");
+
                 input.getStyleClass().add("error");
+                parent.getChildren().add(text);
+                validatedFields.add(field);
             }
         }
 

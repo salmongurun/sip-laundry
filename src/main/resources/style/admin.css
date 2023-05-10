@@ -91,6 +91,13 @@
     -fx-fill: #374151;
 }
 
+.form-control .error-message {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12;
+    -fx-fill: #E96479;
+    -fx-translate-y: -10;
+}
+
 .table-header {
     -fx-background-color: #E0F4FB;
     -fx-background-radius: 8;
