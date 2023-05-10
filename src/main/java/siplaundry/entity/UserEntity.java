@@ -17,7 +17,7 @@ public class UserEntity extends Entity {
     private String fullname;
 
     @NotBlank(message = "No telepon harus diisi")
-    @Size(min = 11, max = 12, message = "Masukkan no telepon yang valid")
+    @Size(min = 11, max = 15, message = "Masukkan no telepon yang valid")
     private String phone;
 
     @NotBlank(message = "Password harus diisi")

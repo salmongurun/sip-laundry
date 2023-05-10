@@ -49,6 +49,7 @@ public class AccountModal {
     private AccountRole accRole;
     private Node shadowRoot;
     private UserEntity account;
+    private Map<String, Node> fields;
 
     public AccountModal(Node shadowRoot, UserEntity account) {
         this.shadowRoot = shadowRoot;
@@ -65,6 +66,14 @@ public class AccountModal {
 
         chs_admin.setSelected(true);
         if(this.account != null) changeUpdate();
+
+        this.fields = new HashMap<>() {{
+            put("username", txt_username);
+            put("fullname", txt_fullname);
+            put("phone", txt_phone);
+            put("password", txt_password);
+            put("address", txt_address);
+        }};
     }
 
     @FXML
@@ -80,6 +89,13 @@ public class AccountModal {
             return;
         }
 
+        userRepo.add(validateAccount());
+        trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
+        closeModal();
+    }
+
+    @FXML
+    UserEntity validateAccount() {
         UserEntity user = new UserEntity(
             txt_username.getText(),
             txt_fullname.getText(),
@@ -90,33 +106,9 @@ public class AccountModal {
         );
 
         Set<ConstraintViolation<UserEntity>> vols = ValidationUtil.validate(user);
+        ValidationUtil.renderErrors(vols, this.fields);
 
-        Map<String, Node> fields = new HashMap<>() {{
-            put("username", txt_username);
-            put("fullname", txt_fullname);
-            put("phone", txt_phone);
-            put("password", txt_password);
-            put("address", txt_address);
-        }};
-
-        for(Map.Entry<String, Node> field: fields.entrySet()) {
-            field.getValue().getStyleClass().remove("error");
-        }
-
-        for(ConstraintViolation<UserEntity> vol: vols) {
-            String field = vol.getPropertyPath().toString();
-
-            if(fields.containsKey(field)) {
-                Node input = fields.get(field);
-                input.getStyleClass().add("error");
-            }
-        }
-
-        if(vols.size() > 0) return;
-
-        userRepo.add(user);
-        trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
-        closeModal();
+        return user;
     }
 
     private void initModal() {
@@ -164,6 +156,7 @@ public class AccountModal {
         account.setAddress(txt_address.getText());
         account.setRole(accRole);
 
+        validateAccount();
         userRepo.Update(account);
 
         trayNotif.setTray("Sukses", "Berhasil mengupdate akun", NotificationType.SUCCESS, AnimationType.POPUP);
