@@ -153,6 +153,7 @@ public class AccountModal {
         txt_address.setText(account.getAddress());
 
         if(account.getRole() == AccountRole.cashier) chs_cashier.setSelected(true);
+
     }
 
     private void saveUpdate() {

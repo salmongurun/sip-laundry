@@ -21,7 +21,7 @@
             <String fx:value="primary-outline" />
          </styleClass>
          <children>
-            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" />
+            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" text="" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Akun" />
          </children>
       </HBox>

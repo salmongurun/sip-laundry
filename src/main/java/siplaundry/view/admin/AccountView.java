@@ -8,11 +8,14 @@ import siplaundry.controller.admin.AccountController;
 import java.io.IOException;
 
 public class AccountView extends AnchorPane {
+
+    private Runnable showTable;
+
     public AccountView(BorderPane shadow) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/admin/account.fxml"));
 
         loader.setRoot(this);
-        loader.setController(new AccountController(shadow));
+        loader.setController(new AccountController(shadow, showTable));
         loader.load();
     }
 }

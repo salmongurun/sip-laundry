@@ -18,6 +18,9 @@ public class AdminViewController {
     private HBox btn_sb_accounts;
 
     @FXML
+    private HBox btn_sb_cust;
+
+    @FXML
     private HBox btn_sb_prices;
 
     @FXML
@@ -59,6 +62,14 @@ public class AdminViewController {
     }
 
     @FXML
+    void showCustomer(MouseEvent event) throws IOException {
+        removeAllStates();
+        btn_sb_cust.getStyleClass().add("active");
+
+        parent_root.setCenter(new CustomerView(shadow));
+    }
+
+    @FXML
     void showPrices(MouseEvent event) throws IOException {
         removeAllStates();
         btn_sb_prices.getStyleClass().add("active");
@@ -86,6 +97,7 @@ public class AdminViewController {
         btn_sb_dashboard.getStyleClass().remove("active");
         btn_sb_prices.getStyleClass().remove("active");
         btn_sb_accounts.getStyleClass().remove("active");
+        btn_sb_cust.getStyleClass().remove("active");
         btn_sb_reports.getStyleClass().remove("active");
         btn_sb_transactions.getStyleClass().remove("active");
     }

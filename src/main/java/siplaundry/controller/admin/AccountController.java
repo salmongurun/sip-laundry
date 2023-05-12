@@ -32,8 +32,9 @@ public class AccountController {
 
     private UsersRepo userRepo = new UsersRepo();
 
-    public AccountController(BorderPane shadow) {
+    public AccountController(BorderPane shadow, Runnable showTable) {
         this.shadowRoot = shadow;
+        showTable.run();
     }
 
     @FXML
@@ -56,12 +57,13 @@ public class AccountController {
             put("fullname", keyword);
             put("phone", keyword);
             put("username", keyword);
+            put("role", keyword);
         }});
 
         showTable(users);
     }
 
-    void showTable(List<UserEntity> users) {
+    public void showTable(List<UserEntity> users) {
         account_table.getChildren().clear();
 
         if(users == null) users = userRepo.get();

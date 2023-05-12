@@ -15,7 +15,7 @@
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="238.0" styleClass="sidebar-container" stylesheets="@../style/sidebar.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox layoutX="106.0" layoutY="141.0" prefHeight="200.0" prefWidth="100.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="124.0">
+            <VBox layoutX="106.0" layoutY="141.0" prefHeight="275.0" prefWidth="221.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="124.0">
                <children>
                   <HBox fx:id="btn_sb_dashboard" onMouseClicked="#showDashboard" prefWidth="200.0">
                      <styleClass>
@@ -37,6 +37,12 @@
                      <children>
                         <FontIcon iconLiteral="bx-user-circle" iconSize="20" styleClass="sidebar-icon" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Manjemen Akun" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="btn_sb_cust" onMouseClicked="#showCustomer" prefWidth="200.0" styleClass="sidebar-item">
+                     <children>
+                        <FontIcon iconLiteral="bx-group" iconSize="20" styleClass="sidebar-icon" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Manjemen Customer" />
                      </children>
                   </HBox>
                   <HBox fx:id="btn_sb_reports" layoutX="10.0" layoutY="102.0" onMouseClicked="#showReports" prefWidth="200.0" styleClass="sidebar-item">
@@ -79,6 +85,6 @@
          </font>
       </Text>
       <BorderPane fx:id="parent_root" layoutX="238.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
-      <BorderPane fx:id="shadow" opacity="0.5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="shadow" layoutX="312.0" layoutY="217.0" opacity="0.5" prefHeight="551.0" prefWidth="1054.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
