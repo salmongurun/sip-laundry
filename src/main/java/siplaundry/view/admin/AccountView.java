@@ -15,7 +15,7 @@ public class AccountView extends AnchorPane {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/admin/account.fxml"));
 
         loader.setRoot(this);
-        loader.setController(new AccountController(shadow, showTable));
+        loader.setController(new AccountController(shadow));
         loader.load();
     }
 }

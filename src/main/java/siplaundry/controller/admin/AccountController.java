@@ -32,13 +32,13 @@ public class AccountController {
 
     private UsersRepo userRepo = new UsersRepo();
 
-    public AccountController(BorderPane shadow, Runnable showTable) {
+    public AccountController(BorderPane shadow) {
         this.shadowRoot = shadow;
-        showTable.run();
     }
 
     @FXML
     void initialize() {
+        System.out.println("Sip");
         List<UserEntity> users = userRepo.get();
         showTable(users);
 
