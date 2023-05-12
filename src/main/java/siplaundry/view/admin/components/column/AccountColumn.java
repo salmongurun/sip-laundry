@@ -10,6 +10,8 @@ import siplaundry.entity.UserEntity;
 import siplaundry.view.admin.components.modal.AccountModal;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.function.Consumer;
 
 public class AccountColumn extends HBox {
     @FXML
@@ -21,9 +23,12 @@ public class AccountColumn extends HBox {
     private UserEntity user;
     private BorderPane shadowRoot;
 
-    public AccountColumn(BorderPane shadowRoot, UserEntity user) {
+    private Consumer<List<UserEntity>> refreshTable;
+
+    public AccountColumn(BorderPane shadowRoot, Consumer<List<UserEntity>> refreshTable, UserEntity user) {
         this.user = user;
         this.shadowRoot = shadowRoot;
+        this.refreshTable = refreshTable;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/admin/account/column.fxml"));
 
@@ -45,7 +50,7 @@ public class AccountColumn extends HBox {
         txt_role.setText(user.getRole().toString());
 
         edit_btn.setOnMouseClicked(event -> {
-            new AccountModal(shadowRoot, user);
+            new AccountModal(shadowRoot, refreshTable, user);
         });
     }
 

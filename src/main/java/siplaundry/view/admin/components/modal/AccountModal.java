@@ -20,8 +20,10 @@ import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 
 public class AccountModal {
     @FXML
@@ -49,11 +51,14 @@ public class AccountModal {
     private AccountRole accRole;
     private Node shadowRoot;
     private UserEntity account;
+    private Consumer<List<UserEntity>> refreshTable;
     private Map<String, Node> fields;
 
-    public AccountModal(Node shadowRoot, UserEntity account) {
+    public AccountModal(Node shadowRoot, Consumer<List<UserEntity>> refreshTable, UserEntity account) {
         this.shadowRoot = shadowRoot;
         this.account = account;
+        this.refreshTable = refreshTable;
+
         initModal();
     }
 
@@ -90,8 +95,7 @@ public class AccountModal {
             return;
         }
 
-//        userRepo.add(validateAccount());
-        validateAccount();
+        userRepo.add(validateAccount());
         trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
         closeModal();
     }
@@ -130,6 +134,7 @@ public class AccountModal {
 
             modalStage.setOnCloseRequest(evt -> {
                 shadowRoot.setVisible(false);
+                refreshTable.accept(null);
             });
 
             shadowRoot.setVisible(true);

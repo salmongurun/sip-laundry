@@ -46,7 +46,7 @@ public class AccountController {
 
     @FXML
     void showAddAccount(MouseEvent event) {
-        new AccountModal(shadowRoot, null);
+        new AccountModal(shadowRoot, this::showTable, null);
     }
 
     @FXML
@@ -64,6 +64,7 @@ public class AccountController {
     void showTable(List<UserEntity> users) {
         account_table.getChildren().clear();
 
-        for(UserEntity user: users) { account_table.getChildren().add(new AccountColumn(shadowRoot, user)); }
+        if(users == null) users = userRepo.get();
+        for(UserEntity user: users) { account_table.getChildren().add(new AccountColumn(shadowRoot, this::showTable, user)); }
     }
 }
