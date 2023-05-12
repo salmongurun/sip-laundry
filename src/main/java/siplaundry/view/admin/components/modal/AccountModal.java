@@ -89,8 +89,7 @@ public class AccountModal {
             saveUpdate();
             return;
         }
-
-//        userRepo.add(validateAccount());
+        
         validateAccount();
         trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
         closeModal();
@@ -148,6 +147,7 @@ public class AccountModal {
         txt_address.setText(account.getAddress());
 
         if(account.getRole() == AccountRole.cashier) chs_cashier.setSelected(true);
+        
     }
 
     private void saveUpdate() {

@@ -66,7 +66,7 @@ public class AdminViewController {
         removeAllStates();
         btn_sb_cust.getStyleClass().add("active");
 
-        parent_root.setCenter(new CustomerView());
+        parent_root.setCenter(new CustomerView(shadow));
     }
 
     @FXML

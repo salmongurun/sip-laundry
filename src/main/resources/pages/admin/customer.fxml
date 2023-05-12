@@ -1,10 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Manajemen Customer" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="1.0" layoutY="121.0" prefHeight="583.0" prefWidth="1090.0" styleClass="card">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="115.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" styleClass="check-header" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Nama" wrappingWidth="325.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="No WhatsApp" wrappingWidth="325.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="200.0" />
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="29.0" styleClass="table-search">
+               <children>
+                  <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" styleClass="icon" />
+                  <TextField fx:id="txt_keyword" prefWidth="200.0" promptText="Cari di sini..." styleClass="input" />
+               </children>
+            </HBox>
+            <ScrollPane layoutX="20.0" layoutY="147.0" prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="135.0">
+               <content>
+                  <VBox fx:id="customer_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
+               </content>
+            </ScrollPane>
+            <Text fx:id="total_text" fill="#7f7f7f" layoutX="20.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data customer" />
+         </children>
+      </AnchorPane>
+      <HBox fx:id="btn_add_customer" alignment="CENTER_LEFT" layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+         <styleClass>
+            <String fx:value="icon-button" />
+            <String fx:value="btn-outline" />
+            <String fx:value="primary-outline" />
+         </styleClass>
+         <children>
+            <FontIcon iconLiteral="bx-plus-circle" text="" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Customer" />
+         </children>
+      </HBox>
    </children>
 </fx:root>
