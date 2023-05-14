@@ -7,15 +7,15 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="458.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="480.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <FontIcon iconColor="#f8bb86" iconLiteral="bx-help-circle" iconSize="120" layoutX="169.0" layoutY="166.0" />
-      <Text layoutX="143.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apakah Anda yakin?">
+      <FontIcon iconColor="#f8bb86" iconLiteral="bx-help-circle" iconSize="120" layoutX="175.0" layoutY="166.0" />
+      <Text layoutX="165.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apakah Anda yakin?">
          <font>
             <Font name="Poppins Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="92.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan menghapus ini secara permanen">
+      <Text layoutX="117.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan menghapus ini secara permanen">
          <font>
             <Font name="Poppins SemiBold" size="12.0" />
          </font>
