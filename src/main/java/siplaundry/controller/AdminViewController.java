@@ -74,7 +74,7 @@ public class AdminViewController {
         removeAllStates();
         btn_sb_prices.getStyleClass().add("active");
 
-        parent_root.setCenter(new PriceView());
+        parent_root.setCenter(new PriceView(shadow));
     }
 
     @FXML

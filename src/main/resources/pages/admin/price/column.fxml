@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleShape="false" styleClass="table-content" stylesheets="@../../../style/admin.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <CheckBox mnemonicParsing="false" styleClass="check-item" />
+      <Text fx:id="txt_name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Jenis cucian" wrappingWidth="250.0" />
+      <HBox alignment="BOTTOM_LEFT" prefWidth="150.0">
+         <children>
+            <HBox fx:id="unit_background" alignment="CENTER" prefWidth="70.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: fef4f4;">
+               <children>
+                  <Text fx:id="txt_unit" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="pcs" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <Text fx:id="txt_cost" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Harga" wrappingWidth="150.0" />
+      <HBox alignment="BOTTOM_LEFT" prefWidth="150.0">
+         <children>
+            <HBox fx:id="express_background" alignment="CENTER" prefWidth="70.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: fef4f4;">
+               <children>
+                  <Text fx:id="txt_IsExpress" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="Express" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="30.0" prefWidth="115.0" styleClass="table-action">
+         <children>
+            <HBox fx:id="edit_btn" styleClass="edit-button">
+               <children>
+                  <FontIcon iconLiteral="bx-pencil" iconSize="18" styleClass="icon" text="" />
+               </children>
+            </HBox>
+            <HBox fx:id="delete_btn" layoutX="10.0" layoutY="10.0" styleClass="delete-button">
+               <children>
+                  <FontIcon iconLiteral="bx-trash" iconSize="18" styleClass="icon" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</fx:root>

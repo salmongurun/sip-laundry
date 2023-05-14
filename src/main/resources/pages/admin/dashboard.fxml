@@ -14,7 +14,7 @@
             <Font name="Poppins SemiBold" size="25.0" />
          </font>
       </Text>
-      <Text fx:id="greet_name" layoutX="232.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[name]">
+      <Text fx:id="greet_name" layoutX="205.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[name]">
          <font>
             <Font name="Poppins SemiBold" size="25.0" />
          </font>
