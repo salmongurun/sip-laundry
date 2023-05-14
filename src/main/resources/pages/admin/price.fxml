@@ -32,7 +32,7 @@
             <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">
                <children>
                   <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" />
-                  <TextField fx:id="txt_keyword" promptText="Cari di sini..." styleClass="input" />
+                  <TextField fx:id="txt_keyword" onKeyReleased="#searchAction" promptText="Cari di sini..." styleClass="input" />
                </children>
             </HBox>
             <Text fx:id="total_Text" fill="#7f7f7f" layoutX="17.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data akun" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="539.0" />

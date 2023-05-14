@@ -1,9 +1,11 @@
 package siplaundry.controller.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -38,6 +40,18 @@ public class CustomerController {
 
         showTable(customer);
         total_text.setText("Menampilkan total "+ customer.size());
+    }
+
+    @FXML
+    void searchAction(KeyEvent event){
+        String keyword = txt_keyword.getText();
+
+        List<CustomerEntity> cust = custRepo.search(new HashMap<>(){{
+            put("name", keyword);
+            put("phone", keyword);
+        }});
+
+        showTable(cust);
     }
 
     void showTable(List<CustomerEntity> customer){

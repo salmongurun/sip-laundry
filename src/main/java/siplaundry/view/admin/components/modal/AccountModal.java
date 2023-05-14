@@ -79,6 +79,9 @@ public class AccountModal {
             put("password", txt_password);
             put("address", txt_address);
         }};
+
+        
+
     }
 
     @FXML
