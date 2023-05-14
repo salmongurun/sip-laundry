@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="458.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FontIcon iconColor="#f8bb86" iconLiteral="bx-help-circle" iconSize="120" layoutX="169.0" layoutY="166.0" />
+      <Text layoutX="143.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apakah Anda yakin?">
+         <font>
+            <Font name="Poppins Bold" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="92.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan menghapus ini secara permanen">
+         <font>
+            <Font name="Poppins SemiBold" size="12.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER" layoutX="89.0" layoutY="290.0" prefWidth="280.0" scaleShape="false" spacing="15.0">
+         <children>
+            <HBox fx:id="cancel_btn" alignment="CENTER" onMouseClicked="#closeDialog" style="-fx-padding: 8 40; -fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #CBCBCB;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Batal" textAlignment="CENTER" wrappingWidth="50.0">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox fx:id="confirm_btn" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#confirmAction" style="-fx-padding: 8 40; -fx-background-color: E96479; -fx-background-radius: 7;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hapus" textAlignment="CENTER" wrappingWidth="50.0">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

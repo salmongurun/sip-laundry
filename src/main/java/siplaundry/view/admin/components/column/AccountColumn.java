@@ -7,7 +7,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
+import siplaundry.repository.UsersRepo;
 import siplaundry.view.admin.components.modal.AccountModal;
+import siplaundry.view.admin.components.modal.ConfirmDialog;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,6 +23,7 @@ public class AccountColumn extends HBox {
     private HBox role_background, edit_btn, delete_btn;
 
     private UserEntity user;
+    private UsersRepo userRepo = new UsersRepo();
     private BorderPane shadowRoot;
 
     private Consumer<List<UserEntity>> refreshTable;
@@ -51,6 +54,13 @@ public class AccountColumn extends HBox {
 
         edit_btn.setOnMouseClicked(event -> {
             new AccountModal(shadowRoot, refreshTable, user);
+        });
+
+        delete_btn.setOnMouseClicked(event -> {
+            new ConfirmDialog(shadowRoot, () -> {
+                userRepo.delete(user.getID());
+                refreshTable.accept(null);
+            });
         });
     }
 

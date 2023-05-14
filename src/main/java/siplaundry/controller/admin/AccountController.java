@@ -41,8 +41,6 @@ public class AccountController {
         System.out.println("Sip");
         List<UserEntity> users = userRepo.get();
         showTable(users);
-
-        total_text.setText("Menampilkan total "+ users.size() +" data akun");
     }
 
     @FXML
@@ -68,5 +66,7 @@ public class AccountController {
 
         if(users == null) users = userRepo.get();
         for(UserEntity user: users) { account_table.getChildren().add(new AccountColumn(shadowRoot, this::showTable, user)); }
+
+        total_text.setText("Menampilkan total "+ users.size() +" data akun");
     }
 }
