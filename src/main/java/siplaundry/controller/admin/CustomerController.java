@@ -57,8 +57,9 @@ public class CustomerController {
     void showTable(List<CustomerEntity> customer){
         customer_table.getChildren().clear();
 
+        if(customer == null) customer = custRepo.get();
         for(CustomerEntity cust : customer){
-            customer_table.getChildren().add(new CustomerColumn(shadowRoot, cust));
+            customer_table.getChildren().add(new CustomerColumn(shadowRoot, this::showTable, cust));
         }
     }
 }

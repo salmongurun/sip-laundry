@@ -11,6 +11,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import siplaundry.data.Laundryunit;
 import siplaundry.entity.LaundryEntity;
+import siplaundry.repository.LaundryRepo;
+import siplaundry.view.admin.components.modal.ConfirmDialog;
 
 public class PriceColumn extends HBox {
     @FXML
@@ -20,6 +22,7 @@ public class PriceColumn extends HBox {
    private HBox edit_btn, delete_btn, unit_background, express_background;
 
    private LaundryEntity laundry;
+   private LaundryRepo laundRepo = new LaundryRepo();
    private BorderPane shadowRoot;
 
    private String express;
@@ -29,6 +32,7 @@ public class PriceColumn extends HBox {
    public PriceColumn(BorderPane shadowRoot, Consumer<List<LaundryEntity>> refreshTable, LaundryEntity laundry){
         this.laundry = laundry;
         this.shadowRoot = shadowRoot;
+        this.refreshTable = refreshTable;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/admin/price/column.fxml"));
         
@@ -54,6 +58,13 @@ public class PriceColumn extends HBox {
         txt_unit.setText(laundry.getunit().toString());
         txt_cost.setText(Integer.toString(laundry.getcost()));
         txt_IsExpress.setText(express);
+
+        delete_btn.setOnMouseClicked(event -> {
+            new ConfirmDialog(shadowRoot, () -> {
+                laundRepo.delete(laundry.getid());
+                refreshTable.accept(null);
+            });
+        });
    }
 
    void setUnitColor(){
