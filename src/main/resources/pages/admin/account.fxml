@@ -13,8 +13,11 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Manajemen Akun" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <HBox fx:id="btn_add_account" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddAccount" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+      <Text layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Pengguna Aplikasi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="34.30000019073486">
+         <font>
+            <Font name="Poppins SemiBold" size="14.0" />
+         </font></Text>
+      <HBox fx:id="btn_add_account" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddAccount" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
@@ -55,5 +58,10 @@
             </ScrollPane>
          </children>
       </AnchorPane>
+      <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manajemen Akun">
+         <font>
+            <Font name="Poppins Bold" size="25.0" />
+         </font>
+      </Text>
    </children>
 </fx:root>
