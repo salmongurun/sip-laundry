@@ -80,12 +80,20 @@
         <version>2.9.0</version>
     </dependency>
 
-    <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-jackson -->
+    <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+    <dependency>
+        <groupId>com.google.code.gson</groupId>
+        <artifactId>gson</artifactId>
+        <version>2.10.1</version>
+    </dependency>
+
+    <!-- https://mvnrepository.com/artifact/com.squareup.retrofit2/converter-gson -->
     <dependency>
         <groupId>com.squareup.retrofit2</groupId>
-        <artifactId>converter-jackson</artifactId>
+        <artifactId>converter-gson</artifactId>
         <version>2.9.0</version>
     </dependency>
+
     <!-- For JavaFX -->
     <dependency>
         <groupId>org.openjfx</groupId>
