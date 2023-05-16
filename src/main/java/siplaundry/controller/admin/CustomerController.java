@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -13,6 +14,7 @@ import javafx.scene.text.Text;
 import siplaundry.entity.CustomerEntity;
 import siplaundry.repository.CustomerRepo;
 import siplaundry.view.admin.components.column.CustomerColumn;
+import siplaundry.view.admin.components.modal.CustomerModal;
 
 public class CustomerController {
 
@@ -41,6 +43,9 @@ public class CustomerController {
         showTable(customer);
         total_text.setText("Menampilkan total "+ customer.size());
     }
+
+    @FXML
+    void showAddCustomer(MouseEvent event){ new CustomerModal(shadowRoot, this::showTable, null); }
 
     @FXML
     void searchAction(KeyEvent event){

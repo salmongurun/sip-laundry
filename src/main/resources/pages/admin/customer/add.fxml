@@ -17,7 +17,7 @@
             <FontIcon iconLiteral="bx-x" iconSize="25" text="" />
          </graphic>
       </Button>
-      <Text fx:id="modal_title" layoutX="29.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah Customer" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
+      <Text fx:id="modal_tittle" layoutX="29.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah Customer" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="Poppins Bold" size="27.0" />
          </font>
@@ -38,7 +38,7 @@
             <VBox layoutX="10.0" layoutY="10.0" prefWidth="306.0" scaleShape="false" styleClass="form-control">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="No WhatsApp" />
-                  <TextField fx:id="txt_fullname1" styleClass="input" />
+                  <TextField fx:id="txt_phone" styleClass="input" />
                </children>
             </VBox>
          </children>

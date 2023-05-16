@@ -37,7 +37,7 @@
             <Text fx:id="total_text" fill="#7f7f7f" layoutX="20.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data customer" />
          </children>
       </AnchorPane>
-      <HBox fx:id="btn_add_customer" alignment="CENTER_LEFT" layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+      <HBox fx:id="btn_add_customer" alignment="CENTER_LEFT" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddCustomer" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />

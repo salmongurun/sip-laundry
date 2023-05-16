@@ -13,6 +13,7 @@ import siplaundry.entity.CustomerEntity;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.CustomerRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
+import siplaundry.view.admin.components.modal.CustomerModal;
 
 public class CustomerColumn extends HBox{
     @FXML
@@ -46,6 +47,10 @@ public class CustomerColumn extends HBox{
     void initialize(){
         txt_name.setText(cust.getname());
         txt_phone.setText(cust.getphone());
+
+        edit_btn.setOnMouseClicked(event -> {
+            new CustomerModal(shadowRoot, refreshTable, cust);
+        });
 
         delete_btn.setOnMouseClicked(event -> {
             new ConfirmDialog(shadowRoot, () -> {
