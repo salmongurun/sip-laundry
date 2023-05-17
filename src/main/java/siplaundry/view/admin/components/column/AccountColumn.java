@@ -50,7 +50,7 @@ public class AccountColumn extends HBox {
         txt_fullname.setText(user.getFullname());
         txt_username.setText(user.getUsername());
         txt_phone.setText(user.getPhone());
-        txt_role.setText(user.getRole().toString());
+        txt_role.setText(getRoleText(user.getRole()));
 
         edit_btn.setOnMouseClicked(event -> {
             new AccountModal(shadowRoot, refreshTable, user);
@@ -69,5 +69,10 @@ public class AccountColumn extends HBox {
             txt_role.setStyle("-fx-fill: #6A9A98;");
             role_background.setStyle(role_background.getStyle() + "-fx-background-color: #f0f4f4;");
         }
+    }
+
+    private String getRoleText(AccountRole role) {
+        if(role == AccountRole.cashier) return "Kasir";
+        return "Admin";
     }
 }
