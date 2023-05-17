@@ -27,34 +27,28 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Dashboard" />
                      </children>
                   </HBox>
-                  <HBox fx:id="btn_sb_prices" layoutX="10.0" layoutY="10.0" onMouseClicked="#showPrices" prefWidth="200.0" styleClass="sidebar-item">
-                     <children>
-                        <FontIcon iconLiteral="bx-dollar-circle" iconSize="20" styleClass="sidebar-icon" text="" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Manajemen Harga" />
-                     </children>
-                  </HBox>
                   <HBox fx:id="btn_sb_accounts" layoutX="10.0" layoutY="55.0" onMouseClicked="#showAccounts" prefWidth="200.0" styleClass="sidebar-item">
                      <children>
                         <FontIcon iconLiteral="bx-user-circle" iconSize="20" styleClass="sidebar-icon" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Manjemen Akun" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Manajemen Akun" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="btn_sb_prices" layoutX="10.0" layoutY="10.0" onMouseClicked="#showPrices" prefWidth="200.0" styleClass="sidebar-item">
+                     <children>
+                        <FontIcon iconLiteral="bx-dollar-circle" iconSize="20" styleClass="sidebar-icon" text="" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Layanan" />
                      </children>
                   </HBox>
                   <HBox fx:id="btn_sb_cust" onMouseClicked="#showCustomer" prefWidth="200.0" styleClass="sidebar-item">
                      <children>
                         <FontIcon iconLiteral="bx-group" iconSize="20" styleClass="sidebar-icon" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Manjemen Customer" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Customer" />
                      </children>
                   </HBox>
                   <HBox fx:id="btn_sb_reports" layoutX="10.0" layoutY="102.0" onMouseClicked="#showReports" prefWidth="200.0" styleClass="sidebar-item">
                      <children>
                         <FontIcon iconLiteral="bx-notepad" iconSize="20" styleClass="sidebar-icon" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Laporan" />
-                     </children>
-                  </HBox>
-                  <HBox fx:id="btn_sb_transactions" layoutX="10.0" layoutY="149.0" onMouseClicked="#showTransactions" prefWidth="200.0" styleClass="sidebar-item">
-                     <children>
-                        <FontIcon iconLiteral="bx-wallet-alt" iconSize="20" styleClass="sidebar-icon" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Transaksi" />
                      </children>
                   </HBox>
                </children>

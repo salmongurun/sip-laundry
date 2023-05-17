@@ -12,6 +12,7 @@ import siplaundry.util.ConfigUtil;
 
 public class WhatsAppService {
     private final String BASE_URL = ConfigUtil.get("gateway.url");
+
     private VerificationEndpoints verifEndpoint;
 
     public WhatsAppService() {
@@ -28,18 +29,14 @@ public class WhatsAppService {
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                System.out.println("Pesan berhasil dikirmkan");
+                System.out.println("Pesan berhasil dikirimkan ke " + message.getTarget());
             };
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
+                System.out.println("Gagal mengirimkan pesan, error: " + t.getMessage());
             }
         });
-    }
-
-    public static void main(String[] args) {
-        new WhatsAppService();
     }
 }
 

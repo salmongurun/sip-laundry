@@ -99,6 +99,6 @@ public class AdminViewController {
         btn_sb_accounts.getStyleClass().remove("active");
         btn_sb_cust.getStyleClass().remove("active");
         btn_sb_reports.getStyleClass().remove("active");
-        btn_sb_transactions.getStyleClass().remove("active");
+//        btn_sb_transactions.getStyleClass().remove("active");
     }
 }
