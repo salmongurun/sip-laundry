@@ -4,7 +4,9 @@ package siplaundry;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import siplaundry.entity.WhatsappMessage;
 import siplaundry.service.StatusService;
+import siplaundry.service.WhatsAppService;
 import siplaundry.view.auth.LoginView;
 
 public class App {

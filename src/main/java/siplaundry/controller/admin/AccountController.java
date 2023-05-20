@@ -55,7 +55,6 @@ public class AccountController {
             put("fullname", keyword);
             put("phone", keyword);
             put("username", keyword);
-            put("role", keyword);
         }});
 
         showTable(users);

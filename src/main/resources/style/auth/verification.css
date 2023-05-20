@@ -1,0 +1,12 @@
+.text-input {
+    -fx-border-color: #005F82;
+    -fx-border-radius: 2;
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.button-input {
+    -fx-background-color: #005F82;
+    -fx-font-family: "Poppins SemiBold";
+    -fx-font-size: 15;
+    -fx-text-fill: white;
+}

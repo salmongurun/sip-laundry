@@ -6,6 +6,8 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Pane?>
@@ -14,86 +16,92 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.controller.LoginController">
-  <columnConstraints>
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-  </columnConstraints>
-  <rowConstraints>
-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-  </rowConstraints>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.controller.LoginController">
    <children>
-      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color">
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <Text fill="WHITE" layoutX="41.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet consectetur. Varius massa aenean sapien euismod semper sit." wrappingWidth="601.1118307387633">
-               <font>
-                  <Font name="Poppins Bold" size="20.0" />
-               </font>
-            </Text>
-            <ImageView fitHeight="305.0" fitWidth="575.0" layoutX="54.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../images/login-bg.png" />
-               </image>
-            </ImageView>
-         </children>
-      </Pane>
-      <Pane prefHeight="200.0" prefWidth="200.0" styleClass="last-color" GridPane.columnIndex="1">
-         <children>
-            <Text fill="#5585b5" layoutX="270.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text-color" text="Sip Laundry">
-               <font>
-                  <Font name="Pacifico Regular" size="24.0" />
-               </font>
-            </Text>
-            <VBox alignment="TOP_CENTER" layoutX="92.0" layoutY="225.0" prefHeight="416.0" prefWidth="500.0" spacing="30.0">
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="secondary-color">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selamat Datang">
+                  <Text fill="WHITE" layoutX="41.0" layoutY="583.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem ipsum dolor sit amet consectetur. Varius massa aenean sapien euismod semper sit." wrappingWidth="601.1118307387633">
                      <font>
-                        <Font name="Poppins Bold" size="30.0" />
+                        <Font name="Poppins Bold" size="20.0" />
                      </font>
                   </Text>
-                  <VBox prefHeight="207.0" prefWidth="500.0" spacing="25.0">
+                  <ImageView fitHeight="305.0" fitWidth="575.0" layoutX="54.0" layoutY="198.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../images/login-bg.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane prefHeight="200.0" prefWidth="200.0" styleClass="last-color" GridPane.columnIndex="1">
+               <children>
+                  <Text fill="#5585b5" layoutX="270.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="main-text-color" text="Sip Laundry">
+                     <font>
+                        <Font name="Pacifico Regular" size="24.0" />
+                     </font>
+                  </Text>
+                  <VBox alignment="TOP_CENTER" layoutX="92.0" layoutY="225.0" prefHeight="416.0" prefWidth="500.0" spacing="30.0">
                      <children>
-                        <VBox prefHeight="58.0" prefWidth="500.0" spacing="5.0">
-                           <children>
-                              <Label text="Username">
-                                 <font>
-                                    <Font name="Poppins Medium" size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TxtUserName" minHeight="35.0" styleClass="form-control" />
-                           </children>
-                        </VBox>
-                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="500.0" spacing="5.0">
-                           <children>
-                              <Label text="Password">
-                                 <font>
-                                    <Font name="Poppins Medium" size="18.0" />
-                                 </font>
-                              </Label>
-                              <TextField fx:id="TxtPassword" minHeight="35.0" styleClass="form-control" />
-                           </children>
-                        </VBox>
-                        <Text fill="#5585b5" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Lupa Password?" textAlignment="RIGHT" wrappingWidth="492.600341796875">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Selamat Datang">
                            <font>
-                              <Font name="Poppins Medium" size="12.0" />
+                              <Font name="Poppins Bold" size="30.0" />
                            </font>
                         </Text>
+                        <VBox prefHeight="207.0" prefWidth="500.0" spacing="25.0">
+                           <children>
+                              <VBox prefHeight="58.0" prefWidth="500.0" spacing="5.0">
+                                 <children>
+                                    <Label text="Username">
+                                       <font>
+                                          <Font name="Poppins Medium" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="TxtUserName" minHeight="35.0" styleClass="form-control" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="58.0" prefWidth="500.0" spacing="5.0">
+                                 <children>
+                                    <Label text="Password">
+                                       <font>
+                                          <Font name="Poppins Medium" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="TxtPassword" minHeight="35.0" styleClass="form-control" />
+                                 </children>
+                              </VBox>
+                              <Text fill="#5585b5" onMouseClicked="#showVerification" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="Lupa Password?" textAlignment="RIGHT" wrappingWidth="492.600341796875">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <Button fx:id="BtnLogin" mnemonicParsing="false" onAction="#ButtonLoginAction" text="Login">
+                           <styleClass>
+                              <String fx:value="btn-submit" />
+                              <String fx:value="main-color" />
+                           </styleClass>
+                        </Button>
                      </children>
                   </VBox>
-                  <Button fx:id="BtnLogin" mnemonicParsing="false" onAction="#ButtonLoginAction" text="Login">
-                     <styleClass>
-                        <String fx:value="btn-submit" />
-                        <String fx:value="main-color" />
-                     </styleClass>
-                  </Button>
+                  <Text layoutX="608.0" layoutY="750.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sip Laundry v0.1">
+                     <font>
+                        <Font name="Poppins Light" size="8.0" />
+                     </font>
+                  </Text>
                </children>
-            </VBox>
-            <Text layoutX="608.0" layoutY="750.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sip Laundry v0.1">
-               <font>
-                  <Font name="Poppins Light" size="8.0" />
-               </font>
-            </Text>
+            </Pane>
          </children>
-      </Pane>
+      </GridPane>
+      <BorderPane fx:id="shadowRoot" opacity="0.5" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: black;" />
    </children>
-</GridPane>
+</AnchorPane>
