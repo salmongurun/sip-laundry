@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: F5F9FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.controller.AdminViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1162.0" style="-fx-background-color: F5F9FC;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.controller.AdminViewController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="238.0" styleClass="sidebar-container" stylesheets="@../style/sidebar.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -79,6 +79,6 @@
          </font>
       </Text>
       <BorderPane fx:id="parent_root" layoutX="238.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
-      <BorderPane fx:id="shadow" layoutX="312.0" layoutY="217.0" opacity="0.5" prefHeight="551.0" prefWidth="1054.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="shadow" layoutX="418.0" layoutY="226.0" opacity="0.5" prefHeight="422.0" prefWidth="416.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

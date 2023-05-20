@@ -12,7 +12,7 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane layoutX="6.0" layoutY="122.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.topAnchor="120.0">
+      <AnchorPane layoutX="6.0" layoutY="122.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="115.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
                <children>
@@ -32,21 +32,21 @@
             <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">
                <children>
                   <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" />
-                  <TextField fx:id="txt_keyword" onKeyReleased="#searchAction" promptText="Cari di sini..." styleClass="input" />
+                  <TextField fx:id="txt_keyword" onKeyReleased="#searchAction" prefWidth="200.0" promptText="Cari di sini..." styleClass="input" />
                </children>
             </HBox>
             <Text fx:id="total_Text" fill="#7f7f7f" layoutX="17.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data akun" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="539.0" />
          </children>
       </AnchorPane>
       <Text layoutX="6.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Manajemen Harga" />
-      <HBox fx:id="btn_add_price" layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+      <HBox fx:id="btn_add_price" layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
             <String fx:value="primary-outline" />
          </styleClass>
          <children>
-            <FontIcon iconLiteral="bx-plus-circle" />
+            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Jenis Cucian" />
          </children>
       </HBox>

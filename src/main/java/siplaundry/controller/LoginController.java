@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import siplaundry.service.AuthService;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.AdminView;
 import siplaundry.view.auth.verification.UsernameVerification;
 import tray.animations.AnimationType;
@@ -49,7 +50,7 @@ public class LoginController {
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2500), ae -> {
             try {
                 stage.setTitle("Administrator - SIP Laundry");
-                (new AdminView()).start(stage);
+                new ViewUtil().authRedirector(stage);
             } catch (Exception e) {
                 e.printStackTrace();
             }
