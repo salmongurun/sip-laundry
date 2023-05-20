@@ -13,7 +13,7 @@
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Manajemen Customer" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="1.0" layoutY="121.0" prefHeight="583.0" prefWidth="1090.0" styleClass="card">
+      <AnchorPane layoutX="1.0" layoutY="121.0" prefHeight="583.0" prefWidth="1090.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="24.0" layoutY="115.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
                <children>
@@ -23,7 +23,7 @@
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="200.0" />
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="29.0" styleClass="table-search">
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">
                <children>
                   <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" styleClass="icon" />
                   <TextField fx:id="txt_keyword" onKeyReleased="#searchAction" prefWidth="200.0" promptText="Cari di sini..." styleClass="input" />
@@ -37,14 +37,14 @@
             <Text fx:id="total_text" fill="#7f7f7f" layoutX="20.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data customer" />
          </children>
       </AnchorPane>
-      <HBox fx:id="btn_add_customer" alignment="CENTER_LEFT" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddCustomer" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="40.0">
+      <HBox fx:id="btn_add_customer" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddCustomer" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
             <String fx:value="primary-outline" />
          </styleClass>
          <children>
-            <FontIcon iconLiteral="bx-plus-circle" text="" />
+            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" text="" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Customer" />
          </children>
       </HBox>
