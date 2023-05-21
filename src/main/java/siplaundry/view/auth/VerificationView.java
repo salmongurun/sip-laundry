@@ -19,9 +19,12 @@ import siplaundry.util.MessageUtil;
 import siplaundry.util.NumberUtil;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
 
 public class VerificationView {
     private Stage stage;
+    private VerificationRepo verifyRepo = new VerificationRepo();
     public VerificationView(Node shadowRoot) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/auth/verify-username.fxml"));
         loader.setController(new UsernameVerifyController(this::verifyCode));
@@ -50,7 +53,6 @@ public class VerificationView {
         WhatsAppService message = new WhatsAppService();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/auth/verify-code.fxml"));
         String code = NumberUtil.generateCode();
-        VerificationRepo verifyRepo = new VerificationRepo();
 
         loader.setController(new CodeVerifyController(user));
         message.sendVerification(new WhatsappMessage(
@@ -58,11 +60,23 @@ public class VerificationView {
                 MessageUtil.verifyMessGen(code)
         ));
 
-        verifyRepo.add(new VerificationEntity(user, code));
+        sendVerifyCode(user, code);
 
         try {
             Parent root = loader.load();
             stage.setScene(new Scene(root));
         } catch (IOException e) { e.printStackTrace(); }
+    }
+
+    private void sendVerifyCode(UserEntity user, String code) {
+        List<VerificationEntity> codes = verifyRepo.get(new HashMap<>() {{
+            put("user_id", user.getID());
+        }});
+
+        if(codes.size() > 0) {
+            verifyRepo.delete(codes.get(0));
+        }
+
+        verifyRepo.add(new VerificationEntity(user, code));
     }
 }
