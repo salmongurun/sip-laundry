@@ -1,7 +1,11 @@
 .text-input {
+    -fx-border-radius: 2;
+    -fx-background-color: transparent, transparent, transparent, transparent;
+}
+
+.input-text-container {
     -fx-border-color: #005F82;
     -fx-border-radius: 2;
-    -fx-background-color: transparent, white, transparent, white;
 }
 
 .button-input {
@@ -9,4 +13,25 @@
     -fx-font-family: "Poppins SemiBold";
     -fx-font-size: 15;
     -fx-text-fill: white;
+    -fx-padding: 10 25;
+    -fx-background-radius: 4;
+    -fx-spacing: 8;
+}
+
+.button-input:disabled {
+    -fx-background-color: #5a97ad;
+}
+
+.input-background {
+    -fx-background-color: #005F82;
+    -fx-opacity: 0.1;
+    -fx-background-radius: 2;
+}
+
+.username-failed {
+    -fx-fill: #E96479;
+}
+
+.username-success {
+    -fx-fill: #7DB9B6;
 }

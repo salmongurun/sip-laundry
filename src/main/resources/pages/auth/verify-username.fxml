@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="478.0" style="-fx-background-radius: 4; -fx-border-radius: 4; -fx-background-color: white;" stylesheets="@../../style/auth/verification.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Pane layoutX="107.0" layoutY="310.0" prefHeight="42.5" prefWidth="265.0" styleClass="input-background" AnchorPane.leftAnchor="115.0" AnchorPane.topAnchor="330.0" />
       <ImageView fitHeight="128.0" fitWidth="200.0" layoutX="146.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../images/verify-username.png" />
@@ -27,16 +30,35 @@
             <Font name="Poppins Medium" size="13.0" />
          </font>
       </Text>
-      <TextField layoutX="107.0" layoutY="310.0" prefHeight="42.5" prefWidth="265.0" styleClass="text-input">
-         <font>
-            <Font name="Poppins Medium" size="14.0" />
-         </font>
-      </TextField>
-      <Button layoutX="147.0" layoutY="376.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="185.0" styleClass="button-input" text="Selanjutnya" textAlignment="CENTER" />
-      <HBox layoutX="333.0" layoutY="8.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+      <HBox fx:id="close_btn" layoutX="333.0" layoutY="8.0" onMouseClicked="#closeModal" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
          <children>
             <FontIcon iconColor="#005f82" iconLiteral="bx-x-circle" iconSize="23" />
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" layoutX="107.0" layoutY="247.0" prefHeight="42.5" prefWidth="265.0" styleClass="input-text-container" AnchorPane.topAnchor="320.0">
+         <children>
+            <TextField fx:id="username_input" onKeyReleased="#checkUsername" prefHeight="41.0" prefWidth="228.0">
+               <font>
+                  <Font name="Poppins Medium" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </TextField>
+            <FontIcon fx:id="username_icon" iconLiteral="bx-x" iconSize="25" styleClass="username-failed" />
+         </children>
+      </HBox>
+      <HBox fx:id="continue_btn" alignment="CENTER" layoutX="155.0" layoutY="409.0" onMouseClicked="#continueAction" styleClass="button-input" AnchorPane.topAnchor="400.0">
+         <children>
+            <FontIcon fx:id="continue_icon" iconColor="WHITE" iconLiteral="bx-chevron-right-circle" iconSize="20" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Selanjutnya" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </HBox>
    </children>
 </AnchorPane>

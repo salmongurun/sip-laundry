@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import animatefx.animation.*;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
 import jakarta.validation.Validator;
@@ -62,6 +63,7 @@ public class ValidationUtil {
                 text.getStyleClass().add("error-message");
 
                 input.getStyleClass().add("error");
+                (new Pulse(input)).play();
                 parent.getChildren().add(text);
 
                 validatedFields.add(field);

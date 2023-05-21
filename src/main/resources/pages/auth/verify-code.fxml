@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="478.0" style="-fx-background-radius: 4; -fx-border-radius: 4; -fx-background-color: white;" stylesheets="@../../style/auth/verification.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane layoutX="117.0" layoutY="320.0" prefHeight="42.5" prefWidth="265.0" styleClass="input-background" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="320.0" />
+      <HBox fx:id="close_btn" layoutX="343.0" layoutY="18.0" onMouseClicked="#closeModal" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <FontIcon iconColor="#005f82" iconLiteral="bx-x-circle" iconSize="23" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <ImageView fitHeight="128.0" fitWidth="130.0" layoutX="174.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/verify-code.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="92.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Masukkan Kode Verifikasi">
+         <font>
+            <Font name="Poppins Bold" size="22.0" />
+         </font>
+      </Text>
+      <Text fill="#a19b9b" layoutX="77.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kode verifikasi telah dikirim melalui WhatsApp ke">
+         <font>
+            <Font name="Poppins Medium" size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="phone_number" layoutX="177.0" layoutY="271.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+62***********89">
+         <font>
+            <Font name="Poppins SemiBold" size="14.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER_LEFT" layoutX="113.0" layoutY="310.0" prefHeight="42.5" prefWidth="265.0" styleClass="input-text-container" AnchorPane.topAnchor="310.0">
+         <children>
+            <TextField fx:id="username_input" prefHeight="41.0" prefWidth="253.0">
+               <font>
+                  <Font name="Poppins Medium" size="15.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+      </HBox>
+      <HBox fx:id="continue_btn" alignment="CENTER" layoutX="187.0" layoutY="379.0" styleClass="button-input">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Verfikasi" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</AnchorPane>
