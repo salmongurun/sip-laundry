@@ -33,6 +33,12 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Transaksi" />
                      </children>
                   </HBox>
+                  <HBox fx:id="btn_sb_expense" layoutX="10.0" layoutY="56.0" onMouseClicked="#showExpense" prefWidth="200.0" styleClass="sidebar-item">
+                     <children>
+                        <FontIcon iconLiteral="bx-shopping-bag" iconSize="20" styleClass="sidebar-icon" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Pengeluaran" />
+                     </children>
+                  </HBox>
                   <HBox fx:id="btn_sb_retard" layoutX="10.0" layoutY="56.0" onMouseClicked="#showRetard" prefWidth="200.0" styleClass="sidebar-item">
                      <children>
                         <FontIcon iconLiteral="bx-alarm-exclamation" iconSize="20" styleClass="sidebar-icon" />
@@ -73,6 +79,6 @@
          </font>
       </Text>
       <BorderPane fx:id="parent_root" layoutX="385.0" layoutY="184.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
-      <BorderPane fx:id="shadow" layoutX="339.0" layoutY="247.0" opacity="0.5" prefHeight="431.0" prefWidth="738.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="shadow" layoutX="-8.0" layoutY="-6.0" opacity="0.5" prefHeight="774.0" prefWidth="1374.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

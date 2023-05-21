@@ -9,6 +9,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import siplaundry.data.SessionData;
 import siplaundry.view.cashier.DashboardView;
+import siplaundry.view.cashier.ExpenseView;
 import siplaundry.view.cashier.ReportView;
 import siplaundry.view.cashier.RetardView;
 import siplaundry.view.cashier.TransactionView;
@@ -26,6 +27,9 @@ public class CashierViewController {
 
     @FXML
     private HBox btn_sb_report;
+
+    @FXML
+    private HBox btn_sb_expense;
 
     @FXML
     private BorderPane shadow;
@@ -75,11 +79,20 @@ public class CashierViewController {
         parent_root.setCenter(new ReportView());
     }
 
+    @FXML
+    void showExpense(MouseEvent event) throws IOException{
+        removeAllStates();
+        btn_sb_expense.getStyleClass().add("active");
+
+        parent_root.setCenter(new ExpenseView());
+    }
+
     private void removeAllStates(){
         btn_sb_dashboard.getStyleClass().remove("active");
         btn_sb_report.getStyleClass().remove("active");
         btn_sb_retard.getStyleClass().remove("active");
         btn_sb_transaction.getStyleClass().remove("active");
+        btn_sb_expense.getStyleClass().remove("active");
     }
 
 }
