@@ -2,7 +2,6 @@ package siplaundry.controller;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -32,7 +31,7 @@ public class LoginController {
         shadowRoot.setVisible(false);
     }
 
-    public void ButtonLoginAction(ActionEvent ex) throws IOException {
+    public void ButtonLoginAction() throws IOException {
         Stage stage = (Stage) TxtUserName.getScene().getWindow();
         TrayNotification tray = new TrayNotification();
         
