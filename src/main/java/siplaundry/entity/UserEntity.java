@@ -36,7 +36,7 @@ public class UserEntity extends Entity {
     public UserEntity(String username, String fullname, String phone, String password, String address, AccountRole role) {
         this.username = username;
         this.fullname = fullname;
-        this.phone = phone;
+        this.phone = formatPhone(phone);
         this.password = password;
         this.address = address;
         this.role = role;
@@ -71,7 +71,7 @@ public class UserEntity extends Entity {
     }
 
     public void setPhone(String phone) {
-        this.phone = phone;
+        this.phone = formatPhone(phone);
     }
 
     public String getPassword() {
@@ -98,4 +98,15 @@ public class UserEntity extends Entity {
         this.role = role;
     }
 
+    private String formatPhone(String phone) {
+        if(phone.startsWith("0")) {
+            phone = phone.replaceFirst("0", "62");
+        }
+
+        if(phone.startsWith("+")) {
+            phone = phone.replaceFirst("/+", "");
+        }
+
+        return phone;
+    }
 }

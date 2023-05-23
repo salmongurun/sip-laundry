@@ -15,7 +15,7 @@ public class LoginView extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/pages/auth/login2.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/pages/auth/login.fxml"));
         Scene scene = new Scene(root);
         scene.getStylesheets().add(getClass().getResource("/style/main.css").toString());
         scene.getStylesheets().add(getClass().getResource("/style/auth/login.css").toString());
