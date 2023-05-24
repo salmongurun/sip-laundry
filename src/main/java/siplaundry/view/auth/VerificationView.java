@@ -25,7 +25,7 @@ import java.util.List;
 public class VerificationView {
     private Stage stage;
     private VerificationRepo verifyRepo = new VerificationRepo();
-    public VerificationView(Node shadowRoot) {
+    public VerificationView(Node shadowRoot, Stage parentStage) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/auth/verify-username.fxml"));
         loader.setController(new UsernameVerifyController(this::verifyCode));
 
@@ -36,6 +36,7 @@ public class VerificationView {
 
             scene.setFill(Color.TRANSPARENT);
             stage.setScene(scene);
+            stage.initOwner(parentStage);
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.initStyle(StageStyle.TRANSPARENT);
             stage.setResizable(false);

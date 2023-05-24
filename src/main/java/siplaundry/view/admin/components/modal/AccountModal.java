@@ -79,9 +79,6 @@ public class AccountModal {
             put("password", txt_password);
             put("address", txt_address);
         }};
-
-        
-
     }
 
     @FXML
@@ -92,7 +89,6 @@ public class AccountModal {
 
     @FXML
     void saveAction() {
-        System.out.println("Savedddd");
         if(account != null) {
             saveUpdate();
             return;

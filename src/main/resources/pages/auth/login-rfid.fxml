@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="478.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="siplaundry.controller.auth.RFIDAuthController">
+   <children>
+      <TextField fx:id="input_rfid" layoutX="154.0" layoutY="35.0" style="-fx-background-color: transparent, transparent, transparent, transparent; -fx-border-color: transparent, transparent, transparent, transparent;">
+         <font>
+            <Font size="1.0" />
+         </font>
+      </TextField>
+   </children>
+</AnchorPane>

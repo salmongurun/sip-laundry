@@ -79,7 +79,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </HBox>
-                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="45.0" prefWidth="452.0" spacing="10.0" style="-fx-border-color: #005F82; -fx-border-radius: 8;" styleClass="login-btn">
+                        <HBox alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#showRFIDAuth" prefHeight="45.0" prefWidth="452.0" spacing="10.0" style="-fx-border-color: #005F82; -fx-border-radius: 8;" styleClass="login-btn">
                            <children>
                               <FontIcon iconColor="#005f82" iconLiteral="bx-id-card" iconSize="23" text="" />
                               <Text fill="#005f82" strokeType="OUTSIDE" strokeWidth="0.0" text="Masuk dengan RFID">

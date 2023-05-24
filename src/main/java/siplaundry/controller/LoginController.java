@@ -3,6 +3,9 @@ package siplaundry.controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -13,6 +16,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import siplaundry.service.AuthService;
 import siplaundry.util.ViewUtil;
+import siplaundry.view.auth.RFIDAuthView;
 import siplaundry.view.auth.VerificationView;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -31,6 +35,7 @@ public class LoginController {
     @FXML
     private BorderPane shadowRoot;
     @FXML
+    private HBox rfid_btn;
     private HBox password_container;
     @FXML
     private FontIcon toggle_icon;
@@ -46,7 +51,7 @@ public class LoginController {
     public void ButtonLoginAction() throws IOException {
         Stage stage = (Stage) TxtUserName.getScene().getWindow();
         TrayNotification tray = new TrayNotification();
-        
+
          if(!new AuthService().login(TxtUserName.getText(), password)){
             tray.setTray("sign in","username atau password yang anda masukkan salah", NotificationType.WARNING, AnimationType.POPUP);
             tray.showAndDismiss(Duration.millis(500));
@@ -69,13 +74,29 @@ public class LoginController {
 
     @FXML
     void showVerification(MouseEvent event) {
-        new VerificationView(shadowRoot);
+        new VerificationView(shadowRoot, (Stage) shadowRoot.getScene().getWindow());
+    }
+
+    @FXML
+    void showRFIDAuth() {
+        new RFIDAuthView(shadowRoot);
+    }
+
+    @FXML
+    void showRfidPage() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/auth/login-rfid.fxml"));
+        Stage stage = (Stage) rfid_btn.getScene().getWindow();
+
+        try {
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+        }catch (IOException e) { e.printStackTrace(); }
     }
 
     @FXML
     void togglePassword() {
         password_container.getChildren().remove(0);
-        
+
         if(isPasswordShown) {
             toggle_icon.setIconLiteral("bx-show");
             addPasswordElement();
@@ -97,7 +118,7 @@ public class LoginController {
         field.setOnKeyReleased(event -> {
             this.password = field.getText();
         });
-        
+
         password_container.getChildren().add(0, field);
     }
 
