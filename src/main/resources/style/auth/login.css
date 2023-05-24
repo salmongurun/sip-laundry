@@ -2,22 +2,22 @@
     -fx-spacing: 5;
 }
 
-.form-control .form-input {
+.form-input {
     -fx-border-color: #005F82;
     -fx-border-radius: 4
 }
 
-.form-control .form-input .input {
+.form-input .input {
     -fx-background-color: transparent, transparent, transparent, transparent;
 }
 
-.form-control .form-label {
+.form-label {
     -fx-font-family: "Poppins Medium";
     -fx-font-size: 12;
     -fx-text-fill: #005F82;
 }
 
-.form-control .form-input {
+.form-input {
     -fx-font-family: "Poppins Medium";
     -fx-font-size: 16;
 }

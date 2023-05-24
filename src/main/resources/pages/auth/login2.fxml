@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -51,10 +50,16 @@
                   <VBox layoutX="10.0" layoutY="10.0" prefWidth="416.0" styleClass="form-control">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="form-label" text="Password" />
-                        <HBox alignment="CENTER_LEFT" maxHeight="52.0" maxWidth="452.0" prefHeight="52.0" prefWidth="452.0" styleClass="form-input" stylesheets="@../../style/auth/login.css">
+                        <HBox fx:id="password_container" alignment="CENTER_LEFT" maxHeight="52.0" maxWidth="452.0" prefHeight="52.0" prefWidth="452.0" styleClass="form-input" stylesheets="@../../style/auth/login.css">
                            <children>
-                              <PasswordField fx:id="TxtPassword" prefHeight="45.0" prefWidth="419.0" styleClass="input" />
-                              <FontIcon fx:id="icon" iconColor="#005f82" iconLiteral="bx-show" iconSize="25" />
+                              <HBox alignment="CENTER" onMouseClicked="#togglePassword">
+                                 <children>
+                                    <FontIcon fx:id="toggle_icon" iconColor="#005f82" iconLiteral="bx-show" iconSize="25" />
+                                 </children>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </HBox>
                            </children>
                         </HBox>
                      </children>
@@ -96,6 +101,7 @@
                   <Font name="Poppins SemiBold" size="12.0" />
                </font>
             </Text>
+            <HBox layoutX="-34.0" layoutY="148.0" prefHeight="100.0" prefWidth="53.0" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="768.0" fitWidth="475.0" layoutX="318.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="0.0">
