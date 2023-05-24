@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2023 at 06:53 PM
+-- Generation Time: May 24, 2023 at 03:29 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -33,6 +33,14 @@ CREATE TABLE `customers` (
   `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `name`, `phone`) VALUES
+(159, 'joki', '081238560'),
+(160, 'Aldea', '33232323');
+
 -- --------------------------------------------------------
 
 --
@@ -60,6 +68,13 @@ CREATE TABLE `laundries` (
   `name` varchar(150) NOT NULL,
   `IsExpress` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laundries`
+--
+
+INSERT INTO `laundries` (`laundry_id`, `unit`, `cost`, `name`, `IsExpress`) VALUES
+(121, 'kilogram', 3323, 'aldea', 0);
 
 -- --------------------------------------------------------
 
@@ -97,7 +112,8 @@ INSERT INTO `options` (`option_id`, `key`, `value`) VALUES
 (47, 'alamat20', 'sumbersari'),
 (49, 'alamat20', 'sumbersari'),
 (51, 'alamat20', 'sumbersari'),
-(53, 'alamat20', 'sumbersari');
+(53, 'alamat20', 'sumbersari'),
+(55, 'alamat20', 'sumbersari');
 
 -- --------------------------------------------------------
 
@@ -154,6 +170,7 @@ DELIMITER ;
 
 CREATE TABLE `users` (
   `user_id` int(11) NOT NULL,
+  `rfid` char(15) NOT NULL,
   `username` varchar(20) NOT NULL,
   `fullname` varchar(150) NOT NULL,
   `phone` varchar(15) NOT NULL,
@@ -161,6 +178,13 @@ CREATE TABLE `users` (
   `address` mediumtext NOT NULL,
   `role` enum('admin','cashier') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`user_id`, `rfid`, `username`, `fullname`, `phone`, `password`, `address`, `role`) VALUES
+(186, '0', 'Sinta', 'sinta manila', '6289787675654', 'kamu', 'jember', 'admin');
 
 -- --------------------------------------------------------
 
@@ -237,43 +261,43 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=158;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=163;
 
 --
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `laundries`
 --
 ALTER TABLE `laundries`
-  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
+  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=181;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
 -- AUTO_INCREMENT for table `verifications`
 --
 ALTER TABLE `verifications`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=171;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- Constraints for dumped tables
