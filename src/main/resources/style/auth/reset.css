@@ -1,0 +1,35 @@
+.form-control {
+    -fx-spacing: 8;
+}
+
+.form-control .label {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12;
+}
+
+.form-control .input {
+    -fx-background-color: transparent, transparent, transparent, transparent;
+    -fx-border-color: #DADADA;
+    -fx-border-radius: 4;
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 14;
+}
+
+.form-control .input.error {
+    -fx-border-color: #E96479;
+}
+
+.form-control .error-message {
+    -fx-font-family: Poppins;
+    -fx-font-size: 12;
+    -fx-fill: #E96479;
+    -fx-translate-y: -8;
+}
+
+.confirm-button {
+    -fx-font-family: "Poppins SemiBold";
+    -fx-font-size: 12;
+    -fx-background-color: #005F82;
+    -fx-background-radius: 4;
+    -fx-text-fill: white;
+}

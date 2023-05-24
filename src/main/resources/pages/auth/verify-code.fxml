@@ -45,7 +45,7 @@
       </Text>
       <HBox alignment="CENTER_LEFT" layoutX="113.0" layoutY="310.0" prefHeight="42.5" prefWidth="265.0" styleClass="input-text-container" AnchorPane.topAnchor="310.0">
          <children>
-            <TextField fx:id="username_input" prefHeight="41.0" prefWidth="253.0">
+            <TextField fx:id="code_input" prefHeight="41.0" prefWidth="253.0">
                <font>
                   <Font name="Poppins Medium" size="15.0" />
                </font>
@@ -55,7 +55,7 @@
             </TextField>
          </children>
       </HBox>
-      <HBox fx:id="continue_btn" alignment="CENTER" layoutX="187.0" layoutY="379.0" styleClass="button-input">
+      <HBox fx:id="continue_btn" alignment="CENTER" layoutX="187.0" layoutY="379.0" onMouseClicked="#checkVerificationCode" styleClass="button-input">
          <children>
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Verfikasi" />
          </children>

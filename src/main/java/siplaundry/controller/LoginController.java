@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import siplaundry.service.AuthService;
 import siplaundry.util.ViewUtil;
+import siplaundry.view.auth.RFIDAuthView;
 import siplaundry.view.auth.VerificationView;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -63,7 +64,12 @@ public class LoginController {
 
     @FXML
     void showVerification(MouseEvent event) {
-        new VerificationView(shadowRoot);
+        new VerificationView(shadowRoot, (Stage) shadowRoot.getScene().getWindow());
+    }
+
+    @FXML
+    void showRFIDAuth() {
+        new RFIDAuthView(shadowRoot);
     }
 
     @FXML
