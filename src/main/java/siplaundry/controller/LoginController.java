@@ -3,10 +3,14 @@ package siplaundry.controller;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import siplaundry.service.AuthService;
@@ -26,6 +30,8 @@ public class LoginController {
     private TextField TxtUserName, TxtPassword;
     @FXML
     private BorderPane shadowRoot;
+    @FXML
+    private HBox rfid_btn;
 
     public void initialize() {
         shadowRoot.setVisible(false);
@@ -58,6 +64,17 @@ public class LoginController {
     @FXML
     void showVerification(MouseEvent event) {
         new VerificationView(shadowRoot);
+    }
+
+    @FXML
+    void showRfidPage() {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/auth/login-rfid.fxml"));
+        Stage stage = (Stage) rfid_btn.getScene().getWindow();
+
+        try {
+            Parent root = loader.load();
+            stage.setScene(new Scene(root));
+        }catch (IOException e) { e.printStackTrace(); }
     }
 
 }

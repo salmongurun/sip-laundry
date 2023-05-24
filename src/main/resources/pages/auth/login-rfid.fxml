@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="192.0" fitWidth="192.0" layoutX="587.0" layoutY="76.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/login-rfid.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="425.0" layoutY="366.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tap Kartu RFID Anda">
+         <font>
+            <Font name="Poppins SemiBold" size="50.0" />
+         </font>
+      </Text>
+      <Text fill="#959494" layoutX="437.0" layoutY="405.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sebelum melanjutkan, tempelkan kartu RFID anda pada mesin scanner" textAlignment="CENTER" wrappingWidth="492.4000244140625">
+         <font>
+            <Font name="Poppins Medium" size="20.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER" layoutX="584.0" layoutY="476.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Menunggu Kartu RFID" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

@@ -7,6 +7,7 @@ open module siplaundry {
     requires com.google.gson;
     requires retrofit2;
     requires retrofit2.converter.gson;
+    requires com.google.zxing;
 
     requires javafx.controls;
     requires javafx.fxml;
