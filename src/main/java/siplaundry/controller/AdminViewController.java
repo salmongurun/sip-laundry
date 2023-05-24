@@ -5,8 +5,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.*;
+import javafx.stage.Window;
 import siplaundry.data.SessionData;
 import siplaundry.view.admin.*;
+import siplaundry.view.auth.LoginView;
 
 import java.io.IOException;
 
@@ -30,6 +33,9 @@ public class AdminViewController {
     private HBox btn_sb_transactions;
 
     @FXML
+    private HBox btn_logOut;
+
+    @FXML
     private BorderPane parent_root;
 
     @FXML
@@ -37,6 +43,8 @@ public class AdminViewController {
 
     @FXML
     private BorderPane shadow;
+
+    Stage stage = new Stage();
 
     @FXML
     void initialize() throws IOException {
@@ -101,4 +109,12 @@ public class AdminViewController {
         btn_sb_reports.getStyleClass().remove("active");
 //        btn_sb_transactions.getStyleClass().remove("active");
     }
+
+    @FXML
+    void LogOutAction(MouseEvent event) throws IOException{
+        (new LoginView()).start(stage);
+        Window window = btn_logOut.getScene().getWindow();
+        window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
+    }
+
 }

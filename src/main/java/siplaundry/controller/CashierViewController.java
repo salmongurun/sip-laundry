@@ -7,7 +7,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.*;
+import javafx.stage.Window;
 import siplaundry.data.SessionData;
+import siplaundry.view.auth.LoginView;
 import siplaundry.view.cashier.DashboardView;
 import siplaundry.view.cashier.ExpenseView;
 import siplaundry.view.cashier.ReportView;
@@ -39,6 +42,11 @@ public class CashierViewController {
 
     @FXML
     private Text topbar_name;
+
+    @FXML
+    private HBox btn_LogOut;
+
+    Stage stage = new Stage();
 
     @FXML
     void initialize() throws IOException{
@@ -93,6 +101,13 @@ public class CashierViewController {
         btn_sb_retard.getStyleClass().remove("active");
         btn_sb_transaction.getStyleClass().remove("active");
         btn_sb_expense.getStyleClass().remove("active");
+    }
+
+    @FXML
+    void LogOutAction(MouseEvent event) throws IOException{
+        (new LoginView()).start(stage);
+        Window window = btn_LogOut.getScene().getWindow();
+        window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
     }
 
 }
