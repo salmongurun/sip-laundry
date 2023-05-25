@@ -36,6 +36,7 @@ public class LoginController {
     private BorderPane shadowRoot;
     @FXML
     private HBox rfid_btn;
+    @FXML
     private HBox password_container;
     @FXML
     private FontIcon toggle_icon;
