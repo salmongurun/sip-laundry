@@ -9,6 +9,7 @@ import javafx.stage.*;
 import javafx.stage.Window;
 import siplaundry.data.SessionData;
 import siplaundry.view.admin.*;
+import siplaundry.view.admin.components.modal.logOutConfirm;
 import siplaundry.view.auth.LoginView;
 
 import java.io.IOException;
@@ -51,7 +52,14 @@ public class AdminViewController {
         parent_root.setCenter(new DashboardView());
         topbar_name.setText(SessionData.user.getFullname());
         shadow.setVisible(false);
+    
+        btn_logOut.setOnMouseClicked(event -> {
+            new logOutConfirm(shadow, () -> {
+                LogOut();
+            });
+        });
     }
+    
 
     @FXML
     void showDashboard(MouseEvent event) throws IOException {
@@ -110,11 +118,13 @@ public class AdminViewController {
 //        btn_sb_transactions.getStyleClass().remove("active");
     }
 
-    @FXML
-    void LogOutAction(MouseEvent event) throws IOException{
-        (new LoginView()).start(stage);
-        Window window = btn_logOut.getScene().getWindow();
-        window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
+    
+    void LogOut(){
+        try {
+            (new LoginView()).start(stage);
+            Window window = btn_logOut.getScene().getWindow();
+            window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
+        } catch (IOException e) {e.printStackTrace(); }
     }
 
 }

@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.stage.Window;
 import siplaundry.data.SessionData;
+import siplaundry.view.admin.components.modal.logOutConfirm;
 import siplaundry.view.auth.LoginView;
 import siplaundry.view.cashier.DashboardView;
 import siplaundry.view.cashier.ExpenseView;
@@ -53,6 +54,12 @@ public class CashierViewController {
         parent_root.setCenter(new DashboardView());
         topbar_name.setText(SessionData.user.getFullname());
         shadow.setVisible(false);
+
+        btn_LogOut.setOnMouseClicked(event -> {
+            new logOutConfirm(shadow, () -> {
+                LogOut();
+            });
+        });
     }
 
     @FXML
@@ -103,11 +110,12 @@ public class CashierViewController {
         btn_sb_expense.getStyleClass().remove("active");
     }
 
-    @FXML
-    void LogOutAction(MouseEvent event) throws IOException{
-        (new LoginView()).start(stage);
-        Window window = btn_LogOut.getScene().getWindow();
-        window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
+    void LogOut() {
+        try {
+            (new LoginView()).start(stage);
+            Window window = btn_LogOut.getScene().getWindow();
+            window.fireEvent(new WindowEvent(window, WindowEvent.WINDOW_CLOSE_REQUEST));
+        } catch (IOException e) { e.printStackTrace(); }
     }
 
 }
