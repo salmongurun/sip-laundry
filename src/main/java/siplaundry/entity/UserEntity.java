@@ -10,7 +10,6 @@ public class UserEntity extends Entity {
 
     private Integer user_id;
 
-    @NotBlank(message = "Harap letakkan RFID card dengan benar")
     private String rfid;
 
     @NotBlank(message = "Harap diisi")
