@@ -24,7 +24,6 @@ public class UserRepotest {
     @Order(1)
     public void testAdd() {
         UserEntity acc = new UserEntity(
-                "23454545454",
                 "jok",
                 "joki",
                 "081238560",

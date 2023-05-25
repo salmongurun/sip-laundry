@@ -22,7 +22,6 @@ public class AuthSrvTest {
     @BeforeAll
     public static void init(){
          userEn = new UserEntity(
-            "97564536",
             "Sinta",
             "sinta manila",
             "089787675654",

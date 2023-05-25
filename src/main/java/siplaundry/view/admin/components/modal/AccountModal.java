@@ -102,7 +102,6 @@ public class AccountModal {
     @FXML
     UserEntity validateAccount() {
         UserEntity user = new UserEntity(
-                "2323232323",
             txt_username.getText(),
             txt_fullname.getText(),
             txt_phone.getText(),

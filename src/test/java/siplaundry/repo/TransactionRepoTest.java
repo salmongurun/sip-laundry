@@ -36,7 +36,7 @@ public class TransactionRepoTest {
     @BeforeAll
     public static void init() {
         userId = accRepo.add(new UserEntity(
-               "45454545", "tailor23", "Tailor", "tailor@test.com", "tailor", "tailor123", AccountRole.admin));
+               "tailor23", "Tailor", "tailor@test.com", "tailor", "tailor123", AccountRole.admin));
 
         customerId = custRepo.add(new CustomerEntity(
                 "Silvi", "087238475673"));

@@ -36,8 +36,7 @@ public class UserEntity extends Entity {
     public UserEntity() {
     };
 
-    public UserEntity(String rfid ,String username, String fullname, String phone, String password, String address, AccountRole role) {
-        this.rfid = rfid;
+    public UserEntity(String username, String fullname, String phone, String password, String address, AccountRole role) {
         this.username = username;
         this.fullname = fullname;
         this.phone = formatPhone(phone);
