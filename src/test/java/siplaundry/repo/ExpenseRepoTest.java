@@ -30,7 +30,7 @@ public class ExpenseRepoTest {
     @BeforeAll
     public static void init() {
         userId = accRepo.add(new UserEntity(
-                "tailor23", "Tailor", "tailor@test.com", "tailor", "tailor123", AccountRole.admin));
+                "233112121","tailor23", "Tailor", "tailor@test.com", "tailor", "tailor123", AccountRole.admin));
 
         user = accRepo.get(userId);
     }

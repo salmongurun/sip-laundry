@@ -24,6 +24,7 @@ public class UserRepotest {
     @Order(1)
     public void testAdd() {
         UserEntity acc = new UserEntity(
+                "23454545454",
                 "jok",
                 "joki",
                 "081238560",
@@ -60,6 +61,7 @@ public class UserRepotest {
             // "jember",
             // AccountRole.cashier
         );
+        acc2.setRfid("78786754");
         acc2.setUsername("al21");
         acc2.setFullname("aldea");
         acc2.setPhone("3232333333");

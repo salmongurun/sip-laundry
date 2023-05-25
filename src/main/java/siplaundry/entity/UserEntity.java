@@ -10,6 +10,9 @@ public class UserEntity extends Entity {
 
     private Integer user_id;
 
+    @NotBlank(message = "Harap letakkan RFID card dengan benar")
+    private String rfid;
+
     @NotBlank(message = "Harap diisi")
     private String username;
 
@@ -33,13 +36,22 @@ public class UserEntity extends Entity {
     public UserEntity() {
     };
 
-    public UserEntity(String username, String fullname, String phone, String password, String address, AccountRole role) {
+    public UserEntity(String rfid ,String username, String fullname, String phone, String password, String address, AccountRole role) {
+        this.rfid = rfid;
         this.username = username;
         this.fullname = fullname;
         this.phone = formatPhone(phone);
         this.password = password;
         this.address = address;
         this.role = role;
+    };
+
+    public String getRfid() {
+        return rfid;
+    };
+
+    public void setRfid(String rfid) {
+        this.rfid = rfid;
     };
 
     public Integer getID() {
@@ -49,6 +61,8 @@ public class UserEntity extends Entity {
     public void setID(int id) {
         this.user_id = id;
     };
+
+
 
     public String getUsername() {
         return username;
