@@ -1,16 +1,16 @@
 package siplaundry.controller.auth;
 
 import jakarta.validation.ConstraintViolation;
-import jakarta.validation.Path;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-import jakarta.validation.metadata.ConstraintDescriptor;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.PasswordField;
+import javafx.stage.Stage;
+import siplaundry.data.SessionData;
+import siplaundry.entity.PasswordEntity;
 import siplaundry.entity.UserEntity;
+import siplaundry.repository.UsersRepo;
 import siplaundry.util.ValidationUtil;
-import siplaundry.util.violations.MatchViolation;
+import siplaundry.util.ViewUtil;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -22,6 +22,7 @@ public class ResetPasswordController {
     private PasswordField txt_password, txt_confirm_password;
     private UserEntity user;
     private Map<String, Node> fields;
+    private UsersRepo userRepo = new UsersRepo();
 
     public ResetPasswordController(UserEntity user) {
         this.user = user;
@@ -43,24 +44,13 @@ public class ResetPasswordController {
         );
 
         Set<ConstraintViolation<PasswordEntity>> vols = ValidationUtil.validate(password);
-
-        if(!txt_confirm_password.getText().equals(txt_password.getText())) {
-            vols.add(new MatchViolation<>("confirm", "Konfirmasi Password"));
-        }
-
         ValidationUtil.renderErrors(vols, this.fields);
-    }
-}
 
-class PasswordEntity {
-    @NotBlank(message = "Password tidak boleh kosong")
-    @Size(min = 8, message = "Password minimal 8 karakter")
-    private String password;
+        user.setPassword(password.getPassword());
+        userRepo.Update(user);
 
-    @NotBlank(message = "Konfirmasi password tidak boleh kosong")
-    private String confirm;
-    public PasswordEntity(String password, String confirm) {
-        this.password = password;
-        this.confirm = confirm;
+        Stage stage = (Stage) txt_password.getScene().getWindow();
+        SessionData.user = user;
+        ViewUtil.authRedirector(stage);
     }
 }

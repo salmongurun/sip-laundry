@@ -63,13 +63,10 @@ public class LoginController {
         tray.showAndDismiss(Duration.millis(500));
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2500), ae -> {
-            try {
-                stage.setTitle("Administrator - SIP Laundry");
-                new ViewUtil().authRedirector(stage);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+            stage.setTitle("Administrator - SIP Laundry");
+            ViewUtil.authRedirector(stage);
         }));
+
         timeline.play();
     }
 
