@@ -22,4 +22,12 @@ public class NumberUtil {
 
         return frontDigits + middleStars + endDigits;
     }
+
+    public static Integer convertToInteger(String value) {
+        if(value == null || value.trim().isEmpty() || value.trim().isBlank()) {
+            return null;
+        }
+
+        return Integer.parseInt(value);
+    }
 }

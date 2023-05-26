@@ -1,6 +1,8 @@
 package siplaundry.entity;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import javafx.fxml.FXML;
 import siplaundry.data.Laundryunit;
 
 public class LaundryEntity extends Entity {
@@ -8,17 +10,16 @@ public class LaundryEntity extends Entity {
     public static String tableName = "laundries";
 
     private int laundry_id;
-
-    @NotBlank(message = "Harus diisi")
+    @NotNull(message = "Unit harus diisi")
     private Laundryunit unit;
 
-    @NotBlank(message = "cost harus diisi")
+    @NotNull(message = "Harga harus diisi")
     private Integer cost;
 
     @NotBlank(message = "Nama harus diisi")
     private String name;
 
-    @NotBlank(message = "Harap diisi")
+    @NotNull(message = "Express diisi")
     private boolean IsExpress;
 
     

@@ -39,7 +39,7 @@
          </children>
       </AnchorPane>
       <Text layoutX="6.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Manajemen Harga" />
-      <HBox fx:id="btn_add_price" layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+      <HBox fx:id="btn_add_price" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddPrice" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />

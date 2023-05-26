@@ -13,6 +13,7 @@ import siplaundry.data.Laundryunit;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.LaundryRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
+import siplaundry.view.admin.components.modal.ServiceModal;
 
 public class PriceColumn extends HBox {
     @FXML
@@ -58,6 +59,10 @@ public class PriceColumn extends HBox {
         txt_unit.setText(laundry.getunit().toString());
         txt_cost.setText(Integer.toString(laundry.getcost()));
         txt_IsExpress.setText(express);
+
+        edit_btn.setOnMouseClicked(event -> {
+            new ServiceModal(shadowRoot, refreshTable, laundry);
+        });
 
         delete_btn.setOnMouseClicked(event -> {
             new ConfirmDialog(shadowRoot, () -> {

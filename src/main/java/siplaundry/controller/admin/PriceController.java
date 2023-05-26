@@ -13,6 +13,7 @@ import javafx.scene.text.Text;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.LaundryRepo;
 import siplaundry.view.admin.components.column.PriceColumn;
+import siplaundry.view.admin.components.modal.ServiceModal;
 
 public class PriceController {
     private BorderPane shadowRoot;
@@ -54,6 +55,11 @@ public class PriceController {
         }});
 
         showTable(laundry);
+    }
+
+    @FXML
+    void showAddPrice() {
+        new ServiceModal(shadowRoot, this::showTable, null);
     }
 
     void showTable(List<LaundryEntity> laundry){

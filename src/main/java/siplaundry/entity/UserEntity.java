@@ -12,7 +12,7 @@ public class UserEntity extends Entity {
 
     private String rfid;
 
-    @NotBlank(message = "Harap diisi")
+    @NotBlank(message = "Username harap diisi")
     private String username;
 
     @NotBlank(message = "Nama lengkap harus diisi")
@@ -29,7 +29,7 @@ public class UserEntity extends Entity {
     @NotBlank(message = "Alamat harus diisi")
     private String address;
 
-    @NotNull(message = "Harus diisi")
+    @NotNull(message = "Peran harus diisi")
     private AccountRole role;
 
     public UserEntity() {

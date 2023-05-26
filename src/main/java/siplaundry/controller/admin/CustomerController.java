@@ -45,7 +45,9 @@ public class CustomerController {
     }
 
     @FXML
-    void showAddCustomer(MouseEvent event){ new CustomerModal(shadowRoot, this::showTable, null); }
+    void showAddCustomer(MouseEvent event){
+        new CustomerModal(shadowRoot, this::showTable, null);
+    }
 
     @FXML
     void searchAction(KeyEvent event){
