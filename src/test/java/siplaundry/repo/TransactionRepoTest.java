@@ -39,7 +39,7 @@ public class TransactionRepoTest {
                "tailor23", "Tailor", "tailor@test.com", "tailor", "tailor123", AccountRole.admin));
 
         customerId = custRepo.add(new CustomerEntity(
-                "Silvi", "087238475673"));
+                "Silvi", "087238475673", "jember"));
 
         user = accRepo.get(userId);
 

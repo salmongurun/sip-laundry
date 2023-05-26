@@ -174,9 +174,6 @@ public class AccountModal {
 
         validateAccount();
         userRepo.Update(account);
-
-        trayNotif.setTray("Sukses", "Berhasil mengupdate akun", NotificationType.SUCCESS, AnimationType.POPUP);
-        trayNotif.showAndDismiss(Duration.millis(500));
         closeModal();
     }
 

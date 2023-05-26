@@ -24,7 +24,9 @@ public class CustomerRepoTest {
     public void testAdd() {
         CustomerEntity acc = new CustomerEntity(
                 "joki",
-                "081238560");
+                "081238560",
+                "jember"
+                );
 
         accountId = repo.add(acc);
         assertTrue(accountId > 0);
@@ -50,7 +52,9 @@ public class CustomerRepoTest {
     public void testGetAll() {
         CustomerEntity acc = new CustomerEntity(
                 "Aldea",
-                "33232323");
+                "33232323",
+                "jember"
+                );
 
         assertTrue(repo.add(acc) > 0);
         assertTrue(repo.get().size() > 1);

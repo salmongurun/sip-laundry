@@ -15,11 +15,12 @@ public class CustomerRepo extends Repo<CustomerEntity> {
     private static String getid = "customer_id";
 
     public Integer add(CustomerEntity cust) {
-        String sql = "INSERT INTO " + tableName + " (`name`,`phone`) VALUES (?, ?)";
+        String sql = "INSERT INTO " + tableName + " (`name`,`phone`, `address`) VALUES (?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, cust.getname());
             stmt.setString(2, cust.getphone());
+            stmt.setString(3, cust.getAddress());
             stmt.executeUpdate();
 
             ResultSet rs = stmt.getGeneratedKeys();
@@ -48,12 +49,13 @@ public class CustomerRepo extends Repo<CustomerEntity> {
     }
 
     public boolean Update(CustomerEntity cust) {
-        String sql = "UPDATE " + tableName + " SET name = ?, phone = ? WHERE customer_id = ?";
+        String sql = "UPDATE " + tableName + " SET name = ?, phone = ?, address = ? WHERE customer_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, cust.getname());
             stmt.setString(2, cust.getphone());
-            stmt.setInt(3, cust.getid());
+            stmt.setString(3, cust.getAddress());
+            stmt.setInt(4, cust.getid());
 
             stmt.executeUpdate();
             return stmt.getUpdateCount() > 0;
@@ -72,7 +74,9 @@ public class CustomerRepo extends Repo<CustomerEntity> {
     public CustomerEntity mapToEntity(ResultSet result) throws SQLException {
         CustomerEntity customer = new CustomerEntity(
                 result.getString("name"),
-                result.getString("phone"));
+                result.getString("phone"),
+                result.getString("address")
+        );
 
         customer.setid(result.getInt("customer_id"));
         return customer;

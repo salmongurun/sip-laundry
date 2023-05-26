@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 25, 2023 at 05:33 PM
+-- Generation Time: May 26, 2023 at 05:52 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -29,9 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `customers` (
   `customer_id` int(11) NOT NULL,
+  `address` mediumtext NOT NULL,
   `name` varchar(150) NOT NULL,
   `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `address`, `name`, `phone`) VALUES
+(210, 'jember', 'joki', '081238560'),
+(211, 'jember', 'Aldea', '33232323');
 
 -- --------------------------------------------------------
 
@@ -60,6 +69,13 @@ CREATE TABLE `laundries` (
   `name` varchar(150) NOT NULL,
   `IsExpress` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `laundries`
+--
+
+INSERT INTO `laundries` (`laundry_id`, `unit`, `cost`, `name`, `IsExpress`) VALUES
+(161, 'kilogram', 3323, 'aldea', 0);
 
 -- --------------------------------------------------------
 
@@ -107,7 +123,8 @@ INSERT INTO `options` (`option_id`, `key`, `value`) VALUES
 (67, 'alamat20', 'sumbersari'),
 (69, 'alamat20', 'sumbersari'),
 (71, 'alamat20', 'sumbersari'),
-(73, 'alamat20', 'sumbersari');
+(73, 'alamat20', 'sumbersari'),
+(75, 'alamat20', 'sumbersari');
 
 -- --------------------------------------------------------
 
@@ -178,8 +195,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `rfid`, `username`, `fullname`, `phone`, `password`, `address`, `role`) VALUES
-(228, '2323232323', 'sinta', 'sinta', '6281358301632', 'admin233', 'jember', 'admin'),
-(229, '2323232323', 'sinta', 'sinta', '6281358301632', 'kasir233', 'jember', 'cashier');
+(228, '2323232323', 'sinta', 'sinta1', '6281358301632', 'admin230', 'jember', 'admin'),
+(229, '2323232323', 'sinta111', 'sinta2', '6281358301632', 'kasir233', 'Jember Utara', 'cashier'),
+(258, '0', 'al21', 'aldea', '3232333333', 'haikamu', 'jember', 'cashier'),
+(259, '0', 'Sinta', 'sinta manila', '6289787675654', 'kamu', 'jember', 'admin');
 
 -- --------------------------------------------------------
 
@@ -256,43 +275,43 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
 
 --
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `laundries`
 --
 ALTER TABLE `laundries`
-  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=160;
+  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
 
 --
 -- AUTO_INCREMENT for table `verifications`
 --
 ALTER TABLE `verifications`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=241;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
 
 --
 -- Constraints for dumped tables

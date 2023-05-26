@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
-<fx:root accessibleRole="TEXT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Dashboard kasir" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Dashboard" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="0.0" />
+      <Text layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selamat Datang," AnchorPane.leftAnchor="15.0">
+         <font>
+            <Font name="Poppins SemiBold" size="25.0" />
+         </font>
+      </Text>
+      <Text fx:id="greet_name" layoutX="230.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="[name]" AnchorPane.leftAnchor="235.0">
+         <font>
+            <Font name="Poppins SemiBold" size="25.0" />
+         </font>
+      </Text>
+      <HBox layoutX="36.0" layoutY="97.0" scaleShape="false" spacing="40.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <AnchorPane prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: #278AA6;" styleClass="dashboard-card">
+               <children>
+                  <Text fill="WHITE" layoutX="57.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="PELANGGAN" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fill="WHITE" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="40" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Text fill="WHITE" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="1 - 7 Mei 2023" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <FontIcon iconColor="WHITE" iconLiteral="bx-group" iconSize="125" layoutX="201.0" layoutY="167.0" styleClass="icon" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: #c1e6f0; -fx-border-radius: 10;" styleClass="dashboard-card">
+               <children>
+                  <Text fill="#278aa6" layoutX="57.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="DALAM PROSES" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fill="#278aa6" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="15" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Text fill="#005f82" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="1 - 7 Des 2023" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <FontIcon iconColor="#278aa6" iconLiteral="bx-package" iconSize="105" layoutX="201.0" layoutY="167.0" opacity="0.5" styleClass="btn-outline" translateX="10.0" translateY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="355.0" layoutY="10.0" prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: #278AA6;" styleClass="dashboard-card">
+               <children>
+                  <Text fill="WHITE" layoutX="57.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="DIAMBIL" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fill="WHITE" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="60" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Text fill="WHITE" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="1 - 7 Mei 2023" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-inbox" iconSize="90" layoutX="201.0" layoutY="167.0" opacity="0.5" styleClass="btn-outline" translateX="10.0" translateY="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <AnchorPane layoutX="14.0" layoutY="289.0" prefHeight="410.0" prefWidth="670.0" styleClass="card" AnchorPane.leftAnchor="15.0" />
+      <AnchorPane layoutX="725.0" layoutY="289.0" prefHeight="410.0" prefWidth="315.0" styleClass="card" />
    </children>
 </fx:root>

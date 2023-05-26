@@ -46,7 +46,7 @@ public class TransDetailRepoTest {
             "David", "David Ahkam", "324567", "david", "jember", AccountRole.cashier));
 
         customerId = custRepo.add(new CustomerEntity(
-                "Angel1", "098765897652"));
+                "Angel1", "098765897652", "jember"));
 
         laundryId1 = laundryRepo.add(new LaundryEntity(
                 Laundryunit.pcs, 50000, "Batik", true));

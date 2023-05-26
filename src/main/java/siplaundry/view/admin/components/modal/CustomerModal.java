@@ -89,7 +89,8 @@ public class CustomerModal {
     CustomerEntity validateAccount(){
         CustomerEntity cust = new CustomerEntity(
             txt_fullname.getText(), 
-            txt_phone.getText()
+            txt_phone.getText(),
+            "coba"
         );
 
         Set<ConstraintViolation<CustomerEntity>> vols = ValidationUtil.validate(cust);

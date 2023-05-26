@@ -14,12 +14,13 @@ public class CustomerEntity extends Entity {
     @Size(max = 12, min = 11, message = "No telepon harus valid")
     private String phone;
 
-    public CustomerEntity() {
-    };
+    @NotBlank(message = "Alamat harus diisi")
+    private String address;
 
-    public CustomerEntity(String name, String phone) {
+    public CustomerEntity(String name, String phone, String address) {
         this.name = name;
         this.phone = phone;
+        this.address = address;
     };
 
     public int getid() {
@@ -44,6 +45,14 @@ public class CustomerEntity extends Entity {
 
     public void setphone(String phone) {
         this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 }
