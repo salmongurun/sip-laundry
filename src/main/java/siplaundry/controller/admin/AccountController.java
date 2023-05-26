@@ -8,6 +8,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import siplaundry.data.SessionData;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.view.admin.components.column.AccountColumn;
@@ -64,7 +65,11 @@ public class AccountController {
         account_table.getChildren().clear();
 
         if(users == null) users = userRepo.get();
-        for(UserEntity user: users) { account_table.getChildren().add(new AccountColumn(shadowRoot, this::showTable, user)); }
+        for(UserEntity user: users) {
+            if(!user.getFullname().equals(SessionData.user.getFullname())) {
+                account_table.getChildren().add(new AccountColumn(shadowRoot, this::showTable, user));
+            }
+         }
 
         total_text.setText("Menampilkan total "+ users.size() +" data akun");
     }
