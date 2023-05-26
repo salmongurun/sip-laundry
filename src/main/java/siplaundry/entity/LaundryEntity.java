@@ -10,7 +10,7 @@ public class LaundryEntity extends Entity {
     public static String tableName = "laundries";
 
     private int laundry_id;
-    @NotNull(message = "Unit harus diisi")
+    @NotNull(message = "Satuan harus diisi")
     private Laundryunit unit;
 
     @NotNull(message = "Harga harus diisi")
@@ -19,7 +19,7 @@ public class LaundryEntity extends Entity {
     @NotBlank(message = "Nama harus diisi")
     private String name;
 
-    @NotNull(message = "Express diisi")
+    @NotNull(message = "Express harus diisi")
     private boolean IsExpress;
 
     

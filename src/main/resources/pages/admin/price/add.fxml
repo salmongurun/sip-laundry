@@ -54,19 +54,19 @@
                   <VBox prefWidth="306.0" scaleShape="false" styleClass="form-control">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Satuan" />
-                        <ComboBox fx:id="input_unit" prefHeight="20.0" prefWidth="306.0" styleClass="input" />
+                        <ComboBox fx:id="input_unit" prefHeight="20.0" prefWidth="306.0" style="-fx-padding: 7 5;" styleClass="input" />
                      </children>
                   </VBox>
                </children>
             </HBox>
             <VBox prefWidth="100.0" styleClass="form-control">
                <children>
-                  <CheckBox fx:id="input_express" mnemonicParsing="false" text="Express">
+                  <CheckBox fx:id="input_express" mnemonicParsing="false" text="Tersedia Express">
                      <padding>
                         <Insets left="2.0" />
                      </padding>
                      <font>
-                        <Font name="Poppins Medium" size="14.0" />
+                        <Font name="Poppins Medium" size="12.0" />
                      </font></CheckBox>
                   <HBox prefWidth="200.0" spacing="20.0" />
                </children>
