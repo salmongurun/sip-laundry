@@ -77,7 +77,7 @@ public class LoginController {
 
     @FXML
     void showRFIDAuth() {
-        new RFIDAuthView(shadowRoot);
+        new RFIDAuthView(shadowRoot, (Stage) shadowRoot.getScene().getWindow());
     }
 
     @FXML

@@ -21,3 +21,40 @@
     -fx-font-family: "Poppins Medium";
     -fx-font-size: 16;
 }
+
+.rfid-container {
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.rfid-container .text {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 15;
+}
+
+.rfid-container.waiting {
+    -fx-background-color: #c1e6f0;
+    -fx-border-color: #278AA6;
+}
+
+.rfid-container.waiting .text {
+    -fx-fill: #005F82;
+}
+
+.rfid-container.success {
+    -fx-background-color: #deedec;
+    -fx-border-color: #7db9b6;
+}
+
+.rfid-container.success .text {
+    -fx-fill: #7db9b6;
+}
+
+.rfid-container.failed {
+    -fx-background-color: #fcd3d3;
+    -fx-border-color: #F45050;
+}
+
+.rfid-container.failed .text {
+    -fx-fill: #F45050;
+}
