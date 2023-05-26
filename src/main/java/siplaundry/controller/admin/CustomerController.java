@@ -56,6 +56,7 @@ public class CustomerController {
         List<CustomerEntity> cust = custRepo.search(new HashMap<>(){{
             put("name", keyword);
             put("phone", keyword);
+            put("address", keyword);
         }});
 
         showTable(cust);

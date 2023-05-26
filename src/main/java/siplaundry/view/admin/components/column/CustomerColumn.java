@@ -6,18 +6,21 @@ import java.util.function.Consumer;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import siplaundry.entity.CustomerEntity;
-import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.CustomerRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.admin.components.modal.CustomerModal;
 
 public class CustomerColumn extends HBox{
     @FXML
-    private Text txt_name, txt_phone;
+    private Text txt_name, txt_phone, txt_address; 
+    
+    // @FXML
+    // private TextArea txt_address;
 
     @FXML
     private HBox edit_btn, delete_btn;
@@ -47,6 +50,7 @@ public class CustomerColumn extends HBox{
     void initialize(){
         txt_name.setText(cust.getname());
         txt_phone.setText(cust.getphone());
+        txt_address.setText(cust.getAddress());
 
         edit_btn.setOnMouseClicked(event -> {
             new CustomerModal(shadowRoot, refreshTable, cust);
