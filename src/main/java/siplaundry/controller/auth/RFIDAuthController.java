@@ -25,6 +25,7 @@ public class RFIDAuthController {
 
     private UsersRepo userRepo = new UsersRepo();
     private Stage primaryStage;
+    private boolean isScanMode = true;
 
     public RFIDAuthController(Stage primaryStage) {
         this.primaryStage = primaryStage;
@@ -42,9 +43,9 @@ public class RFIDAuthController {
     }
 
     @FXML
-    void checkRFID() throws InterruptedException {
+    void checkRFID() {
         rfid_scan_text.setText("Memindai...");
-        String rfid = input_rfid.getText();
+        String rfid = input_rfid.getText().replaceAll("\\s+", " ");
 
         rfid_container.getStyleClass().remove("success");
         rfid_container.getStyleClass().remove("failed");
@@ -54,10 +55,8 @@ public class RFIDAuthController {
         }
 
         List<UserEntity> users = userRepo.get(new HashMap<>() {{
-            put("rfid", rfid.replaceAll("\\s+", " "));
+            put("rfid", rfid);
         }});
-
-        System.out.println(rfid.replaceAll("\\s+", " "));
 
         if(users.size() > 0) {
             rfid_container.getStyleClass().add("success");
