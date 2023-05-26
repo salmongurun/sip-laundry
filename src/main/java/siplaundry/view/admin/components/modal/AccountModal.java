@@ -1,6 +1,8 @@
 package siplaundry.view.admin.components.modal;
 
 import jakarta.validation.ConstraintViolation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -10,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.*;
+import javafx.util.Duration;
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
@@ -95,8 +98,14 @@ public class AccountModal {
         }
 
         userRepo.add(validateAccount());
+
         trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
-        closeModal();
+        trayNotif.showAndDismiss(Duration.millis(500));
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ae -> {
+            closeModal();
+        }));
+        timeline.play();
+
     }
 
     @FXML
@@ -167,6 +176,8 @@ public class AccountModal {
         userRepo.Update(account);
 
         trayNotif.setTray("Sukses", "Berhasil mengupdate akun", NotificationType.SUCCESS, AnimationType.POPUP);
+        trayNotif.showAndDismiss(Duration.millis(500));
         closeModal();
     }
+
 }
