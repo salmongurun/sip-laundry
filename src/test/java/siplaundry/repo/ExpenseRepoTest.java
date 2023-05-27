@@ -46,7 +46,9 @@ public class ExpenseRepoTest {
         ExpenseEntity exp = new ExpenseEntity(
             "sasa", 
             new Date(), 
-            23, 
+            2000,
+            4, 
+            "beli di toko",
             user
         );
 
@@ -76,6 +78,8 @@ public class ExpenseRepoTest {
             "haiii", 
             new Date(), 
             2000, 
+            5,
+            "beli ditoko",
             user
         );
 

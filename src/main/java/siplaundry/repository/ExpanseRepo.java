@@ -17,13 +17,15 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
 
     public Integer add(ExpenseEntity exp) {
         String sql = "INSERT INTO " + tableName
-                + " (`name`, `expense_date`, `amount`, `user_id`) VALUES (?, ?, ?, ?)";
+                + " (`name`, `expense_date`, `subtotal`, `qty`, `optional`, `user_id`) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             stmt.setString(1, exp.getName().toString());
             stmt.setDate(2, new Date(exp.getExpanse_date().getTime()));
-            stmt.setInt(3, exp.getAmount());
-            stmt.setInt(4, exp.getUser_id().getID());
+            stmt.setInt(3, exp.getSubtotal());
+            stmt.setInt(4, exp.getQty());
+            stmt.setString(5, exp.getOptional());
+            stmt.setInt(6, exp.getUser_id().getID());
 
             stmt.executeUpdate();
 
@@ -59,14 +61,16 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
 
     public boolean Update(ExpenseEntity exp) {
         String sql = "UPDATE " + tableName
-                + " SET name = ?, expense_date = ?, amount = ?, user_id = ? WHERE expense_id = ?";
+                + " SET name = ?, expense_date = ?, subtotal = ?, qty = ?, optional = ?, user_id = ? WHERE expense_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, exp.getName().toString());
             stmt.setDate(2, new Date(exp.getExpanse_date().getTime()));
-            stmt.setInt(3, exp.getAmount());
-            stmt.setInt(4, exp.getUser_id().getID());
-            stmt.setInt(5, exp.getExpanse_id());
+            stmt.setInt(3, exp.getSubtotal());
+            stmt.setInt(4, exp.getQty());
+            stmt.setString(5, exp.getOptional());
+            stmt.setInt(6, exp.getUser_id().getID());
+            stmt.setInt(7, exp.getExpanse_id());
 
             stmt.executeUpdate();
 
@@ -89,7 +93,9 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
         ExpenseEntity exp = new ExpenseEntity(
                 result.getString("name"),
                 result.getDate("expense_date"),
-                result.getInt("amount"),
+                result.getInt("subtotal"),
+                result.getInt("qty"),
+                result.getString("optional"),
                 new UsersRepo().get(userId)
         );
         

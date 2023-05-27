@@ -9,20 +9,30 @@ public class ExpenseEntity extends Entity {
 
     private int expanse_id;
 
-    @NotBlank
+    @NotBlank(message = "Harap isikan katagori pengeluaran")
     private String name;
 
     private Date expanse_date;
 
-    @NotBlank
+    @NotBlank(message = "jumlah produk harap diisi")
+    private int qty;
+
+    @NotBlank(message = "Harap masukkan harga tiap produk")
+    private int subtotal;
+
     private int amount;
+
+    @NotBlank(message = "Harap diisi")
+    private String optional;
 
     private UserEntity user_id;
 
-    public ExpenseEntity(String name, Date expanse_date, int amount, UserEntity user_id) {
+    public ExpenseEntity(String name, Date expanse_date, int qty, int subtotal, String optional, UserEntity user_id) {
         this.name = name;
         this.expanse_date = expanse_date;
-        this.amount = amount;
+        this.qty = qty;
+        this.subtotal = subtotal;
+        this.optional = optional;
         this.user_id = user_id;
     }
 
@@ -64,6 +74,30 @@ public class ExpenseEntity extends Entity {
 
     public void setUser_id(UserEntity user_id) {
         this.user_id = user_id;
+    }
+
+    public int getQty() {
+        return qty;
+    }
+
+    public void setQty(int qty) {
+        this.qty = qty;
+    }
+
+    public int getSubtotal() {
+        return subtotal;
+    }
+
+    public void setSubtotal(int subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public String getOptional() {
+        return optional;
+    }
+
+    public void setOptional(String optional) {
+        this.optional = optional;
     }
 
 
