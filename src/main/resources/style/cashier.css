@@ -1,5 +1,260 @@
+.primary-background {
+    -fx-background-color: #005F82;
+}
+
+.primary-outline {
+    -fx-border-color: #005F82;
+}
+
 .page-title {
     -fx-font-size: 14px;
     -fx-font-family: "Poppins SemiBold";
     -fx-fill: #8A8B90;
+}
+
+.icon-button {
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-padding: 10px 20px;
+    -fx-spacing: 10;
+    -fx-cursor: hand;
+}
+
+.icon-button .icon {
+    -fx-font-size: 18px;
+    -fx-fill: white;
+}
+
+.icon-button .text {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12px;
+    -fx-fill: white;
+    -fx-translate-y: 1;
+}
+
+.btn-outline {
+    -fx-background-color: transparent;
+}
+
+.btn-outline .icon,
+.btn-outline .text{
+    -fx-fill: #414F8C;
+}
+
+.card {
+    -fx-background-color: white;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-border-color: #e3e3e3;
+    -fx-padding: 15 10;
+}
+
+.dashboard-card {
+    -fx-background-radius: 10;
+    -fx-padding: 20 10;
+}
+
+.dashboard-card .title {
+    -fx-font-family: "Poppins SemiBold";
+    -fx-font-size: 10;
+}
+
+.dashboard-card .numeric {
+    -fx-font-family: "Poppins SemiBold";
+    -fx-font-size: 50;
+}
+
+.dashboard-card .date {
+    -fx-font-family: Poppins;
+    -fx-font-size: 10;
+}
+
+.dashboard-card .icon {
+    -fx-translate-y: 40;
+    -fx-translate-x: 20;
+    -fx-opacity: 0.5;
+}
+
+/* Form Area */
+.form-control {
+    -fx-spacing: 10;
+}
+
+.form-control .input {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12px;
+    -fx-padding: 10px 10px;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-border-color: #CBCBCB;
+}
+
+.form-control .input.text-area {
+    -fx-background-color: transparent, white, transparent, white;
+    -fx-border-color: #CBCBCB;
+}
+
+.form-control .input.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.form-control .input:focused,
+.form-control .input.text-area:focused
+{
+    -fx-border-color: #005F82;
+    -fx-font-size: 14;
+    -fx-text-fill: #005F82;
+}
+
+.form-control .input.error {
+    -fx-border-color: #E96479;
+}
+
+.form-control .label {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12;
+    -fx-fill: #374151;
+}
+
+.form-control .error-message {
+    -fx-font-family: "Poppins";
+    -fx-font-size: 12;
+    -fx-fill: #E96479;
+    -fx-translate-y: -10;
+}
+
+.table-header {
+    -fx-background-color: #E0F4FB;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+    -fx-padding: 10 20;
+    -fx-spacing: 30;
+}
+
+.table-header .check-header {
+    -fx-pref-height: 16;
+    -fx-pref-width: 16;
+}
+
+.table-header .label {
+    -fx-font-family: "Ubuntu";
+    -fx-font-weight: bold;
+    -fx-font-size: 14;
+    -fx-fill: #278AA6;
+}
+
+.table-scroll {
+    -fx-border-color: transparent;
+    -fx-background-insets: none;
+    -fx-background: white;
+}
+
+.table-scroll .table-content-container {
+    -fx-spacing: 5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-border-color: #F1F1F1;
+}
+
+.table-content {
+    -fx-padding: 8 20 12 20;
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-spacing: 30;
+    -fx-border-color: transparent transparent #F1F1F1 transparent;
+}
+
+.table-content:hover {
+    -fx-background-color: #eff9fd;
+}
+
+.table-content .check-item {
+    -fx-pref-height: 16;
+    -fx-pref-width: 16;
+}
+
+.table-content .text {
+    -fx-font-family: "Lexend Medium";
+    -fx-font-size: 12;
+    -fx-wrap-text: true;
+    -fx-fill: #7f7f7f;
+}
+
+.table-content .table-action {
+    -fx-spacing: 5;
+    -fx-cursor: hand;
+}
+
+.table-content .table-action .delete-button {
+    -fx-background-color: #fceff1;
+    -fx-padding: 6 12;
+    -fx-background-radius: 20;
+}
+
+.table-content .table-action .edit-button {
+    -fx-background-color: #f0f4f4;
+    -fx-padding: 6 12;
+    -fx-background-radius: 20;
+}
+
+.table-content .table-action .delete-button .icon {
+    -fx-fill: #E96479
+}
+
+.table-content .table-action .edit-button .icon {
+    -fx-fill: #7DB9B6
+}
+
+.table-search {
+    -fx-border-color: #D9D9D9;
+    -fx-border-radius: 6;
+    -fx-padding: 7 15;
+}
+
+.table-search .input {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12;
+    -fx-background-color: transparent, transparent, transparent, transparent;
+}
+
+/* Mengubah warna primer dan akcentuasi */
+.root {
+    -fx-primary-color: #009688;
+    -fx-accent-color: #FF5722;
+}
+
+/* Mengubah warna tombol */
+.jfx-button {
+    -fx-background-color: #009688;
+    -fx-text-fill: white;
+}
+
+/* Mengubah warna label */
+.jfx-label {
+    -fx-text-fill: #009688;
+}
+
+/* Mengubah warna field input */
+.jfx-text-field {
+    -fx-text-fill: #009688;
+}
+
+/* Mengubah warna tabel */
+.jfx-table-view {
+    -fx-base: #FAFAFA;
+    -fx-table-header-border-color: #009688;
+    -fx-table-header-background-color: #009688;
+    -fx-table-cell-border-color: #BDBDBD;
+}
+
+/* Mengubah warna pilihan dalam combobox */
+.jfx-combo-box .combo-box-popup .list-view .list-cell {
+    -fx-text-fill: #009688;
+}
+
+/* Mengubah warna baris yang dipilih dalam tabel */
+.jfx-table-view .table-row-cell:filled:selected {
+    -fx-background-color: #009688;
+    -fx-text-fill: white;
 }

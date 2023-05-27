@@ -93,8 +93,9 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
         ExpenseEntity exp = new ExpenseEntity(
                 result.getString("name"),
                 result.getDate("expense_date"),
-                result.getInt("subtotal"),
                 result.getInt("qty"),
+                result.getInt("subtotal"),
+                result.getInt("amount"),
                 result.getString("optional"),
                 new UsersRepo().get(userId)
         );

@@ -99,7 +99,7 @@ public class CashierViewController {
         removeAllStates();
         btn_sb_expense.getStyleClass().add("active");
 
-        parent_root.setCenter(new ExpenseView());
+        parent_root.setCenter(new ExpenseView(shadow));
     }
 
     private void removeAllStates(){

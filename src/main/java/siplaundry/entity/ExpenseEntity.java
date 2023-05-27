@@ -35,6 +35,15 @@ public class ExpenseEntity extends Entity {
         this.optional = optional;
         this.user_id = user_id;
     }
+    public ExpenseEntity(String name, Date expanse_date, int qty, int subtotal, int amount, String optional, UserEntity user_id) {
+        this.name = name;
+        this.expanse_date = expanse_date;
+        this.qty = qty;
+        this.subtotal = subtotal;
+        this.amount = amount;
+        this.optional = optional;
+        this.user_id = user_id;
+    }
 
     public String getName() {
         return name;
