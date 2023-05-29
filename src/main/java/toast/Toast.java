@@ -1,9 +1,6 @@
 package toast;
 
 import animatefx.animation.*;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -19,6 +16,7 @@ public class Toast extends AnchorPane {
     @FXML
     private FontIcon icon;
     private AnchorPane rootNode;
+    private double duration = 2;
     public Toast(AnchorPane rootNode) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/toast/toast.fxml"));
         this.rootNode = rootNode;
@@ -30,9 +28,9 @@ public class Toast extends AnchorPane {
         } catch(IOException e) { e.printStackTrace(); }
     }
 
-    @FXML
-    void initialize() {
-
+    public Toast setDuration(double seconds) {
+        this.duration = seconds;
+        return this;
     }
 
     public void show(ToastType type, String messageText, Runnable action) {
@@ -55,7 +53,7 @@ public class Toast extends AnchorPane {
 
         AnimationFX incomingAnimation = new FadeInRight(this);
         AnimationFX outcomingAnimation = new FadeOut(this);
-        outcomingAnimation.setDelay(Duration.millis(2000));
+        outcomingAnimation.setDelay(Duration.millis(this.duration * 1000));
 
         incomingAnimation.setOnFinished(event -> {
             outcomingAnimation.play();

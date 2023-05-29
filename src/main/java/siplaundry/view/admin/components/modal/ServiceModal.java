@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.*;
@@ -23,6 +24,8 @@ import siplaundry.entity.UserEntity;
 import siplaundry.repository.LaundryRepo;
 import siplaundry.util.NumberUtil;
 import siplaundry.util.ValidationUtil;
+import toast.Toast;
+import toast.ToastType;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -84,12 +87,9 @@ public class ServiceModal {
         }
 
         laundryRepo.add(validateLaundry());
-        trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
-        trayNotif.showAndDismiss(Duration.millis(500));
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ae -> {
-            closeModal();
-        }));
-        timeline.play();
+        new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+            .show(ToastType.SUCCESS, "Berhasil menambahkan layanan", null);
+        closeModal();
     }
 
     @FXML
@@ -146,8 +146,8 @@ public class ServiceModal {
         validateLaundry();
         laundryRepo.Update(laundry);
 
-        trayNotif.setTray("Sukses", "Berhasil mengupdate akun", NotificationType.SUCCESS, AnimationType.POPUP);
-        trayNotif.showAndDismiss(Duration.millis(500));
+        new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+            .show(ToastType.SUCCESS, "Berhasil mengupdate layanan", null);
         closeModal();
     }
 

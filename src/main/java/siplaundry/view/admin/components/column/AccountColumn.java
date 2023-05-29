@@ -2,6 +2,7 @@ package siplaundry.view.admin.components.column;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -10,6 +11,8 @@ import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.view.admin.components.modal.AccountModal;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
+import toast.Toast;
+import toast.ToastType;
 
 import java.io.IOException;
 import java.util.List;
@@ -45,6 +48,8 @@ public class AccountColumn extends HBox {
 
     @FXML
     void initialize() {
+        Toast toast = new Toast((AnchorPane) shadowRoot.getScene().getRoot());
+
         setRoleColor();
 
         txt_fullname.setText(user.getFullname());
@@ -60,6 +65,7 @@ public class AccountColumn extends HBox {
             new ConfirmDialog(shadowRoot, () -> {
                 userRepo.delete(user.getID());
                 refreshTable.accept(null);
+                toast.show(ToastType.SUCCESS, "Berhasil menghapus akun", null);
             });
         });
     }

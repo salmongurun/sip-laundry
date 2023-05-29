@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -26,6 +27,8 @@ import javafx.stage.WindowEvent;
 import siplaundry.entity.CustomerEntity;
 import siplaundry.repository.CustomerRepo;
 import siplaundry.util.ValidationUtil;
+import toast.Toast;
+import toast.ToastType;
 
 public class CustomerModal {
     @FXML
@@ -88,6 +91,8 @@ public class CustomerModal {
         }
 
         custRepo.add(validateAccount());
+        new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+                .show(ToastType.SUCCESS, "Berhasil menambahkan customer", null);
         closeModal();
     }
 
@@ -150,7 +155,8 @@ public class CustomerModal {
         validateAccount();
         custRepo.Update(cust);
 
+        new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+            .show(ToastType.SUCCESS, "Berhasil mengupdate customer", null);
         closeModal();
-
     }
 }

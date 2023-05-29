@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.*;
@@ -17,6 +18,8 @@ import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.util.ValidationUtil;
+import toast.Toast;
+import toast.ToastType;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -99,13 +102,9 @@ public class AccountModal {
 
         userRepo.add(validateAccount());
 
-        trayNotif.setTray("Sukses", "Berhasil menambahkan akun", NotificationType.SUCCESS, AnimationType.POPUP);
-        trayNotif.showAndDismiss(Duration.millis(500));
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2000), ae -> {
-            closeModal();
-        }));
-        timeline.play();
-
+        (new Toast((AnchorPane) shadowRoot.getScene().getRoot()))
+            .show(ToastType.SUCCESS, "Berhasil menambahkan akun", null);
+        closeModal();
     }
 
     @FXML
@@ -174,6 +173,9 @@ public class AccountModal {
 
         validateAccount();
         userRepo.Update(account);
+
+        new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+            .show(ToastType.SUCCESS, "Berhasil mengupdate akun", null);
         closeModal();
     }
 

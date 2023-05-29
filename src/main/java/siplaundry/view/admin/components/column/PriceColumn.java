@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -14,6 +15,8 @@ import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.LaundryRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.admin.components.modal.ServiceModal;
+import toast.Toast;
+import toast.ToastType;
 
 public class PriceColumn extends HBox {
     @FXML
@@ -67,6 +70,8 @@ public class PriceColumn extends HBox {
         delete_btn.setOnMouseClicked(event -> {
             new ConfirmDialog(shadowRoot, () -> {
                 laundRepo.delete(laundry.getid());
+                new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+                    .show(ToastType.SUCCESS, "Berhasil menghapus layanan", null);
                 refreshTable.accept(null);
             });
         });
@@ -88,6 +93,4 @@ public class PriceColumn extends HBox {
         express_background.setStyle(express_background.getStyle() + "-fx-background-color: #f0f4f4;");
     }
    }
-   
-    
 }

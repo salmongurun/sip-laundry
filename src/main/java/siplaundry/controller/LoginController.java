@@ -62,9 +62,10 @@ public class LoginController {
             return;
          }
 
-         toast.show(ToastType.SUCCESS, "Berhasil login", () -> {
-             ViewUtil.authRedirector(stage);
-         });
+         toast.setDuration(1)
+            .show(ToastType.SUCCESS, "Berhasil login", () -> {
+                 ViewUtil.authRedirector(stage);
+            });
     }
 
     @FXML

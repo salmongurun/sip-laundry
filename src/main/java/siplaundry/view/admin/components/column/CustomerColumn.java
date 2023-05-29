@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
@@ -14,6 +15,8 @@ import siplaundry.entity.CustomerEntity;
 import siplaundry.repository.CustomerRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.admin.components.modal.CustomerModal;
+import toast.Toast;
+import toast.ToastType;
 
 public class CustomerColumn extends HBox{
     @FXML
@@ -59,6 +62,9 @@ public class CustomerColumn extends HBox{
         delete_btn.setOnMouseClicked(event -> {
             new ConfirmDialog(shadowRoot, () -> {
                 custRepo.delete(cust.getid());
+
+                new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+                    .show(ToastType.SUCCESS, "Berhasil menghapus customer", null);
                 refreshTable.accept(null);
             });
         });
