@@ -1,5 +1,7 @@
 package siplaundry.controller.auth;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
@@ -7,6 +9,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import javafx.util.Duration;
 import siplaundry.data.SessionData;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
@@ -44,6 +47,10 @@ public class RFIDAuthController {
 
     @FXML
     void checkRFID() {
+        if(!isScanMode) {
+            return;
+        }
+
         rfid_scan_text.setText("Memindai...");
         String rfid = input_rfid.getText().replaceAll("\\s+", " ");
 
@@ -54,6 +61,8 @@ public class RFIDAuthController {
             return;
         }
 
+        isScanMode = false;
+
         List<UserEntity> users = userRepo.get(new HashMap<>() {{
             put("rfid", rfid);
         }});
@@ -62,13 +71,33 @@ public class RFIDAuthController {
             rfid_container.getStyleClass().add("success");
             rfid_scan_text.setText("Berhasil mengautentikasi");
 
-            closeModal();
-            SessionData.user = users.get(0);
-            ViewUtil.authRedirector(primaryStage);
+            Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), ae -> {
+                closeModal();
+                SessionData.user = users.get(0);
+                ViewUtil.authRedirector(primaryStage);
+            }));
+
+            timeline.play();
+
             return;
         }
 
         rfid_container.getStyleClass().add("failed");
         rfid_scan_text.setText("Gagal mengautentikasi");
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(1000), ae -> {
+            resetScan();
+        }));
+
+        timeline.play();
+    }
+
+    private void resetScan() {
+        input_rfid.setText("");
+        rfid_scan_text.setText("Menunggu kartu...");
+        rfid_container.getStyleClass().remove("success");
+        rfid_container.getStyleClass().remove("failed");
+
+        isScanMode = true;
     }
 }

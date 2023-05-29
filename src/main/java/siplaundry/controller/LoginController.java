@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -18,6 +19,8 @@ import siplaundry.service.AuthService;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.auth.RFIDAuthView;
 import siplaundry.view.auth.VerificationView;
+import toast.Toast;
+import toast.ToastType;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
@@ -49,25 +52,19 @@ public class LoginController {
         addPasswordElement();
     }
 
-    public void ButtonLoginAction() throws IOException {
+    public void ButtonLoginAction() {
+        AnchorPane rootNode = (AnchorPane) shadowRoot.getScene().getRoot();
         Stage stage = (Stage) TxtUserName.getScene().getWindow();
-        TrayNotification tray = new TrayNotification();
+        Toast toast = new Toast(rootNode);
 
          if(!new AuthService().login(TxtUserName.getText(), password)){
-            tray.setTray("sign in","username atau password yang anda masukkan salah", NotificationType.WARNING, AnimationType.POPUP);
-            tray.showAndDismiss(Duration.millis(500));
-             return;
+            toast.show(ToastType.FAILED, "Username atau password salah", null);
+            return;
          }
 
-        tray.setTray("sign in","Berhasil Login", NotificationType.SUCCESS, AnimationType.POPUP);
-        tray.showAndDismiss(Duration.millis(500));
-
-        Timeline timeline = new Timeline(new KeyFrame(Duration.millis(2500), ae -> {
-            stage.setTitle("Administrator - SIP Laundry");
-            ViewUtil.authRedirector(stage);
-        }));
-
-        timeline.play();
+         toast.show(ToastType.SUCCESS, "Berhasil login", () -> {
+             ViewUtil.authRedirector(stage);
+         });
     }
 
     @FXML

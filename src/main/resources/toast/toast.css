@@ -1,0 +1,17 @@
+.toast-success {
+    -fx-background-color: #7DB9B6;
+}
+
+.toast-failed {
+    -fx-background-color: #E96479;
+}
+
+.toast-success .message,
+.toast-failed .message{
+    -fx-fill: white;
+}
+
+.toast-success .icon,
+.toast-failed .icon{
+    -fx-fill: white;
+}

@@ -14,6 +14,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.util.Duration;
 import siplaundry.data.Laundryunit;
@@ -42,6 +43,8 @@ public class ServiceModal {
     private CheckBox input_express;
     @FXML
     private Button close_btn;
+    @FXML
+    private Text modal_title;
     private Node shadowRoot;
     private Consumer<List<LaundryEntity>> refreshTable;
     private TrayNotification trayNotif = new TrayNotification();
@@ -68,6 +71,7 @@ public class ServiceModal {
         }};
 
         if(laundry != null) {
+            modal_title.setText("Edit Layanan");
             changeUpdate();
         }
     }
