@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -35,6 +36,9 @@ public class CustomerModal {
 
     @FXML
     private TextField txt_fullname, txt_phone;
+    
+    @FXML
+    private TextArea txt_address;
 
     private CustomerRepo custRepo = new CustomerRepo();
 
@@ -58,6 +62,7 @@ public class CustomerModal {
         this.fields = new HashMap<>(){{
             put("name", txt_fullname);
             put("phone", txt_phone);
+            put("address", txt_address);
         }};
 
         if(this.cust != null) changeUpdate();
@@ -65,6 +70,7 @@ public class CustomerModal {
         this.fields = new HashMap<>() {{
             put("name" , txt_fullname);
             put("phone", txt_phone);
+            put("address", txt_address);
         }};
     }
 
@@ -90,7 +96,7 @@ public class CustomerModal {
         CustomerEntity cust = new CustomerEntity(
             txt_fullname.getText(), 
             txt_phone.getText(),
-            "coba"
+            txt_address.getText()
         );
 
         Set<ConstraintViolation<CustomerEntity>> vols = ValidationUtil.validate(cust);
@@ -132,12 +138,14 @@ public class CustomerModal {
         modal_subtitle.setText("Perbarui Informasi");
 
         txt_fullname.setText(cust.getname());
-        txt_phone.setText(cust.getphone());        
+        txt_phone.setText(cust.getphone());  
+        txt_address.setText(cust.getAddress());      
     }
 
     public void saveUpdate(){
         cust.setname(txt_fullname.getText());
         cust.setphone((txt_phone.getText()));
+        cust.setAddress(txt_address.getText());
 
         validateAccount();
         custRepo.Update(cust);

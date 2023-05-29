@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 26, 2023 at 05:52 AM
+-- Generation Time: May 27, 2023 at 08:13 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -34,14 +34,6 @@ CREATE TABLE `customers` (
   `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `customers`
---
-
-INSERT INTO `customers` (`customer_id`, `address`, `name`, `phone`) VALUES
-(210, 'jember', 'joki', '081238560'),
-(211, 'jember', 'Aldea', '33232323');
-
 -- --------------------------------------------------------
 
 --
@@ -52,9 +44,20 @@ CREATE TABLE `expense` (
   `expense_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `expense_date` date NOT NULL,
-  `amount` int(11) NOT NULL,
+  `subtotal` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `amount` int(11) NOT NULL DEFAULT 0,
+  `optional` mediumtext NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Triggers `expense`
+--
+DELIMITER $$
+CREATE TRIGGER `add_amountExp` BEFORE INSERT ON `expense` FOR EACH ROW SET NEW.`amount` = NEW.`qty` * NEW.`subtotal`
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -196,9 +199,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`user_id`, `rfid`, `username`, `fullname`, `phone`, `password`, `address`, `role`) VALUES
 (228, '2323232323', 'sinta', 'sinta1', '6281358301632', 'admin230', 'jember', 'admin'),
-(229, '2323232323', 'sinta111', 'sinta2', '6281358301632', 'kasir233', 'Jember Utara', 'cashier'),
-(258, '0', 'al21', 'aldea', '3232333333', 'haikamu', 'jember', 'cashier'),
-(259, '0', 'Sinta', 'sinta manila', '6289787675654', 'kamu', 'jember', 'admin');
+(260, '0', 'sinta', 'sinta2', '6289876231213', 'kasir230', 'jember', 'cashier');
 
 -- --------------------------------------------------------
 
@@ -275,13 +276,13 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
 
 --
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `laundries`
@@ -305,7 +306,7 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=260;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
 
 --
 -- AUTO_INCREMENT for table `verifications`

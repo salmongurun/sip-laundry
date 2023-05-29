@@ -1,11 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
-
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/cashier.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Pengeluaran" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="194.0" layoutY="218.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="42.0" layoutY="84.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
+               <children>
+                  <CheckBox mnemonicParsing="false" />
+                  <Text layoutX="76.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Tanggal" wrappingWidth="80.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Katagori Pengeluaran" wrappingWidth="180.0" />
+                  <Text layoutX="333.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Biaya" wrappingWidth="70.0" />
+                  <Text layoutX="145.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Jumlah " wrappingWidth="70.0" />
+                  <Text layoutX="571.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Total" wrappingWidth="70.0" />
+                  <Text layoutX="415.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Keterangan" wrappingWidth="200.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="130.0" />
+               </children>
+            </HBox>
+            <Text fx:id="total_text" fill="#7f7f7f" layoutX="24.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data pengeluaran" />
+            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">
+               <children>
+                  <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" />
+                  <TextField fx:id="txt_keyword" onKeyReleased="#searchAction" prefWidth="200.0" promptText="Cari disini..." styleClass="input" />
+               </children>
+            </HBox>
+            <ScrollPane layoutX="72.0" layoutY="217.0" prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="135.0">
+               <content>
+                  <VBox fx:id="expense_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+      <HBox fx:id="btn_add_expense" layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+         <styleClass>
+            <String fx:value="icon-button" />
+            <String fx:value="btn-outline" />
+            <String fx:value="primary-outline" />
+         </styleClass>
+         <children>
+            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Pengeluaran" />
+         </children>
+      </HBox>
    </children>
 </fx:root>
