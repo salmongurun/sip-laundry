@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -56,6 +57,12 @@
                   <VBox fx:id="account_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
                </content>
             </ScrollPane>
+            <HBox alignment="CENTER_LEFT" layoutX="920.0" layoutY="28.0" styleClass="form-control">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Sort By:" wrappingWidth="45.0" />
+                  <ComboBox fx:id="CB_sortBy" onAction="#SortAction" prefHeight="20.0" prefWidth="100.0" style="-fx-padding: 7 5;" styleClass="input" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
       <Text layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Manajemen Akun">

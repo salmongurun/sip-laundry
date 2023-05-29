@@ -42,6 +42,10 @@ public class UsersRepo extends Repo<UserEntity> {
         return super.getAll(tableName);
     }
 
+    public List<UserEntity> sortBy(String column, String condition){
+        return super.sortBy(tableName, column, condition);
+    }
+
     public UserEntity get(Integer id) {
         return super.get(tableName, getid, id);
     }

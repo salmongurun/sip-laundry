@@ -30,6 +30,23 @@ public abstract class Repo<E> {
         return table;
     }
 
+    public List<E> sortBy(String tableName,String column, String condition){
+        String sql = "SELECT * FROM " + tableName + " ORDER BY " + column + condition;
+        List<E> table = new ArrayList<>();
+
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            ResultSet result = statement.executeQuery();
+            System.out.println(statement.toString());
+            while (result.next()) {
+                table.add(mapToEntity(result));
+            }
+        } catch (Exception e) {
+        }
+
+        return table;
+
+    }
+
     public List<E> get(String tableName, Map<String, Object> values) {
         int iterate = 0;
         String sql = "SELECT * FROM " + tableName + " WHERE ";

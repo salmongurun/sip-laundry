@@ -1,6 +1,9 @@
 package siplaundry.controller.admin;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -23,23 +26,32 @@ public class AccountController {
     @FXML
     private HBox btn_add_account;
 
+    
     @FXML
     private VBox account_table;
-
+    
     @FXML
     private Text total_text;
     @FXML
     private TextField txt_keyword;
-
+    
     private UsersRepo userRepo = new UsersRepo();
 
+    @FXML
+    private ComboBox<String> CB_sortBy;
+    
     public AccountController(BorderPane shadow) {
         this.shadowRoot = shadow;
     }
 
     @FXML
     void initialize() {
-        System.out.println("Sip");
+        ObservableList<String> items = FXCollections.observableArrayList(
+            "A-Z",
+            "Z-A"
+        );
+        CB_sortBy.setItems(items);
+
         List<UserEntity> users = userRepo.get();
         showTable(users);
     }
@@ -60,6 +72,17 @@ public class AccountController {
 
         showTable(users);
     }
+
+    @FXML
+    void SortAction(){
+        String column = " DESC";
+        
+        if(CB_sortBy.getValue().equals("A-Z")){
+            column = " ASC";
+        }
+        List<UserEntity> users = userRepo.sortBy("fullname", column);
+        showTable(users);
+     }
 
     public void showTable(List<UserEntity> users) {
         account_table.getChildren().clear();
