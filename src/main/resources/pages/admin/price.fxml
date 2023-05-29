@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -36,6 +37,13 @@
                </children>
             </HBox>
             <Text fx:id="total_Text" fill="#7f7f7f" layoutX="17.0" layoutY="554.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data akun" AnchorPane.leftAnchor="17.0" AnchorPane.topAnchor="539.0" />
+            <HBox alignment="CENTER_LEFT" layoutX="920.0" layoutY="28.0" styleClass="form-control" AnchorPane.rightAnchor="9.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Sort By" />
+                  <ComboBox fx:id="CB_column" prefWidth="140.0" promptText="Jenis Cucian" style="-fx-padding: 7 5;" styleClass="input" />
+                  <ComboBox fx:id="CB_sortBy" onAction="#SortAction" prefWidth="90.0" promptText="A-Z" style="-fx-padding: 7 5;" styleClass="input" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
       <Text layoutX="6.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Manajemen Layanan" />

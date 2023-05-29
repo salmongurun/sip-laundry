@@ -39,6 +39,8 @@ public class AccountController {
 
     @FXML
     private ComboBox<String> CB_sortBy;
+    @FXML
+    private ComboBox<String> CB_column;
     
     public AccountController(BorderPane shadow) {
         this.shadowRoot = shadow;
@@ -51,6 +53,13 @@ public class AccountController {
             "Z-A"
         );
         CB_sortBy.setItems(items);
+
+        ObservableList<String> column = FXCollections.observableArrayList(
+            "Role",
+            "Username",
+            "Fullname"
+        );
+        CB_column.setItems(column);
 
         List<UserEntity> users = userRepo.get();
         showTable(users);
@@ -80,7 +89,7 @@ public class AccountController {
         if(CB_sortBy.getValue().equals("A-Z")){
             column = " ASC";
         }
-        List<UserEntity> users = userRepo.sortBy("fullname", column);
+        List<UserEntity> users = userRepo.sortBy(CB_column.getValue(), column);
         showTable(users);
      }
 

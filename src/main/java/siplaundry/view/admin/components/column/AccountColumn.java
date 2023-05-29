@@ -65,7 +65,7 @@ public class AccountColumn extends HBox {
             new ConfirmDialog(shadowRoot, () -> {
                 userRepo.delete(user.getID());
                 refreshTable.accept(null);
-                toast.show(ToastType.SUCCESS, "Berhasil menghapus akun", null);
+                toast.setDuration(1).show(ToastType.SUCCESS, "Berhasil menghapus akun", null);
             });
         });
     }

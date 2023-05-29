@@ -57,10 +57,11 @@
                   <VBox fx:id="account_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
                </content>
             </ScrollPane>
-            <HBox alignment="CENTER_LEFT" layoutX="920.0" layoutY="28.0" styleClass="form-control">
+            <HBox alignment="CENTER_LEFT" layoutX="920.0" layoutY="28.0" styleClass="form-control" AnchorPane.rightAnchor="9.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Sort By:" wrappingWidth="45.0" />
-                  <ComboBox fx:id="CB_sortBy" onAction="#SortAction" prefHeight="20.0" prefWidth="100.0" style="-fx-padding: 7 5;" styleClass="input" />
+                  <ComboBox fx:id="CB_column" prefHeight="20.0" prefWidth="125.0" promptText="role" style="-fx-padding: 7 5;" styleClass="input" />
+                  <ComboBox fx:id="CB_sortBy" onAction="#SortAction" prefHeight="20.0" prefWidth="90.0" promptText="A-Z" style="-fx-padding: 7 5;" styleClass="input" />
                </children>
             </HBox>
          </children>

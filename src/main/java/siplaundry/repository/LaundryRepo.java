@@ -70,6 +70,10 @@ public class LaundryRepo extends Repo<LaundryEntity> {
         return false;
     }
 
+    public List<LaundryEntity> sortBy(String column, String condition){
+        return super.sortBy(tableName, column, condition);
+    }
+
     public boolean delete(int id) {
         return super.delete(tableName, getid, id);
     }

@@ -66,6 +66,10 @@ public class CustomerRepo extends Repo<CustomerEntity> {
         return false;
     }
 
+    public List<CustomerEntity> sortBy(String column, String condition){
+        return super.sortBy(tableName, column, condition);
+    }
+
     public boolean delete(int id) {
         return super.delete(tableName, getid, id);
     }
