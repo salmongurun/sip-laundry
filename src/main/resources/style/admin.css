@@ -2,8 +2,16 @@
     -fx-background-color: #005F82;
 }
 
+.danger-background {
+    -fx-background-color: #E96479;
+}
+
 .primary-outline {
     -fx-border-color: #005F82;
+}
+
+.danger-outline {
+    -fx-border-color: #E96479;
 }
 
 .page-title {
@@ -36,9 +44,18 @@
     -fx-background-color: transparent;
 }
 
-.btn-outline .icon,
-.btn-outline .text{
+.btn-outline.primary-outline .icon,
+.btn-outline.primary-outline .text{
     -fx-fill: #414F8C;
+}
+
+.btn-outline.danger-outline .icon,
+.btn-outline.danger-outline .text{
+    -fx-fill: #E96479;
+}
+
+.btn-outline:disabled {
+    -fx-border-color: #CBCBCB;
 }
 
 .card {

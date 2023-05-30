@@ -7,6 +7,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -16,31 +17,30 @@ import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.view.admin.components.column.AccountColumn;
 import siplaundry.view.admin.components.modal.AccountModal;
+import siplaundry.view.admin.components.modal.ConfirmDialog;
+import toast.Toast;
+import toast.ToastType;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class AccountController {
-    private BorderPane shadowRoot;
-
     @FXML
-    private HBox btn_add_account;
-
-    
+    private HBox btn_add_account, btn_bulk_delete;
     @FXML
     private VBox account_table;
-    
     @FXML
     private Text total_text;
     @FXML
     private TextField txt_keyword;
-    
-    private UsersRepo userRepo = new UsersRepo();
-
     @FXML
     private ComboBox<String> CB_sortBy;
     @FXML
     private ComboBox<String> CB_column;
+
+    private BorderPane shadowRoot;
+    private UsersRepo userRepo = new UsersRepo();
+    private Set<UserEntity> bulkItems = new HashSet<>();
+    private ArrayList<AccountColumn> accColumns = new ArrayList<>();
     
     public AccountController(BorderPane shadow) {
         this.shadowRoot = shadow;
@@ -93,16 +93,51 @@ public class AccountController {
         showTable(users);
      }
 
+     @FXML
+     void selectBulkAll() {
+        for(AccountColumn column: accColumns) {
+            column.toggleBulk();
+        }
+     }
+
+     @FXML
+     void bulkDelete() {
+        new ConfirmDialog(shadowRoot, () -> {
+            for(UserEntity user: this.bulkItems) {
+                userRepo.delete(user.getID());
+            }
+
+            new Toast((AnchorPane) btn_bulk_delete.getScene().getRoot())
+                    .show(ToastType.SUCCESS, "Berhasil melakukan hapus semua", null);
+            showTable(userRepo.get());
+        });
+     }
+
     public void showTable(List<UserEntity> users) {
+        accColumns.clear();
         account_table.getChildren().clear();
 
         if(users == null) users = userRepo.get();
         for(UserEntity user: users) {
-            if(!user.getFullname().equals(SessionData.user.getFullname())) {
-                account_table.getChildren().add(new AccountColumn(shadowRoot, this::showTable, user));
-            }
+            if(user.getUsername().equals(SessionData.user.getUsername())) continue;
+
+            AccountColumn column = new AccountColumn(shadowRoot, this::showTable, user);
+            column.setBulkAction(this::toggleBulkItem);
+
+            account_table.getChildren().add(column);
+            accColumns.add(column);
          }
 
         total_text.setText("Menampilkan total "+ users.size() +" data akun");
+    }
+
+    protected void toggleBulkItem(UserEntity user) {
+        if (this.bulkItems.contains(user)) {
+            this.bulkItems.remove(user);
+        } else {
+            this.bulkItems.add(user);
+        }
+
+        btn_bulk_delete.setDisable(this.bulkItems.size() < 1);
     }
 }
