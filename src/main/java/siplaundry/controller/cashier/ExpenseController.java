@@ -6,6 +6,7 @@ import java.util.List;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -39,6 +40,11 @@ public class ExpenseController {
         List<ExpenseEntity> exp = expRepo.get();
 
         showTable(exp);
+    }
+
+    @FXML
+    void showAddAccount(MouseEvent event){
+        
     }
 
     @FXML
