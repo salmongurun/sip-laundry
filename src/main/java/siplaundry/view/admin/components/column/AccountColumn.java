@@ -2,6 +2,7 @@ package siplaundry.view.admin.components.column;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -21,9 +22,10 @@ import java.util.function.Consumer;
 public class AccountColumn extends HBox {
     @FXML
     private Text txt_username, txt_phone, txt_fullname, txt_role;
-
     @FXML
     private HBox role_background, edit_btn, delete_btn;
+    @FXML
+    private CheckBox bulk_check;
 
     private UserEntity user;
     private UsersRepo userRepo = new UsersRepo();
@@ -68,6 +70,16 @@ public class AccountColumn extends HBox {
                 toast.setDuration(1).show(ToastType.SUCCESS, "Berhasil menghapus akun", null);
             });
         });
+    }
+
+    public void setBulkAction(Consumer<UserEntity> action) {
+        bulk_check.selectedProperty().addListener((ob, ov, nv) -> {
+            action.accept(this.user);
+        });
+    }
+
+    public void toggleBulk() {
+        bulk_check.setSelected(!bulk_check.isSelected());
     }
 
     void setRoleColor() {

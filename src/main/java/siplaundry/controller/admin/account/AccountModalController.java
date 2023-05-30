@@ -1,21 +1,12 @@
 package siplaundry.controller.admin.account;
 
-import jakarta.validation.ConstraintViolation;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
 
 import siplaundry.data.AccountRole;
-import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
-
-import siplaundry.util.ValidationUtil;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
-
-import java.util.Set;
 
 public class AccountModalController {
     @FXML
@@ -37,7 +28,6 @@ public class AccountModalController {
     private  ToggleGroup roleGroup;
 
     private UsersRepo userRepo = new UsersRepo();
-    private TrayNotification trayNotif = new TrayNotification();
     private AccountRole accRole;
 
     @FXML

@@ -1,8 +1,6 @@
 package siplaundry.view.admin.components.modal;
 
 import jakarta.validation.ConstraintViolation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,18 +15,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.*;
-import javafx.util.Duration;
 import siplaundry.data.Laundryunit;
 import siplaundry.entity.LaundryEntity;
-import siplaundry.entity.UserEntity;
 import siplaundry.repository.LaundryRepo;
 import siplaundry.util.NumberUtil;
 import siplaundry.util.ValidationUtil;
 import toast.Toast;
 import toast.ToastType;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -50,7 +43,6 @@ public class ServiceModal {
     private Text modal_title;
     private Node shadowRoot;
     private Consumer<List<LaundryEntity>> refreshTable;
-    private TrayNotification trayNotif = new TrayNotification();
     private LaundryEntity laundry;
 
     private Map<String, Node> fields;

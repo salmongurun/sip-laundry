@@ -1,8 +1,6 @@
 package siplaundry.view.admin.components.modal;
 
 import jakarta.validation.ConstraintViolation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,16 +11,12 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.*;
-import javafx.util.Duration;
 import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.util.ValidationUtil;
 import toast.Toast;
 import toast.ToastType;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -53,7 +47,6 @@ public class AccountModal {
     private  ToggleGroup roleGroup;
 
     private UsersRepo userRepo = new UsersRepo();
-    private TrayNotification trayNotif = new TrayNotification();
     private AccountRole accRole;
     private Node shadowRoot;
     private UserEntity account;

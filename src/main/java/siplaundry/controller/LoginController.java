@@ -21,9 +21,6 @@ import siplaundry.view.auth.RFIDAuthView;
 import siplaundry.view.auth.VerificationView;
 import toast.Toast;
 import toast.ToastType;
-import tray.animations.AnimationType;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 import java.io.IOException;
 
