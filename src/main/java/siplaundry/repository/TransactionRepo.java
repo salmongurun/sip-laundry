@@ -73,6 +73,14 @@ public class TransactionRepo extends Repo<TransactionEntity> {
         return super.searchByUser(tableName, user, values);
     }
 
+    public String DashboardCount(String function, String count,  Map<String, Object> values){
+       return super.DashboardCount(function , count, tableName, "pickup_date", values);
+    }
+
+    public String DashboardCount(String function, String count){
+        return super.DashboardCount(function, count, tableName, "pickup_date");
+    }
+
     public boolean Update(TransactionEntity trans) {
         String sql = "UPDATE " + tableName
                 + " SET transaction_date = ?, retard = ?, pickup_date = ?, status = ?, payment_status = ?, amount = ?, user_id = ?, customer_id = ? WHERE transaction_id = ?";

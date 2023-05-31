@@ -154,6 +154,19 @@ public class TransactionRepoTest {
 
     @Test
     @Order(8)
+    public void testDashboard(){
+        String total = repo.DashboardCount("count", "transaction_id", new HashMap<>(){{
+            put("status", "process");
+        }});
+
+        String cust = repo.DashboardCount("count", "customer_id");
+
+        System.out.println(total);
+        System.out.println(cust);
+    }
+
+    @Test
+    @Order(9)
     public void testDelete() {
         assertTrue(repo.delete(transactionId));
     }

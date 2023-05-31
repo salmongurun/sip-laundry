@@ -24,24 +24,24 @@
             <AnchorPane prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: #278AA6;" styleClass="dashboard-card">
                <children>
                   <Text fill="WHITE" layoutX="57.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="PELANGGAN" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Text fill="WHITE" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="40" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
-                  <Text fill="WHITE" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="1 - 7 Mei 2023" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fx:id="txt_cust" fill="WHITE" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="40" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Text fill="WHITE" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="7 Hari Terakhir" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <FontIcon iconColor="WHITE" iconLiteral="bx-group" iconSize="125" layoutX="201.0" layoutY="167.0" styleClass="icon" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: white; -fx-border-color: #c1e6f0; -fx-border-radius: 10;" styleClass="dashboard-card">
                <children>
                   <Text fill="#278aa6" layoutX="57.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="DALAM PROSES" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Text fill="#278aa6" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="15" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
-                  <Text fill="#005f82" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="1 - 7 Des 2023" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fx:id="txt_process" fill="#278aa6" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="15" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Text fill="#005f82" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="7 Hari Terakhir" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <FontIcon iconColor="#278aa6" iconLiteral="bx-package" iconSize="105" layoutX="201.0" layoutY="167.0" opacity="0.5" styleClass="btn-outline" translateX="10.0" translateY="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>
             <AnchorPane layoutX="355.0" layoutY="10.0" prefHeight="174.0" prefWidth="315.0" style="-fx-background-color: #278AA6;" styleClass="dashboard-card">
                <children>
                   <Text fill="WHITE" layoutX="57.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="DIAMBIL" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <Text fill="WHITE" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="60" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
-                  <Text fill="WHITE" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="1 - 7 Mei 2023" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Text fx:id="txt_taken" fill="WHITE" layoutX="40.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="numeric" text="60" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="10.0" />
+                  <Text fill="WHITE" layoutX="209.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="date" text="7 Hari Terakhir" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   <FontIcon iconColor="WHITE" iconLiteral="fas-inbox" iconSize="90" layoutX="201.0" layoutY="167.0" opacity="0.5" styleClass="btn-outline" translateX="10.0" translateY="32.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                </children>
             </AnchorPane>

@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -13,6 +15,10 @@ import siplaundry.util.DatabaseUtil;
 
 public abstract class Repo<E> {
     final Connection conn = DatabaseUtil.getConnection();
+    Date date = new Date();
+
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String dateString = sdf.format(date);
 
     public List<E> getAll(String tableName) {
         String sql = "SELECT * FROM " + tableName;
@@ -140,6 +146,55 @@ public abstract class Repo<E> {
         }
 
         return table;
+    }
+
+    public String DashboardCount(String function, String count, String tableName, String condition,  Map<String, Object> values){
+        int iterate = 0;
+        String total = null;
+        String sql = "SELECT " + function + "(" + count +") AS total FROM " + tableName + " WHERE " + condition + " >= DATE_SUB(?, INTERVAL 7 DAY)";
+
+        if(values != null){
+            sql += " AND ";
+            for (String valueKey : values.keySet()) {
+                if (iterate > 0)
+                    sql += " OR ";
+                sql += (valueKey + " = '" + values.get(valueKey) + "'");
+    
+                iterate++;
+            }
+        }
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            DatabaseUtil.prepareStmt(stmt, values, 0);
+            stmt.setString(1, dateString);
+
+            System.out.println(stmt.toString());
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                total = rs.getString("total");
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return total;
+    }
+    public String DashboardCount(String function, String count, String tableName, String condition){
+        String total = null;
+        String sql = "SELECT " + function + "(" + count +") AS total FROM " + tableName + " WHERE " + condition + " >= DATE_SUB(?, INTERVAL 7 DAY)";
+
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, dateString);
+
+            System.out.println(stmt.toString());
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                total = rs.getString("total");
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return total;
     }
 
     public boolean delete(String tableName, String getid, int id) {
