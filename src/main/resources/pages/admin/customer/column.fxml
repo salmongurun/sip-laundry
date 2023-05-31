@@ -7,7 +7,7 @@
 
 <fx:root alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleShape="false" styleClass="table-content" stylesheets="@../../../style/admin.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <CheckBox mnemonicParsing="false" styleClass="check-item" />
+      <CheckBox fx:id="bulk_check" mnemonicParsing="false" styleClass="check-item" />
       <Text fx:id="txt_name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Nama" wrappingWidth="240.0" />
       <Text fx:id="txt_phone" layoutX="77.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="081358301632" wrappingWidth="240.0" />
       <Text fx:id="txt_address" layoutX="40.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="jember" wrappingWidth="255.0" />

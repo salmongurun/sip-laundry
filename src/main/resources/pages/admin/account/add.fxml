@@ -36,7 +36,7 @@
             <FontIcon iconLiteral="bx-x" iconSize="25" text="" />
          </graphic>
       </Button>
-      <Text fx:id="modal_subtitle" fill="#8a8b90" layoutX="15.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detail pengguna" AnchorPane.leftAnchor="15.0">
+      <Text fx:id="modal_subtitle" fill="#8a8b90" layoutX="15.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detail pengguna" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="57.1298828125">
          <font>
             <Font name="Poppins Medium" size="11.0" />
          </font>

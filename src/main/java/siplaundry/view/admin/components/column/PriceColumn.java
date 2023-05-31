@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -24,6 +25,9 @@ public class PriceColumn extends HBox {
 
    @FXML
    private HBox edit_btn, delete_btn, unit_background, express_background;
+
+   @FXML
+   private CheckBox bulk_check;
 
    private LaundryEntity laundry;
    private LaundryRepo laundRepo = new LaundryRepo();
@@ -76,6 +80,16 @@ public class PriceColumn extends HBox {
             });
         });
    }
+
+   public void setBulkAction(Consumer<LaundryEntity> action) {
+        bulk_check.selectedProperty().addListener((ob, ov, nv) -> {
+            action.accept(this.laundry);
+        });
+    }
+
+    public void toggleBulk(){
+        bulk_check.setSelected(!bulk_check.isSelected());
+    }
 
    void setUnitColor(){
         if(laundry.getunit() == Laundryunit.kilogram){

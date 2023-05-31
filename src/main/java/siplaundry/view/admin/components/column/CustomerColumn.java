@@ -6,7 +6,7 @@ import java.util.function.Consumer;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -22,8 +22,8 @@ public class CustomerColumn extends HBox{
     @FXML
     private Text txt_name, txt_phone, txt_address; 
     
-    // @FXML
-    // private TextArea txt_address;
+    @FXML
+    private CheckBox bulk_check;
 
     @FXML
     private HBox edit_btn, delete_btn;
@@ -69,5 +69,15 @@ public class CustomerColumn extends HBox{
             });
         });
 
+    }
+
+    public void setBulkAction(Consumer<CustomerEntity> action) {
+        bulk_check.selectedProperty().addListener((ob, ov, nv) -> {
+            action.accept(this.cust);
+        });
+    }
+
+    public void toggleBulk(){
+        bulk_check.setSelected(!bulk_check.isSelected());
     }
 }
