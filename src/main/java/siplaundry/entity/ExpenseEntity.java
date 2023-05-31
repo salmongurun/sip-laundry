@@ -14,10 +14,10 @@ public class ExpenseEntity extends Entity {
 
     private Date expanse_date;
 
-    @NotBlank(message = "jumlah produk harap diisi")
+    // @NotBlank(message = "jumlah produk harap diisi")
     private int qty;
 
-    @NotBlank(message = "Harap masukkan harga tiap produk")
+    // @NotBlank(message = "Harap masukkan harga tiap produk")
     private int subtotal;
 
     private int amount;

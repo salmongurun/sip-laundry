@@ -7,12 +7,17 @@ import java.util.function.Consumer;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.CheckBox;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ExpanseRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
+import siplaundry.view.cashier.modal.ExpenseModal;
+import toast.Toast;
+import toast.ToastType;
 
 public class ExpenseColumn extends HBox {
     @FXML
@@ -21,12 +26,15 @@ public class ExpenseColumn extends HBox {
     @FXML
     private HBox edit_btn, delete_btn;
 
+    @FXML
+    private CheckBox bulk_check;
+
     private ExpenseEntity exp;
-    private ExpanseRepo expRepo;
+    private ExpanseRepo expRepo = new ExpanseRepo();
     private BorderPane shadowRoot;
 
     private Consumer<List<ExpenseEntity>> refreshTable;
-    SimpleDateFormat dateFormat = new SimpleDateFormat("dd//MM/YYYY");
+    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
 
     public ExpenseColumn(BorderPane shadowRoot, Consumer<List<ExpenseEntity>> refreshTable, ExpenseEntity exp){
         this.exp = exp;
@@ -45,6 +53,8 @@ public class ExpenseColumn extends HBox {
 
     @FXML
     void initialize(){
+        Toast toast = new Toast((AnchorPane) shadowRoot.getScene().getRoot());
+        
         txt_name.setText(exp.getName());
         txt_date.setText(dateFormat.format(exp.getExpanse_date()));
         txt_subtotal.setText(Integer.toString(exp.getSubtotal()));
@@ -52,12 +62,26 @@ public class ExpenseColumn extends HBox {
         txt_amount.setText(Integer.toString(exp.getAmount()));
         txt_optional.setText(exp.getOptional());
 
+        edit_btn.setOnMouseClicked(event -> {
+            new ExpenseModal(shadowRoot, refreshTable, exp);
+        });
+
         delete_btn.setOnMouseClicked(event -> {
             new ConfirmDialog(shadowRoot, () -> {
                 expRepo.delete(exp.getExpanse_id());
                 refreshTable.accept(null);
+                toast.setDuration(1).show(ToastType.SUCCESS, "Berhasil menghapus data", null);
             });
         });
         
     }
+
+    public void setBulkAction(Consumer<ExpenseEntity> action) {
+        bulk_check.selectedProperty().addListener((ob, ov, nv) -> {
+            action.accept(this.exp);
+        });
+    }
+
+    public void toggleBulk(){ bulk_check.setSelected(!bulk_check.isSelected()); }
+
 }

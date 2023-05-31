@@ -2,6 +2,7 @@
 
 <?import java.lang.String?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,11 +14,11 @@
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/cashier.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Pengeluaran" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <AnchorPane layoutX="194.0" layoutY="218.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+      <AnchorPane layoutX="-10.0" layoutY="121.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="-10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="121.0">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="42.0" layoutY="84.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
                <children>
-                  <CheckBox mnemonicParsing="false" />
+                  <CheckBox fx:id="check_bulk_all" mnemonicParsing="false" onMouseClicked="#selectBulkAll" />
                   <Text layoutX="76.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Tanggal" wrappingWidth="80.0" />
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Katagori Pengeluaran" wrappingWidth="180.0" />
                   <Text layoutX="333.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Biaya" wrappingWidth="70.0" />
@@ -39,9 +40,16 @@
                   <VBox fx:id="expense_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
                </content>
             </ScrollPane>
+            <HBox alignment="CENTER_LEFT" layoutX="920.0" layoutY="28.0" styleClass="form-control" AnchorPane.rightAnchor="9.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sort By: " />
+                  <ComboBox fx:id="CB_column" prefHeight="20.0" prefWidth="200.0" promptText="Katagori Pengeluaran" style="-fx-padding: 7 5;" styleClass="input" />
+                  <ComboBox fx:id="CB_sortBy" onAction="#SortAction" prefHeight="20.0" prefWidth="90.0" promptText="A-Z" style="-fx-padding: 7 5;" styleClass="input" />
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
-      <HBox fx:id="btn_add_expense" layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+      <HBox fx:id="btn_add_expense" layoutX="894.0" layoutY="20.0" onMouseClicked="#showAddExpense" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
@@ -50,6 +58,17 @@
          <children>
             <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Pengeluaran" />
+         </children>
+      </HBox>
+      <HBox fx:id="btn_bulk_delete" disable="true" layoutX="750.0" layoutY="50.0" onMouseClicked="#bulkDelete" prefWidth="16.0">
+         <styleClass>
+            <String fx:value="icon-button" />
+            <String fx:value="btn-outline" />
+            <String fx:value="danger-outline" />
+         </styleClass>
+         <children>
+            <FontIcon iconLiteral="bx-trash" styleClass="icon" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Hapus Semua" />
          </children>
       </HBox>
    </children>

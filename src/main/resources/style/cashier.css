@@ -2,8 +2,16 @@
     -fx-background-color: #005F82;
 }
 
+.danger-background {
+    -fx-background-color: #E96479;
+}
+
 .primary-outline {
     -fx-border-color: #005F82;
+}
+
+.danger-outline {
+    -fx-border-color: #E96479;
 }
 
 .page-title {
@@ -36,9 +44,18 @@
     -fx-background-color: transparent;
 }
 
-.btn-outline .icon,
-.btn-outline .text{
+.btn-outline.primary-outline .icon,
+.btn-outline.primary-outline .text{
     -fx-fill: #414F8C;
+}
+
+.btn-outline.danger-outline .icon,
+.btn-outline.danger-outline .text{
+    -fx-fill: #E96479;
+}
+
+.btn-outline:disabled {
+    -fx-border-color: #CBCBCB;
 }
 
 .card {
@@ -216,45 +233,4 @@
     -fx-font-family: "Poppins Medium";
     -fx-font-size: 12;
     -fx-background-color: transparent, transparent, transparent, transparent;
-}
-
-/* Mengubah warna primer dan akcentuasi */
-.root {
-    -fx-primary-color: #009688;
-    -fx-accent-color: #FF5722;
-}
-
-/* Mengubah warna tombol */
-.jfx-button {
-    -fx-background-color: #009688;
-    -fx-text-fill: white;
-}
-
-/* Mengubah warna label */
-.jfx-label {
-    -fx-text-fill: #009688;
-}
-
-/* Mengubah warna field input */
-.jfx-text-field {
-    -fx-text-fill: #009688;
-}
-
-/* Mengubah warna tabel */
-.jfx-table-view {
-    -fx-base: #FAFAFA;
-    -fx-table-header-border-color: #009688;
-    -fx-table-header-background-color: #009688;
-    -fx-table-cell-border-color: #BDBDBD;
-}
-
-/* Mengubah warna pilihan dalam combobox */
-.jfx-combo-box .combo-box-popup .list-view .list-cell {
-    -fx-text-fill: #009688;
-}
-
-/* Mengubah warna baris yang dipilih dalam tabel */
-.jfx-table-view .table-row-cell:filled:selected {
-    -fx-background-color: #009688;
-    -fx-text-fill: white;
 }

@@ -82,6 +82,10 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
         return false;
     }
 
+    public List<ExpenseEntity> sortBy(String column, String condition){
+        return super.sortBy(tableName, column, condition);
+    }
+
     public boolean delete(int id) {
         return super.delete(tableName, getid, id);
     }
