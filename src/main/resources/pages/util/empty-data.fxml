@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<fx:root alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="25.0" style="-fx-padding: 20 0 10;" type="VBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fx:id="display_image" fitHeight="221.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../images/empty-data-imagepng.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="display_text" fill="#293134" strokeType="OUTSIDE" strokeWidth="0.0" text="Belum terdapat data untuk ditampilkan" textAlignment="CENTER" wrappingWidth="300.0">
+         <font>
+            <Font name="Poppins Medium" size="14.0" />
+         </font>
+      </Text>
+      <HBox alignment="CENTER" prefWidth="200.0" scaleShape="false">
+         <children>
+            <HBox fx:id="action_btn" alignment="CENTER" prefHeight="30.0" prefWidth="89.0" scaleShape="false" spacing="8.0" style="-fx-padding: 5 10; -fx-background-color: #005F82; -fx-background-radius: 10;" translateY="-15.0">
+               <children>
+                  <FontIcon fill="WHITE" iconLiteral="bx-plus-circle" iconSize="16" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah Data">
+                     <font>
+                        <Font name="Poppins Medium" size="10.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</fx:root>

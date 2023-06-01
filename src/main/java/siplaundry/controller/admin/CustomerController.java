@@ -21,6 +21,7 @@ import siplaundry.repository.CustomerRepo;
 import siplaundry.view.admin.components.column.CustomerColumn;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.admin.components.modal.CustomerModal;
+import siplaundry.view.util.EmptyData;
 import toast.Toast;
 import toast.ToastType;
 
@@ -74,7 +75,7 @@ public class CustomerController {
     }
 
     @FXML
-    void showAddCustomer(MouseEvent event){
+    void showAddCustomer(){
         new CustomerModal(shadowRoot, this::showTable, null);
     }
 
@@ -127,6 +128,10 @@ public class CustomerController {
         customer_table.getChildren().clear();
 
         if(customer == null) customer = custRepo.get();
+        if(customer.size() < 1) {
+            customer_table.getChildren().add(new EmptyData(this::showAddCustomer, txt_keyword.getText()));
+        }
+
         for(CustomerEntity cust : customer){
             // customer_table.getChildren().add(new CustomerColumn(shadowRoot, this::showTable, cust));
             
