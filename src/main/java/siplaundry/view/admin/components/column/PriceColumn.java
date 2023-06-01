@@ -61,7 +61,6 @@ public class PriceColumn extends HBox {
         if(!laundry.getIsExpress()){ express = "Reguler"; }
         else{ express = "Express"; }
 
-        System.out.println(laundry.getname());
         txt_name.setText(laundry.getname());
         txt_unit.setText(laundry.getunit().toString());
         txt_cost.setText(Integer.toString(laundry.getcost()));

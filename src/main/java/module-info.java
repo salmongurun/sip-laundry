@@ -8,7 +8,6 @@ open module siplaundry {
     requires retrofit2;
     requires retrofit2.converter.gson;
     requires com.google.zxing;
-    requires com.jfoenix;
 
     requires javafx.controls;
     requires javafx.fxml;

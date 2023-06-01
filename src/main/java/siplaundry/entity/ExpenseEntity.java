@@ -3,6 +3,7 @@ package siplaundry.entity;
 import java.util.Date;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class ExpenseEntity extends Entity {
     public static String tableName = "expanse";
@@ -14,10 +15,10 @@ public class ExpenseEntity extends Entity {
 
     private Date expanse_date;
 
-    // @NotBlank(message = "jumlah produk harap diisi")
+    @NotNull(message = "jumlah produk harap diisi")
     private int qty;
 
-    // @NotBlank(message = "Harap masukkan harga tiap produk")
+    @NotNull(message = "Harap masukkan harga tiap produk")
     private int subtotal;
 
     private int amount;

@@ -60,7 +60,7 @@
             <HBox alignment="CENTER_LEFT" layoutX="920.0" layoutY="28.0" styleClass="form-control" AnchorPane.rightAnchor="9.0">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Sort By:" wrappingWidth="45.0" />
-                  <ComboBox fx:id="CB_column" prefHeight="20.0" prefWidth="125.0" promptText="role" style="-fx-padding: 7 5;" styleClass="input" />
+                  <ComboBox fx:id="CB_column" prefHeight="20.0" prefWidth="155.0" promptText="Role" style="-fx-padding: 7 5;" styleClass="input" />
                   <ComboBox fx:id="CB_sortBy" onAction="#SortAction" prefHeight="20.0" prefWidth="90.0" promptText="A-Z" style="-fx-padding: 7 5;" styleClass="input" />
                </children>
             </HBox>
@@ -78,7 +78,7 @@
             <String fx:value="danger-outline" />
          </styleClass>
          <children>
-            <FontIcon iconLiteral="bx-trash" styleClass="icon" />
+            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Hapus Semua" />
          </children>
       </HBox>

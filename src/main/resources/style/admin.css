@@ -234,3 +234,6 @@
     -fx-font-size: 12;
     -fx-background-color: transparent, transparent, transparent, transparent;
 }
+.combo-box .list-cell .text {
+    -fx-font-family: "FontAwesome";
+}

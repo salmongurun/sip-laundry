@@ -16,25 +16,10 @@ import java.io.IOException;
 
 public class AdminViewController {
     @FXML
-    private HBox btn_sb_dashboard;
+    private HBox btn_sb_dashboard, btn_sb_accounts, btn_sb_cust, btn_sb_prices;
 
     @FXML
-    private HBox btn_sb_accounts;
-
-    @FXML
-    private HBox btn_sb_cust;
-
-    @FXML
-    private HBox btn_sb_prices;
-
-    @FXML
-    private HBox btn_sb_reports;
-
-    @FXML
-    private HBox btn_sb_transactions;
-
-    @FXML
-    private HBox btn_logOut;
+    private HBox btn_sb_reports, btn_sb_transaction, btn_logOut;
 
     @FXML
     private BorderPane parent_root;
@@ -104,9 +89,9 @@ public class AdminViewController {
     @FXML
     void showTransactions(MouseEvent event) throws IOException {
         removeAllStates();
-        btn_sb_transactions.getStyleClass().add("active");
+        btn_sb_transaction.getStyleClass().add("active");
 
-        parent_root.setCenter(new TransactionView());
+        parent_root.setCenter(new TransactionView(shadow));
     }
 
     private void removeAllStates() {
@@ -115,7 +100,7 @@ public class AdminViewController {
         btn_sb_accounts.getStyleClass().remove("active");
         btn_sb_cust.getStyleClass().remove("active");
         btn_sb_reports.getStyleClass().remove("active");
-//        btn_sb_transactions.getStyleClass().remove("active");
+        btn_sb_transaction.getStyleClass().remove("active");
     }
 
     

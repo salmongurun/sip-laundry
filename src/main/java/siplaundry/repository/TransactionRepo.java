@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -79,6 +80,35 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
     public String DashboardCount(String function, String count){
         return super.DashboardCount(function, count, tableName, "pickup_date");
+    }
+
+    public List<TransactionEntity> searchAdmin(Map<String, Object> values){
+        int iterate = 0;
+        String sql = "SELECT `transactions`.`status`, `transactions`.`payment_status`, `users`.`fullname`, `customers`.`name` FROM transactions JOIN users ON `transactions`.`user_id` = `users`.`user_id` JOIN customers ON `customers`.`customer_id` = `customers`.`customer_id` WHERE ";
+
+        List<TransactionEntity> table = new ArrayList<>();
+
+        for (String valueKey : values.keySet()) {
+            if (iterate > 0)
+                sql += " OR ";
+            sql += (valueKey + " LIKE CONCAT( '%',?,'%')");
+
+            iterate++;
+        }
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            DatabaseUtil.prepareStmt(stmt, values, 0);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(stmt.toString());
+                table.add(mapToEntity(rs));
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return table;
     }
 
     public boolean Update(TransactionEntity trans) {

@@ -57,7 +57,7 @@ public class AccountController {
         ObservableList<String> column = FXCollections.observableArrayList(
             "Role",
             "Username",
-            "Fullname"
+            "Nama lengkap"
         );
         CB_column.setItems(column);
 
@@ -84,12 +84,14 @@ public class AccountController {
 
     @FXML
     void SortAction(){
-        String column = " DESC";
+        String SortBy = " DESC";
+        String column = " fullname";
         
-        if(CB_sortBy.getValue().equals("A-Z")){
-            column = " ASC";
-        }
-        List<UserEntity> users = userRepo.sortBy(CB_column.getValue(), column);
+        if(CB_sortBy.getValue().equals("A-Z")) SortBy = " ASC";
+        if(CB_column.getValue().equals("Username")) column = " username";
+        if(CB_column.getValue().equals(" Role")) column = " role";
+
+        List<UserEntity> users = userRepo.sortBy(column, SortBy);
         showTable(users);
      }
 
