@@ -24,6 +24,7 @@ import siplaundry.repository.ExpanseRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.cashier.components.ExpenseColumn;
 import siplaundry.view.cashier.modal.ExpenseModal;
+import siplaundry.view.util.EmptyData;
 import toast.Toast;
 import toast.ToastType;
 
@@ -72,7 +73,7 @@ public class ExpenseController {
     }
 
     @FXML
-    void showAddExpense(MouseEvent event){
+    void showAddExpense(){
         new ExpenseModal(shadowRoot, this::showTable, null);
     }
 
@@ -131,6 +132,9 @@ public class ExpenseController {
         expense_table.getChildren().clear();
 
         if(exp == null)exp = expRepo.get();
+        if(exp.size() < 1){
+            expense_table.getChildren().add(new EmptyData(this::showAddExpense, txt_keyword.getText()));
+        }
         for (ExpenseEntity expEn : exp){
             if(expEn.getUser_id().getID().equals(SessionData.user.getID())){
                 ExpenseColumn column = new ExpenseColumn(shadowRoot, this::showTable, expEn);

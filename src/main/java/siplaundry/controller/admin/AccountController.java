@@ -18,6 +18,7 @@ import siplaundry.repository.UsersRepo;
 import siplaundry.view.admin.components.column.AccountColumn;
 import siplaundry.view.admin.components.modal.AccountModal;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
+import siplaundry.view.util.EmptyData;
 import toast.Toast;
 import toast.ToastType;
 
@@ -66,7 +67,7 @@ public class AccountController {
     }
 
     @FXML
-    void showAddAccount(MouseEvent event) {
+    void showAddAccount() {
         new AccountModal(shadowRoot, this::showTable, null);
     }
 
@@ -120,6 +121,11 @@ public class AccountController {
         account_table.getChildren().clear();
 
         if(users == null) users = userRepo.get();
+
+        if(users.size() < 4){
+            account_table.getChildren().add(new EmptyData(this::showAddAccount, txt_keyword.getText()));
+        }
+
         for(UserEntity user: users) {
             if(user.getUsername().equals(SessionData.user.getUsername())) continue;
 

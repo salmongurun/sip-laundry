@@ -54,7 +54,7 @@
             </HBox>
             <ScrollPane layoutX="29.0" layoutY="177.0" prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="135.0">
                <content>
-                  <VBox fx:id="account_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
+                  <VBox fx:id="account_table" alignment="TOP_CENTER" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
                </content>
             </ScrollPane>
             <HBox alignment="CENTER_LEFT" layoutX="920.0" layoutY="28.0" styleClass="form-control" AnchorPane.rightAnchor="9.0">

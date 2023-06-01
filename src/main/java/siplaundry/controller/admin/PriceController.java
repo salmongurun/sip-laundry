@@ -22,6 +22,7 @@ import siplaundry.repository.LaundryRepo;
 import siplaundry.view.admin.components.column.PriceColumn;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.admin.components.modal.ServiceModal;
+import siplaundry.view.util.EmptyData;
 import toast.Toast;
 import toast.ToastType;
 
@@ -128,6 +129,10 @@ public class PriceController {
         price_table.getChildren().clear();
 
         if(laundry == null) laundry = laundryRepo.get();
+        if(laundry.size() < 1){
+            price_table.getChildren().add(new EmptyData(this::showAddPrice, txt_keyword.getText()));
+        }
+
         for(LaundryEntity lndry: laundry){ 
             // price_table.getChildren().add(new PriceColumn(shadowRoot, this::showTable, laundry));
             PriceColumn column = new PriceColumn(shadowRoot, this::showTable, lndry);
