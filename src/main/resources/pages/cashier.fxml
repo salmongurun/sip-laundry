@@ -73,9 +73,9 @@
          </children>
       </AnchorPane>
       <Pane layoutX="1204.0" layoutY="-72.0" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #414F8C; -fx-background-radius: 20;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="11.0" />
-      <Text fx:id="topbar_name" layoutX="1204.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Administrator" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="22.5">
+      <Text fx:id="topbar_name" layoutX="1204.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kasir" AnchorPane.rightAnchor="65.0" AnchorPane.topAnchor="22.5">
          <font>
-            <Font size="14.0" />
+            <Font name="Poppins SemiBold" size="14.0" />
          </font>
       </Text>
       <BorderPane fx:id="parent_root" layoutX="385.0" layoutY="184.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />

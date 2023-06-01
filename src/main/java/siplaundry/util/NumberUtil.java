@@ -12,9 +12,7 @@ public class NumberUtil {
     }
 
     public static String maskPhoneNumber(String phoneNumber) {
-        if (phoneNumber.length() <= 4) {
-            return phoneNumber;
-        }
+        if (phoneNumber.length() <= 4) return phoneNumber;
 
         String frontDigits = phoneNumber.substring(0, 2);
         String endDigits = phoneNumber.substring(phoneNumber.length() - 2);
@@ -24,10 +22,7 @@ public class NumberUtil {
     }
 
     public static Integer convertToInteger(String value) {
-        if(value == null || value.trim().isEmpty() || value.trim().isBlank()) {
-            return null;
-        }
-
+        if(value == null || value.trim().isEmpty() || value.trim().isBlank()) return null;
         return Integer.parseInt(value);
     }
 }

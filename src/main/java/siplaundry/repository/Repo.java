@@ -159,7 +159,7 @@ public abstract class Repo<E> {
                 if (iterate > 0)
                     sql += " OR ";
                 sql += (valueKey + " = '" + values.get(valueKey) + "'");
-    
+
                 iterate++;
             }
         }
@@ -178,6 +178,7 @@ public abstract class Repo<E> {
 
         return total;
     }
+
     public String DashboardCount(String function, String count, String tableName, String condition){
         String total = null;
         String sql = "SELECT " + function + "(" + count +") AS total FROM " + tableName + " WHERE " + condition + " >= DATE_SUB(?, INTERVAL 7 DAY)";
