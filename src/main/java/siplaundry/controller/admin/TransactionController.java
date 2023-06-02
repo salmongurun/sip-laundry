@@ -47,6 +47,7 @@ public class TransactionController {
     private Set<TransactionEntity> bulkItems = new HashSet<>();
     private ArrayList<TransactionColumn> accColumns = new ArrayList<>();
 
+    String keyword;
     public TransactionController(BorderPane shadow){
         this.shadowRoot = shadow;
     }
@@ -91,7 +92,10 @@ public class TransactionController {
 
     @FXML
     void searchAction(KeyEvent event){
-        String keyword = txt_keyword.getText();
+        keyword = txt_keyword.getText();
+        if(keyword.equals("LUNAS") || keyword.equals("lunas")){
+            keyword = "paid";
+        }
 
         List<TransactionEntity> trans = transRepo.searchTable(
             "users.fullname, customers.name", 
@@ -99,6 +103,7 @@ public class TransactionController {
             new HashMap<>(){{
                 put("users.fullname", keyword);
                 put("customers.name", keyword);
+                put("transactions.payment_status", keyword);
             }});
 
         showTable(trans);

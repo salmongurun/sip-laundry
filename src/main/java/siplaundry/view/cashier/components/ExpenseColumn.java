@@ -57,9 +57,9 @@ public class ExpenseColumn extends HBox {
         
         txt_name.setText(exp.getName());
         txt_date.setText(dateFormat.format(exp.getExpanse_date()));
-        txt_subtotal.setText(Integer.toString(exp.getSubtotal()));
-        txt_qty.setText(Integer.toString(exp.getQty()));
-        txt_amount.setText(Integer.toString(exp.getAmount()));
+        txt_subtotal.setText(String.valueOf(exp.getSubtotal()));
+        txt_qty.setText(String.valueOf(exp.getQty()));
+        txt_amount.setText(String.valueOf(exp.getAmount()));
         txt_optional.setText(exp.getOptional());
 
         edit_btn.setOnMouseClicked(event -> {

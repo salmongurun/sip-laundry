@@ -31,6 +31,7 @@ import javafx.stage.WindowEvent;
 import siplaundry.data.SessionData;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ExpanseRepo;
+import siplaundry.util.NumberUtil;
 import siplaundry.util.ValidationUtil;
 import toast.Toast;
 import toast.ToastType;
@@ -104,15 +105,15 @@ public class ExpenseModal {
         closeModal();
     }
 
-    @FXML
-    ExpenseEntity validateExp(){
+    
+    private ExpenseEntity validateExp(){
         localDate = txt_date.getValue();
         Date date = Date.valueOf(localDate);
         ExpenseEntity exp = new ExpenseEntity(
             txt_name.getText(), 
             date, 
-            Integer.parseInt(txt_qty.getText()), 
-            Integer.parseInt(txt_subtotal.getText()), 
+            NumberUtil.convertToInteger(txt_qty.getText()), 
+            NumberUtil.convertToInteger(txt_subtotal.getText()), 
             txt_optional.getText(), 
             SessionData.user
         );
@@ -161,8 +162,8 @@ public class ExpenseModal {
 
         txt_date.setValue(newDate);
         txt_name.setText(exp.getName());
-        txt_subtotal.setText(Integer.toString(exp.getSubtotal()));
-        txt_qty.setText(Integer.toString(exp.getQty()));
+        txt_subtotal.setText(String.valueOf(exp.getSubtotal()));
+        txt_qty.setText(String.valueOf(exp.getQty()));
         txt_optional.setText(exp.getOptional());
 
     }
@@ -173,8 +174,8 @@ public class ExpenseModal {
 
         exp.setName(txt_name.getText());
         exp.setExpanse_date(date);
-        exp.setSubtotal(Integer.parseInt(txt_subtotal.getText()));
-        exp.setQty(Integer.parseInt(txt_qty.getText()));
+        exp.setSubtotal(NumberUtil.convertToInteger(txt_subtotal.getText()));
+        exp.setQty(NumberUtil.convertToInteger(txt_qty.getText()));
         exp.setOptional(txt_optional.getText());
 
         validateExp();

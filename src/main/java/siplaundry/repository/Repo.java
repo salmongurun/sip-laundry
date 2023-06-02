@@ -42,7 +42,6 @@ public abstract class Repo<E> {
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             ResultSet result = statement.executeQuery();
-            System.out.println(statement.toString());
             while (result.next()) {
                 table.add(mapToEntity(result));
             }
@@ -59,7 +58,6 @@ public abstract class Repo<E> {
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
             ResultSet result = statement.executeQuery();
-            System.out.println(statement.toString());
             while (result.next()) {
                 table.add(mapToEntity(result));
             }
