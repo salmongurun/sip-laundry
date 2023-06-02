@@ -36,7 +36,7 @@ public abstract class Repo<E> {
         return table;
     }
 
-    public List<E> sortBy(String tableName,String column, String condition){
+    public List<E> sortBy(String tableName, String column, String condition){
         String sql = "SELECT * FROM " + tableName + " ORDER BY " + column + condition;
         List<E> table = new ArrayList<>();
 
@@ -51,6 +51,22 @@ public abstract class Repo<E> {
 
         return table;
 
+    }
+
+    public List<E> sortTable(String tableName, String show, String join, String column, String condition){
+        String sql = "SELECT " + tableName + ".* , " + show + " FROM " + tableName + join + " ORDER BY " + column + condition;
+        List<E> table = new ArrayList<>();
+
+        try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            ResultSet result = statement.executeQuery();
+            System.out.println(statement.toString());
+            while (result.next()) {
+                table.add(mapToEntity(result));
+            }
+        } catch (Exception e) {
+        }
+
+        return table;
     }
 
     public List<E> get(String tableName, Map<String, Object> values) {
@@ -119,6 +135,36 @@ public abstract class Repo<E> {
 
         return table;
     }
+
+    public List<E> searchTable(String tableName, String show, String join, Map<String, Object> values){
+        int iterate = 0;
+        String sql = "SELECT " + tableName + ".* , " + show + " FROM " + tableName + join + " WHERE ";
+
+        List<E> table = new ArrayList<>();
+
+        for (String valueKey : values.keySet()) {
+            if (iterate > 0)
+                sql += " OR ";
+            sql += (valueKey + " LIKE CONCAT( '%',?,'%')");
+
+            iterate++;
+        }
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            DatabaseUtil.prepareStmt(stmt, values, 0);
+
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                System.out.println(stmt.toString());
+                table.add(mapToEntity(rs));
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return table;
+    }
+
     public List<E> searchByUser(String tableName, UserEntity user, Map<String, Object> values) {
         int iterate = 0;
         String sql = "SELECT * FROM " + tableName + " WHERE (";

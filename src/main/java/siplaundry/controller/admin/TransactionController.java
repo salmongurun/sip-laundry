@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -51,13 +53,55 @@ public class TransactionController {
 
     @FXML
     void initialize(){
+        ObservableList<String> items = FXCollections.observableArrayList(
+            "A-Z",
+            "Z-A"
+        );
+        CB_sortBy.setItems(items);
+
+        ObservableList<String> column = FXCollections.observableArrayList(
+            "Nama Kasir",
+            "Nama Pelanggan",
+            "Tanggal Transaksi"
+        );
+        CB_column.setItems(column);
+
         List<TransactionEntity> trans = transRepo.get();
         showTable(trans);
     }
 
     @FXML
-    void searchAction(KeyEvent event){
+    void SortAction(){
+        String SortBy = " DESC";
+        String column = " pickup_date";
 
+        if(CB_sortBy.getValue().equals("A-Z")) SortBy = " ASC";
+        if(CB_column.getValue().equals("Nama Kasir")) column = " users.fullname";
+        if(CB_column.getValue().equals("Nama Pelanggan")) column = " customers.name";
+
+        List<TransactionEntity> trans = transRepo.sortTable(
+            "users.fullname, customers.name", 
+            " JOIN users ON transactions.user_id = users.user_id JOIN customers ON transactions.customer_id = customers.customer_id", 
+            column, 
+            SortBy
+        );
+
+        showTable(trans);
+    }
+
+    @FXML
+    void searchAction(KeyEvent event){
+        String keyword = txt_keyword.getText();
+
+        List<TransactionEntity> trans = transRepo.searchTable(
+            "users.fullname, customers.name", 
+            " JOIN users ON transactions.user_id = users.user_id JOIN customers ON transactions.customer_id = customers.customer_id ", 
+            new HashMap<>(){{
+                put("users.fullname", keyword);
+                put("customers.name", keyword);
+            }});
+
+        showTable(trans);
     }
 
     @FXML
