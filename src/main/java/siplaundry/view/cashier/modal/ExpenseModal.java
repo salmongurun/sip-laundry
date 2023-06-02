@@ -178,8 +178,7 @@ public class ExpenseModal {
         exp.setQty(NumberUtil.convertToInteger(txt_qty.getText()));
         exp.setOptional(txt_optional.getText());
 
-        validateExp();
-        expRepo.Update((exp));
+        expRepo.Update(validateExp());
 
         new Toast((AnchorPane) shadowRoot.getScene().getRoot())
             .show(ToastType.SUCCESS, "Berhasil mengupdate akun", null);

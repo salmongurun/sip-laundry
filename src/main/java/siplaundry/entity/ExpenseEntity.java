@@ -8,7 +8,7 @@ import jakarta.validation.constraints.NotNull;
 public class ExpenseEntity extends Entity {
     public static String tableName = "expanse";
 
-    private int expanse_id;
+    private Integer expanse_id;
 
     @NotBlank(message = "Harap isikan katagori pengeluaran")
     private String name;
@@ -16,19 +16,19 @@ public class ExpenseEntity extends Entity {
     private Date expanse_date;
 
     @NotNull(message = "jumlah produk harap diisi")
-    private int qty;
+    private Integer qty;
 
     @NotNull(message = "Harap masukkan harga tiap produk")
-    private int subtotal;
+    private Integer subtotal;
 
-    private int amount;
+    private Integer amount;
 
     @NotBlank(message = "Harap diisi")
     private String optional;
 
     private UserEntity user_id;
 
-    public ExpenseEntity(String name, Date expanse_date, int qty, int subtotal, String optional, UserEntity user_id) {
+    public ExpenseEntity(String name, Date expanse_date, Integer qty, Integer subtotal, String optional, UserEntity user_id) {
         this.name = name;
         this.expanse_date = expanse_date;
         this.qty = qty;
