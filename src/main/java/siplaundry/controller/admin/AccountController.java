@@ -122,12 +122,12 @@ public class AccountController {
 
         if(users == null) users = userRepo.get();
 
-        if(users.size() < 4){
+        if(users.size() < 2){
             account_table.getChildren().add(new EmptyData(this::showAddAccount, txt_keyword.getText()));
         }
 
         for(UserEntity user: users) {
-            if(user.getUsername().equals(SessionData.user.getUsername())) continue;
+            if(user.getID().equals(SessionData.user.getID())) continue;
 
             AccountColumn column = new AccountColumn(shadowRoot, this::showTable, user);
             column.setBulkAction(this::toggleBulkItem);
