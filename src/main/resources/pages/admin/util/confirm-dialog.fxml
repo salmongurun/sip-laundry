@@ -9,18 +9,18 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="480.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <FontIcon iconColor="#f8bb86" iconLiteral="bx-help-circle" iconSize="120" layoutX="175.0" layoutY="166.0" />
-      <Text layoutX="165.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apakah Anda yakin?">
+      <FontIcon iconColor="#f8bb86" iconLiteral="bx-help-circle" iconSize="120" layoutX="175.0" layoutY="175.0" />
+      <Text layoutX="154.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apakah Anda yakin?">
          <font>
             <Font name="Poppins Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="117.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan menghapus ini secara permanen">
+      <Text layoutX="103.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan menghapus ini secara permanen">
          <font>
             <Font name="Poppins SemiBold" size="12.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" layoutX="89.0" layoutY="290.0" prefWidth="280.0" scaleShape="false" spacing="15.0">
+      <HBox alignment="CENTER" layoutX="95.0" layoutY="290.0" prefWidth="280.0" scaleShape="false" spacing="15.0">
          <children>
             <HBox fx:id="cancel_btn" alignment="CENTER" onMouseClicked="#closeDialog" style="-fx-padding: 8 40; -fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #CBCBCB;">
                <children>

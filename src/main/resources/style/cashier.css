@@ -161,6 +161,12 @@
     -fx-fill: #278AA6;
 }
 
+.transparent-scroll {
+    -fx-border-color: transparent;
+    -fx-background-insets: none;
+    -fx-background: #F5F9FC;
+}
+
 .table-scroll {
     -fx-border-color: transparent;
     -fx-background-insets: none;
@@ -233,4 +239,46 @@
     -fx-font-family: "Poppins Medium";
     -fx-font-size: 12;
     -fx-background-color: transparent, transparent, transparent, transparent;
+}
+
+/* Menghilangkan bayangan pada scrollbar */
+.scroll-pane > .scroll-bar:horizontal,
+.scroll-pane > .scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+}
+
+/* Menghilangkan tombol panah pada scrollbar */
+.scroll-pane > .scroll-bar > .increment-button,
+.scroll-pane > .scroll-bar > .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: "";
+}
+
+/* Mengatur tampilan track (jalur) scrollbar */
+.scroll-pane > .scroll-bar:horizontal .track,
+.scroll-pane > .scroll-bar:vertical .track {
+    -fx-background-color: #F2F2F2; /* Warna latar belakang track */
+    -fx-background-radius: 0;
+}
+
+/* Mengatur tampilan thumb (pegangan) scrollbar */
+.scroll-pane > .scroll-bar:horizontal .thumb,
+.scroll-pane > .scroll-bar:vertical .thumb {
+    -fx-background-color: #DFDFDF; /* Warna thumb */
+    -fx-background-radius: 0;
+}
+
+/* Mengatur tampilan thumb ketika dihover */
+.scroll-pane > .scroll-bar:horizontal .thumb:hover,
+.scroll-pane > .scroll-bar:vertical .thumb:hover {
+    -fx-background-color: #C0C0C0; /* Warna thumb ketika dihover */
+}
+
+/* Mengatur tampilan thumb ketika ditekan */
+.scroll-pane > .scroll-bar:horizontal .thumb:pressed,
+.scroll-pane > .scroll-bar:vertical .thumb:pressed {
+    -fx-background-color: #808080; /* Warna thumb ketika ditekan */
 }

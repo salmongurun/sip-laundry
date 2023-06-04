@@ -6,26 +6,34 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="480.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@../../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <FontIcon iconColor="#f8bb86" iconLiteral="bx-help-circle" iconSize="120" layoutX="175.0" layoutY="155.0" />
-      <Text layoutX="165.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apakah Anda Yakin ?" textAlignment="CENTER">
+      <Text layoutX="147.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apakah Anda Yakin ?" textAlignment="CENTER">
          <font>
-            <Font size="16.0" />
+            <Font name="Poppins Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="150.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan keluar dari aplikasi ini" />
-      <HBox alignment="TOP_CENTER" layoutX="105.0" layoutY="290.0" prefWidth="200.0" spacing="15.0">
+      <Text layoutX="138.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan keluar dari aplikasi ini">
+         <font>
+            <Font name="Poppins SemiBold" size="12.0" />
+         </font></Text>
+      <HBox alignment="TOP_CENTER" layoutX="96.0" layoutY="288.0" prefWidth="200.0" spacing="15.0">
          <children>
             <HBox fx:id="cancel_btn" alignment="CENTER" onMouseClicked="#closeDialog" style="-fx-padding: 8 40; -fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #CBCBCB;">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Batal" textAlignment="CENTER" wrappingWidth="50.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Batal" textAlignment="CENTER" wrappingWidth="50.0">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font></Text>
                </children>
             </HBox>
             <HBox fx:id="confirm_btn" alignment="CENTER" layoutX="56.0" layoutY="10.0" onMouseClicked="#confirmAction" style="-fx-padding: 8 40; -fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #CBCBCB; -fx-background-color: #005F82;">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Keluar" textAlignment="CENTER" wrappingWidth="50.0" />
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Keluar" textAlignment="CENTER" wrappingWidth="50.0">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font></Text>
                </children>
             </HBox>
          </children>
