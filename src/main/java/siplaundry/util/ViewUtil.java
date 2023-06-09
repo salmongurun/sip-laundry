@@ -15,8 +15,15 @@ public class ViewUtil {
         AccountRole role = SessionData.user.getRole();
 
         try {
-            if(role == AccountRole.admin) (new AdminView()).start(stage);
-            if(role == AccountRole.cashier) (new CashierView()).start(stage);
+            if(role == AccountRole.admin) {
+                stage.setTitle("Administrator - SIP Laundry");
+                (new AdminView()).start(stage);
+            }
+
+            if(role == AccountRole.cashier) {
+                stage.setTitle("Kasir - SIP Laundry");
+                (new CashierView()).start(stage);
+            }
         } catch(Exception e) { e.printStackTrace(); }
     }
 }

@@ -3,20 +3,27 @@ package siplaundry.controller.cashier;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.repository.LaundryRepo;
+import siplaundry.service.PrinterService;
 import siplaundry.view.cashier.components.CartItem;
 import siplaundry.view.cashier.components.TransactionCard;
+import siplaundry.view.print.ReceiptPrint;
 
 import java.util.ArrayList;
 
 public class TransactionFormController {
     @FXML
     private ScrollPane card_scroll, items_scroll;
+
+    @FXML
+    private Text transaction_title;
     private BorderPane parent_root;
     private LaundryRepo laundryRepo = new LaundryRepo();
     public TransactionFormController(BorderPane parentRoot) {
@@ -34,6 +41,10 @@ public class TransactionFormController {
             add(new TransactionDetailEntity());
             add(new TransactionDetailEntity());
         }});
+
+        transaction_title.setOnMouseClicked(event -> {
+            new ReceiptPrint();
+        });
     }
 
     void showCardItems(ArrayList<LaundryEntity> laundries) {

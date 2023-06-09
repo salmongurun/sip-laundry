@@ -82,5 +82,10 @@
          </children>
       </AnchorPane>
       <ScrollPane fx:id="card_scroll" layoutX="14.0" layoutY="35.0" prefHeight="662.0" prefWidth="750.0" styleClass="transparent-scroll" AnchorPane.leftAnchor="5.0" />
+      <Text fx:id="transaction_title" strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="Poppins Bold" size="25.0" />
+         </font>
+      </Text>
    </children>
 </fx:root>
