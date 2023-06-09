@@ -212,7 +212,6 @@ public abstract class Repo<E> {
             DatabaseUtil.prepareStmt(stmt, values, 0);
             stmt.setString(1, dateString);
 
-            System.out.println(stmt.toString());
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -231,7 +230,6 @@ public abstract class Repo<E> {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setString(1, dateString);
 
-            System.out.println(stmt.toString());
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

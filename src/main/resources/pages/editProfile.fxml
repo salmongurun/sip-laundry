@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../style/cashier.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="25.0" layoutY="162.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="780.0" style="-fx-background-radius: 20 20 20 20; -fx-border-radius: 20 20 20 20; -fx-background-color: white; -fx-border-color: #D9D9D9;" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="162.0">
+         <children>
+            <Circle fill="WHITE" layoutX="109.0" radius="60.0" stroke="#d9d9d9" strokeType="INSIDE" />
+            <Circle fill="#e96479" layoutX="109.0" radius="50.0" stroke="#d9d9d9" strokeType="INSIDE" />
+            <Text fill="WHITE" layoutX="82.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IB" wrappingWidth="55.0" AnchorPane.bottomAnchor="403.0" AnchorPane.leftAnchor="82.0">
+               <font>
+                  <Font size="64.0" />
+               </font>
+            </Text>
+            <VBox alignment="TOP_CENTER" layoutX="36.0" layoutY="64.0" prefHeight="361.0" prefWidth="730.0" AnchorPane.topAnchor="64.0">
+               <children>
+                  <HBox alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="706.0" spacing="10.0">
+                     <children>
+                        <HBox fx:id="btn_delete" alignment="CENTER" onMouseClicked="#clearAction" prefHeight="36.0" prefWidth="104.0" style="-fx-border-color: #F45050; -fx-background-color: white; -fx-padding: 12 5; -fx-border-radius: 8;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hapus" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox fx:id="btn_save" alignment="CENTER" layoutX="622.0" layoutY="10.0" onMouseClicked="#updateAction" prefHeight="36.0" prefWidth="104.0" style="-fx-border-color: #1BB70E; -fx-background-color: white; -fx-padding: 12 5; -fx-border-radius: 8;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Simpan" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <VBox alignment="CENTER" prefHeight="324.0" prefWidth="730.0">
+                     <children>
+                        <HBox prefHeight="82.0" prefWidth="730.0">
+                           <children>
+                              <HBox prefHeight="100.0" prefWidth="657.0" spacing="40.0">
+                                 <children>
+                                    <VBox prefWidth="306.0" scaleShape="false" styleClass="form-control">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Nama Lengkap" />
+                                          <TextField fx:id="txt_fullname" prefHeight="42.0" prefWidth="371.0" styleClass="input" />
+                                       </children>
+                                    </VBox>
+                                    <VBox layoutX="10.0" layoutY="10.0" prefWidth="306.0" scaleShape="false" styleClass="form-control">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="No WhatssApp" />
+                                          <TextField fx:id="txt_phone" prefHeight="42.0" prefWidth="357.0" styleClass="input" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="81.0" prefWidth="730.0" spacing="40.0">
+                           <children>
+                              <VBox prefWidth="306.0" scaleShape="false" styleClass="form-control">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="UserName" />
+                                    <TextField fx:id="txt_username" prefHeight="42.0" prefWidth="357.0" styleClass="input" />
+                                 </children>
+                              </VBox>
+                              <VBox layoutX="10.0" layoutY="10.0" prefWidth="306.0" scaleShape="false" styleClass="form-control">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Password" />
+                                    <HBox fx:id="password_container" prefHeight="42.0" prefWidth="306.0" style="-fx-border-radius: 8;" styleClass="form-input">
+                                       <children>
+                                          <HBox alignment="CENTER" onMouseClicked="#togglePassword">
+                                             <children>
+                                                <FontIcon fx:id="toggle_icon" iconColor="#868383" iconLiteral="bx-show" iconSize="20" />
+                                             </children>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox spacing="40.0">
+                           <children>
+                              <VBox layoutX="10.0" layoutY="10.0" prefHeight="118.0" prefWidth="653.0" scaleShape="false" styleClass="form-control">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Alamat" />
+                                    <TextArea fx:id="txt_address" prefHeight="80.0" prefWidth="653.0" styleClass="input" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Circle fill="#ffffff90" layoutX="177.0" layoutY="130.0" radius="20.0" stroke="#278aa6" strokeType="INSIDE">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Circle>
+      <FontIcon fill="#278aa6" iconLiteral="bx-camera" iconSize="24" layoutX="168.0" layoutY="140.0" wrappingWidth="19.0" AnchorPane.leftAnchor="166.0" AnchorPane.topAnchor="118.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></FontIcon>
+      <Text fill="#278aa6" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profile" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Text>
+      <Text fill="#8a8b90" layoutX="3.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="akun -&gt; user profile">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </Text>
+      <Text fx:id="txt_changePass" fill="#5e5c5c" layoutX="328.0" layoutY="626.0" onMouseClicked="#changePassword" strokeType="OUTSIDE" strokeWidth="0.0" text="Ganti Password ?">
+         <font>
+            <Font name="System Italic" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+   </children>
+</fx:root>

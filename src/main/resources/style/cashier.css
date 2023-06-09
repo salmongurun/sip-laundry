@@ -1,3 +1,26 @@
+.form-control {
+    -fx-spacing: 5;
+}
+
+.form-input {
+    -fx-border-color: #d9d9d9;
+    -fx-border-radius: 4
+}
+
+.form-input .input {
+    -fx-background-color: transparent, transparent, transparent, transparent;
+}
+
+.form-label {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 12;
+    -fx-text-fill: #005F82;
+}
+
+.form-input {
+    -fx-font-family: "Poppins Medium";
+    -fx-font-size: 16;
+}
 .primary-background {
     -fx-background-color: #005F82;
 }

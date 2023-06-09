@@ -4,10 +4,12 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.stage.Window;
 import siplaundry.data.SessionData;
+import siplaundry.view.EditProfileView;
 import siplaundry.view.admin.*;
 import siplaundry.view.admin.components.modal.logOutConfirm;
 import siplaundry.view.auth.LoginView;
@@ -17,6 +19,9 @@ import java.io.IOException;
 public class AdminViewController {
     @FXML
     private HBox btn_sb_dashboard, btn_sb_accounts, btn_sb_cust, btn_sb_prices;
+
+    @FXML
+    private Pane btn_edit;
 
     @FXML
     private HBox btn_sb_reports, btn_sb_transaction, btn_logOut;
@@ -92,6 +97,11 @@ public class AdminViewController {
         btn_sb_transaction.getStyleClass().add("active");
 
         parent_root.setCenter(new TransactionView(shadow));
+    }
+
+    @FXML
+    void showEditProfile()throws IOException{
+         parent_root.setCenter(new EditProfileView(shadow));
     }
 
     private void removeAllStates() {
