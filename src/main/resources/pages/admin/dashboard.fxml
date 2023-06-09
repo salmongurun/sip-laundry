@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
@@ -47,7 +50,22 @@
             </AnchorPane>
          </children>
       </HBox>
-      <AnchorPane layoutX="14.0" layoutY="289.0" prefHeight="410.0" prefWidth="670.0" styleClass="card" AnchorPane.leftAnchor="15.0" />
+      <AnchorPane layoutX="14.0" layoutY="289.0" prefHeight="410.0" prefWidth="670.0" styleClass="card" AnchorPane.leftAnchor="15.0">
+         <children>
+            <BarChart fx:id="statistic_chart" layoutX="67.0" layoutY="5.0" prefHeight="364.0" prefWidth="500.0" stylesheets="@../../style/chart.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+              <xAxis>
+                <CategoryAxis side="BOTTOM" />
+              </xAxis>
+              <yAxis>
+                <NumberAxis side="LEFT" />
+              </yAxis>
+            </BarChart>
+            <Text layoutX="61.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Statistik Pendapatan" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Poppins SemiBold" size="16.0" />
+               </font>
+            </Text>
+         </children></AnchorPane>
       <AnchorPane layoutX="725.0" layoutY="289.0" prefHeight="410.0" prefWidth="315.0" styleClass="card" />
    </children>
 </fx:root>

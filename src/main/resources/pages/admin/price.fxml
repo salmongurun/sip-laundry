@@ -58,7 +58,7 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Layanan" />
          </children>
       </HBox>
-      <HBox fx:id="btn_bulk_delete" disable="true" layoutX="759.0" layoutY="50.0" onMouseClicked="#bulkDelete">
+      <HBox fx:id="btn_bulk_delete" disable="true" layoutX="739.0" layoutY="50.0" onMouseClicked="#bulkDelete">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
