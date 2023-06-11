@@ -114,6 +114,6 @@
             <Image url="@../../images/login-element-2.png" />
          </image>
       </ImageView>
-      <BorderPane fx:id="shadowRoot" layoutX="522.0" opacity="0.5" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="shadowRoot" layoutX="522.0" layoutY="332.0" opacity="0.5" prefHeight="436.0" prefWidth="800.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

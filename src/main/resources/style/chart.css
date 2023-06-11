@@ -5,3 +5,10 @@
 .default-color1.chart-bar {
     -fx-bar-fill: #83cde1;
 }
+.default-color2.chart-bar {
+    -fx-bar-fill: #278AA6;
+}
+
+.default-color3.chart-bar {
+    -fx-bar-fill: #83cde1;
+}

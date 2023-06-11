@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -89,6 +90,10 @@ public class TransactionRepo extends Repo<TransactionEntity> {
     public List<TransactionEntity> searchTable(String show, String join, Map<String, Object> values){
         return super.searchTable(tableName, show, join, values);
     }
+
+    public LinkedHashMap<String, Integer> chartCount(String count, String time){
+        return super.chartCount(tableName, count, time);
+    } 
 
     public boolean Update(TransactionEntity trans) {
         String sql = "UPDATE " + tableName

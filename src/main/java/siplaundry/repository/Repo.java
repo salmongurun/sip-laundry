@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -238,6 +239,25 @@ public abstract class Repo<E> {
         } catch (SQLException e) { e.printStackTrace(); }
 
         return total;
+    }
+
+    public LinkedHashMap<String, Integer> chartCount(String tableName, String count, String time){
+        LinkedHashMap<String, Integer> data = new LinkedHashMap<>();
+        String sql = "SELECT MONTHNAME(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) AS Bulan, SUM(amount) AS Total FROM " + tableName + " WHERE STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s') >= DATE_SUB(?, INTERVAL " + time + " MONTH) GROUP BY Bulan ORDER BY MONTH(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) ASC ";
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1, dateString);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                String bulan = rs.getString("Bulan");
+                Integer total = rs.getInt("Total");
+                data.put(bulan, total);
+            }
+
+        } catch (Exception e) {e.printStackTrace(); }
+
+        return data;
     }
 
     public boolean delete(String tableName, String getid, int id) {

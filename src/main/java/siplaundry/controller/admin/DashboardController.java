@@ -1,14 +1,23 @@
 package siplaundry.controller.admin;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
-import javafx.scene.control.Label;
+import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 import siplaundry.data.SessionData;
+import siplaundry.repository.ExpanseRepo;
 import siplaundry.repository.TransactionRepo;
 
 public class DashboardController {
@@ -18,34 +27,63 @@ public class DashboardController {
     @FXML
     private BarChart<String, Number> statistic_chart;
 
+    @FXML
+    private ComboBox<String> CB_chart;
+
     TransactionRepo transRepo = new TransactionRepo();
     private String cust, process, taken;
 
+    private ExpanseRepo expRepo = new ExpanseRepo();
+
     @FXML
     void initialize() {
-//        fillInformations();
-        drawChart();
+       fillInformations();
+
+       Timeline timeline = new Timeline();
+       timeline.getKeyFrames().add(new KeyFrame(Duration.millis(300), new EventHandler<ActionEvent>() {
+           @Override
+           public void handle(ActionEvent actionEvent) {
+                statistic_chart.getYAxis().setAnimated(false);
+                statistic_chart.getXAxis().setAnimated(false);
+               drawChart("5");
+           }
+       }));
+       timeline.play();
+
+
+        ObservableList<String> items = FXCollections.observableArrayList(
+            "3",
+            "5",
+            "6",
+            "12"
+        );
+        CB_chart.setItems(items);
     }
 
-    private void drawChart() {
+    private void drawChart(String time) {
         XYChart.Series<String, Number> pendapatan = new XYChart.Series<>();
         XYChart.Series<String, Number> pengeluaran = new XYChart.Series<>();
-
+        
+        LinkedHashMap<String, Integer> dataPend = transRepo.chartCount("transaction_date", time);
+        LinkedHashMap<String, Integer> dataPeng = expRepo.chartCount("expense_date", time);
+        
         pendapatan.setName("Pendapatan");
-        pendapatan.getData().add(new XYChart.Data<>("Jan", 20000));
-        pendapatan.getData().add(new XYChart.Data<>("Feb", 30000));
-        pendapatan.getData().add(new XYChart.Data<>("Mar", 20000));
-        pendapatan.getData().add(new XYChart.Data<>("Apr", 40000));
-        pendapatan.getData().add(new XYChart.Data<>("May", 10000));
+        for (Map.Entry<String, Integer> entry : dataPend.entrySet()) {
+            String bulanPend = entry.getKey();
+            int totalPendapatan = entry.getValue();
+            pendapatan.getData().add(new XYChart.Data<>(bulanPend, totalPendapatan));
+        }
 
         pengeluaran.setName("Pengeluaran");
-        pengeluaran.getData().add(new XYChart.Data<>("Jan", 5000));
-        pengeluaran.getData().add(new XYChart.Data<>("Feb", 15000));
-        pengeluaran.getData().add(new XYChart.Data<>("Mar", 5000));
-        pengeluaran.getData().add(new XYChart.Data<>("Apr", 20000));
-        pengeluaran.getData().add(new XYChart.Data<>("May", 2500));
+        for (Map.Entry<String, Integer> entry : dataPeng.entrySet()) {
+            String bulanPeng = entry.getKey();
+            int totalPengeluaran = entry.getValue();
+            pengeluaran.getData().add(new XYChart.Data<>(bulanPeng, totalPengeluaran));
+        }
 
+        statistic_chart.getData().clear();
         statistic_chart.getData().addAll(pendapatan, pengeluaran);
+    
     }
 
 
@@ -63,5 +101,13 @@ public class DashboardController {
         txt_cust.setText(cust);
         txt_process.setText(process);
         txt_taken.setText(taken);
+    }
+
+    @FXML
+    void chartClicked(){
+        statistic_chart.getData().clear();
+        statistic_chart.getXAxis().setAnimated(false);
+        drawChart(CB_chart.getValue());
+        
     }
 }
