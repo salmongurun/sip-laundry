@@ -91,8 +91,8 @@ public class TransactionRepo extends Repo<TransactionEntity> {
         return super.searchTable(tableName, show, join, values);
     }
 
-    public LinkedHashMap<String, Integer> chartCount(String count, String time){
-        return super.chartCount(tableName, count, time);
+    public LinkedHashMap<String, Integer> chartCount(String condition, String groupName,String function, String count, String duration, String time){
+        return super.chartCount(tableName, condition, groupName, function,count, duration, time);
     } 
 
     public boolean Update(TransactionEntity trans) {

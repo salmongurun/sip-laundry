@@ -60,8 +60,8 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
         return super.searchByUser(tableName, user, values);
     }
 
-    public LinkedHashMap<String, Integer> chartCount(String count, String time){
-        return super.chartCount(tableName, count, time);
+    public LinkedHashMap<String, Integer> chartCount(String condition, String groupName,String function, String count, String duration, String time){
+        return super.chartCount(tableName, condition, groupName, function, count, duration, time);
     }
 
     public boolean Update(ExpenseEntity exp) {

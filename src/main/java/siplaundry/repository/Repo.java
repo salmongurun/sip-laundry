@@ -241,9 +241,16 @@ public abstract class Repo<E> {
         return total;
     }
 
-    public LinkedHashMap<String, Integer> chartCount(String tableName, String count, String time){
+    public LinkedHashMap<String, Integer> chartCount(String tableName,String condition, String groupName,String function, String count, String duration, String time){
         LinkedHashMap<String, Integer> data = new LinkedHashMap<>();
-        String sql = "SELECT MONTHNAME(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) AS Bulan, SUM(amount) AS Total FROM " + tableName + " WHERE STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s') >= DATE_SUB(?, INTERVAL " + time + " MONTH) GROUP BY Bulan ORDER BY MONTH(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) ASC ";
+        // String sql = "SELECT " + groupName + "(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) AS Bulan," + function + " AS Total FROM " + tableName + " WHERE " + condition + " STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s') >= DATE_SUB(?, INTERVAL " + duration + " " + time + ") GROUP BY Bulan ORDER BY " + time + "(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) ASC ";
+
+        String sql;
+        if(condition == null){
+            sql = "SELECT " + groupName + "(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) AS Bulan," + function + " AS Total FROM " + tableName + " WHERE STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s') >= DATE_SUB(?, INTERVAL " + duration + " " + time + ") GROUP BY Bulan ORDER BY " + time + "(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) ASC ";
+        } else {
+            sql = "SELECT " + groupName + "(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) AS Bulan," + function + " AS Total FROM " + tableName + " WHERE " + condition + " STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s') >= DATE_SUB(?, INTERVAL " + duration + " " + time + ") GROUP BY Bulan ORDER BY " + time + "(STR_TO_DATE(" + count + ", '%Y-%m-%d %H:%i:%s')) ASC ";
+        }
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
             stmt.setString(1, dateString);
