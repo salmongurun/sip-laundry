@@ -12,6 +12,7 @@ import javafx.util.Duration;
 import siplaundry.entity.LaundryEntity;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 public class TransactionCard extends AnchorPane {
     @FXML
@@ -20,9 +21,12 @@ public class TransactionCard extends AnchorPane {
     private HBox express_badge;
 
     private LaundryEntity laundry;
-    public TransactionCard(LaundryEntity laundry) {
+    private Consumer<LaundryEntity> addAction;
+
+    public TransactionCard(LaundryEntity laundry, Consumer<LaundryEntity> addAction) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/cashier/transaction/card.fxml"));
         this.laundry = laundry;
+        this.addAction = addAction;
 
         try {
             loader.setRoot(this);
@@ -35,6 +39,10 @@ public class TransactionCard extends AnchorPane {
     void initialize() {
         laundry_name.setText(laundry.getname());
         if(laundry.getIsExpress()) express_badge.setVisible(true);
+
+        this.setOnMouseClicked(event -> {
+            addAction.accept(this.laundry);
+        });
 
         animationOnHover();
     }

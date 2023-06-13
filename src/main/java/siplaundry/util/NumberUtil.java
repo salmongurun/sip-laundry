@@ -1,5 +1,6 @@
 package siplaundry.util;
 
+import java.text.DecimalFormat;
 import java.util.Random;
 
 public class NumberUtil {
@@ -24,5 +25,9 @@ public class NumberUtil {
     public static Integer convertToInteger(String value) {
         if(value == null || value.trim().isEmpty() || value.trim().isBlank()) return null;
         return Integer.parseInt(value);
+    }
+
+    public static String rupiahFormat(Integer num) {
+        return String.format("%,d", num).replace(',', '.');
     }
 }

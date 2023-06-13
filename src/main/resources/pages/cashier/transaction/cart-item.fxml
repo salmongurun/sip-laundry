@@ -1,45 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="265.0" style="-fx-padding: 20 0; -fx-border-color: #E2E2E2 transparent #E2E2E2 transparent;" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text fill="#262626" layoutX="66.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cuci Kering + Setrika" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="0.0">
+      <Text fx:id="laundry_name" fill="#262626" layoutX="66.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cuci Kering + Setrika" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="0.0">
          <font>
             <Font name="Poppins SemiBold" size="16.0" />
          </font>
       </Text>
-      <Text fill="#005f82" layoutX="66.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Satuan: kilogram" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="23.0">
+      <Text fill="#005f82" layoutX="66.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Satuan:" AnchorPane.leftAnchor="43.0" AnchorPane.topAnchor="23.0">
          <font>
             <Font name="Poppins Regular" size="12.0" />
          </font>
       </Text>
-      <Text fill="#595959" layoutX="179.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 20.000" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+      <Text fx:id="laundry_subtotal" fill="#595959" layoutX="179.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 20.000" AnchorPane.bottomAnchor="3.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
          <font>
             <Font name="Poppins SemiBold" size="14.0" />
          </font>
       </Text>
       <HBox alignment="CENTER" layoutX="66.0" layoutY="79.0" spacing="4.0" style="-fx-border-color: #D9D9D9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="43.0">
          <children>
-            <HBox alignment="CENTER" layoutX="25.0" layoutY="10.0" style="-fx-border-color: transparent #D9D9D9 transparent transparent; -fx-padding: 1 2;">
+            <HBox fx:id="red_btn" alignment="CENTER" layoutX="25.0" layoutY="10.0" style="-fx-border-color: transparent #D9D9D9 transparent transparent; -fx-padding: 1 2;">
                <children>
                   <FontIcon iconLiteral="bx-minus" iconSize="16" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </HBox>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20">
+            <Text fx:id="laundry_qty" strokeType="OUTSIDE" strokeWidth="0.0" text="20">
                <font>
                   <Font name="Poppins Medium" size="14.0" />
                </font>
             </Text>
-            <HBox alignment="CENTER" style="-fx-border-color: transparent transparent transparent #D9D9D9; -fx-padding: 1 2;">
+            <HBox fx:id="add_btn" alignment="CENTER" style="-fx-border-color: transparent transparent transparent #D9D9D9; -fx-padding: 1 2;">
                <children>
                   <FontIcon iconLiteral="bx-plus" iconSize="16" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </HBox>
          </children>
       </HBox>
@@ -48,5 +54,10 @@
             <FontIcon fill="#0096ce" iconLiteral="bxs-grid-alt" iconSize="20" />
          </children>
       </HBox>
+      <Text fx:id="laundry_unit" fill="#005f82" layoutX="54.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kilogram" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="23.0">
+         <font>
+            <Font name="Poppins Regular" size="12.0" />
+         </font>
+      </Text>
    </children>
 </fx:root>

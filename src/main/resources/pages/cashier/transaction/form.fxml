@@ -54,7 +54,7 @@
                         <Font name="Poppins SemiBold" size="15.0" />
                      </font>
                   </Text>
-                  <Text layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp. 136.000" textAlignment="RIGHT" wrappingWidth="155.0">
+                  <Text fx:id="cart_grandtotal" layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp. 136.000" textAlignment="RIGHT" wrappingWidth="155.0">
                      <font>
                         <Font name="Poppins SemiBold" size="15.0" />
                      </font>
