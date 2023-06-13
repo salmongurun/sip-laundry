@@ -60,12 +60,12 @@ public class DashboardController {
         CB_chart.setItems(items);
     }
 
-    private void drawChart(String time) {
+    private void drawChart(String duration) {
         XYChart.Series<String, Number> pendapatan = new XYChart.Series<>();
         XYChart.Series<String, Number> pengeluaran = new XYChart.Series<>();
         
-        LinkedHashMap<String, Integer> dataPend = transRepo.chartCount("transaction_date", time);
-        LinkedHashMap<String, Integer> dataPeng = expRepo.chartCount("expense_date", time);
+        LinkedHashMap<String, Integer> dataPend = transRepo.chartCount(null, "MONTHNAME","SUM(amount)", "transaction_date", duration, "MONTH");
+        LinkedHashMap<String, Integer> dataPeng = expRepo.chartCount(null, "MONTHNAME","SUM(amount)","expense_date", duration, "MONTH");
         
         pendapatan.setName("Pendapatan");
         for (Map.Entry<String, Integer> entry : dataPend.entrySet()) {
