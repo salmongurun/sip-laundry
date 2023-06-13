@@ -1,4 +1,4 @@
-package siplaundry.view.cashier.modal;
+package siplaundry.view.cashier.components.modal;
 
 import java.io.IOException;
 import java.sql.Date;

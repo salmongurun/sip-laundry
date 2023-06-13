@@ -8,6 +8,7 @@ open module siplaundry {
     requires retrofit2;
     requires retrofit2.converter.gson;
     requires barcode4j;
+    requires org.controlsfx.controls;
 
     requires javafx.controls;
     requires javafx.fxml;

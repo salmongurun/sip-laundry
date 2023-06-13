@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -9,7 +10,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../../style/cashier.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root fx:id="popover_show" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../../style/cashier.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="882.0" layoutY="35.0" prefHeight="662.0" prefWidth="326.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #e3e3e3; -fx-padding: 20;" AnchorPane.rightAnchor="0.0">
          <children>
@@ -18,17 +19,7 @@
                   <Font name="Poppins Bold" size="15.0" />
                </font>
             </Text>
-            <HBox alignment="CENTER" layoutX="112.0" layoutY="53.0" spacing="5.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <FontIcon fill="#005f82" iconLiteral="bxs-user-plus" iconSize="22" />
-                  <Text fill="#005f82" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilih">
-                     <font>
-                        <Font name="Poppins Medium" size="12.0" />
-                     </font>
-                  </Text>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="54.0" prefWidth="200.0" spacing="15.0" style="-fx-border-color: #278AA6; -fx-border-radius: 5; -fx-padding: 10 10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
+            <HBox fx:id="choose_customer" alignment="CENTER_LEFT" layoutX="20.0" layoutY="54.0" onMouseClicked="#showCustomerList" prefWidth="200.0" spacing="15.0" style="-fx-border-color: #278AA6; -fx-border-radius: 5; -fx-padding: 10 10;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
                <children>
                   <FontIcon iconColor="#c2c2c2" iconLiteral="bxs-user" iconSize="34" />
                   <VBox spacing="2.5">
@@ -38,7 +29,7 @@
                               <Font name="Poppins Medium" size="12.0" />
                            </font>
                         </Text>
-                        <Text fill="#4f4949" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                        <Text fill="#4f4949" strokeType="OUTSIDE" strokeWidth="0.0" text="*klik untuk memilih">
                            <font>
                               <Font name="Poppins Regular" size="12.0" />
                            </font>
@@ -46,6 +37,9 @@
                      </children>
                   </VBox>
                </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </HBox>
             <Text fill="#005f82" layoutX="21.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laundry" AnchorPane.leftAnchor="0.0">
                <font>

@@ -3,17 +3,15 @@ package siplaundry.controller.cashier;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import org.controlsfx.control.PopOver;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.repository.LaundryRepo;
-import siplaundry.service.PrinterService;
-import siplaundry.view.cashier.components.CartItem;
-import siplaundry.view.cashier.components.TransactionCard;
+import siplaundry.view.cashier.transaction.CartItem;
+import siplaundry.view.cashier.transaction.CustomerPopover;
+import siplaundry.view.cashier.transaction.TransactionCard;
 import siplaundry.view.print.ReceiptPrint;
 
 import java.util.ArrayList;
@@ -21,9 +19,10 @@ import java.util.ArrayList;
 public class TransactionFormController {
     @FXML
     private ScrollPane card_scroll, items_scroll;
-
     @FXML
     private Text transaction_title;
+    @FXML
+    private HBox choose_customer;
     private BorderPane parent_root;
     private LaundryRepo laundryRepo = new LaundryRepo();
     public TransactionFormController(BorderPane parentRoot) {
@@ -45,6 +44,15 @@ public class TransactionFormController {
         transaction_title.setOnMouseClicked(event -> {
             new ReceiptPrint();
         });
+    }
+
+    @FXML
+    void showCustomerList() {
+        PopOver popover = new PopOver();
+
+        popover.setContentNode(new CustomerPopover());
+        popover.show(choose_customer);
+        popover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
     }
 
     void showCardItems(ArrayList<LaundryEntity> laundries) {

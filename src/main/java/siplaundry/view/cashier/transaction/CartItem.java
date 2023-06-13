@@ -1,4 +1,4 @@
-package siplaundry.view.cashier.components;
+package siplaundry.view.cashier.transaction;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

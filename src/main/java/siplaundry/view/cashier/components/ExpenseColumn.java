@@ -15,7 +15,7 @@ import javafx.scene.text.Text;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ExpanseRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
-import siplaundry.view.cashier.modal.ExpenseModal;
+import siplaundry.view.cashier.components.modal.ExpenseModal;
 import toast.Toast;
 import toast.ToastType;
 

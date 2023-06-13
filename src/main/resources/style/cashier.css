@@ -305,3 +305,12 @@
 .scroll-pane > .scroll-bar:vertical .thumb:pressed {
     -fx-background-color: #808080; /* Warna thumb ketika ditekan */
 }
+
+.popover-item {
+    -fx-border-color: transparent transparent #F1F1F1 transparent;
+    -fx-background-color: white;
+}
+
+.popover-item:hover {
+    -fx-background-color: #eff9fd;
+}

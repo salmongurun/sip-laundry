@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="245.0" spacing="15.0" style="-fx-padding: 10;" styleClass="popover-item" stylesheets="@../../../style/cashier.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FontIcon iconColor="#c2c2c2" iconLiteral="bxs-user" iconSize="36" />
+      <VBox prefWidth="100.0" spacing="1.5">
+         <children>
+            <Text fx:id="customer_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer">
+               <font>
+                  <Font name="Lexend Medium" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="customer_phone" fill="#595959" strokeType="OUTSIDE" strokeWidth="0.0" text="6285234567890">
+               <font>
+                  <Font name="Poppins Regular" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+   </children>
+   <cursor>
+      <Cursor fx:constant="HAND" />
+   </cursor>
+</fx:root>
