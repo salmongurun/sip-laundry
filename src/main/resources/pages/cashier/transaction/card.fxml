@@ -14,7 +14,7 @@
             <Font name="Poppins SemiBold" size="14.0" />
          </font>
       </Text>
-      <Text fill="#919191" layoutX="20.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 50.000 / kg" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="20.0">
+      <Text fx:id="laundry_price" fill="#919191" layoutX="20.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 50.000 / kg" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="20.0">
          <font>
             <Font name="Poppins Medium" size="10.0" />
          </font>

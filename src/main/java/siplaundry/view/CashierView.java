@@ -25,7 +25,6 @@ public class CashierView extends Application {
 
       primaryStage.setScene(scene);
       primaryStage.show();
-
     }
     
 }

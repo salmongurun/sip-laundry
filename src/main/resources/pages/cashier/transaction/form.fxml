@@ -24,12 +24,12 @@
                   <FontIcon iconColor="#c2c2c2" iconLiteral="bxs-user" iconSize="34" />
                   <VBox spacing="2.5">
                      <children>
-                        <Text fill="#4f4949" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
+                        <Text fx:id="customer_name" fill="#4f4949" strokeType="OUTSIDE" strokeWidth="0.0" text="-">
                            <font>
                               <Font name="Poppins Medium" size="12.0" />
                            </font>
                         </Text>
-                        <Text fill="#4f4949" strokeType="OUTSIDE" strokeWidth="0.0" text="*klik untuk memilih">
+                        <Text fx:id="customer_phone" fill="#4f4949" strokeType="OUTSIDE" strokeWidth="0.0" text="*klik untuk memilih">
                            <font>
                               <Font name="Poppins Regular" size="12.0" />
                            </font>
@@ -54,7 +54,7 @@
                         <Font name="Poppins SemiBold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="cart_grandtotal" layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp. 136.000" textAlignment="RIGHT" wrappingWidth="155.0">
+                  <Text fx:id="cart_grandtotal" layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 0" textAlignment="RIGHT" wrappingWidth="155.0">
                      <font>
                         <Font name="Poppins SemiBold" size="15.0" />
                      </font>
@@ -64,7 +64,7 @@
                   <Insets top="10.0" />
                </padding>
             </HBox>
-            <HBox alignment="CENTER" layoutX="85.0" layoutY="546.0" style="-fx-background-color: #005F82; -fx-padding: 12; -fx-background-radius: 7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <HBox alignment="CENTER" layoutX="85.0" layoutY="546.0" onMouseClicked="#showPaymentModal" style="-fx-background-color: #005F82; -fx-padding: 12; -fx-background-radius: 7;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="PROSES">
                      <font>

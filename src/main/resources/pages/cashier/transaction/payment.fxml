@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="529.0" prefWidth="866.0" style="-fx-background-color: white; -fx-background-radius: 13; -fx-border-radius: 13; -fx-padding: 30 20;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="49.0" layoutY="54.0" spacing="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <FontIcon iconColor="#278aa6" iconLiteral="bxs-wallet" iconSize="24" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Konfirmasi Pembayaran">
+               <font>
+                  <Font name="Poppins Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="266.0" layoutY="334.0" prefWidth="125.0" spacing="5.0" style="-fx-background-color: #278AA6; -fx-background-radius: 9; -fx-padding: 12 22;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <FontIcon fill="WHITE" iconLiteral="bxs-wallet" iconSize="20" />
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bayar">
+               <font>
+                  <Font name="Poppins SemiBold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="582.0" layoutY="425.0" onMouseClicked="#closeModal" prefWidth="125.0" spacing="5.0" style="-fx-padding: 12 22;" AnchorPane.bottomAnchor="0.0">
+         <children>
+            <Text fill="#1e1e1e" strokeType="OUTSIDE" strokeWidth="0.0" text="Batal">
+               <font>
+                  <Font name="Poppins SemiBold" size="18.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <AnchorPane layoutX="116.0" layoutY="138.0" prefHeight="337.0" prefWidth="200.0" style="-fx-border-color: #E7E7E7; -fx-border-radius: 13; -fx-padding: 15;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+         <children>
+            <Text layoutX="123.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Poppins Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text layoutX="227.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Biaya:" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Poppins Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="grand_total" fill="#f45050" layoutX="166.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 5.000" AnchorPane.leftAnchor="170.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font name="Poppins Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="customer_name" fill="#005f82" layoutX="75.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Someone" wrappingWidth="150.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="25.0">
+               <font>
+                  <Font name="Poppins Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="input_preview" fill="#278aa6" layoutX="75.0" layoutY="186.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0">
+               <font>
+                  <Font name="Poppins Bold" size="50.0" />
+               </font>
+            </Text>
+            <Text fx:id="payment_status" layoutX="515.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Belum Bayar" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <font>
+                  <Font name="Poppins Bold" size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="total_status" fill="#278aa6" layoutX="498.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp. 0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+               <font>
+                  <Font name="Poppins Bold" size="40.0" />
+               </font>
+            </Text>
+            <HBox alignment="CENTER_LEFT" layoutX="66.0" layoutY="215.0" prefHeight="77.0" prefWidth="200.0" style="-fx-border-color: #D9D9D9; -fx-border-radius: 8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <TextField fx:id="input_total" onKeyReleased="#updatePreview" prefHeight="41.0" prefWidth="480.0" promptText="Masukkan Jumlah Total..." style="-fx-background-color: transparent, white, transparent, white;">
+                     <font>
+                        <Font name="Poppins SemiBold" size="20.0" />
+                     </font>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <HBox fx:id="close_btn" layoutX="621.0" layoutY="-6.0" onMouseClicked="#closeModal" AnchorPane.rightAnchor="-10.0" AnchorPane.topAnchor="-20.0">
+         <children>
+            <FontIcon iconLiteral="bx-x-circle" iconSize="22" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</AnchorPane>

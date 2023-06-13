@@ -6,6 +6,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import org.controlsfx.control.PopOver;
+import siplaundry.entity.CustomerEntity;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.repository.LaundryRepo;
@@ -13,6 +14,7 @@ import siplaundry.util.NumberUtil;
 import siplaundry.util.TransactionUtil;
 import siplaundry.view.cashier.transaction.CartItem;
 import siplaundry.view.cashier.transaction.CustomerPopover;
+import siplaundry.view.cashier.transaction.PaymentModal;
 import siplaundry.view.cashier.transaction.TransactionCard;
 import siplaundry.view.print.ReceiptPrint;
 
@@ -24,15 +26,18 @@ public class TransactionFormController {
     @FXML
     private ScrollPane card_scroll, items_scroll;
     @FXML
-    private Text transaction_title, cart_grandtotal;
+    private Text transaction_title, cart_grandtotal, customer_name, customer_phone;
     @FXML
     private HBox choose_customer;
-    private BorderPane parent_root;
+    private BorderPane parent_root, shadow_root;
     private LaundryRepo laundryRepo = new LaundryRepo();
     private ArrayList<TransactionDetailEntity> details = new ArrayList<>();
     private Set<LaundryEntity> laundries = new HashSet<>();
-    public TransactionFormController(BorderPane parentRoot) {
+    private PopOver custPopover = new PopOver();
+    private CustomerEntity customer;
+    public TransactionFormController(BorderPane parentRoot, BorderPane shadow_root) {
         this.parent_root = parentRoot;
+        this.shadow_root = shadow_root;
     }
 
     @FXML
@@ -46,11 +51,18 @@ public class TransactionFormController {
 
     @FXML
     void showCustomerList() {
-        PopOver popover = new PopOver();
+        custPopover.setContentNode(new CustomerPopover(this::setCustomer, shadow_root));
+        custPopover.show(choose_customer);
+        custPopover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
+    }
 
-        popover.setContentNode(new CustomerPopover());
-        popover.show(choose_customer);
-        popover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
+    @FXML
+    void showPaymentModal() {
+        new PaymentModal(
+            shadow_root,
+            this.details,
+            this.customer
+        );
     }
 
     void showCardItems(ArrayList<LaundryEntity> laundries) {
@@ -136,5 +148,13 @@ public class TransactionFormController {
         this.details.get(index).setQty(addedDetail.getQty() - 1);
         this.details.get(index).setSubtotal(detail.getLaundry().getcost() * addedDetail.getQty());
         showCartItems(this.details);
+    }
+
+    void setCustomer(CustomerEntity customer) {
+        customer_name.setText(customer.getname());
+        customer_phone.setText(customer.getphone());
+
+        this.customer = customer;
+        custPopover.hide();
     }
 }

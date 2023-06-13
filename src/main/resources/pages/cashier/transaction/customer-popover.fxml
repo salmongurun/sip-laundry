@@ -23,7 +23,7 @@
             <VBox fx:id="customer_list" prefHeight="46.0" prefWidth="245.0" styleClass="table-content-container" />
          </content>
       </ScrollPane>
-      <HBox alignment="CENTER" prefWidth="30.0" spacing="5.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10; -fx-padding: 12;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="340.0">
+      <HBox alignment="CENTER" onMouseClicked="#showAddCustomer" prefWidth="30.0" spacing="5.0" style="-fx-background-color: #F2F2F2; -fx-background-radius: 10; -fx-padding: 12;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="340.0">
          <children>
             <FontIcon fill="#606060" iconLiteral="bx-plus" iconSize="16" />
             <Text fill="#606060" strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah Customer">

@@ -10,13 +10,14 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 import siplaundry.entity.LaundryEntity;
+import siplaundry.util.NumberUtil;
 
 import java.io.IOException;
 import java.util.function.Consumer;
 
 public class TransactionCard extends AnchorPane {
     @FXML
-    private Text laundry_name;
+    private Text laundry_name, laundry_price;
     @FXML
     private HBox express_badge;
 
@@ -38,6 +39,8 @@ public class TransactionCard extends AnchorPane {
     @FXML
     void initialize() {
         laundry_name.setText(laundry.getname());
+        laundry_price.setText("Rp " + NumberUtil.rupiahFormat(laundry.getcost()) + "/ " + laundry.getunit().toString());
+
         if(laundry.getIsExpress()) express_badge.setVisible(true);
 
         this.setOnMouseClicked(event -> {

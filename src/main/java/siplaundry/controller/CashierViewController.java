@@ -83,7 +83,7 @@ public class CashierViewController {
         removeAllStates();
         btn_sb_transaction.getStyleClass().add("active");
 
-        parent_root.setCenter(new TransactionView(parent_root));
+        parent_root.setCenter(new TransactionView(parent_root, shadow));
     }
 
     @FXML
