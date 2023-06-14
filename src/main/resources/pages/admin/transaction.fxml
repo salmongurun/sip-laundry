@@ -18,6 +18,11 @@
          <font>
             <Font name="Poppins Bold" size="25.0" />
          </font></Text>
+      <Text layoutX="8.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Data Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="34.3">
+         <font>
+            <Font name="Poppins SemiBold" size="14.0" />
+         </font>
+      </Text>
       <AnchorPane layoutY="120.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="90.0" layoutY="62.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
@@ -75,10 +80,5 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Hapus Semua" />
          </children>
       </HBox>
-      <Text layoutX="8.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Data Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="34.3">
-         <font>
-            <Font name="Poppins SemiBold" size="14.0" />
-         </font>
-      </Text>
    </children>
 </fx:root>

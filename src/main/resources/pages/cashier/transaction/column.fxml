@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="1022.0" styleClass="table-content" stylesheets="@../../../style/cashier.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <CheckBox fx:id="bulk_Check" mnemonicParsing="false" styleClass="check-item" />
+      <Text fx:id="txt_date" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="01/06/2023" wrappingWidth="100.0" />
+      <Text fx:id="txt_custName" layoutX="169.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="muhammad rofiqi" wrappingWidth="210.0" />
+      <Text fx:id="txt_amount" layoutX="263.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="20000" wrappingWidth="125.0" />
+      <HBox fx:id="payment_background" alignment="CENTER" prefWidth="135.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: fef4f4;">
+         <children>
+            <Text fx:id="txt_payment" fill="#f45050" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="Belum Lunas" />
+         </children>
+      </HBox>
+      <HBox fx:id="status_background" alignment="CENTER" layoutX="381.0" layoutY="19.0" prefWidth="140.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: fef4f4;">
+         <children>
+            <Text fx:id="txt_status" fill="#f45050" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="Proses" />
+         </children>
+      </HBox>
+      <HBox prefWidth="110.0" styleClass="table-action">
+         <children>
+            <HBox fx:id="edit_btn" styleClass="edit-button">
+               <children>
+                  <FontIcon iconLiteral="bx-pencil" iconSize="18" styleClass="icon" text="" />
+               </children>
+            </HBox>
+            <HBox fx:id="delete_btn" layoutX="10.0" layoutY="10.0" styleClass="delete-button">
+               <children>
+                  <FontIcon iconLiteral="bx-trash" iconSize="18" styleClass="icon" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</fx:root>
