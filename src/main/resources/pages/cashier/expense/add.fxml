@@ -16,7 +16,7 @@
    <children>
       <Text fx:id="modal_title" layoutX="79.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buat Pengeluaran Baru" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="20.0">
          <font>
-            <Font size="27.0" />
+            <Font name="Poppins Bold" size="27.0" />
          </font>
       </Text>
       <Button fx:id="close_btn" layoutX="572.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#closeModal" style="-fx-background-color: transparent; -fx-cursor: hand;" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="7.0">
@@ -26,7 +26,7 @@
       </Button>
       <Text fx:id="modal_subtitle" fill="#8a8b90" layoutX="77.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Detail Pengeluaran" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="57.1298828125">
          <font>
-            <Font size="11.0" />
+            <Font name="Poppins Medium" size="11.0" />
          </font>
       </Text>
       <VBox layoutX="57.0" layoutY="120.0" prefWidth="628.0" spacing="23.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="100.0">

@@ -9,7 +9,6 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="485.0" prefWidth="496.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Button fx:id="close_btn" layoutX="430.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#closeModal" style="-fx-background-color: transparent; -fx-cursor: hand;" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -18,22 +17,28 @@
          </graphic>
       </Button>
       <FontIcon iconColor="#005f82" iconLiteral="bx-lock" iconSize="100" layoutX="198.0" layoutY="134.0" />
-      <Text fill="#005f82" layoutX="173.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Password">
+      <Text fill="#005f82" layoutX="173.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Password" AnchorPane.leftAnchor="160.0">
          <font>
-            <Font size="22.0" />
+            <Font name="Poppins SemiBold" size="22.0" />
          </font>
       </Text>
       <VBox layoutX="34.0" layoutY="199.0" prefHeight="225.0" prefWidth="428.0" spacing="20.0">
          <children>
             <VBox spacing="5.0" styleClass="form-control">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password baru" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password baru">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font></Text>
                   <PasswordField fx:id="txt_pass" prefHeight="39.0" prefWidth="428.0" styleClass="input" />
                </children>
             </VBox>
             <VBox spacing="5.0" styleClass="form-control">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Konfirmasi Password" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Konfirmasi Password">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font></Text>
                   <PasswordField fx:id="txt_confirmPass" prefHeight="39.0" prefWidth="428.0" styleClass="input" />
                </children>
             </VBox>
@@ -41,6 +46,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font name="Poppins SemiBold" size="12.0" />
+               </font>
             </Button>
          </children>
       </VBox>

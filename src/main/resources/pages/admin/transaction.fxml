@@ -8,12 +8,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Text layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-7.25">
+         <font>
+            <Font name="Poppins Bold" size="25.0" />
+         </font></Text>
       <AnchorPane layoutY="120.0" prefHeight="575.0" prefWidth="1084.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="90.0" layoutY="62.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
@@ -71,5 +75,10 @@
             <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Hapus Semua" />
          </children>
       </HBox>
+      <Text layoutX="8.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Data Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="34.3">
+         <font>
+            <Font name="Poppins SemiBold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </fx:root>
