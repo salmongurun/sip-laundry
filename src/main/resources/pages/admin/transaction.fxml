@@ -58,18 +58,7 @@
             <Text fx:id="total_text" fill="#7f7f7f" layoutX="24.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data akun" />
          </children>
       </AnchorPane>
-      <HBox layoutX="894.0" layoutY="20.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
-         <styleClass>
-            <String fx:value="icon-button" />
-            <String fx:value="btn-outline" />
-            <String fx:value="primary-outline" />
-         </styleClass>
-         <children>
-            <FontIcon iconLiteral="bx-plus-circle" styleClass="icon" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Tambah Transaksi" />
-         </children>
-      </HBox>
-      <HBox fx:id="btn_bulk_delete" disable="true" layoutX="731.0" layoutY="50.0" onMouseClicked="#bulkDelete">
+      <HBox fx:id="btn_bulk_delete" disable="true" layoutX="731.0" layoutY="50.0" onMouseClicked="#bulkDelete" AnchorPane.leftAnchor="930.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
