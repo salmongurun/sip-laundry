@@ -208,6 +208,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
                 LaundryStatus.valueOf(result.getString("status")),
                 PaymentStatus.valueOf(result.getString("payment_status")),
                 result.getInt("amount"),
+                result.getInt("paid_off"),
                 new UsersRepo().get(userId),
                 new CustomerRepo().get(custId));
 

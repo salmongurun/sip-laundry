@@ -66,6 +66,7 @@ public class TransDetailRepoTest {
                 LaundryStatus.finish,
                 PaymentStatus.paid,
                 23,
+                7000,
                 user,
                 customer));
 
