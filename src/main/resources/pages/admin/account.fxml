@@ -61,7 +61,7 @@
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Sort By:" wrappingWidth="45.0" />
                   <ComboBox fx:id="CB_column" prefHeight="20.0" prefWidth="155.0" promptText="Role" style="-fx-padding: 7 5;" styleClass="input" />
-                  <HBox alignment="CENTER" onMouseClicked="#sortAction" styleClass="btn-sorting">
+                  <HBox fx:id="sortAction" alignment="CENTER" onMouseClicked="#sortAction" styleClass="btn-sorting">
                      <children>
                         <FontIcon fx:id="sort_icon" iconLiteral="bx-sort-down" styleClass="sort-icon" />
                      </children>

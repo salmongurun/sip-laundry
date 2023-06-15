@@ -84,7 +84,6 @@ public class AccountController {
     @FXML
     void sortAction(){
         String column = "fullname";
-
         if(this.sortOrder == SortingOrder.DESC) {
             this.sortOrder = SortingOrder.ASC;
             sort_icon.setIconLiteral("bx-sort-down");
