@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -63,6 +62,7 @@ public class TransactionRepoTest {
                 LaundryStatus.finish,
                 PaymentStatus.paid,
                 23,
+                50000,
                 user,
                 customer);
 
@@ -95,6 +95,7 @@ public class TransactionRepoTest {
                 LaundryStatus.process,
                 PaymentStatus.unpaid,
                 233,
+                9000,
                 user,
                 customer);
 

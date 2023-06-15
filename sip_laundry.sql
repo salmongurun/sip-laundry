@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 27, 2023 at 08:13 AM
+-- Generation Time: Jun 15, 2023 at 06:43 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -34,6 +34,26 @@ CREATE TABLE `customers` (
   `phone` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `customers`
+--
+
+INSERT INTO `customers` (`customer_id`, `address`, `name`, `phone`) VALUES
+(247, 'jember', 'sasa', '087675675654'),
+(248, 'jember', 'tina', '087876765654'),
+(249, 'jember', 'titin', '087875432123'),
+(254, 'jember', 'joki', '081238560'),
+(255, 'jember', 'Aldea', '33232323'),
+(258, 'jember', 'titi', '086234213213'),
+(259, 'jember', 'rio', '089786765654'),
+(260, 'jember', 'julia', '087123213456'),
+(261, 'jember', 'jono', '086545123456'),
+(263, 'jember', 'joki', '081238560'),
+(264, 'jember', 'Aldea', '33232323'),
+(268, 'jember', 'joki', '081238560'),
+(269, 'jember', 'Aldea', '33232323'),
+(272, 'banyuwangi', 'iyu', '081345432123');
+
 -- --------------------------------------------------------
 
 --
@@ -50,6 +70,24 @@ CREATE TABLE `expense` (
   `optional` mediumtext NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `expense`
+--
+
+INSERT INTO `expense` (`expense_id`, `name`, `expense_date`, `subtotal`, `qty`, `amount`, `optional`, `user_id`) VALUES
+(50, 'beli parfum', '2023-06-03', 3000, 3, 9000, 'beli di warung depan', 317),
+(51, 'beli rinso', '2023-06-03', 1000, 10, 10000, 'beli di toko', 317),
+(54, 'beli jajan', '2023-05-09', 3000, 5, 15000, 'beli beli', 324),
+(55, 'beli deterjen', '2023-05-04', 2000, 5, 10000, 'beli keperluan', 318),
+(56, 'beli susu', '2023-04-09', 20000, 2, 40000, 'keperluan anak kecil', 318),
+(57, 'beli plastik', '2023-04-01', 2000, 5, 10000, 'keperluan sampah', 326),
+(58, 'beli deterjen', '2023-02-02', 2000, 10, 20000, 'beli beli', 327),
+(59, 'beli konsumsi', '2023-02-09', 4000, 5, 20000, 'konsumsi acara', 318),
+(60, 'beli sabun', '2023-01-08', 6000, 2, 12000, 'beli beli', 325),
+(61, 'beli obat', '2023-01-03', 10000, 3, 30000, 'buat orang sakit', 324),
+(62, 'beli jajan', '2023-03-02', 6000, 2, 12000, 'beli', 326),
+(63, 'beli beli', '2023-03-04', 1000, 3, 3000, 'beli ', 325);
 
 --
 -- Triggers `expense`
@@ -78,7 +116,12 @@ CREATE TABLE `laundries` (
 --
 
 INSERT INTO `laundries` (`laundry_id`, `unit`, `cost`, `name`, `IsExpress`) VALUES
-(161, 'kilogram', 3323, 'aldea', 0);
+(187, 'kilogram', 5000, 'cuci baju', 0),
+(188, 'kilogram', 6000, 'cuci baju', 1),
+(189, 'meter', 3000, 'korden', 0),
+(190, 'meter', 4000, 'korden', 1),
+(191, 'pcs', 10000, 'boneka', 0),
+(192, 'pcs', 12000, 'boneka', 1);
 
 -- --------------------------------------------------------
 
@@ -127,7 +170,12 @@ INSERT INTO `options` (`option_id`, `key`, `value`) VALUES
 (69, 'alamat20', 'sumbersari'),
 (71, 'alamat20', 'sumbersari'),
 (73, 'alamat20', 'sumbersari'),
-(75, 'alamat20', 'sumbersari');
+(75, 'alamat20', 'sumbersari'),
+(77, 'alamat20', 'sumbersari'),
+(79, 'alamat20', 'sumbersari'),
+(81, 'alamat20', 'sumbersari'),
+(83, 'alamat20', 'sumbersari'),
+(85, 'alamat20', 'sumbersari');
 
 -- --------------------------------------------------------
 
@@ -143,9 +191,51 @@ CREATE TABLE `transactions` (
   `status` enum('process','finish','taken','canceled') DEFAULT 'process',
   `payment_status` enum('paid','unpaid','instalment') NOT NULL,
   `amount` int(11) NOT NULL DEFAULT 0,
+  `paid_off` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transactions`
+--
+
+INSERT INTO `transactions` (`transaction_id`, `transaction_date`, `retard`, `pickup_date`, `status`, `payment_status`, `amount`, `paid_off`, `user_id`, `customer_id`) VALUES
+(164, '2023-06-08 09:30:10', 0, '2023-06-10 09:30:10', 'finish', 'instalment', 5000, 0, 318, 249),
+(165, '2023-06-07 09:30:10', 0, '2023-06-10 04:30:10', 'process', 'paid', 15000, 0, 324, 255),
+(166, '2023-05-08 09:37:27', 0, '2023-05-10 09:37:28', 'process', 'paid', 17000, 0, 324, 248),
+(167, '2023-05-05 09:37:28', 0, '2023-05-08 09:37:28', 'finish', 'instalment', 8000, 0, 326, 254),
+(168, '2023-04-07 09:40:13', 0, '2023-04-09 09:40:13', 'finish', 'paid', 20000, 0, 328, 260),
+(169, '2023-04-04 09:40:13', 0, '2023-04-08 09:40:13', 'process', 'instalment', 10000, 0, 312, 261),
+(170, '2023-03-06 09:41:57', 0, '2023-03-08 09:41:57', 'process', 'paid', 24000, 0, 317, 260),
+(173, '2023-02-07 14:59:17', 0, '2023-06-09 14:59:17', 'process', 'instalment', 5000, 0, 317, 248),
+(174, '2023-01-01 15:00:36', 0, '2023-01-04 15:00:36', 'process', 'paid', 35000, 0, 328, 254),
+(182, '2023-06-09 00:17:09', 0, '2023-06-09 00:17:09', 'finish', 'paid', 10000, 0, 324, 254),
+(183, '2023-06-09 00:17:09', 0, '2023-06-09 00:17:09', 'finish', 'paid', 20000, 0, 325, 248),
+(184, '2023-06-08 00:18:49', 0, '2023-06-08 00:18:49', 'taken', 'paid', 5000, 0, 327, 249),
+(185, '2023-06-08 00:18:49', 0, '2023-06-08 00:18:49', 'finish', 'instalment', 2000, 0, 318, 247),
+(186, '2023-06-12 03:29:30', 0, '2023-06-12 03:29:30', 'finish', 'paid', 4000, 0, 317, 248),
+(187, '2023-06-12 03:29:30', 0, '2023-06-12 03:29:30', 'finish', 'instalment', 5000, 0, 317, 249),
+(188, '2023-06-11 08:30:55', 0, '2023-06-11 08:30:55', 'finish', 'paid', 7000, 0, 317, 263),
+(189, '2023-06-11 08:30:55', 0, '2023-06-11 08:30:55', 'finish', 'instalment', 2000, 0, 317, 248),
+(190, '2023-06-11 08:32:13', 0, '2023-06-11 08:32:13', 'finish', 'paid', 5000, 0, 317, 268),
+(191, '2023-06-10 08:32:13', 0, '2023-06-10 08:32:13', 'finish', 'paid', 3000, 0, 317, 248),
+(192, '2023-06-10 08:33:43', 0, '2023-06-12 03:33:42', 'process', 'paid', 2000, 0, 317, 254),
+(193, '2023-06-10 08:33:43', 0, '2023-06-12 03:33:42', 'finish', 'paid', 1000, 0, 317, 248),
+(194, '2023-06-10 08:35:04', 0, '2023-06-12 03:35:03', 'process', 'paid', 4000, 0, 317, 248),
+(195, '2023-06-09 08:35:04', 0, '2023-06-12 03:35:03', 'taken', 'paid', 30000, 0, 317, 248),
+(196, '2023-06-09 08:36:08', 0, '2023-06-12 03:36:07', 'finish', 'instalment', 6000, 0, 324, 247),
+(197, '2023-06-14 00:00:00', 0, '2023-06-12 03:36:08', 'finish', 'paid', 22000, 0, 317, 249),
+(198, '2023-06-08 08:37:05', 0, '2023-06-12 03:37:05', 'process', 'paid', 5000, 0, 317, 247),
+(199, '2023-06-08 08:37:05', 0, '2023-06-12 03:37:05', 'finish', 'instalment', 4000, 0, 317, 269),
+(200, '2023-06-07 08:38:06', 0, '2023-06-12 03:38:06', 'taken', 'paid', 4000, 0, 317, 260),
+(201, '2023-06-07 08:38:06', 0, '2023-06-12 03:38:06', 'process', 'instalment', 1000, 0, 317, 248),
+(202, '2023-06-07 08:39:12', 0, '2023-06-12 03:39:11', 'finish', 'paid', 2000, 0, 317, 269),
+(203, '2023-06-07 08:39:12', 0, '2023-06-12 03:39:11', 'taken', 'paid', 4000, 0, 317, 261),
+(204, '2023-06-07 08:40:09', 0, '2023-06-12 03:40:09', 'taken', 'paid', 3000, 0, 317, 261),
+(205, '2023-06-06 08:40:09', 0, '2023-06-12 03:40:09', 'finish', 'paid', 5000, 0, 317, 269),
+(206, '2023-06-06 08:41:09', 0, '2023-06-12 03:41:09', 'finish', 'paid', 2000, 0, 317, 263),
+(207, '2023-06-14 08:01:46', 0, '2023-06-14 08:01:46', 'process', 'paid', 2000, 0, 324, 249);
 
 -- --------------------------------------------------------
 
@@ -159,6 +249,18 @@ CREATE TABLE `transaction_details` (
   `transaction_id` int(11) NOT NULL,
   `laundry_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `transaction_details`
+--
+
+INSERT INTO `transaction_details` (`qty`, `subtotal`, `transaction_id`, `laundry_id`) VALUES
+(1, 6000, 195, 188),
+(1, 4000, 195, 190),
+(2, 20000, 195, 191),
+(5, 6000, 196, 189),
+(2, 12000, 197, 187),
+(1, 10000, 197, 191);
 
 --
 -- Triggers `transaction_details`
@@ -198,8 +300,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `rfid`, `username`, `fullname`, `phone`, `password`, `address`, `role`) VALUES
-(228, '2323232323', 'sinta', 'sinta1', '6281358301632', 'admin230', 'jember', 'admin'),
-(260, '0', 'sinta', 'sinta2', '6289876231213', 'kasir230', 'jember', 'cashier');
+(312, '0', 'sinta', 'sinta manila2', '6281358301632', 'admin233', 'jember', 'admin'),
+(317, '0', 'sinta', 'sinta', '6281358301632', 'kasir230', 'jember', 'cashier'),
+(318, '0', 'ardianti', 'ardianti', '6289876765654', 'ardianti', 'jember', 'admin'),
+(324, '0', 'Sinta', 'sinta manila', '6289787675654', 'kamu', 'jember', 'admin'),
+(325, '0', 'sisi', 'sisiiii', '081323213453', 'sisisisi', 'jember', 'cashier'),
+(326, '0', 'tiara', 'tiaraaaa', '087123213214', 'rererere', 'jember', 'cashier'),
+(327, '0', 'siska', 'siskaaaa', '087123432675', 'siskasis', 'jember', 'cashier'),
+(328, '0', 'joko', 'jokoooo', '087213213456', 'joko1234', 'jember', 'cashier'),
+(334, '0', 'Sinta', 'sinta manila', '6289787675654', 'kamu', 'jember', 'admin'),
+(340, '0', 'Sinta', 'sinta manila', '6289787675654', 'kamu', 'jember', 'admin');
 
 -- --------------------------------------------------------
 
@@ -211,6 +321,13 @@ CREATE TABLE `verifications` (
   `user_id` int(11) NOT NULL,
   `code` varchar(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `verifications`
+--
+
+INSERT INTO `verifications` (`user_id`, `code`) VALUES
+(312, '353113');
 
 --
 -- Indexes for dumped tables
@@ -276,43 +393,43 @@ ALTER TABLE `verifications`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=215;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=273;
 
 --
 -- AUTO_INCREMENT for table `expense`
 --
 ALTER TABLE `expense`
-  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `expense_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `laundries`
 --
 ALTER TABLE `laundries`
-  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=164;
+  MODIFY `laundry_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=193;
 
 --
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=77;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=137;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=208;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=264;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=341;
 
 --
 -- AUTO_INCREMENT for table `verifications`
 --
 ALTER TABLE `verifications`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=254;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=340;
 
 --
 -- Constraints for dumped tables
