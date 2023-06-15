@@ -47,6 +47,10 @@ public class TransactionFormController {
         transaction_title.setOnMouseClicked(event -> {
             new ReceiptPrint();
         });
+
+        cart_grandtotal.setOnMouseClicked(event -> {
+            System.out.println("Clicked!");
+        });
     }
 
     @FXML
