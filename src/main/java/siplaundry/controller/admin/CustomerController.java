@@ -1,8 +1,8 @@
 package siplaundry.controller.admin;
 
-import java.util.HashMap;
 import java.util.*;
-import java.util.List;
+
+import org.kordamp.ikonli.javafx.FontIcon;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -15,6 +15,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.CustomerEntity;
 import siplaundry.repository.CustomerRepo;
 import siplaundry.view.admin.components.column.CustomerColumn;
@@ -41,7 +42,8 @@ public class CustomerController {
     private TextField txt_keyword;
 
     @FXML
-    private ComboBox<String> CB_sortBy;
+    private FontIcon sort_icon;
+
     @FXML
     private ComboBox<String> CB_column;
 
@@ -52,15 +54,10 @@ public class CustomerController {
     private ArrayList<CustomerColumn> accColumns = new ArrayList<>();
 
     public CustomerController(BorderPane shadow){ this.shadowRoot = shadow;}
+    private SortingOrder sortOrder = SortingOrder.DESC;
 
     @FXML
     void initialize(){
-        ObservableList<String> items = FXCollections.observableArrayList(
-            "A-Z",
-            "Z-A"
-        );
-        CB_sortBy.setItems(items);
-
         ObservableList<String> column = FXCollections.observableArrayList(
             "Nama",
             "Alamat"
@@ -92,14 +89,22 @@ public class CustomerController {
     }
 
     @FXML
-    void SortAction(){
-        String SortBy = " DESC";
-        String column = " name";
-        
-        if(CB_sortBy.getValue().equals("A-Z")) SortBy = " ASC";
-        if(CB_column.getValue().equals("Alamat")) column = " address";
+    void sortAction(){
+        String column = "name";
 
-        List<CustomerEntity> cust = custRepo.sortBy(column, SortBy);
+        if(this.sortOrder == SortingOrder.DESC) {
+            this.sortOrder = SortingOrder.ASC;
+            sort_icon.setIconLiteral("bx-sort-down");
+        } else {
+            this.sortOrder = SortingOrder.DESC;
+            sort_icon.setIconLiteral("bx-sort-up");
+        }
+
+        if(CB_column.getValue() != null){
+            if(CB_column.getValue().equals("Alamat")) column = " address";
+        }
+
+        List<CustomerEntity> cust = custRepo.sortBy(column, this.sortOrder.toString());
         showTable(cust);
      }
 

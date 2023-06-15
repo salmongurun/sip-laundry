@@ -1,26 +1,3 @@
-.form-control {
-    -fx-spacing: 5;
-}
-
-.form-input {
-    -fx-border-color: #d9d9d9;
-    -fx-border-radius: 4
-}
-
-.form-input .input {
-    -fx-background-color: transparent, transparent, transparent, transparent;
-}
-
-.form-label {
-    -fx-font-family: "Poppins Medium";
-    -fx-font-size: 12;
-    -fx-text-fill: #005F82;
-}
-
-.form-input {
-    -fx-font-family: "Poppins Medium";
-    -fx-font-size: 16;
-}
 .primary-background {
     -fx-background-color: #005F82;
 }
@@ -79,6 +56,17 @@
 
 .btn-outline:disabled {
     -fx-border-color: #CBCBCB;
+}
+
+.btn-sorting {
+    -fx-padding: 10;
+    -fx-border-color: #CBCBCB;
+    -fx-border-radius: 8;
+    -fx-cursor: hand;
+}
+
+.btn-sorting .sort-icon {
+    -fx-font-size: 16;
 }
 
 .card {
@@ -184,12 +172,6 @@
     -fx-fill: #278AA6;
 }
 
-.transparent-scroll {
-    -fx-border-color: transparent;
-    -fx-background-insets: none;
-    -fx-background: #F5F9FC;
-}
-
 .table-scroll {
     -fx-border-color: transparent;
     -fx-background-insets: none;
@@ -263,6 +245,9 @@
     -fx-font-size: 12;
     -fx-background-color: transparent, transparent, transparent, transparent;
 }
+.combo-box .list-cell .text {
+    -fx-font-family: "FontAwesome";
+}
 
 /* Menghilangkan bayangan pada scrollbar */
 .scroll-pane > .scroll-bar:horizontal,
@@ -304,13 +289,4 @@
 .scroll-pane > .scroll-bar:horizontal .thumb:pressed,
 .scroll-pane > .scroll-bar:vertical .thumb:pressed {
     -fx-background-color: #808080; /* Warna thumb ketika ditekan */
-}
-
-.popover-item {
-    -fx-border-color: transparent transparent #F1F1F1 transparent;
-    -fx-background-color: white;
-}
-
-.popover-item:hover {
-    -fx-background-color: #eff9fd;
 }

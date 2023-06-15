@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.kordamp.ikonli.javafx.FontIcon;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,6 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.LaundryRepo;
 import siplaundry.view.admin.components.column.PriceColumn;
@@ -42,7 +45,7 @@ public class PriceController {
     private TextField txt_keyword;
 
     @FXML
-    private ComboBox<String> CB_sortBy;
+    private FontIcon sort_icon;
     @FXML
     private ComboBox<String> CB_column;
 
@@ -50,17 +53,12 @@ public class PriceController {
 
     private Set<LaundryEntity> bulkItems = new HashSet<>();
     private ArrayList<PriceColumn> accColumns = new ArrayList<>();
+    private SortingOrder sortOrder = SortingOrder.DESC;
 
     public PriceController(BorderPane shadow){ this.shadowRoot = shadow; }
 
     @FXML
     void initialize(){
-        ObservableList<String> items = FXCollections.observableArrayList(
-            "A-Z",
-            "Z-A"
-        );
-        CB_sortBy.setItems(items);
-
         ObservableList<String> column = FXCollections.observableArrayList(
             "Jenis Cucian",
             "Unit"
@@ -94,14 +92,22 @@ public class PriceController {
     }
 
     @FXML
-    void SortAction(){
-        String SortBy = " DESC";
-        String column = " name";
-        
-        if(CB_sortBy.getValue().equals("A-Z")) SortBy = " ASC";
-        if(CB_column.getValue().equals("Unit")) column = " unit";
+    void sortAction(){
+        String column = "name";
 
-        List<LaundryEntity> laundry = laundryRepo.sortBy(column, SortBy);
+        if(this.sortOrder == SortingOrder.DESC) {
+            this.sortOrder = SortingOrder.ASC;
+            sort_icon.setIconLiteral("bx-sort-down");
+        } else {
+            this.sortOrder = SortingOrder.DESC;
+            sort_icon.setIconLiteral("bx-sort-up");
+        }
+
+        if(CB_column.getValue() != null){
+            if(CB_column.getValue().equals("Unit")) column = " unit";
+        }
+
+        List<LaundryEntity> laundry = laundryRepo.sortBy(column, this.sortOrder.toString());
         showTable(laundry);
      }
 

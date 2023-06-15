@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.kordamp.ikonli.javafx.FontIcon;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import siplaundry.data.SessionData;
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ExpanseRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
@@ -43,8 +46,12 @@ public class ExpenseController {
     private TextField txt_keyword;
 
     @FXML
-    private ComboBox<String> CB_column, CB_sortBy;
+    private ComboBox<String> CB_column;
 
+    @FXML
+    private FontIcon sort_icon;
+
+    private SortingOrder sortOrder = SortingOrder.DESC;
     private ExpanseRepo expRepo = new ExpanseRepo();
     private Set<ExpenseEntity> bulkItems = new HashSet<>();
     private ArrayList<ExpenseColumn> accColumns = new ArrayList<>();
@@ -53,12 +60,6 @@ public class ExpenseController {
 
     @FXML
     void initialize(){
-        ObservableList<String> items = FXCollections.observableArrayList(
-            "A-Z",
-            "Z-A"
-        );
-        CB_sortBy.setItems(items);
-
         ObservableList<String> column = FXCollections.observableArrayList(
             "Katagori Pengeluaran",
             "Tanggal Pengeluaran",
@@ -93,18 +94,25 @@ public class ExpenseController {
     }
 
     @FXML
-    void SortAction(){
-        String SortBy = " DESC";
-        String column = " name";
+    void sortAction(){
+        String column = "name";
 
-        if(CB_sortBy.getValue().equals("A-Z")) SortBy = " ASC";
+        if(this.sortOrder == SortingOrder.DESC) {
+            this.sortOrder = SortingOrder.ASC;
+            sort_icon.setIconLiteral("bx-sort-down");
+        } else {
+            this.sortOrder = SortingOrder.DESC;
+            sort_icon.setIconLiteral("bx-sort-up");
+        }
 
-        if(CB_column.getValue().equals("Tanggal Pengeluaran")) column = " expense_date";
-        if(CB_column.getValue().equals("Total Harga")) column = " amount";
+        if(CB_column.getValue() != null){
+            if(CB_column.getValue().equals("Tanggal Pengeluaran")) column = " expense_date";
+            if(CB_column.getValue().equals("Total Harga")) column = " amount";
+        }
+       
 
-        List<ExpenseEntity> exp = expRepo.sortBy(column, SortBy);
+        List<ExpenseEntity> exp = expRepo.sortBy(column, this.sortOrder.toString());
         showTable(exp);
-
     }
 
     @FXML

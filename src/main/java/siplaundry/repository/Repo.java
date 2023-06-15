@@ -38,7 +38,7 @@ public abstract class Repo<E> {
     }
 
     public List<E> sortBy(String tableName, String column, String condition){
-        String sql = "SELECT * FROM " + tableName + " ORDER BY " + column + condition;
+        String sql = "SELECT * FROM " + tableName + " ORDER BY " + column + " " + condition;
         List<E> table = new ArrayList<>();
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {

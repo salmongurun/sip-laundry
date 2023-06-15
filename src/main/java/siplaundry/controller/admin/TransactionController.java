@@ -6,9 +6,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.kordamp.ikonli.javafx.FontIcon;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
@@ -18,6 +19,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.TransactionRepo;
 import siplaundry.view.admin.components.column.TransactionColumn;
@@ -40,7 +42,12 @@ public class TransactionController {
     private TextField txt_keyword;
 
     @FXML
-    private ComboBox<String> CB_sortBy, CB_column;
+    private ComboBox<String> CB_column;
+
+    @FXML
+    private FontIcon sort_icon;
+
+    private SortingOrder sortOrder = SortingOrder.DESC;
 
     private BorderPane shadowRoot;
     private TransactionRepo transRepo = new TransactionRepo();
@@ -54,12 +61,6 @@ public class TransactionController {
 
     @FXML
     void initialize(){
-        ObservableList<String> items = FXCollections.observableArrayList(
-            "A-Z",
-            "Z-A"
-        );
-        CB_sortBy.setItems(items);
-
         ObservableList<String> column = FXCollections.observableArrayList(
             "Nama Kasir",
             "Nama Pelanggan",
@@ -72,19 +73,28 @@ public class TransactionController {
     }
 
     @FXML
-    void SortAction(){
-        String SortBy = " DESC";
-        String column = " pickup_date";
+    void sortAction(){
+        String column = "pickup_date";
 
-        if(CB_sortBy.getValue().equals("A-Z")) SortBy = " ASC";
-        if(CB_column.getValue().equals("Nama Kasir")) column = " users.fullname";
-        if(CB_column.getValue().equals("Nama Pelanggan")) column = " customers.name";
+        if(this.sortOrder == SortingOrder.DESC) {
+            this.sortOrder = SortingOrder.ASC;
+            sort_icon.setIconLiteral("bx-sort-down");
+        } else {
+            this.sortOrder = SortingOrder.DESC;
+            sort_icon.setIconLiteral("bx-sort-up");
+        }
+
+        if(CB_column.getValue() != null){
+            if(CB_column.getValue().equals("Nama Kasir")) column = " users.fullname";
+            if(CB_column.getValue().equals("Nama Pelanggan")) column = " customers.name";
+        }
+
 
         List<TransactionEntity> trans = transRepo.sortTable(
             "users.fullname, customers.name", 
             " JOIN users ON transactions.user_id = users.user_id JOIN customers ON transactions.customer_id = customers.customer_id", 
             column, 
-            SortBy
+            this.sortOrder.toString()
         );
 
         showTable(trans);
