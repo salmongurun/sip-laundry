@@ -26,7 +26,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
     public Integer add(TransactionEntity trans) {
         String sql = "INSERT INTO " + tableName
-                + " (`transaction_date`,`retard` ,`pickup_date`, `status`, `payment_status`, `amount`, `user_id`, `customer_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                + " (`transaction_date`,`retard` ,`pickup_date`, `status`, `payment_status`, `amount`, `paid_off`, `user_id`, `customer_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
             
@@ -36,8 +36,9 @@ public class TransactionRepo extends Repo<TransactionEntity> {
             stmt.setString(4, trans.getstatus().toString());
             stmt.setString(5, trans.getPaymentStatus().toString());
             stmt.setInt(6, trans.getamount());
-            stmt.setInt(7, trans.getUserID().getID());
-            stmt.setInt(8, trans.getCustomerID().getid());
+            stmt.setInt(7, trans.getPaid_off());
+            stmt.setInt(8, trans.getUserID().getID());
+            stmt.setInt(9, trans.getCustomerID().getid());
             
             if (trans.getCustomerID() == null) {
                 stmt.setNull(3, Types.DATE);
@@ -132,7 +133,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
     public boolean Update(TransactionEntity trans) {
         String sql = "UPDATE " + tableName
-                + " SET transaction_date = ?, retard = ?, pickup_date = ?, status = ?, payment_status = ?, amount = ?, user_id = ?, customer_id = ? WHERE transaction_id = ?";
+                + " SET transaction_date = ?, retard = ?, pickup_date = ?, status = ?, payment_status = ?, amount = ?, paid_off = ?, user_id = ?, customer_id = ? WHERE transaction_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setDate(1, new Date(trans.gettransactionDate().getTime()));
@@ -141,9 +142,10 @@ public class TransactionRepo extends Repo<TransactionEntity> {
             stmt.setString(4, trans.getstatus().toString());
             stmt.setString(5, trans.getPaymentStatus().toString());
             stmt.setInt(6, trans.getamount());
-            stmt.setInt(7, trans.getUserID().getID());
-            stmt.setInt(8, trans.getCustomerID().getid());
-            stmt.setInt(9, trans.getid());
+            stmt.setInt(7, trans.getPaid_off());
+            stmt.setInt(8, trans.getUserID().getID());
+            stmt.setInt(9, trans.getCustomerID().getid());
+            stmt.setInt(10, trans.getid());
 
             stmt.executeUpdate();
 
