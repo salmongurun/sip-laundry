@@ -11,7 +11,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import org.kordamp.ikonli.javafx.FontIcon;
 import siplaundry.data.SessionData;
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.view.admin.components.column.AccountColumn;
@@ -33,14 +35,15 @@ public class AccountController {
     @FXML
     private TextField txt_keyword;
     @FXML
-    private ComboBox<String> CB_sortBy;
-    @FXML
     private ComboBox<String> CB_column;
+    @FXML
+    private FontIcon sort_icon;
 
     private BorderPane shadowRoot;
     private UsersRepo userRepo = new UsersRepo();
     private Set<UserEntity> bulkItems = new HashSet<>();
     private ArrayList<AccountColumn> accColumns = new ArrayList<>();
+    private SortingOrder sortOrder = SortingOrder.DESC;
     
     public AccountController(BorderPane shadow) {
         this.shadowRoot = shadow;
@@ -48,18 +51,14 @@ public class AccountController {
 
     @FXML
     void initialize() {
-        ObservableList<String> items = FXCollections.observableArrayList(
-            "A-Z",
-            "Z-A"
-        );
-        CB_sortBy.setItems(items);
-
         ObservableList<String> column = FXCollections.observableArrayList(
             "Role",
             "Username",
             "Nama lengkap"
         );
+
         CB_column.setItems(column);
+        sortAction();
 
         List<UserEntity> users = userRepo.get();
         showTable(users);
@@ -83,15 +82,23 @@ public class AccountController {
     }
 
     @FXML
-    void SortAction(){
-        String SortBy = " DESC";
-        String column = " fullname";
-        
-        if(CB_sortBy.getValue().equals("A-Z")) SortBy = " ASC";
-        if(CB_column.getValue().equals("Username")) column = " username";
-        if(CB_column.getValue().equals(" Role")) column = " role";
+    void sortAction(){
+        String column = "fullname";
 
-        List<UserEntity> users = userRepo.sortBy(column, SortBy);
+        if(this.sortOrder == SortingOrder.DESC) {
+            this.sortOrder = SortingOrder.ASC;
+            sort_icon.setIconLiteral("bx-sort-down");
+        } else {
+            this.sortOrder = SortingOrder.DESC;
+            sort_icon.setIconLiteral("bx-sort-up");
+        }
+
+        if(CB_column.getValue() != null) {
+            if(CB_column.getValue().equals("Username")) column = "username";
+            if(CB_column.getValue().equals("Role")) column = "role";
+        }
+
+        List<UserEntity> users = userRepo.sortBy(column, this.sortOrder.toString());
         showTable(users);
      }
 

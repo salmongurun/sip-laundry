@@ -54,7 +54,7 @@ public abstract class Repo<E> {
     }
 
     public List<E> sortTable(String tableName, String show, String join, String column, String condition){
-        String sql = "SELECT " + tableName + ".* , " + show + " FROM " + tableName + join + " ORDER BY " + column + condition;
+        String sql = "SELECT " + tableName + ".* , " + show + " FROM " + tableName + join + " ORDER BY " + column + " " + condition;
         List<E> table = new ArrayList<>();
 
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
