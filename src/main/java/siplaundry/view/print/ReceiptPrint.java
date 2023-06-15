@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.image.PixelFormat;
+import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -13,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import siplaundry.service.PrinterService;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -49,15 +52,9 @@ public class ReceiptPrint {
     @FXML
     void initialize() {
         SnapshotParameters parameters = new SnapshotParameters();
-        WritableImage writableImage = new WritableImage(300, 1000);
+        WritableImage snapshot = new WritableImage(300, 1000);
+        print_body.snapshot(parameters, snapshot);
 
-        print_body.snapshot(parameters, writableImage);
-        BufferedImage bufferedImage = SwingFXUtils.fromFXImage(writableImage, null);
-
-        try {
-            ImageIO.write(bufferedImage, "png", new File("/home/ibad/anjay.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        PrinterService.printReceipt(snapshot);
     }
 }
