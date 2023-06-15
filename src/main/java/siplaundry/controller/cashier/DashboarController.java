@@ -2,6 +2,7 @@ package siplaundry.controller.cashier;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.mysql.cj.Session;
@@ -13,11 +14,17 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 import siplaundry.data.SessionData;
+import siplaundry.entity.TransactionDashboardEntity;
+import siplaundry.entity.TransactionEntity;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.TransactionRepo;
+import siplaundry.view.cashier.components.column.DashboardColumn;
+import siplaundry.view.cashier.components.column.TransactionColumn;
 
 public class DashboarController {
     @FXML
@@ -26,9 +33,17 @@ public class DashboarController {
     @FXML
     private BarChart<String, Number> statistic_chart;
 
+    @FXML
+    private VBox dash_table;
+
+    private BorderPane shadowRoot;
+
     TransactionRepo transRepo = new TransactionRepo();
 
+
     private String cust, process, taken;
+
+    public DashboarController(BorderPane shadow){ this.shadowRoot = shadow; }
 
     @FXML
     void initialize() {
@@ -45,6 +60,9 @@ public class DashboarController {
            }
        }));
        timeline.play();
+
+       List<TransactionDashboardEntity> trans = transRepo.DashboardTable();
+       showTable(trans);
     }
 
      private void drawChart(String duration) {
@@ -78,6 +96,16 @@ public class DashboarController {
         txt_cust.setText(cust);
         txt_process.setText(process);
         txt_taken.setText(taken);
+    }
+
+    public void showTable(List<TransactionDashboardEntity> trans){
+        dash_table.getChildren().clear();
+
+        if(trans == null) transRepo.DashboardTable();
+        for(TransactionDashboardEntity transEn: trans){
+            DashboardColumn column = new DashboardColumn(shadowRoot, transEn);
+            dash_table.getChildren().add(column);
+        }
     }
 
 }

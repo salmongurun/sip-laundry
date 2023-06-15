@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="250.0" spacing="5.0" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Text fx:id="txt_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Ardianti - 5 items" wrappingWidth="160.0">
+                     <font>
+                        <Font name="Poppins Medium" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txt_time" strokeType="OUTSIDE" strokeWidth="0.0" text="7 jam lagi" textAlignment="RIGHT" wrappingWidth="88.0">
+                     <font>
+                        <Font name="Poppins Light" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="30.0" prefWidth="249.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total :  RP ">
+                     <font>
+                        <Font name="Poppins Light" size="12.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txt_amount" strokeType="OUTSIDE" strokeWidth="0.0" text="50.000" wrappingWidth="110.0">
+                     <font>
+                        <Font name="Poppins Light" size="12.0" />
+                     </font>
+                  </Text>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="80.0" style="-fx-background-color: #d9d9d9; -fx-border-radius: 10; -fx-background-radius: 10;">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Lihat Detail" />
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</fx:root>

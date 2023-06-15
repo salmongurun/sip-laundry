@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,7 @@ import siplaundry.data.LaundryStatus;
 import siplaundry.data.PaymentStatus;
 import siplaundry.entity.UserEntity;
 import siplaundry.util.DatabaseUtil;
+import siplaundry.entity.TransactionDashboardEntity;
 import siplaundry.entity.TransactionEntity;
 
 public class TransactionRepo extends Repo<TransactionEntity> {
@@ -93,7 +95,40 @@ public class TransactionRepo extends Repo<TransactionEntity> {
 
     public LinkedHashMap<String, Integer> chartCount(String condition, String groupName,String function, String count, String duration, String time){
         return super.chartCount(tableName, condition, groupName, function,count, duration, time);
-    } 
+    }
+    
+    public Map<String, String> detailCount(){
+        String sql = "SELECT `transactions`.`transaction_id` AS id , COUNT(`transaction_details`.`qty`) AS items FROM `transactions` JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` GROUP BY `transactions`.`transaction_id`;";
+        Map<String, String> table = new HashMap<>();
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery();
+            while(rs.next()){
+                table.put(rs.getString(0), rs.getString(1));
+            }
+        } catch (SQLException e) { }
+        return table;
+    }
+
+    public List<TransactionDashboardEntity> DashboardTable(){
+        String sql = "SELECT `transactions`.`transaction_id` AS transaction_id, `customers`.`customer_id` AS customer_id, TIMESTAMPDIFF(HOUR, `transactions`.`transaction_date`, NOW()) AS diff_hours, COUNT(`transaction_details`.`transaction_id`) AS items_count FROM `transactions` JOIN `customers` ON `transactions`.`customer_id` = `customers`.`customer_id` JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` GROUP BY `transaction_details`.`transaction_id` ORDER BY diff_hours ASC;";
+        List<TransactionDashboardEntity> transactions = new ArrayList<>();
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()){
+                transactions.add(new TransactionDashboardEntity(
+                    this.get(rs.getInt("transaction_id")),
+                    (new CustomerRepo()).get(rs.getInt("customer_id")),
+                    rs.getLong("diff_hours"),
+                    rs.getInt("items_count"))
+                );
+            }
+        } catch (SQLException e) { }
+
+        return transactions;
+    }
 
     public boolean Update(TransactionEntity trans) {
         String sql = "UPDATE " + tableName
@@ -175,6 +210,16 @@ public class TransactionRepo extends Repo<TransactionEntity> {
                 result.getInt("amount"),
                 new UsersRepo().get(userId),
                 new CustomerRepo().get(custId));
+
+        transaction.setid(result.getInt("transaction_id"));
+        return transaction;
+    }
+
+    public TransactionEntity maptoEntity(ResultSet result) throws SQLException {
+
+        TransactionEntity transaction = new TransactionEntity(
+
+        );
 
         transaction.setid(result.getInt("transaction_id"));
         return transaction;
