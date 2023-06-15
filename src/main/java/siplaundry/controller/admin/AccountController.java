@@ -83,7 +83,7 @@ public class AccountController {
 
     @FXML
     void sortAction(){
-        String column = "fullname";
+        String column = "role";
         if(this.sortOrder == SortingOrder.DESC) {
             this.sortOrder = SortingOrder.ASC;
             sort_icon.setIconLiteral("bx-sort-down");
@@ -94,7 +94,7 @@ public class AccountController {
 
         if(CB_column.getValue() != null) {
             if(CB_column.getValue().equals("Username")) column = "username";
-            if(CB_column.getValue().equals("Role")) column = "role";
+            if(CB_column.getValue().equals("Nama Lengkap")) column = "fullname";
         }
 
         List<UserEntity> users = userRepo.sortBy(column, this.sortOrder.toString());
