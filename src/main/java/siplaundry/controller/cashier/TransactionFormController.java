@@ -43,14 +43,6 @@ public class TransactionFormController {
     @FXML
     void initialize() {
         showCardItems((ArrayList<LaundryEntity>) laundryRepo.get());
-
-        transaction_title.setOnMouseClicked(event -> {
-            new ReceiptPrint();
-        });
-
-        cart_grandtotal.setOnMouseClicked(event -> {
-            System.out.println("Clicked!");
-        });
     }
 
     @FXML

@@ -13,16 +13,22 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import siplaundry.entity.TransactionEntity;
+import siplaundry.repository.TransactionDetailRepo;
+import siplaundry.repository.TransactionRepo;
 import siplaundry.service.AuthService;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.auth.RFIDAuthView;
 import siplaundry.view.auth.VerificationView;
+import siplaundry.view.print.ReceiptPrint;
 import toast.Toast;
 import toast.ToastType;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 import org.kordamp.ikonli.javafx.FontIcon;
 
@@ -40,6 +46,8 @@ public class LoginController {
     private HBox password_container;
     @FXML
     private FontIcon toggle_icon;
+    @FXML
+    private Text welcome_text;
 
     private String password;
     private boolean isPasswordShown = false;
@@ -47,6 +55,14 @@ public class LoginController {
     public void initialize() {
         shadowRoot.setVisible(false);
         addPasswordElement();
+
+        TransactionEntity transaction = new TransactionRepo().get(195);
+
+        welcome_text.setOnMouseClicked(event -> {
+            new ReceiptPrint(transaction, new TransactionDetailRepo().get(new HashMap<>() {{
+                put("transaction_id", transaction.getid());
+            }}));
+        });
     }
 
     public void ButtonLoginAction() {

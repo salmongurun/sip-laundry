@@ -23,7 +23,7 @@
       </ImageView>
       <AnchorPane layoutX="883.0" layoutY="86.0" prefHeight="768.0" prefWidth="583.0" style="-fx-background-color: white;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Text layoutX="65.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selamat Datang di SIP Laundry">
+            <Text fx:id="welcome_text" layoutX="65.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Selamat Datang di SIP Laundry">
                <font>
                   <Font name="Poppins Bold" size="25.0" />
                </font>
