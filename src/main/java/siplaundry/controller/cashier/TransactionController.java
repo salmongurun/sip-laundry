@@ -64,7 +64,9 @@ public class TransactionController {
     void initialize(){
         ObservableList<String> column = FXCollections.observableArrayList(
             "Nama Pelanggan",
-            "Tanggal Transaksi"
+            "Tanggal Transaksi",
+            "Status Cucian",
+            "Status Pembayaran"
         );
         CB_column.setItems(column);
 
@@ -74,7 +76,7 @@ public class TransactionController {
 
     @FXML
     void sortAction(){
-        String column = "pickup_date";
+        String column = "customers.name";
         if(this.sortOrder == SortingOrder.DESC) {
             this.sortOrder = SortingOrder.ASC;
             sort_icon.setIconLiteral("bx-sort-down");
@@ -84,7 +86,9 @@ public class TransactionController {
         }
         
         if(CB_column.getValue() != null){
-            if(CB_column.getValue().equals("Nama Pelanggan")) column = " customers.name";
+            if(CB_column.getValue().equals("Tanggal Transaksi")) column = "transaction_date";
+            if(CB_column.getValue().equals("Status Cucian")) column = "transactions.status";
+            if(CB_column.getValue().equals("Status Pembayaran")) column = "transactions.payment_status";
         }
 
         List<TransactionEntity> trans = transRepo.sortTable(
