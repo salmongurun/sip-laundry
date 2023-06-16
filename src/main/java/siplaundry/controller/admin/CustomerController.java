@@ -18,6 +18,7 @@ import javafx.scene.text.Text;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.CustomerEntity;
 import siplaundry.repository.CustomerRepo;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.column.CustomerColumn;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.admin.components.modal.CustomerModal;
@@ -31,43 +32,36 @@ public class CustomerController {
 
     @FXML
     private HBox btn_add_customer, btn_bulk_delete;
-
     @FXML
     private VBox customer_table;
-
     @FXML
     private Text total_text;
-
     @FXML
     private TextField txt_keyword;
-
     @FXML
     private FontIcon sort_icon;
-
     @FXML
     private ComboBox<String> CB_column;
 
     private CustomerRepo custRepo = new CustomerRepo();
-
     private Set<CustomerEntity> bulkItems = new HashSet<>();
-
     private ArrayList<CustomerColumn> accColumns = new ArrayList<>();
 
     public CustomerController(BorderPane shadow){ this.shadowRoot = shadow;}
-    private SortingOrder sortOrder = SortingOrder.DESC;
+    private SortingOrder sortOrder = SortingOrder.ASC;
 
     @FXML
     void initialize(){
+        List<CustomerEntity> customer = custRepo.get();
         ObservableList<String> column = FXCollections.observableArrayList(
             "Nama",
             "Alamat"
         );
-        CB_column.setItems(column);
-        
-        List<CustomerEntity> customer = custRepo.get();
 
-        showTable(customer);
+        CB_column.setItems(column);
+
         total_text.setText("Menampilkan total "+ customer.size());
+        showTable(customer);
     }
 
     @FXML
@@ -77,14 +71,7 @@ public class CustomerController {
 
     @FXML
     void searchAction(KeyEvent event){
-        String keyword = txt_keyword.getText();
-
-        List<CustomerEntity> cust = custRepo.search(new HashMap<>(){{
-            put("name", keyword);
-            put("phone", keyword);
-            put("address", keyword);
-        }});
-
+        List<CustomerEntity> cust = custRepo.search(this.searchableValues());
         showTable(cust);
     }
 
@@ -92,19 +79,13 @@ public class CustomerController {
     void sortAction(){
         String column = "name";
 
-        if(this.sortOrder == SortingOrder.DESC) {
-            this.sortOrder = SortingOrder.ASC;
-            sort_icon.setIconLiteral("bx-sort-down");
-        } else {
-            this.sortOrder = SortingOrder.DESC;
-            sort_icon.setIconLiteral("bx-sort-up");
-        }
+        this.sortOrder = ViewUtil.switchOrderIcon(this.sortOrder, this.sort_icon);
 
         if(CB_column.getValue() != null){
             if(CB_column.getValue().equals("Alamat")) column = " address";
         }
 
-        List<CustomerEntity> cust = custRepo.sortBy(column, this.sortOrder.toString());
+        List<CustomerEntity> cust = custRepo.search(this.searchableValues(), column, this.sortOrder);
         showTable(cust);
      }
 
@@ -137,8 +118,6 @@ public class CustomerController {
         }
 
         for(CustomerEntity cust : customer){
-            // customer_table.getChildren().add(new CustomerColumn(shadowRoot, this::showTable, cust));
-            
             CustomerColumn column = new CustomerColumn(shadowRoot, this::showTable, cust);
             column.setBulkAction(this::toggleBulkItem);
 
@@ -155,5 +134,14 @@ public class CustomerController {
         }
 
         btn_bulk_delete.setDisable(this.bulkItems.size() < 1);
+    }
+
+    private HashMap<String, Object> searchableValues() {
+        String keyword = txt_keyword.getText();
+        return new HashMap<>() {{
+            put("name", keyword);
+            put("phone", keyword);
+            put("address", keyword);
+        }};
     }
 }

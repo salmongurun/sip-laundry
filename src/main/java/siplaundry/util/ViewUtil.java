@@ -3,8 +3,10 @@ package siplaundry.util;
 import javafx.application.Application;
 import javafx.scene.Node;
 import javafx.stage.Stage;
+import org.kordamp.ikonli.javafx.FontIcon;
 import siplaundry.data.AccountRole;
 import siplaundry.data.SessionData;
+import siplaundry.data.SortingOrder;
 import siplaundry.view.AdminView;
 import siplaundry.view.CashierView;
 
@@ -25,5 +27,17 @@ public class ViewUtil {
                 (new CashierView()).start(stage);
             }
         } catch(Exception e) { e.printStackTrace(); }
+    }
+
+    public static SortingOrder switchOrderIcon(SortingOrder sortOrder, FontIcon sortIcon) {
+        if(sortOrder == SortingOrder.DESC) {
+            sortOrder = SortingOrder.ASC;
+            sortIcon.setIconLiteral("bx-sort-down");
+        } else {
+            sortOrder = SortingOrder.DESC;
+            sortIcon.setIconLiteral("bx-sort-up");
+        }
+
+        return sortOrder;
     }
 }

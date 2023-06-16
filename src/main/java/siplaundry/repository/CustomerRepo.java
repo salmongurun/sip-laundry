@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.CustomerEntity;
 
 public class CustomerRepo extends Repo<CustomerEntity> {
@@ -46,6 +47,10 @@ public class CustomerRepo extends Repo<CustomerEntity> {
 
     public List<CustomerEntity> search(Map<String, Object> values) {
         return super.search(tableName, values);
+    }
+
+    public List<CustomerEntity> search(Map<String, Object> values, String column, SortingOrder ordering) {
+        return super.search(tableName, values, column, ordering);
     }
 
     public boolean Update(CustomerEntity cust) {

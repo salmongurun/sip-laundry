@@ -11,6 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.UserEntity;
 import siplaundry.util.DatabaseUtil;
 
@@ -125,6 +126,33 @@ public abstract class Repo<E> {
 
             DatabaseUtil.prepareStmt(stmt, values, 0);
 
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                table.add(mapToEntity(rs));
+            }
+        } catch (SQLException e) { e.printStackTrace(); }
+
+        return table;
+    }
+
+    public List<E> search(String tableName, Map<String, Object> values, String columnName, SortingOrder sortOrder) {
+        int iterate = 0;
+        String sql = "SELECT * FROM " + tableName + " WHERE ";
+        List<E> table = new ArrayList<>();
+
+        for (String valueKey : values.keySet()) {
+            if (iterate > 0)
+                sql += " OR ";
+            sql += (valueKey + " LIKE CONCAT( '%',?,'%')");
+
+            iterate++;
+        }
+
+        sql+= " ORDER BY "+ columnName + " " + sortOrder.toString();
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            DatabaseUtil.prepareStmt(stmt, values, 0);
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {

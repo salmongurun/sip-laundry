@@ -47,14 +47,6 @@ public class DatabaseUtil {
         }
     }
 
-    public static void prepareStmt(PreparedStatement stmt, List<Object> values) throws SQLException {
-        int i = 1;
-
-        for (Object value : values) {
-            setValues(stmt, i++, value);
-        }
-    }
-
     private static void setValues(PreparedStatement stmt, int row, Object value) throws SQLException {
         if (value instanceof String)
             stmt.setString(row, String.valueOf(value));
