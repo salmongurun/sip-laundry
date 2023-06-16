@@ -10,6 +10,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -26,11 +27,13 @@ import java.util.List;
 
 public class ReceiptPrint {
     @FXML
-    private Text store_name;
+    private Text store_name, cashier_name, customer_name;
     @FXML
     private AnchorPane print_body;
     @FXML
     private ImageView barcode_image;
+    @FXML
+    private VBox detail_container;
 
     private List<TransactionDetailEntity> details;
     private TransactionEntity transaction;
@@ -61,14 +64,23 @@ public class ReceiptPrint {
     @FXML
     void initialize() {
         Image barcodeImage = generateBarcodeImage("120032023");
+
         barcode_image.setImage(barcodeImage);
+        customer_name.setText(transaction.getCustomerID().getname());
+        cashier_name.setText(transaction.getUserID().getFullname());
+
+        for(TransactionDetailEntity detail: this.details) {
+            this.detail_container.getChildren().add(
+                new ReceiptItem(detail)
+            );
+        }
 
         printReceipt();
     }
 
     private void printReceipt() {
         SnapshotParameters parameters = new SnapshotParameters();
-        parameters.setTransform(javafx.scene.transform.Scale.scale(1, 1));
+        parameters.setTransform(javafx.scene.transform.Scale.scale(1.8, 1.8));
 
         WritableImage snapshot = print_body.snapshot(parameters, null);
         BufferedImage bufferedImage = SwingFXUtils.fromFXImage(snapshot, null);
@@ -79,7 +91,7 @@ public class ReceiptPrint {
     private Image generateBarcodeImage(String barcodeText) {
         Code128Bean barcodeGenerator = new Code128Bean();
 
-        final int dpi = 150;
+        final int dpi = 200;
 
         // Set the desired barcode height and density
         barcodeGenerator.setModuleWidth(0.6);
