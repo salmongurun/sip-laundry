@@ -17,9 +17,9 @@
             <Text fx:id="txt_payment" fill="#f45050" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="Belum Lunas" />
          </children>
       </HBox>
-      <HBox fx:id="status_background" alignment="CENTER" layoutX="381.0" layoutY="19.0" prefWidth="115.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: fef4f4;">
+      <HBox fx:id="status_background" alignment="CENTER" layoutX="381.0" layoutY="19.0" prefWidth="115.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: #E0F4FB;">
          <children>
-            <Text fx:id="txt_status" fill="#f45050" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="Proses" />
+            <Text fx:id="txt_status" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #278AA6;" styleClass="text" text="Proses" />
          </children>
       </HBox>
       <HBox prefWidth="110.0" styleClass="table-action">

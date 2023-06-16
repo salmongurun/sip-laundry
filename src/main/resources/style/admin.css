@@ -182,7 +182,7 @@
     -fx-spacing: 5;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
-    -fx-border-color: #F1F1F1;
+    -fx-border-color: #e4e4e4;
 }
 
 .table-content {
@@ -190,7 +190,7 @@
     -fx-background-color: white;
     -fx-background-radius: 8;
     -fx-spacing: 30;
-    -fx-border-color: transparent transparent #F1F1F1 transparent;
+    -fx-border-color: transparent transparent #e4e4e4 transparent;
 }
 
 .table-content:hover {
@@ -232,6 +232,23 @@
 
 .table-content .table-action .edit-button .icon {
     -fx-fill: #7DB9B6
+}
+
+.table-content .items-container {
+    -fx-border-radius: 8;
+    -fx-border-color: #e4e4e4;
+    -fx-padding: 5 10;
+}
+
+.table-content .items-container .item-container {
+    -fx-border-color: transparent transparent #e4e4e4 transparent;
+    -fx-padding: 0 0 5 0;
+}
+
+.table-content .item-text {
+    -fx-font-family: "Lexend Medium";
+    -fx-font-size: 12;
+    -fx-fill: #7f7f7f;
 }
 
 .table-search {

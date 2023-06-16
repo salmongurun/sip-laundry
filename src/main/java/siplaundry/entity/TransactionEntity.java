@@ -30,13 +30,8 @@ public class TransactionEntity extends Entity {
     private UserEntity userID;
     private CustomerEntity customerID;
 
-    // public transactionsEntity(java.util.Date transaksi_date, java.util.Date
-    // picup_date, LaundryStatus finish, PaymentStatus paid, int i, UserEntity user,
-    // CustomerEntity customer){}
-
     public TransactionEntity() {
     }
-
     
     public TransactionEntity(Date transactionDate,int retard, Date pickup_Date, LaundryStatus status,
     PaymentStatus payment_status, int amount, int paid_off, UserEntity user_id, CustomerEntity customer_id) {

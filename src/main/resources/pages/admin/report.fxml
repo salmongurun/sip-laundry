@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Laporan" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane layoutX="111.0" layoutY="152.0" prefHeight="200.0" prefWidth="200.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
+         <children>
+            <HBox alignment="CENTER_LEFT" layoutX="86.0" layoutY="51.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Transaksi" wrappingWidth="140.0" />
+                  <Text layoutX="30.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Tanggal" wrappingWidth="105.0" />
+                  <Text layoutX="200.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Status" wrappingWidth="108.0" />
+                  <Text layoutX="200.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Item" wrappingWidth="150.0" />
+                  <Text layoutX="370.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Jumlah" wrappingWidth="100.0" />
+                  <Text layoutX="520.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Subtotal" wrappingWidth="123.0" />
+                  <Text layoutX="650.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Total" wrappingWidth="100.0" />
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="135.0">
+               <content>
+                  <VBox fx:id="report_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
+               </content>
+            </ScrollPane>
+            <Text fx:id="total_text" fill="#7f7f7f" layoutX="20.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data laporan">
+               <font>
+                  <Font name="Poppins Medium" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Laporan" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="-7.25">
+         <font>
+            <Font name="Poppins Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Laporan Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="34.3">
+         <font>
+            <Font name="Poppins SemiBold" size="14.0" />
+         </font>
+      </Text>
    </children>
 </fx:root>

@@ -88,7 +88,7 @@ public class AdminViewController {
         removeAllStates();
         btn_sb_reports.getStyleClass().add("active");
 
-        parent_root.setCenter(new ReportView());
+        parent_root.setCenter(new ReportView(shadow));
     }
 
     @FXML

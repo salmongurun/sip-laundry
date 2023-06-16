@@ -107,10 +107,14 @@ public class TransactionColumn extends HBox{
     }
 
     void setStatusColor(){
-        if(trans.getstatus() == LaundryStatus.finish){
+        if(trans.getstatus() == LaundryStatus.finish) {
             status = "Selesai";
-            txt_status.setStyle("-fx-fill: #feb74d;");
-            status_background.setStyle(status_background.getStyle() + "-fx-background-color: #fff4e5;" );
+            txt_status.setStyle("-fx-fill: #278AA6;");
+            status_background.setStyle(status_background.getStyle() + "-fx-background-color: #E0F4FB;");
+        } else if(trans.getstatus() == LaundryStatus.canceled) {
+            status = "Dibatalkan";
+            txt_status.setStyle("-fx-fill: #F45050;");
+            status_background.setStyle(status_background.getStyle() + "-fx-background-color: #fef4f4;");
         } else if(trans.getstatus() == LaundryStatus.taken){
             status = "Diambil";
             txt_status.setStyle("-fx-fill: #6A9A98;");

@@ -10,6 +10,8 @@ import siplaundry.data.SortingOrder;
 import siplaundry.view.AdminView;
 import siplaundry.view.CashierView;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Set;
 
 public class ViewUtil {
@@ -39,5 +41,10 @@ public class ViewUtil {
         }
 
         return sortOrder;
+    }
+
+    public static String formatDate(Date date, String format) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        return dateFormat.format(date);
     }
 }
