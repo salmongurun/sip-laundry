@@ -290,3 +290,9 @@
 .scroll-pane > .scroll-bar:vertical .thumb:pressed {
     -fx-background-color: #808080; /* Warna thumb ketika ditekan */
 }
+
+.transparent-scroll {
+    -fx-border-color: transparent;
+    -fx-background-insets: none;
+    -fx-background: #F5F9FC;
+}

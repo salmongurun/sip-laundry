@@ -307,3 +307,8 @@
 .scroll-pane > .scroll-bar:vertical .thumb:pressed {
     -fx-background-color: #808080; /* Warna thumb ketika ditekan */
 }
+
+.flat-combo-box {
+    -fx-background-color: transparent;
+    -fx-padding: 0.166667em 0.083333em 0.25em 0.583333em;
+}

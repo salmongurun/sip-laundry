@@ -47,11 +47,9 @@ public abstract class Repo<E> {
             while (result.next()) {
                 table.add(mapToEntity(result));
             }
-        } catch (Exception e) {
-        }
+        } catch (Exception e) { e.printStackTrace(); }
 
         return table;
-
     }
 
     public List<E> sortTable(String tableName, String show, String join, String column, String condition){
