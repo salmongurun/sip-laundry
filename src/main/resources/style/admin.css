@@ -179,7 +179,6 @@
 }
 
 .table-scroll .table-content-container {
-    -fx-spacing: 5;
     -fx-border-radius: 8;
     -fx-background-radius: 8;
     -fx-border-color: #e4e4e4;
@@ -193,7 +192,12 @@
     -fx-border-color: transparent transparent #e4e4e4 transparent;
 }
 
-.table-content:hover {
+.table-content.stripped {
+    -fx-background-color: #f8f8f8;
+}
+
+.table-content:hover,
+.table-content.stripped:hover {
     -fx-background-color: #eff9fd;
 }
 

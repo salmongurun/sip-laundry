@@ -148,13 +148,18 @@ public class TransactionController {
         trans_table.getChildren().clear();
 
         if(trans == null) trans = transRepo.get();
-        for(TransactionEntity transEn: trans){
-            TransactionColumn column = new TransactionColumn(shadowRoot, this::showTable, transEn);
+
+        for(int i = 0; i < trans.size(); i++){
+            TransactionEntity transaction = trans.get(i);
+            TransactionColumn column = new TransactionColumn(shadowRoot, this::showTable, transaction);
             column.setBulkAction(this::toggleBulkItem);
 
-             trans_table.getChildren().add(column);
+            if(i % 2 == 1) column.getStyleClass().add("stripped");
+
+            trans_table.getChildren().add(column);
             accColumns.add(column);
         }
+
         total_text.setText("Menampilkan total " + trans.size() + " data akun");
     }
 
