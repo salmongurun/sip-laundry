@@ -12,6 +12,7 @@ import java.util.Map;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.CustomerEntity;
 import siplaundry.entity.ExpenseEntity;
+import siplaundry.entity.TransactionEntity;
 import siplaundry.entity.UserEntity;
 
 public class ExpanseRepo extends Repo<ExpenseEntity> {
@@ -54,12 +55,20 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
         return super.get(tableName, values);
     }
 
+    public List<ExpenseEntity> sortTable(String show, String join, Map<String, Object> values,String column, SortingOrder sortOrder){
+        return super.sortTable(tableName, show, join, values, column, sortOrder);
+    }
+
     public List<ExpenseEntity> search(Map<String, Object> values) {
         return super.search(tableName, values);
     }
 
     public List<ExpenseEntity> search(Map<String, Object> values, String column, SortingOrder ordering) {
         return super.search(tableName, values, column, ordering);
+    }
+
+    public List<ExpenseEntity> searchTable(String show, String join, Map<String, Object> values){
+        return super.searchTable(tableName, show, join, values);
     }
 
     public List<ExpenseEntity> searchByUser(UserEntity user, Map<String, Object> values) {

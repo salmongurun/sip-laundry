@@ -55,7 +55,7 @@
                   <HBox fx:id="btn_sb_expense" layoutX="10.0" layoutY="194.0" onMouseClicked="#showExpense" prefWidth="200.0" styleClass="sidebar-item">
                      <children>
                         <FontIcon iconLiteral="bx-shopping-bag" iconSize="20" styleClass="sidebar-icon" />
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Expense" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Pengeluaran" />
                      </children>
                   </HBox>
                   <HBox fx:id="btn_sb_reports" layoutX="10.0" layoutY="102.0" onMouseClicked="#showReports" prefWidth="200.0" styleClass="sidebar-item">

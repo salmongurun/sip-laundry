@@ -18,7 +18,7 @@ import java.io.IOException;
 
 public class AdminViewController {
     @FXML
-    private HBox btn_sb_dashboard, btn_sb_accounts, btn_sb_cust, btn_sb_prices;
+    private HBox btn_sb_dashboard, btn_sb_accounts, btn_sb_cust, btn_sb_prices, btn_sb_expense;
 
     @FXML
     private Pane btn_edit;
@@ -104,6 +104,14 @@ public class AdminViewController {
          parent_root.setCenter(new EditProfileView(shadow));
     }
 
+    @FXML
+    void showExpense() throws IOException{
+        removeAllStates();
+        btn_sb_expense.getStyleClass().add("active");
+
+        parent_root.setCenter(new ExpenseView(shadow));
+    }
+
     private void removeAllStates() {
         btn_sb_dashboard.getStyleClass().remove("active");
         btn_sb_prices.getStyleClass().remove("active");
@@ -111,6 +119,7 @@ public class AdminViewController {
         btn_sb_cust.getStyleClass().remove("active");
         btn_sb_reports.getStyleClass().remove("active");
         btn_sb_transaction.getStyleClass().remove("active");
+        btn_sb_expense.getStyleClass().remove("active");
     }
 
     

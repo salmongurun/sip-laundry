@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="table-content" stylesheets="@../../../style/cashier.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <CheckBox fx:id="bulk_check" mnemonicParsing="false" />
+      <Text fx:id="txt_date" layoutX="447.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="23/03/2023" wrappingWidth="80.0" />
+      <Text fx:id="txt_user" layoutX="77.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="sinta" wrappingWidth="150.0" />
+      <Text fx:id="txt_name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Beli Parfum" wrappingWidth="190.0" />
+      <Text fx:id="txt_amount" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="4000" wrappingWidth="70.0" />
+      <Text fx:id="txt_optional" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="membeli per botol di toko pak Ali" wrappingWidth="220.0" />
+      <HBox prefWidth="100.0" styleClass="table-action">
+         <children>
+            <HBox fx:id="edit_btn" styleClass="edit-button">
+               <children>
+                  <FontIcon iconLiteral="bx-pencil" iconSize="18" styleClass="icon" text="" />
+               </children>
+            </HBox>
+            <HBox fx:id="delete_btn" layoutX="10.0" layoutY="10.0" styleClass="delete-button">
+               <children>
+                  <FontIcon iconLiteral="bx-trash" iconSize="18" styleClass="icon" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</fx:root>
