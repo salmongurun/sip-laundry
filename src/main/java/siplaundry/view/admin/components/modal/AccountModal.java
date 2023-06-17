@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.*;
@@ -25,6 +26,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
+import org.kordamp.ikonli.javafx.FontIcon;
+
 public class AccountModal {
     @FXML
     private Text modal_title, modal_subtitle;
@@ -35,7 +38,7 @@ public class AccountModal {
     private TextField txt_fullname, txt_phone, txt_username;
 
     @FXML
-    private PasswordField txt_password;
+    private HBox password_container;
 
     @FXML
     private TextArea txt_address;
@@ -46,12 +49,17 @@ public class AccountModal {
     @FXML
     private  ToggleGroup roleGroup;
 
+    @FXML
+    private FontIcon toggle_icon;
+
     private UsersRepo userRepo = new UsersRepo();
     private AccountRole accRole;
     private Node shadowRoot;
     private UserEntity account;
     private Consumer<List<UserEntity>> refreshTable;
     private Map<String, Node> fields;
+    private String password;
+    private boolean isPasswordShown = false;
 
     public AccountModal(Node shadowRoot, Consumer<List<UserEntity>> refreshTable, UserEntity account) {
         this.shadowRoot = shadowRoot;
@@ -69,15 +77,19 @@ public class AccountModal {
         });
 
         chs_admin.setSelected(true);
-        if(this.account != null) changeUpdate();
+        if(this.account != null) {
+            changeUpdate();
+            password = this.account.getPassword();
+        }
 
         this.fields = new HashMap<>() {{
             put("username", txt_username);
             put("fullname", txt_fullname);
             put("phone", txt_phone);
-            put("password", txt_password);
+            put("password", password_container.getChildren().get(0));
             put("address", txt_address);
         }};
+        addPasswordElement();
     }
 
     @FXML
@@ -106,7 +118,7 @@ public class AccountModal {
             txt_username.getText(),
             txt_fullname.getText(),
             txt_phone.getText(),
-            txt_password.getText(),
+            password,
             txt_address.getText(),
             accRole
         );
@@ -147,20 +159,18 @@ public class AccountModal {
         modal_subtitle.setText("Perbarui Informasi");
 
         txt_username.setText(account.getUsername());
-        txt_password.setText(account.getPassword());
         txt_phone.setText(account.getPhone());
         txt_fullname.setText(account.getFullname());
         txt_address.setText(account.getAddress());
 
         if(account.getRole() == AccountRole.cashier) chs_cashier.setSelected(true);
-
     }
 
     private void saveUpdate() {
         account.setFullname(txt_fullname.getText());
         account.setPhone(txt_phone.getText());
         account.setUsername(txt_username.getText());
-        account.setPassword(txt_password.getText());
+        account.setPassword(password);
         account.setAddress(txt_address.getText());
         account.setRole(accRole);
 
@@ -170,6 +180,48 @@ public class AccountModal {
         new Toast((AnchorPane) shadowRoot.getScene().getRoot())
             .show(ToastType.SUCCESS, "Berhasil mengupdate akun", null);
         closeModal();
+    }
+
+    @FXML
+    void togglePassword(){
+        password_container.getChildren().remove(0);
+
+        if(isPasswordShown){
+            toggle_icon.setIconLiteral("bx-show");
+            addPasswordElement();
+        }else {
+            toggle_icon.setIconLiteral("bx-hide");
+            addvisiblePasswordElement();
+        }
+
+        isPasswordShown = !isPasswordShown;
+    }
+
+    private void addPasswordElement(){
+        PasswordField field = new PasswordField();
+        field.getStyleClass().add("input");
+        field.setPrefSize(419, 45);
+        field.setText(password);
+        
+
+        field.setOnKeyReleased(event -> {
+            this.password = field.getText();
+        });
+
+        password_container.getChildren().add(0, field);
+    }
+
+    private void addvisiblePasswordElement(){
+        TextField field = new TextField();
+        field.getStyleClass().add("input");
+        field.setPrefSize(419, 45);
+        field.setText(password);
+
+        field.setOnKeyReleased(event -> {
+            this.password = field.getText();
+        });
+
+        password_container.getChildren().add(0, field);
     }
 
 }
