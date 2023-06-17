@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<fx:root alignment="CENTER" fillHeight="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" scaleShape="false" styleClass="table-content" stylesheets="@../../../style/admin.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text fx:id="transaction_name" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Transaksi#1" wrappingWidth="140.0" />
+      <Text fx:id="transaction_date" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="16/06/2023" wrappingWidth="100.0" />
+      <HBox alignment="CENTER_LEFT" prefWidth="100.0">
+         <children>
+            <HBox fx:id="status_background" alignment="CENTER" prefWidth="70.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: #E0F4FB;">
+               <children>
+                  <Text fx:id="status_text" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: #278AA6;" styleClass="text" text="proses" />
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <VBox fx:id="items_container" prefWidth="430.0" spacing="5.0" styleClass="items-container" />
+      <Text fx:id="transaction_total" layoutX="541.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Rp 1.000.000" wrappingWidth="100.0" />
+   </children>
+</fx:root>

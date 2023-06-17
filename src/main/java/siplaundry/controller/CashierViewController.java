@@ -9,7 +9,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.stage.Window;
-import siplaundry.controller.cashier.CustomerController;
 import siplaundry.data.SessionData;
 import siplaundry.view.cashier.CustomerView;
 import siplaundry.view.admin.components.modal.logOutConfirm;
@@ -90,7 +89,7 @@ public class CashierViewController {
         removeAllStates();
         btn_sb_report.getStyleClass().add("active");
 
-        parent_root.setCenter(new ReportView());
+        parent_root.setCenter(new ReportView(shadow));
     }
 
     @FXML
