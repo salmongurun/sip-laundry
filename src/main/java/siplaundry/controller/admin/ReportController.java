@@ -11,16 +11,13 @@ import org.controlsfx.control.PopOver;
 import siplaundry.data.LaundryStatus;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.ReportRepository;
-import siplaundry.repository.TransactionRepo;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.column.ReportColumn;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 
 public class ReportController {
