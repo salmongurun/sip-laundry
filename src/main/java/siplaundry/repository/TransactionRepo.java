@@ -218,15 +218,4 @@ public class TransactionRepo extends Repo<TransactionEntity> {
         transaction.setid(result.getInt("transaction_id"));
         return transaction;
     }
-
-    public TransactionEntity maptoEntity(ResultSet result) throws SQLException {
-
-        TransactionEntity transaction = new TransactionEntity(
-
-        );
-
-        transaction.setid(result.getInt("transaction_id"));
-        return transaction;
-    }
-
 }

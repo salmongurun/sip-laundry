@@ -115,13 +115,13 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
         int userId = result.getInt("user_id");
 
         ExpenseEntity exp = new ExpenseEntity(
-                result.getString("name"),
-                result.getDate("expense_date"),
-                result.getInt("qty"),
-                result.getInt("subtotal"),
-                result.getInt("amount"),
-                result.getString("optional"),
-                new UsersRepo().get(userId)
+            result.getString("name"),
+            result.getDate("expense_date"),
+            result.getInt("qty"),
+            result.getInt("subtotal"),
+            result.getInt("amount"),
+            result.getString("optional"),
+            new UsersRepo().get(userId)
         );
         
 
