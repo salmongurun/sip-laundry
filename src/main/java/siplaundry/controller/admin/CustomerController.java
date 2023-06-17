@@ -136,7 +136,7 @@ public class CustomerController {
             customer_table.getChildren().add(column);
             accColumns.add(column);
         }
-        total_text.setText("Menampilkan total "+ customer.size());
+        total_text.setText("Menampilkan total "+ customers.size());
     }
 
     protected void toggleBulkItem(CustomerEntity cust){

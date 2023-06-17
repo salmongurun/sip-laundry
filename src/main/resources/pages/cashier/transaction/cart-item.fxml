@@ -49,9 +49,9 @@
             </HBox>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="10.0" layoutY="24.0" prefHeight="33.0" prefWidth="35.0" style="-fx-background-color: #c5efff; -fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox fx:id="icon_background" alignment="CENTER" layoutX="10.0" layoutY="24.0" prefHeight="33.0" prefWidth="35.0" style="-fx-background-color: #c5efff; -fx-background-radius: 5; -fx-border-radius: 5;" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <FontIcon fill="#0096ce" iconLiteral="bxs-grid-alt" iconSize="20" />
+            <FontIcon fx:id="laundry_icon" fill="#0096ce" iconLiteral="bxs-grid-alt" iconSize="20" />
          </children>
       </HBox>
       <Text fx:id="laundry_unit" fill="#005f82" layoutX="54.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="kilogram" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="23.0">

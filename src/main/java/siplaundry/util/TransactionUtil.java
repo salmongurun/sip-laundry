@@ -10,7 +10,7 @@ public class TransactionUtil {
         int launIndex = -1;
 
         for(int i = 0; i < details.size(); i++) {
-            if (details.get(i).getLaundry() == laundry) {
+            if (details.get(i).getLaundry().getid() == laundry.getid()) {
                 launIndex = i;
                 break;
             }

@@ -72,6 +72,7 @@ public class TransactionFormController {
             int row = i / 3;
             int column = i % 3;
             TransactionCard card = new TransactionCard(
+                shadow_root,
                 laundries.get(i),
                 this::addDetailTransaction
             );

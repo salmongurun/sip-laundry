@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="468.0" prefWidth="449.0" style="-fx-background-radius: 8; -fx-border-radius: 8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" layoutX="175.0" layoutY="39.0" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: #fefbf6; -fx-background-radius: 100; -fx-border-color: #FFB74D; -fx-border-radius: 100;">
+         <children>
+            <FontIcon iconColor="#ffb74d" iconLiteral="bxs-zap" iconSize="50" />
+         </children>
+      </HBox>
+      <Text fill="#ffb74d" layoutX="146.0" layoutY="211.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Express">
+         <font>
+            <Font name="Poppins Bold" size="40.0" />
+         </font>
+      </Text>
+      <HBox fx:id="accept_btn" layoutX="324.0" layoutY="413.0" onMouseClicked="#acceptExpress" style="-fx-padding: 10 20; -fx-background-color: FFB74D; -fx-background-radius: 5;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Ya, Pilih">
+               <font>
+                  <Font name="Poppins SemiBold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <Text fill="#9d9d9d" layoutX="50.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah biaya untuk pencucian yang lebih cepat?" textAlignment="CENTER" wrappingWidth="350.0">
+         <font>
+            <Font name="Poppins SemiBold" size="18.0" />
+         </font>
+      </Text>
+      <HBox layoutX="207.0" layoutY="402.0" onMouseClicked="#rejectExpress" style="-fx-padding: 10 20; -fx-background-radius: 5;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="140.0">
+         <children>
+            <Text fill="#005f82" strokeType="OUTSIDE" strokeWidth="0.0" text="Tidak">
+               <font>
+                  <Font name="Poppins SemiBold" size="15.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</AnchorPane>

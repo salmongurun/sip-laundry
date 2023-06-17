@@ -5,6 +5,7 @@ import javafx.animation.TranslateTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.scene.transform.Translate;
@@ -21,13 +22,15 @@ public class TransactionCard extends AnchorPane {
     @FXML
     private HBox express_badge;
 
+    private BorderPane shadowRoot;
     private LaundryEntity laundry;
     private Consumer<LaundryEntity> addAction;
 
-    public TransactionCard(LaundryEntity laundry, Consumer<LaundryEntity> addAction) {
+    public TransactionCard(BorderPane shadowRoot, LaundryEntity laundry, Consumer<LaundryEntity> addAction) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/cashier/transaction/card.fxml"));
         this.laundry = laundry;
         this.addAction = addAction;
+        this.shadowRoot = shadowRoot;
 
         try {
             loader.setRoot(this);
@@ -44,6 +47,11 @@ public class TransactionCard extends AnchorPane {
         if(laundry.getIsExpress()) express_badge.setVisible(true);
 
         this.setOnMouseClicked(event -> {
+            if(this.laundry.getIsExpress()) {
+                askExpressMode();
+                return;
+            }
+
             addAction.accept(this.laundry);
         });
 
@@ -62,5 +70,29 @@ public class TransactionCard extends AnchorPane {
             transition.setToY(0);
             transition.play();
         });
+    }
+
+    private void askExpressMode() {
+        LaundryEntity selectedLaundry = new LaundryEntity();
+        selectedLaundry.setid(laundry.getid());
+        selectedLaundry.setcost(laundry.getcost());
+        selectedLaundry.setunit(laundry.getunit());
+        selectedLaundry.setname(laundry.getname());
+
+        new ExpressChoose(
+            shadowRoot,
+            () -> {
+                selectedLaundry.setIsExpress(true);
+                selectedLaundry.setcost(selectedLaundry.getcost() + 1000);
+
+                addAction.accept(selectedLaundry);
+                return true;
+            },
+            () -> {
+                selectedLaundry.setIsExpress(false);
+                addAction.accept(selectedLaundry);
+                return false;
+            }
+        );
     }
 }
