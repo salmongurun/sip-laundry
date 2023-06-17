@@ -66,20 +66,20 @@ public class DashboarController {
     }
 
      private void drawChart(String duration) {
-        XYChart.Series<String, Number> pendapatan = new XYChart.Series<>();
+        XYChart.Series<String, Number> total = new XYChart.Series<>();
         
         UserEntity data = SessionData.user;
         LinkedHashMap<String, Integer> dataPend = transRepo.chartCount("user_id = " + data.getID() + " AND "  ,"DAYNAME", "COUNT(transaction_id)", "transaction_date", duration, "DAY");
         
-        pendapatan.setName("Pendapatan");
+        total.setName("Total Transaksi");
         for (Map.Entry<String, Integer> entry : dataPend.entrySet()) {
             String bulanPend = entry.getKey();
             int totalPendapatan = entry.getValue();
-            pendapatan.getData().add(new XYChart.Data<>(bulanPend, totalPendapatan));
+            total.getData().add(new XYChart.Data<>(bulanPend, totalPendapatan));
         }
 
         statistic_chart.getData().clear();
-        statistic_chart.getData().addAll(pendapatan);
+        statistic_chart.getData().addAll(total);
     }
 
     private void fillInformation(){
