@@ -36,8 +36,12 @@ public class ReportController {
     void showTable(List<TransactionEntity> transactions) {
         report_table.getChildren().clear();
 
-        for(TransactionEntity transaction: transactions) {
-            report_table.getChildren().add(new ReportColumn(shadowRoot, transaction));
+        for(int i = 0; i < transactions.size(); i++) {
+            TransactionEntity transaction = transactions.get(i);
+            ReportColumn column = new ReportColumn(shadowRoot, transaction);
+
+            if(i % 2 == 1) column.getStyleClass().add("stripped");
+            report_table.getChildren().add(column);
         }
 
         total_text.setText("Menampilkan " + transactions.size() + " data laporan");

@@ -116,17 +116,22 @@ public class CustomerController {
         });
     }
 
-    void showTable(List<CustomerEntity> customer){
+    void showTable(List<CustomerEntity> customers){
         customer_table.getChildren().clear();
 
-        if(customer == null) customer = custRepo.get();
-        if(customer.size() < 1) {
+        if(customers == null) customers = custRepo.get();
+
+        if(customers.size() < 1) {
             customer_table.getChildren().add(new EmptyData(this::showAddCustomer, txt_keyword.getText()));
+            return;
         }
 
-        for(CustomerEntity cust : customer){
+        for(int i = 0; i < customers.size(); i++){
+            CustomerEntity cust = customers.get(i);
             CustomerColumn column = new CustomerColumn(shadowRoot, this::showTable, cust);
             column.setBulkAction(this::toggleBulkItem);
+
+            if(i % 2 == 1) column.getStyleClass().add("stripped");
 
             customer_table.getChildren().add(column);
             accColumns.add(column);

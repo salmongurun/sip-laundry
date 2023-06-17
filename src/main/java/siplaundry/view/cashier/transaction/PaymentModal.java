@@ -1,5 +1,8 @@
 package siplaundry.view.cashier.transaction;
 
+import animatefx.animation.Bounce;
+import animatefx.animation.FadeIn;
+import animatefx.animation.Pulse;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -71,11 +74,13 @@ public class PaymentModal {
         if(totalPay != null && totalPay == grandTotal) {
             payment_status.setText("Lunas:");
             total_status.setText("Rp " + NumberUtil.rupiahFormat(grandTotal));
+            new Pulse(total_status).play();
         }
 
         if (totalPay != null && totalPay > grandTotal) {
             payment_status.setText("Uang Kembali:");
             total_status.setText("Rp " + NumberUtil.rupiahFormat(totalPay - grandTotal));
+            new Pulse(total_status).play();
         }
 
         if(totalPay == null) totalPay = 0;
