@@ -9,7 +9,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.stage.Window;
+import siplaundry.controller.cashier.CustomerController;
 import siplaundry.data.SessionData;
+import siplaundry.view.cashier.CustomerView;
 import siplaundry.view.admin.components.modal.logOutConfirm;
 import siplaundry.view.auth.LoginView;
 import siplaundry.view.cashier.DashboardView;
@@ -21,19 +23,8 @@ import siplaundry.view.cashier.TransactionView;
 public class CashierViewController {
     
     @FXML
-    private HBox btn_sb_dashboard;
+    private HBox btn_sb_dashboard, btn_sb_transaction, btn_sb_retard, btn_sb_report, btn_sb_expense, btn_sb_customer;
 
-    @FXML
-    private HBox btn_sb_transaction;
-
-    @FXML
-    private HBox btn_sb_retard;
-
-    @FXML
-    private HBox btn_sb_report;
-
-    @FXML
-    private HBox btn_sb_expense;
 
     @FXML
     private BorderPane shadow;
@@ -68,6 +59,14 @@ public class CashierViewController {
         btn_sb_dashboard.getStyleClass().add("active");
 
         parent_root.setCenter(new DashboardView(shadow));
+    }
+
+    @FXML
+    void showCustomer(MouseEvent event) throws IOException{
+        removeAllStates();
+        btn_sb_customer.getStyleClass().add("active");
+
+        parent_root.setCenter(new CustomerView(shadow));
     }
 
     @FXML
@@ -108,6 +107,7 @@ public class CashierViewController {
         btn_sb_retard.getStyleClass().remove("active");
         btn_sb_transaction.getStyleClass().remove("active");
         btn_sb_expense.getStyleClass().remove("active");
+        btn_sb_customer.getStyleClass().remove("active");
     }
 
     void LogOut() {

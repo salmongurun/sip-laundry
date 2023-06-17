@@ -52,6 +52,12 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Transaksi" />
                      </children>
                   </HBox>
+                  <HBox fx:id="btn_sb_expense" layoutX="10.0" layoutY="194.0" onMouseClicked="#showExpense" prefWidth="200.0" styleClass="sidebar-item">
+                     <children>
+                        <FontIcon iconLiteral="bx-shopping-bag" iconSize="20" styleClass="sidebar-icon" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Expense" />
+                     </children>
+                  </HBox>
                   <HBox fx:id="btn_sb_reports" layoutX="10.0" layoutY="102.0" onMouseClicked="#showReports" prefWidth="200.0" styleClass="sidebar-item">
                      <children>
                         <FontIcon iconLiteral="bx-notepad" iconSize="20" styleClass="sidebar-icon" />
@@ -89,6 +95,6 @@
          </font>
       </Text>
       <BorderPane fx:id="parent_root" layoutX="238.0" layoutY="76.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
-      <BorderPane fx:id="shadow" layoutX="343.0" opacity="0.5" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="shadow" opacity="0.5" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

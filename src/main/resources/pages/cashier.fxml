@@ -27,7 +27,13 @@
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Dashboard" />
                      </children>
                   </HBox>
-                  <HBox fx:id="btn_sb_transaction" layoutX="10.0" layoutY="10.0" onMouseClicked="#showTransaction" prefWidth="200.0" styleClass="sidebar-item">
+                  <HBox fx:id="btn_sb_customer" layoutX="10.0" layoutY="10.0" onMouseClicked="#showCustomer" prefWidth="200.0" styleClass="sidebar-item">
+                     <children>
+                        <FontIcon iconLiteral="bx-group" iconSize="20" styleClass="sidebar-icon" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Customer" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="btn_sb_transaction" onMouseClicked="#showTransaction" prefWidth="200.0" styleClass="sidebar-item">
                      <children>
                         <FontIcon iconLiteral="bx-money" iconSize="20" styleClass="sidebar-icon" />
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sidebar-text" text="Transaksi" />
@@ -79,6 +85,6 @@
          </font>
       </Text>
       <BorderPane fx:id="parent_root" layoutX="385.0" layoutY="184.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="255.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="50.0" />
-      <BorderPane fx:id="shadow" layoutX="-8.0" layoutY="-6.0" opacity="0.5" prefHeight="774.0" prefWidth="1374.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="shadow" layoutY="-6.0" opacity="0.5" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
