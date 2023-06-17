@@ -123,14 +123,12 @@ public class AccountController {
      }
 
     public void showTable(List<UserEntity> users) {
+        int i = 0;
+
         accColumns.clear();
         account_table.getChildren().clear();
 
         if(users == null) users = userRepo.get();
-
-        if(users.size() < 2){
-            account_table.getChildren().add(new EmptyData(this::showAddAccount, txt_keyword.getText()));
-        }
 
         for(UserEntity user: users) {
             if(user.getID().equals(SessionData.user.getID())) continue;
@@ -138,11 +136,20 @@ public class AccountController {
             AccountColumn column = new AccountColumn(shadowRoot, this::showTable, user);
             column.setBulkAction(this::toggleBulkItem);
 
+            if(i % 2 == 1) column.getStyleClass().add("stripped");
+
             account_table.getChildren().add(column);
             accColumns.add(column);
-         }
 
-        total_text.setText("Menampilkan total "+ users.size() +" data akun");
+            i++;
+        }
+
+        int accTotal = account_table.getChildren().size();
+
+        if(accTotal < 1)
+            account_table.getChildren().add(new EmptyData(this::showAddAccount, txt_keyword.getText()));
+
+        total_text.setText("Menampilkan total "+ accTotal +" data akun");
     }
 
     protected void toggleBulkItem(UserEntity user) {
