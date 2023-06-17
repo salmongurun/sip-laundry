@@ -23,6 +23,7 @@ import siplaundry.data.SessionData;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ExpanseRepo;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.cashier.components.ExpenseColumn;
 import siplaundry.view.cashier.components.modal.ExpenseModal;
@@ -79,31 +80,27 @@ public class ExpenseController {
 
     @FXML
     void searchAction(KeyEvent event){
-        String keyword = txt_keyword.getText();
+        List<ExpenseEntity> exp = expRepo.search(this.searchableValues());
+        showTable(exp);
+    }
 
-        List<ExpenseEntity> exp = expRepo.search(new HashMap<>(){{
+    private HashMap<String, Object> searchableValues(){
+        String keyword = txt_keyword.getText();
+        return new HashMap<>(){{
             put("name", keyword);
             put("expense_date", keyword);
             put("subtotal", keyword);
             put("qty", keyword);
             put("amount", keyword);
             put("optional", keyword);
-        }});
-        showTable(exp);
-
+        }};
     }
 
     @FXML
     void sortAction(){
         String column = "name";
 
-        if(this.sortOrder == SortingOrder.DESC) {
-            this.sortOrder = SortingOrder.ASC;
-            sort_icon.setIconLiteral("bx-sort-down");
-        } else {
-            this.sortOrder = SortingOrder.DESC;
-            sort_icon.setIconLiteral("bx-sort-up");
-        }
+        this.sortOrder = ViewUtil.switchOrderIcon(this.sortOrder, this.sort_icon);
 
         if(CB_column.getValue() != null){
             if(CB_column.getValue().equals("Tanggal Pengeluaran")) column = " expense_date";
@@ -111,7 +108,7 @@ public class ExpenseController {
         }
        
 
-        List<ExpenseEntity> exp = expRepo.sortBy(column, this.sortOrder.toString());
+        List<ExpenseEntity> exp = expRepo.search(this.searchableValues(), column, this.sortOrder);
         showTable(exp);
     }
 

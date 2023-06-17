@@ -59,8 +59,6 @@ public class CustomerController {
         );
 
         CB_column.setItems(column);
-
-        total_text.setText("Menampilkan total "+ customer.size());
         showTable(customer);
     }
 
@@ -73,6 +71,15 @@ public class CustomerController {
     void searchAction(KeyEvent event){
         List<CustomerEntity> cust = custRepo.search(this.searchableValues());
         showTable(cust);
+    }
+
+    private HashMap<String, Object> searchableValues() {
+        String keyword = txt_keyword.getText();
+        return new HashMap<>() {{
+            put("name", keyword);
+            put("phone", keyword);
+            put("address", keyword);
+        }};
     }
 
     @FXML
@@ -124,6 +131,7 @@ public class CustomerController {
             customer_table.getChildren().add(column);
             accColumns.add(column);
         }
+        total_text.setText("Menampilkan total "+ customer.size());
     }
 
     protected void toggleBulkItem(CustomerEntity cust){
@@ -134,14 +142,5 @@ public class CustomerController {
         }
 
         btn_bulk_delete.setDisable(this.bulkItems.size() < 1);
-    }
-
-    private HashMap<String, Object> searchableValues() {
-        String keyword = txt_keyword.getText();
-        return new HashMap<>() {{
-            put("name", keyword);
-            put("phone", keyword);
-            put("address", keyword);
-        }};
     }
 }

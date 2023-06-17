@@ -52,11 +52,22 @@ public abstract class Repo<E> {
         return table;
     }
 
-    public List<E> sortTable(String tableName, String show, String join, String column, String condition){
-        String sql = "SELECT " + tableName + ".* , " + show + " FROM " + tableName + join + " ORDER BY " + column + " " + condition;
+    public List<E> sortTable(String tableName, String show, String join, Map<String, Object> values, String column, SortingOrder sortOrder){
+        int iterate = 0;
+        String sql = "SELECT " + tableName + ".* , " + show + " FROM " + tableName + join + " WHERE ";
         List<E> table = new ArrayList<>();
 
+        for (String valueKey : values.keySet()) {
+            if (iterate > 0)
+                sql += " OR ";
+            sql += (valueKey + " LIKE CONCAT( '%',?,'%')");
+
+            iterate++;
+        }
+        sql+= " ORDER BY "+ column + " " + sortOrder.toString();
+
         try (PreparedStatement statement = conn.prepareStatement(sql)) {
+            DatabaseUtil.prepareStmt(statement, values, 0);
             ResultSet result = statement.executeQuery();
             while (result.next()) {
                 table.add(mapToEntity(result));
@@ -182,7 +193,6 @@ public abstract class Repo<E> {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
-                System.out.println(stmt.toString());
                 table.add(mapToEntity(rs));
             }
         } catch (SQLException e) { e.printStackTrace(); }

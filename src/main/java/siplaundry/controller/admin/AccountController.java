@@ -16,6 +16,7 @@ import siplaundry.data.SessionData;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.column.AccountColumn;
 import siplaundry.view.admin.components.modal.AccountModal;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
@@ -44,6 +45,8 @@ public class AccountController {
     private Set<UserEntity> bulkItems = new HashSet<>();
     private ArrayList<AccountColumn> accColumns = new ArrayList<>();
     private SortingOrder sortOrder = SortingOrder.DESC;
+
+    private String keyword;
     
     public AccountController(BorderPane shadow) {
         this.shadowRoot = shadow;
@@ -51,6 +54,7 @@ public class AccountController {
 
     @FXML
     void initialize() {
+        List<UserEntity> users = userRepo.get();
         ObservableList<String> column = FXCollections.observableArrayList(
             "Role",
             "Username",
@@ -58,9 +62,6 @@ public class AccountController {
         );
 
         CB_column.setItems(column);
-        sortAction();
-
-        List<UserEntity> users = userRepo.get();
         showTable(users);
     }
 
@@ -71,33 +72,33 @@ public class AccountController {
 
     @FXML
     void searchAction(KeyEvent event) {
-        String keyword = txt_keyword.getText();
-        List<UserEntity> users = userRepo.search(new HashMap<>() {{
+        List<UserEntity> users = userRepo.search(this.searchableValues());
+        showTable(users);
+    }
+
+    private HashMap<String, Object> searchableValues(){
+        keyword = txt_keyword.getText();
+        if(keyword.equals("kasir")){ keyword = "cashier";}
+
+        return new HashMap<>(){{
             put("fullname", keyword);
             put("phone", keyword);
-            put("username", keyword);
-        }});
-
-        showTable(users);
+            put("username", keyword); 
+            put("role", keyword); 
+        }};
     }
 
     @FXML
     void sortAction(){
         String column = "role";
-        if(this.sortOrder == SortingOrder.DESC) {
-            this.sortOrder = SortingOrder.ASC;
-            sort_icon.setIconLiteral("bx-sort-down");
-        } else {
-            this.sortOrder = SortingOrder.DESC;
-            sort_icon.setIconLiteral("bx-sort-up");
-        }
+        this.sortOrder = ViewUtil.switchOrderIcon(this.sortOrder, this.sort_icon);
 
         if(CB_column.getValue() != null) {
             if(CB_column.getValue().equals("Username")) column = "username";
             if(CB_column.getValue().equals("Nama Lengkap")) column = "fullname";
         }
 
-        List<UserEntity> users = userRepo.sortBy(column, this.sortOrder.toString());
+        List<UserEntity> users = userRepo.search(this.searchableValues(),column,this.sortOrder);
         showTable(users);
      }
 

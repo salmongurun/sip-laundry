@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import siplaundry.data.Laundryunit;
+import siplaundry.data.SortingOrder;
+import siplaundry.entity.CustomerEntity;
 import siplaundry.entity.LaundryEntity;
 
 public class LaundryRepo extends Repo<LaundryEntity> {
@@ -49,6 +51,9 @@ public class LaundryRepo extends Repo<LaundryEntity> {
 
     public List<LaundryEntity> search(Map<String, Object> values) {
         return super.search(tableName, values);
+    }
+     public List<LaundryEntity> search(Map<String, Object> values, String column, SortingOrder ordering) {
+        return super.search(tableName, values, column, ordering);
     }
 
     public boolean Update(LaundryEntity cust) {

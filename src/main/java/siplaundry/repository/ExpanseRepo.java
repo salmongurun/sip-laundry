@@ -9,6 +9,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import siplaundry.data.SortingOrder;
+import siplaundry.entity.CustomerEntity;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.entity.UserEntity;
 
@@ -54,6 +56,10 @@ public class ExpanseRepo extends Repo<ExpenseEntity> {
 
     public List<ExpenseEntity> search(Map<String, Object> values) {
         return super.search(tableName, values);
+    }
+
+    public List<ExpenseEntity> search(Map<String, Object> values, String column, SortingOrder ordering) {
+        return super.search(tableName, values, column, ordering);
     }
 
     public List<ExpenseEntity> searchByUser(UserEntity user, Map<String, Object> values) {

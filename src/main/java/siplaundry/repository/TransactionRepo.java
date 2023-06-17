@@ -14,6 +14,7 @@ import java.util.Map;
 
 import siplaundry.data.LaundryStatus;
 import siplaundry.data.PaymentStatus;
+import siplaundry.data.SortingOrder;
 import siplaundry.entity.UserEntity;
 import siplaundry.util.DatabaseUtil;
 import siplaundry.entity.TransactionDashboardEntity;
@@ -66,8 +67,8 @@ public class TransactionRepo extends Repo<TransactionEntity> {
         return super.get(tableName, getid, id);
     }
 
-    public List<TransactionEntity> sortTable(String show, String join, String column, String condition){
-        return super.sortTable(tableName, show, join, column, condition);
+    public List<TransactionEntity> sortTable(String show, String join, Map<String, Object> values,String column, SortingOrder sortOrder){
+        return super.sortTable(tableName, show, join, values, column, sortOrder);
     }
 
     public List<TransactionEntity> get(Map<String, Object> values) {

@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import siplaundry.data.AccountRole;
+import siplaundry.data.SortingOrder;
+import siplaundry.entity.CustomerEntity;
 import siplaundry.entity.UserEntity;
 
 public class UsersRepo extends Repo<UserEntity> {
@@ -40,6 +42,10 @@ public class UsersRepo extends Repo<UserEntity> {
 
     public List<UserEntity> get() {
         return super.getAll(tableName);
+    }
+
+     public List<UserEntity> search(Map<String, Object> values, String column, SortingOrder ordering) {
+        return super.search(tableName, values, column, ordering);
     }
 
     public List<UserEntity> sortBy(String column, String condition){

@@ -22,6 +22,7 @@ import javafx.scene.text.Text;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.LaundryEntity;
 import siplaundry.repository.LaundryRepo;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.column.PriceColumn;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.admin.components.modal.ServiceModal;
@@ -54,6 +55,7 @@ public class PriceController {
     private Set<LaundryEntity> bulkItems = new HashSet<>();
     private ArrayList<PriceColumn> accColumns = new ArrayList<>();
     private SortingOrder sortOrder = SortingOrder.DESC;
+    private String keyword;
 
     public PriceController(BorderPane shadow){ this.shadowRoot = shadow; }
 
@@ -61,7 +63,8 @@ public class PriceController {
     void initialize(){
         ObservableList<String> column = FXCollections.observableArrayList(
             "Jenis Cucian",
-            "Unit"
+            "Unit",
+            "Harga"
         );
         CB_column.setItems(column);
 
@@ -69,21 +72,35 @@ public class PriceController {
 
         showTable(laundry);
 
-        total_Text.setText("Menampilkan total "+ laundry.size() +" data akun");
-
     }
 
     @FXML
     void searchAction(KeyEvent event){
-        String keyword = txt_keyword.getText();
+        List<LaundryEntity> laundry = laundryRepo.search(this.searchableValues());
+        showTable(laundry);
+    }
 
-        List<LaundryEntity> laundry = laundryRepo.search(new HashMap<>() {{
+    private HashMap<String, Object> searchableValues(){
+        keyword = txt_keyword.getText();
+        if(keyword.equals("reguler")){ 
+            keyword = "0"; 
+            return new HashMap<>(){{
+                put("IsExpress", keyword);
+            }};
+        }
+        if(keyword.equals("express")){ 
+            keyword = "1";
+            return new HashMap<>(){{
+                put("IsExpress", keyword);
+            }}; 
+        }
+
+        return new HashMap<>(){{
             put("name", keyword);
             put("unit", keyword);
             put("cost", keyword);
-        }});
-
-        showTable(laundry);
+            put("IsExpress", keyword);
+        }};
     }
 
     @FXML
@@ -95,19 +112,14 @@ public class PriceController {
     void sortAction(){
         String column = "name";
 
-        if(this.sortOrder == SortingOrder.DESC) {
-            this.sortOrder = SortingOrder.ASC;
-            sort_icon.setIconLiteral("bx-sort-down");
-        } else {
-            this.sortOrder = SortingOrder.DESC;
-            sort_icon.setIconLiteral("bx-sort-up");
-        }
+        this.sortOrder = ViewUtil.switchOrderIcon(this.sortOrder, this.sort_icon);
 
         if(CB_column.getValue() != null){
             if(CB_column.getValue().equals("Unit")) column = " unit";
+            if(CB_column.getValue().equals("Harga")) column = " cost";
         }
 
-        List<LaundryEntity> laundry = laundryRepo.sortBy(column, this.sortOrder.toString());
+        List<LaundryEntity> laundry = laundryRepo.search(this.searchableValues(), column, this.sortOrder);
         showTable(laundry);
      }
 
@@ -147,6 +159,7 @@ public class PriceController {
             price_table.getChildren().add(column);
             accColumns.add(column);
          }
+         total_Text.setText("Menampilkan total "+ laundry.size() +" data akun");
     }
 
     protected void toggleBulkItem(LaundryEntity laundry){

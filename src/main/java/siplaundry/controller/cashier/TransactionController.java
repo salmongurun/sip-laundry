@@ -23,6 +23,7 @@ import siplaundry.data.SessionData;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.TransactionRepo;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.cashier.TransactionFormView;
 import siplaundry.view.cashier.components.column.TransactionColumn;
@@ -54,6 +55,7 @@ public class TransactionController {
     private TransactionRepo transRepo = new TransactionRepo();
     private Set<TransactionEntity> bulkItems = new HashSet<>();
     private ArrayList<TransactionColumn> accColumns = new ArrayList<>();
+    private String keyword;
 
     public TransactionController(BorderPane parent_root, BorderPane shadow_root) {
         this.parent_root = parent_root;
@@ -65,6 +67,7 @@ public class TransactionController {
         ObservableList<String> column = FXCollections.observableArrayList(
             "Nama Pelanggan",
             "Tanggal Transaksi",
+            "Harga",
             "Status Cucian",
             "Status Pembayaran"
         );
@@ -77,25 +80,21 @@ public class TransactionController {
     @FXML
     void sortAction(){
         String column = "customers.name";
-        if(this.sortOrder == SortingOrder.DESC) {
-            this.sortOrder = SortingOrder.ASC;
-            sort_icon.setIconLiteral("bx-sort-down");
-        } else {
-            this.sortOrder = SortingOrder.DESC;
-            sort_icon.setIconLiteral("bx-sort-up");
-        }
+        this.sortOrder = ViewUtil.switchOrderIcon(this.sortOrder, this.sort_icon);
         
         if(CB_column.getValue() != null){
-            if(CB_column.getValue().equals("Tanggal Transaksi")) column = "transaction_date";
+            if(CB_column.getValue().equals("Tanggal Transaksi")) column = "transactions.transaction_date";
             if(CB_column.getValue().equals("Status Cucian")) column = "transactions.status";
+            if(CB_column.getValue().equals("Harga")) column = "transactions.amount";
             if(CB_column.getValue().equals("Status Pembayaran")) column = "transactions.payment_status";
         }
 
         List<TransactionEntity> trans = transRepo.sortTable(
             "customers.name", 
             " JOIN customers ON transactions.customer_id = customers.customer_id", 
+            this.searchableValues(),
             column, 
-            this.sortOrder.toString()
+            this.sortOrder
         );
 
         showTable(trans);
@@ -103,17 +102,29 @@ public class TransactionController {
 
     @FXML
     void searchAction(KeyEvent event){
-        String keyword = txt_keyword.getText();
-
         List<TransactionEntity> trans = transRepo.searchTable(
             "customers.name", 
             " JOIN customers ON transactions.customer_id = customers.customer_id", 
-            new HashMap<>(){{
-                put("cuatomers.name", keyword);
-                put("transacctions.payment_status", keyword);
-            }}
+            this.searchableValues()
         );
         showTable(trans);
+    }
+
+    private HashMap<String, Object> searchableValues(){
+        keyword = txt_keyword.getText();
+        if(keyword.equals("lunas")){ keyword = "paid"; }
+        if(keyword.equals("cicilan")){ keyword = "instalment"; }
+        if(keyword.equals("belum lunas") || keyword.equals("belum")){ keyword = "unpaid"; }
+
+        if(keyword.equals("proses")){ keyword = "process"; }
+        if(keyword.equals("selesai")){ keyword = "finish"; }
+        if(keyword.equals("diambil")){ keyword = "taken"; }
+
+        return new HashMap<>(){{
+            put("customers.name", keyword);
+            put("transactions.payment_status", keyword);
+            put("transactions.status", keyword);
+        }};
     }
 
     @FXML
