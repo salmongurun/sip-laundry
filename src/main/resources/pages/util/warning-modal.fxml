@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="367.0" prefWidth="480.0" style="-fx-background-radius: 10; -fx-border-radius: 10;" stylesheets="@../../style/admin.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FontIcon iconColor="#f8bb86" iconLiteral="bx-info-circle" iconSize="120" layoutX="180.0" layoutY="155.0" />
+      <Text fx:id="message_text" layoutX="40.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Warning information!" textAlignment="CENTER" wrappingWidth="400.0">
+         <font>
+            <Font name="Poppins Bold" size="16.0" />
+         </font>
+      </Text>
+      <HBox alignment="TOP_CENTER" layoutX="140.0" layoutY="299.0" prefWidth="200.0" spacing="15.0">
+         <children>
+            <HBox fx:id="confirm_btn" alignment="CENTER" layoutX="56.0" layoutY="10.0" onMouseClicked="#closeModal" style="-fx-padding: 8 40; -fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #CBCBCB; -fx-background-color: #005F82;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="OK" textAlignment="CENTER" wrappingWidth="50.0">
+                     <font>
+                        <Font name="Poppins SemiBold" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

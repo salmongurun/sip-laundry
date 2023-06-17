@@ -17,6 +17,7 @@ import siplaundry.view.cashier.transaction.CustomerPopover;
 import siplaundry.view.cashier.transaction.PaymentModal;
 import siplaundry.view.cashier.transaction.TransactionCard;
 import siplaundry.view.print.ReceiptPrint;
+import siplaundry.view.util.WarningModal;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -56,6 +57,16 @@ public class TransactionFormController {
 
     @FXML
     void showPaymentModal() {
+        if(customer == null) {
+            new WarningModal(shadow_root, "Anda belum memilih customer!");
+            return;
+        }
+
+        if(details.isEmpty()) {
+            new WarningModal(shadow_root, "Anda belum menambahkan item");
+            return;
+        }
+
         new PaymentModal(
             shadow_root,
             this.details,
