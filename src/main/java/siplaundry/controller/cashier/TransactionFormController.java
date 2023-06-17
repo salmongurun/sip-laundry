@@ -35,6 +35,8 @@ public class TransactionFormController {
     private Set<LaundryEntity> laundries = new HashSet<>();
     private PopOver custPopover = new PopOver();
     private CustomerEntity customer;
+    private boolean expressMode = false;
+
     public TransactionFormController(BorderPane parentRoot, BorderPane shadow_root) {
         this.parent_root = parentRoot;
         this.shadow_root = shadow_root;
@@ -106,6 +108,16 @@ public class TransactionFormController {
     void addDetailTransaction(LaundryEntity laundry) {
         int exist = TransactionUtil.getExistLaundry(laundry, this.details);
         TransactionDetailEntity detail = new TransactionDetailEntity();
+
+        if(laundry.getIsExpress() && !expressMode) {
+            details.clear();
+            expressMode = true;
+        }
+
+        if(!laundry.getIsExpress() && expressMode) {
+            details.clear();
+            expressMode = false;
+        }
 
         if(exist >= 0) {
             addDetailQuantity(this.details.get(exist));
