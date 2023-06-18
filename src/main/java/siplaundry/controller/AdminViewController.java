@@ -96,7 +96,7 @@ public class AdminViewController {
         removeAllStates();
         btn_sb_transaction.getStyleClass().add("active");
 
-        parent_root.setCenter(new TransactionView(shadow));
+        parent_root.setCenter(new TransactionView(parent_root, shadow));
     }
 
     @FXML

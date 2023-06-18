@@ -8,16 +8,31 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.*;
+import org.kordamp.ikonli.javafx.FontIcon;
+import siplaundry.data.LaundryStatus;
+import siplaundry.data.PaymentStatus;
+import siplaundry.data.SessionData;
 import siplaundry.entity.CustomerEntity;
 import siplaundry.entity.TransactionDetailEntity;
+import siplaundry.entity.TransactionEntity;
+import siplaundry.repository.TransactionDetailRepo;
+import siplaundry.repository.TransactionRepo;
 import siplaundry.util.NumberUtil;
+import siplaundry.view.print.ReceiptPrint;
+import toast.Toast;
+import toast.ToastType;
 
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 public class PaymentModal {
@@ -27,11 +42,17 @@ public class PaymentModal {
     private Text input_preview, customer_name, grand_total, payment_status, total_status;
     @FXML
     private TextField input_total;
+    @FXML
+    private FontIcon status_icon;
 
     private BorderPane shadowRoot;
     private List<TransactionDetailEntity> details;
     private CustomerEntity customer;
+    private PaymentStatus paymentStatus = PaymentStatus.unpaid;
+    private TransactionRepo transRepo = new TransactionRepo();
+    private TransactionDetailRepo transDetailRepo = new TransactionDetailRepo();
     private int grandTotal = 0;
+
     public PaymentModal(BorderPane shadowRoot, List<TransactionDetailEntity> details, CustomerEntity customer) {
         this.shadowRoot = shadowRoot;
         this.details = details;
@@ -58,32 +79,101 @@ public class PaymentModal {
     }
 
     @FXML
+    void saveTransaction() {
+        Date nowDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        Integer totalPay = NumberUtil.convertToInteger(input_total.getText());
+        TransactionEntity transaction = new TransactionEntity();
+
+        calendar.setTime(nowDate);
+        calendar.add(Calendar.DAY_OF_YEAR, 3);
+        if(totalPay == null) totalPay = 0;
+
+        transaction.settransactionDate(nowDate);
+        transaction.setCustomerID(customer);
+        transaction.setPaymentSatatus(paymentStatus);
+        transaction.setpickupDate(calendar.getTime());
+        transaction.setRetard(0);
+        transaction.setPaid_off(totalPay);
+        transaction.setUserID(SessionData.user);
+        transaction.setstatus(LaundryStatus.process);
+
+        int tranId = transRepo.add(transaction);
+        TransactionEntity trans = transRepo.get(tranId);
+
+        saveDetails(trans);
+        printReceipt(trans);
+
+        new Toast((AnchorPane) shadowRoot.getScene().getRoot())
+                .show(ToastType.SUCCESS, "Berhasil melakukan transaksi", null);
+        closeModal();
+    }
+
+    @FXML
     void updatePreview() {
         Integer totalPay = NumberUtil.convertToInteger(input_total.getText());
 
-        if(totalPay == null || totalPay < 1) {
-            payment_status.setText("Belum Bayar:");
-            total_status.setText("Rp " + NumberUtil.rupiahFormat(grandTotal));
+        if(totalPay != null) {
+            if(totalPay < 1) {
+                payment_status.setText("Belum Bayar:");
+                total_status.setText("Rp " + NumberUtil.rupiahFormat(grandTotal));
+                total_status.setFill(Paint.valueOf("#E96479"));
+
+                status_icon.setIconLiteral("bx-x");
+                status_icon.setFill(Paint.valueOf("#E96479"));
+
+                paymentStatus = PaymentStatus.unpaid;
+            }
+
+            if(totalPay < grandTotal) {
+                payment_status.setText("Belum Lunas:");
+                total_status.setText("Rp " + NumberUtil.rupiahFormat(grandTotal - totalPay));
+                total_status.setFill(Paint.valueOf("#FFB74D"));
+
+                status_icon.setIconLiteral("bx-minus");
+                status_icon.setFill(Paint.valueOf("#FFB74D"));
+
+                paymentStatus = PaymentStatus.instalment;
+            }
+
+            if(totalPay == grandTotal) {
+                payment_status.setText("Lunas:");
+                total_status.setText("Rp " + NumberUtil.rupiahFormat(grandTotal));
+                total_status.setFill(Paint.valueOf("#7DB9B6"));
+
+                status_icon.setIconLiteral("bx-check");
+                status_icon.setFill(Paint.valueOf("#7DB9B6"));
+
+                paymentStatus = PaymentStatus.paid;
+                new Pulse(total_status).play();
+            }
+
+            if(totalPay > grandTotal) {
+                payment_status.setText("Uang Kembali:");
+                total_status.setText("Rp " + NumberUtil.rupiahFormat(totalPay - grandTotal));
+                total_status.setFill(Paint.valueOf("#7DB9B6"));
+
+                status_icon.setIconLiteral("bx-check-double");
+                status_icon.setFill(Paint.valueOf("#7DB9B6"));
+
+                paymentStatus = PaymentStatus.paid;
+                new Pulse(total_status).play();
+            }
         }
 
-        if(totalPay != null && totalPay < grandTotal) {
-            payment_status.setText("Belum Lunas:");
-            total_status.setText("Rp " + NumberUtil.rupiahFormat(grandTotal - totalPay));
+        if(totalPay == null) {
+            payment_status.setText("Belum Bayar: ");
+            total_status.setFill(Paint.valueOf("#E96479"));
+
+            status_icon.setIconLiteral("bx-x");
+            status_icon.setFill(Paint.valueOf("#E96479"));
+
+            totalPay = 0;
+
+            paymentStatus = PaymentStatus.unpaid;
         }
 
-        if(totalPay != null && totalPay == grandTotal) {
-            payment_status.setText("Lunas:");
-            total_status.setText("Rp " + NumberUtil.rupiahFormat(grandTotal));
-            new Pulse(total_status).play();
-        }
 
-        if (totalPay != null && totalPay > grandTotal) {
-            payment_status.setText("Uang Kembali:");
-            total_status.setText("Rp " + NumberUtil.rupiahFormat(totalPay - grandTotal));
-            new Pulse(total_status).play();
-        }
-
-        if(totalPay == null) totalPay = 0;
         input_preview.setText("Rp " + NumberUtil.rupiahFormat(totalPay));
     }
 
@@ -109,5 +199,18 @@ public class PaymentModal {
             shadowRoot.setVisible(true);
             modalStage.showAndWait();
         } catch(IOException e) { e.printStackTrace(); }
+    }
+
+    void saveDetails(TransactionEntity transaction) {
+        for(TransactionDetailEntity detail: details) {
+            detail.setTransaction(transaction);
+            transDetailRepo.add(detail);
+        }
+    }
+
+    void printReceipt(TransactionEntity transaction) {
+        new ReceiptPrint(transaction, transDetailRepo.get(new HashMap<>() {{
+            put("transaction_id", transaction.getid());
+        }}));
     }
 }

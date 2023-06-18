@@ -24,6 +24,11 @@
       </HBox>
       <HBox prefWidth="110.0" styleClass="table-action">
          <children>
+            <HBox fx:id="detail_btn" layoutX="10.0" layoutY="10.0" styleClass="detail-button">
+               <children>
+                  <FontIcon iconLiteral="bx-info-circle" iconSize="18" styleClass="icon" />
+               </children>
+            </HBox>
             <HBox fx:id="delete_btn" layoutX="10.0" layoutY="10.0" styleClass="delete-button">
                <children>
                   <FontIcon iconLiteral="bx-trash" iconSize="18" styleClass="icon" />

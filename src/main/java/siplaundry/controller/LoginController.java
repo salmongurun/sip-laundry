@@ -55,14 +55,6 @@ public class LoginController {
     public void initialize() {
         shadowRoot.setVisible(false);
         addPasswordElement();
-
-        TransactionEntity transaction = new TransactionRepo().get(195);
-
-        welcome_text.setOnMouseClicked(event -> {
-            new ReceiptPrint(transaction, new TransactionDetailRepo().get(new HashMap<>() {{
-                put("transaction_id", transaction.getid());
-            }}));
-        });
     }
 
     public void ButtonLoginAction() {
