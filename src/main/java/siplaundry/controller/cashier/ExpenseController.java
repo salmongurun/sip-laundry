@@ -133,21 +133,27 @@ public class ExpenseController {
     }
 
     public void showTable(List<ExpenseEntity> exp){
+        int i = 0;
+        accColumns.clear();
         expense_table.getChildren().clear();
 
         if(exp == null)exp = expRepo.get();
-        if(exp.size() < 1){
-            expense_table.getChildren().add(new EmptyData(this::showAddExpense, txt_keyword.getText()));
-        }
         for (ExpenseEntity expEn : exp){
-            if(expEn.getUser_id().getID().equals(SessionData.user.getID())){
+            if(!(expEn.getUser_id().getID().equals(SessionData.user.getID()))){ continue; }
+
                 ExpenseColumn column = new ExpenseColumn(shadowRoot, this::showTable, expEn);
                 column.setBulkAction(this::toggleBulkItem);
 
+                 if(i % 2 == 1 ) column.getStyleClass().add("stripped");
+
                 expense_table.getChildren().add(column);
                 accColumns.add(column);
-            }
+                i++;
         }
+        int accTotal = expense_table.getChildren().size();
+
+        if(accTotal < 1) 
+            expense_table.getChildren().add(new EmptyData(this::showAddExpense, txt_keyword.getText()));
 
         total_text.setText("Menampilkan total " + exp.size() + " data pengeluaran");
     }
