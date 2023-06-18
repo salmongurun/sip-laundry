@@ -143,16 +143,17 @@ public class PriceController {
         });
      }
 
-    void showTable(List<LaundryEntity> laundry){
+    void showTable(List<LaundryEntity> laundries){
         price_table.getChildren().clear();
 
-        if(laundry == null) laundry = laundryRepo.get();
-        if(laundry.size() < 1){
+        if(laundries == null) laundries = laundryRepo.get();
+
+        if(laundries.size() < 1){
             price_table.getChildren().add(new EmptyData(this::showAddPrice, txt_keyword.getText()));
         }
 
-        for(int i = 0; i< laundry.size(); i++){
-            LaundryEntity laundryEn = laundryRepo.get(i);
+        for(int i = 0; i < laundries.size(); i++){
+            LaundryEntity laundryEn = laundries.get(i);
             PriceColumn column = new PriceColumn(shadowRoot, this::showTable, laundryEn);
             column.setBulkAction(this::toggleBulkItem);
 
@@ -162,7 +163,7 @@ public class PriceController {
             accColumns.add(column);
         }
 
-         total_Text.setText("Menampilkan total "+ laundry.size() +" data akun");
+         total_Text.setText("Menampilkan total "+ laundries.size() +" data akun");
     }
 
     protected void toggleBulkItem(LaundryEntity laundry){
