@@ -27,7 +27,7 @@
             </HBox>
             <ScrollPane prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.topAnchor="135.0">
                <content>
-                  <VBox fx:id="report_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
+                  <VBox fx:id="report_table" alignment="TOP_CENTER" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
                </content>
             </ScrollPane>
             <Text fx:id="total_text" fill="#7f7f7f" layoutX="20.0" layoutY="564.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data laporan">

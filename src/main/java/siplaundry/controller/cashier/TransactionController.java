@@ -27,6 +27,7 @@ import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.cashier.TransactionFormView;
 import siplaundry.view.cashier.components.column.TransactionColumn;
+import siplaundry.view.util.EmptyData;
 import toast.Toast;
 import toast.ToastType;
 
@@ -152,6 +153,9 @@ public class TransactionController {
         trans_table.getChildren().clear();
 
         if(trans == null) trans = transRepo.get();
+        if(trans.size() < 1){
+            trans_table.getChildren().add(new EmptyData(this::showAddTransaction, txt_keyword.getText()));
+        }
         for(TransactionEntity transEn: trans){
                 if(!(transEn.getUserID().getID().equals(SessionData.user.getID()))) continue;
 

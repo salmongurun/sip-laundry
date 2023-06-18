@@ -25,6 +25,7 @@ import siplaundry.repository.TransactionRepo;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.column.TransactionColumn;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
+import siplaundry.view.util.EmptyData;
 import toast.Toast;
 import toast.ToastType;
 
@@ -155,6 +156,10 @@ public class TransactionController {
         trans_table.getChildren().clear();
 
         if(trans == null) trans = transRepo.get();
+
+        if(trans.size() < 1){
+            trans_table.getChildren().add(new EmptyData(null, txt_keyword.getText()));
+        }
 
         for(int i = 0; i < trans.size(); i++){
             TransactionEntity transaction = trans.get(i);

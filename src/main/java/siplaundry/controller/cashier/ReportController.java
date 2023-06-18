@@ -21,6 +21,7 @@ import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.ReportRepository;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.cashier.components.column.ReportColumn;
+import siplaundry.view.util.EmptyData;
 
 public class ReportController {
      @FXML
@@ -87,6 +88,10 @@ public class ReportController {
      void showTable() {
         List<TransactionEntity> transactions = reportRepo.result(statusFilters, firstDate, secondDate);
         report_table.getChildren().clear();
+
+        if(transactions.size() < 1){
+            report_table.getChildren().add(new EmptyData(null, String.valueOf(statusFilters.size())));
+        }
 
         for(int i = 0; i < transactions.size(); i++) {
             TransactionEntity transaction = transactions.get(i);

@@ -57,7 +57,7 @@
             </HBox>
             <ScrollPane layoutX="29.0" layoutY="177.0" prefHeight="380.0" prefWidth="1058.0" styleClass="table-scroll" AnchorPane.leftAnchor="7.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="135.0">
                <content>
-                  <VBox fx:id="trans_table" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
+                  <VBox fx:id="trans_table" alignment="TOP_CENTER" prefHeight="46.0" prefWidth="1030.0" styleClass="table-content-container" />
                </content>
             </ScrollPane>
             <Text fx:id="total_text" fill="#7f7f7f" layoutX="24.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data akun" />
