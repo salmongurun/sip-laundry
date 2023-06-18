@@ -20,7 +20,7 @@
             </Text>
          </children>
       </HBox>
-      <HBox alignment="CENTER" layoutX="266.0" layoutY="334.0" prefWidth="125.0" spacing="5.0" style="-fx-background-color: #278AA6; -fx-background-radius: 9; -fx-padding: 12 22;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <HBox alignment="CENTER" layoutX="266.0" layoutY="334.0" onMouseClicked="#saveTransaction" prefWidth="125.0" spacing="5.0" style="-fx-background-color: #278AA6; -fx-background-radius: 9; -fx-padding: 12 22;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <FontIcon fill="WHITE" iconLiteral="bxs-wallet" iconSize="20" />
             <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Bayar">
@@ -29,6 +29,9 @@
                </font>
             </Text>
          </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </HBox>
       <HBox alignment="CENTER" layoutX="582.0" layoutY="425.0" onMouseClicked="#closeModal" prefWidth="125.0" spacing="5.0" style="-fx-padding: 12 22;" AnchorPane.bottomAnchor="0.0">
          <children>
@@ -74,11 +77,6 @@
                   <Font name="Poppins Bold" size="15.0" />
                </font>
             </Text>
-            <Text fx:id="total_status" fill="#278aa6" layoutX="498.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp. 0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-               <font>
-                  <Font name="Poppins Bold" size="40.0" />
-               </font>
-            </Text>
             <HBox alignment="CENTER_LEFT" layoutX="66.0" layoutY="215.0" prefHeight="77.0" prefWidth="200.0" style="-fx-border-color: #D9D9D9; -fx-border-radius: 8;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <TextField fx:id="input_total" onKeyReleased="#updatePreview" prefHeight="41.0" prefWidth="480.0" promptText="Masukkan Jumlah Total..." style="-fx-background-color: transparent, white, transparent, white;">
@@ -86,6 +84,16 @@
                         <Font name="Poppins SemiBold" size="20.0" />
                      </font>
                   </TextField>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="660.0" layoutY="41.0" spacing="10.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <FontIcon fx:id="status_icon" iconColor="#e96479" iconLiteral="bx-x" iconSize="40" />
+                  <Text fx:id="total_status" fill="#e96479" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp. 0">
+                     <font>
+                        <Font name="Poppins Bold" size="40.0" />
+                     </font>
+                  </Text>
                </children>
             </HBox>
          </children>

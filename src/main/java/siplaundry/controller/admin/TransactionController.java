@@ -51,13 +51,14 @@ public class TransactionController {
 
     private SortingOrder sortOrder = SortingOrder.DESC;
 
-    private BorderPane shadowRoot;
+    private BorderPane parentRoot, shadowRoot;
     private TransactionRepo transRepo = new TransactionRepo();
     private Set<TransactionEntity> bulkItems = new HashSet<>();
     private ArrayList<TransactionColumn> accColumns = new ArrayList<>();
 
     private String keyword;
-    public TransactionController(BorderPane shadow){
+    public TransactionController(BorderPane parent, BorderPane shadow){
+        this.parentRoot = parent;
         this.shadowRoot = shadow;
     }
 
@@ -163,7 +164,7 @@ public class TransactionController {
 
         for(int i = 0; i < trans.size(); i++){
             TransactionEntity transaction = trans.get(i);
-            TransactionColumn column = new TransactionColumn(shadowRoot, this::showTable, transaction);
+            TransactionColumn column = new TransactionColumn(parentRoot, shadowRoot, this::showTable, transaction);
             column.setBulkAction(this::toggleBulkItem);
 
             if(i % 2 == 1) column.getStyleClass().add("stripped");

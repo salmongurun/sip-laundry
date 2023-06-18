@@ -230,12 +230,22 @@
     -fx-background-radius: 20;
 }
 
+.table-content .table-action .detail-button {
+    -fx-background-color: #E0F4FB;
+    -fx-padding: 6 12;
+    -fx-background-radius: 20;
+}
+
 .table-content .table-action .delete-button .icon {
     -fx-fill: #E96479
 }
 
 .table-content .table-action .edit-button .icon {
     -fx-fill: #7DB9B6
+}
+
+.table-content .table-action .detail-button .icon {
+    -fx-fill: #278AA6
 }
 
 .table-content .items-container {

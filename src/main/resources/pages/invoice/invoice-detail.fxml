@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/invoice.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane layoutX="-6.0" layoutY="68.0" prefHeight="650.0" prefWidth="200.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="43.0" layoutY="48.0" prefHeight="595.0" prefWidth="542.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <styleClass>
+                  <String fx:value="card" />
+                  <String fx:value="no-padding" />
+               </styleClass>
+               <children>
+                  <AnchorPane layoutX="151.0" layoutY="145.0" prefHeight="218.0" prefWidth="200.0" style="-fx-border-color: transparent transparent #D9D9D9 transparent;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <Text layoutX="86.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal:" AnchorPane.topAnchor="52.0">
+                           <font>
+                              <Font name="Poppins SemiBold" size="10.0" />
+                           </font>
+                        </Text>
+                        <Pane prefHeight="55.0" prefWidth="55.0" style="-fx-background-color: F3F4F6; -fx-background-radius: 8;" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="20.0" />
+                        <Text fx:id="transaction_name" layoutX="86.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pesanan#3456" AnchorPane.topAnchor="20.0">
+                           <font>
+                              <Font name="Poppins Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <VBox layoutX="21.0" layoutY="109.0" prefHeight="0.0" spacing="7.0" AnchorPane.leftAnchor="20.0" AnchorPane.topAnchor="125.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Customer:" wrappingWidth="90.0">
+                                       <font>
+                                          <Font name="Poppins SemiBold" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="customer_name" fill="#868686" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer">
+                                       <font>
+                                          <Font name="Poppins SemiBold" size="12.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="10.0" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kasir:" wrappingWidth="90.0">
+                                       <font>
+                                          <Font name="Poppins SemiBold" size="12.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fx:id="cashier_name" fill="#868686" strokeType="OUTSIDE" strokeWidth="0.0" text="Kasir - SIP">
+                                       <font>
+                                          <Font name="Poppins SemiBold" size="12.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Text fx:id="transaction_date" layoutX="139.0" layoutY="64.0" strokeType="OUTSIDE" strokeWidth="0.0" text="20/04/2023" AnchorPane.leftAnchor="135.0" AnchorPane.topAnchor="52.0">
+                           <font>
+                              <Font name="Poppins SemiBold" size="10.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+                  <ScrollPane layoutX="26.0" layoutY="232.0" prefHeight="275.0" prefWidth="200.0" style="-fx-border-color: transparent; -fx-background-insets: none; -fx-background: white; -fx-padding: 0;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
+                     <content>
+                        <VBox prefHeight="200.0" prefWidth="485.0" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <HBox alignment="CENTER_LEFT" layoutX="610.0" layoutY="21.0" prefWidth="435.0" style="-fx-background-color: F3F4F6; -fx-background-radius: 8; -fx-padding: 10 20;">
+               <children>
+                  <Text fill="#7d838f" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="170.0">
+                     <font>
+                        <Font name="Poppins Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="total_text" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 50.000" textAlignment="RIGHT" wrappingWidth="225.0">
+                     <font>
+                        <Font name="Poppins SemiBold" size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <VBox layoutX="616.0" layoutY="91.0" prefWidth="100.0" spacing="10.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status Pembayaran:" wrappingWidth="200.0">
+                           <font>
+                              <Font name="Poppins SemiBold" size="15.0" />
+                           </font>
+                        </Text>
+                        <HBox fx:id="payment_background" alignment="CENTER" prefWidth="100.0" styleClass="badge">
+                           <children>
+                              <Text fx:id="payment_text" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Lunas" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Status Transaksi:" wrappingWidth="200.0">
+                           <font>
+                              <Font name="Poppins SemiBold" size="15.0" />
+                           </font>
+                        </Text>
+                        <HBox fx:id="status_background" alignment="CENTER" prefWidth="100.0" styleClass="badge">
+                           <children>
+                              <Text fx:id="status_text" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Diproses" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <HBox layoutX="10.0" layoutY="33.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal Ambil:" wrappingWidth="210.0">
+                           <font>
+                              <Font name="Poppins SemiBold" size="15.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="due_date" fill="#868686" layoutX="10.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="23/09/2023" wrappingWidth="200.0">
+                           <font>
+                              <Font name="Poppins SemiBold" size="14.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Detail Pemesanan" AnchorPane.topAnchor="-7.25">
+         <font>
+            <Font name="Poppins Bold" size="25.0" />
+         </font>
+      </Text>
+   </children>
+</fx:root>

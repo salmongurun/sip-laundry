@@ -13,9 +13,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.stage.*;
 import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import siplaundry.entity.TransactionDetailEntity;
@@ -37,6 +35,7 @@ public class ReceiptPrint {
 
     private List<TransactionDetailEntity> details;
     private TransactionEntity transaction;
+    private Stage receiptStage;
 
     public ReceiptPrint(TransactionEntity transaction, List<TransactionDetailEntity> details) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/print/receipt.fxml"));
@@ -48,16 +47,16 @@ public class ReceiptPrint {
             loader.setController(this);
 
             Parent root = loader.load();
-            Stage stage =  new Stage();
+            receiptStage =  new Stage();
             Scene scene = new Scene(root);
 
             scene.setFill(Color.TRANSPARENT);
-            stage.setScene(scene);
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.setResizable(false);
+            receiptStage.setScene(scene);
+            receiptStage.initModality(Modality.APPLICATION_MODAL);
+            receiptStage.initStyle(StageStyle.UNDECORATED);
+            receiptStage.setResizable(false);
 
-            stage.showAndWait();
+            receiptStage.showAndWait();
         } catch (IOException e) { e.printStackTrace(); }
     }
 
@@ -76,6 +75,7 @@ public class ReceiptPrint {
         }
 
         printReceipt();
+        receiptStage.close();
     }
 
     private void printReceipt() {
