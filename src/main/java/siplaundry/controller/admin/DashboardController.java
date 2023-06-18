@@ -1,20 +1,39 @@
 package siplaundry.controller.admin;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.swing.JFileChooser;
+
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
+
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.Cell;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
+import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import siplaundry.data.SessionData;
 import siplaundry.repository.ExpanseRepo;
@@ -110,4 +129,60 @@ public class DashboardController {
         drawChart(CB_chart.getValue());
         
     }
-}
+
+    @FXML
+    void dashboard(){
+        String outputFileName = null;
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save PDF File");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("PDF files", "*.pdf");
+        fileChooser.getExtensionFilters().add(extFilter);
+
+        File selectedFile = fileChooser.showSaveDialog(null);
+        if (selectedFile != null) {
+            outputFileName = selectedFile.getAbsolutePath();
+        } else {
+            System.out.println("No file selected.");
+        }
+        Document document = new Document();
+
+        try {
+            PdfWriter.getInstance(document, new FileOutputStream(outputFileName));
+
+            PdfPTable table = new PdfPTable(2);
+            table.setWidthPercentage(100);
+
+            PdfPCell cell1 = new PdfPCell(new Phrase("Category 1"));
+            PdfPCell cell2 = new PdfPCell(new Phrase("Subcategory 1"));
+            PdfPCell cell3 = new PdfPCell(new Phrase("Category 2"));
+            PdfPCell cell4 = new PdfPCell(new Phrase("Subcategory 2"));
+            PdfPCell cell5 = new PdfPCell(new Phrase("Subcategory 3"));
+
+            cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell4.setHorizontalAlignment(Element.ALIGN_CENTER);
+            cell5.setHorizontalAlignment(Element.ALIGN_CENTER);
+
+            cell1.setRowspan(2);
+            cell3.setRowspan(2);
+
+            table.addCell(cell1);
+            table.addCell(cell2);
+            table.addCell(cell3);
+            table.addCell(cell4);
+            table.addCell(cell5);
+
+            document.open();
+            document.add(new Paragraph("Hello, iText in JavaFX!"));
+            document.add(new Paragraph("Hello, coba"));
+            document.add(table);
+
+            document.close();
+
+        } catch (Exception e) {
+             e.printStackTrace();
+        }
+    }
+
+    }

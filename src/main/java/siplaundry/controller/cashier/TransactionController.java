@@ -149,23 +149,30 @@ public class TransactionController {
     }
 
     public void showTable(List<TransactionEntity> trans){
+        int i = 0;
         accColumns.clear();
         trans_table.getChildren().clear();
 
         if(trans == null) trans = transRepo.get();
-        if(trans.size() < 1){
-            trans_table.getChildren().add(new EmptyData(this::showAddTransaction, txt_keyword.getText()));
-        }
+        // if(trans.size() < 1){
+        //     trans_table.getChildren().add(new EmptyData(this::showAddTransaction, txt_keyword.getText()));
+        // }
         for(TransactionEntity transEn: trans){
                 if(!(transEn.getUserID().getID().equals(SessionData.user.getID()))) continue;
 
                 TransactionColumn column = new TransactionColumn(shadow_root, this::showTable, transEn);
                 column.setBulkAction(this::toggleBulkItem);
 
+                if(i % 2 == 1) column.getStyleClass().add("stripped");
+
                 trans_table.getChildren().add(column);
                 accColumns.add(column);
-            
+                i++; 
         }
+        int accTotal = trans_table.getChildren().size();
+
+        if(accTotal < 1) 
+            trans_table.getChildren().add(new EmptyData(this::showAddTransaction, txt_keyword.getText()));
         total_text.setText("Menampilkan total " + trans.size() + " data akun");
     }
 

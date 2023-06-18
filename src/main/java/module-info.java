@@ -10,6 +10,7 @@ open module siplaundry {
     requires barcode4j;
     requires jasperreports;
     requires org.controlsfx.controls;
+    requires itextpdf;
 
     requires javafx.controls;
     requires javafx.fxml;

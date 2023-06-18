@@ -19,7 +19,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import siplaundry.data.SessionData;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ExpanseRepo;
@@ -152,13 +151,18 @@ public class ExpenseController {
         if(exp == null)exp = expRepo.get();
         if(exp.size() < 1){
             expense_table.getChildren().add(new EmptyData(this::showAddExpense, txt_keyword.getText()));
+            return;
         }
-        for (ExpenseEntity expEn : exp){
-                ExpenseColumn column = new ExpenseColumn(shadowRoot, this::showTable, expEn);
-                column.setBulkAction(this::toggleBulkItem);
 
-                expense_table.getChildren().add(column);
-                accColumns.add(column);
+        for(int i = 0; i < exp.size(); i++){
+            ExpenseEntity expense = exp.get(i);
+            ExpenseColumn column = new ExpenseColumn(shadowRoot, this::showTable, expense);
+            column.setBulkAction(this::toggleBulkItem);
+
+            if(i % 2 == 1) column.getStyleClass().add("stripped");
+
+            expense_table.getChildren().add(column);
+            accColumns.add(column);
         }
 
         total_text.setText("Menampilkan total " + exp.size() + " data pengeluaran");

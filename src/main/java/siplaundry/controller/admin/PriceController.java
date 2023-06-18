@@ -151,14 +151,17 @@ public class PriceController {
             price_table.getChildren().add(new EmptyData(this::showAddPrice, txt_keyword.getText()));
         }
 
-        for(LaundryEntity lndry: laundry){ 
-            // price_table.getChildren().add(new PriceColumn(shadowRoot, this::showTable, laundry));
-            PriceColumn column = new PriceColumn(shadowRoot, this::showTable, lndry);
+        for(int i = 0; i< laundry.size(); i++){
+            LaundryEntity laundryEn = laundryRepo.get(i);
+            PriceColumn column = new PriceColumn(shadowRoot, this::showTable, laundryEn);
             column.setBulkAction(this::toggleBulkItem);
+
+            if(i%2 ==1) column.getStyleClass().add("stripped");
 
             price_table.getChildren().add(column);
             accColumns.add(column);
-         }
+        }
+
          total_Text.setText("Menampilkan total "+ laundry.size() +" data akun");
     }
 
