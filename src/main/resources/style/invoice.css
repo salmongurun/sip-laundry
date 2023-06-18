@@ -90,3 +90,14 @@
 .scroll-pane > .scroll-bar:vertical .thumb:pressed {
     -fx-background-color: #808080; /* Warna thumb ketika ditekan */
 }
+
+.invoice-detail {
+    -fx-border-color: transparent transparent #D9D9D9 transparent;
+    -fx-padding: 10 0;
+    -fx-font-family: "Poppins SemiBold";
+    -fx-font-size: 14;
+}
+
+.invoice-detail .qty {
+    -fx-fill: #C1C1C1;
+}

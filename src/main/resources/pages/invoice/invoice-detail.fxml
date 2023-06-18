@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -8,6 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
 
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/invoice.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
@@ -39,12 +41,12 @@
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Customer:" wrappingWidth="90.0">
                                        <font>
-                                          <Font name="Poppins SemiBold" size="12.0" />
+                                          <Font name="Poppins SemiBold" size="13.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="customer_name" fill="#868686" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer">
                                        <font>
-                                          <Font name="Poppins SemiBold" size="12.0" />
+                                          <Font name="Poppins SemiBold" size="13.0" />
                                        </font>
                                     </Text>
                                  </children>
@@ -53,12 +55,12 @@
                                  <children>
                                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kasir:" wrappingWidth="90.0">
                                        <font>
-                                          <Font name="Poppins SemiBold" size="12.0" />
+                                          <Font name="Poppins SemiBold" size="13.0" />
                                        </font>
                                     </Text>
                                     <Text fx:id="cashier_name" fill="#868686" strokeType="OUTSIDE" strokeWidth="0.0" text="Kasir - SIP">
                                        <font>
-                                          <Font name="Poppins SemiBold" size="12.0" />
+                                          <Font name="Poppins SemiBold" size="13.0" />
                                        </font>
                                     </Text>
                                  </children>
@@ -74,7 +76,7 @@
                   </AnchorPane>
                   <ScrollPane layoutX="26.0" layoutY="232.0" prefHeight="275.0" prefWidth="200.0" style="-fx-border-color: transparent; -fx-background-insets: none; -fx-background: white; -fx-padding: 0;" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="250.0">
                      <content>
-                        <VBox prefHeight="200.0" prefWidth="485.0" />
+                        <VBox fx:id="detail_container" prefHeight="200.0" prefWidth="485.0" />
                      </content>
                   </ScrollPane>
                </children>
@@ -139,9 +141,40 @@
                   </HBox>
                </children>
             </VBox>
+            <HBox fx:id="retard_element" alignment="CENTER" layoutX="610.0" layoutY="275.0" prefWidth="435.0" spacing="10.0" style="-fx-padding: 10 0; -fx-background-color: fff4e5; -fx-background-radius: 8;">
+               <children>
+                  <FontIcon fill="#feb74d" iconLiteral="bx-alarm-off" iconSize="50" />
+                  <VBox alignment="CENTER" prefHeight="3.0" prefWidth="273.0">
+                     <children>
+                        <Text fill="#feb74d" strokeType="OUTSIDE" strokeWidth="0.0" text="Pesanan memiliki keterlambatan">
+                           <font>
+                              <Font name="Poppins SemiBold" size="16.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="retard_text" fill="#f45050" strokeType="OUTSIDE" strokeWidth="0.0" text="Tertunda 5 Hari">
+                           <font>
+                              <Font name="Poppins Medium" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutX="905.0" layoutY="576.0" onMouseClicked="#backAction" style="-fx-padding: 10 40; -fx-background-color: #278AA6; -fx-background-radius: 7;">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Kembali">
+                     <font>
+                        <Font name="Poppins SemiBold" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
          </children>
       </AnchorPane>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Detail Pemesanan" AnchorPane.topAnchor="-7.25">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Detail Transaksi" AnchorPane.topAnchor="-7.25">
          <font>
             <Font name="Poppins Bold" size="25.0" />
          </font>
