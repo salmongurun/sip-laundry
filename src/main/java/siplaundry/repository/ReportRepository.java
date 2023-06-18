@@ -79,6 +79,7 @@ public class ReportRepository extends Repo<TransactionEntity> {
             LaundryStatus.valueOf(result.getString("status")),
             PaymentStatus.valueOf(result.getString("payment_status")),
             result.getInt("amount"),
+            result.getBoolean("IsExpress"),
             result.getInt("paid_off"),
             new UsersRepo().get(userId),
             new CustomerRepo().get(custId)

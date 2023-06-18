@@ -23,6 +23,7 @@ public class TransactionEntity extends Entity {
     private PaymentStatus payment_status;
     
     private int amount;
+    private boolean IsExpress;
 
     @NotBlank
     private int paid_off;
@@ -34,18 +35,27 @@ public class TransactionEntity extends Entity {
     }
     
     public TransactionEntity(Date transactionDate,int retard, Date pickup_Date, LaundryStatus status,
-    PaymentStatus payment_status, int amount, int paid_off, UserEntity user_id, CustomerEntity customer_id) {
+    PaymentStatus payment_status, int amount, boolean IsExpress, int paid_off, UserEntity user_id, CustomerEntity customer_id) {
         this.transaction_Date = transactionDate;
         this.retard = retard;
         this.pickup_date = pickup_Date;
         this.status = status;
         this.payment_status = payment_status;
         this.amount = amount;
+        this.IsExpress = IsExpress;
         this.paid_off = paid_off;
         this.userID = user_id;
         this.customerID = customer_id;
     }
     
+    public boolean getIsExpress() {
+        return IsExpress;
+    }
+
+    public void setIsExpress(boolean isExpress) {
+        IsExpress = isExpress;
+    }
+
     public int getid() {
         return transaction_id;
     }

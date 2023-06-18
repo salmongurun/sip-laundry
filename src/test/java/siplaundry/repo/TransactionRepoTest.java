@@ -62,6 +62,7 @@ public class TransactionRepoTest {
                 LaundryStatus.finish,
                 PaymentStatus.paid,
                 23,
+                true,
                 50000,
                 user,
                 customer);
@@ -95,6 +96,7 @@ public class TransactionRepoTest {
                 LaundryStatus.process,
                 PaymentStatus.unpaid,
                 233,
+                false,
                 9000,
                 user,
                 customer);
