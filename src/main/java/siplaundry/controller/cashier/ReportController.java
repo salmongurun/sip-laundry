@@ -95,14 +95,17 @@ public class ReportController {
 
         for(int i = 0; i < transactions.size(); i++) {
             TransactionEntity transaction = transactions.get(i);
-            // if(transaction.getUserID() = SessionData.user.getID()){continue;}
+           
+            if(transaction.getUserID().getID().equals(SessionData.user.getID())){
             ReportColumn column = new ReportColumn(shadowRoot, transaction);
 
             if(i % 2 == 1) column.getStyleClass().add("stripped");
             report_table.getChildren().add(column);
+            }
         }
 
-        total_text.setText("Menampilkan " + transactions.size() + " data laporan");
+        int accTotal = report_table.getChildren().size();
+        total_text.setText("Menampilkan " + accTotal + " data laporan");
     }
 
     private VBox statusFilterElement() {
