@@ -3,7 +3,6 @@ package siplaundry.view.admin;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import siplaundry.controller.admin.ReportController;
 import siplaundry.controller.admin.ReportExpenseController;
 
 import java.io.IOException;

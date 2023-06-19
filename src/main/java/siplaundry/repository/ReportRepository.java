@@ -11,6 +11,7 @@ import java.util.Set;
 
 import siplaundry.data.LaundryStatus;
 import siplaundry.data.PaymentStatus;
+import siplaundry.entity.ExpenseEntity;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.util.DatabaseUtil;
 
@@ -31,6 +32,7 @@ public class ReportRepository extends Repo<TransactionEntity> {
 
         return transactions;
     }
+
 
     private String generateStatus(Set<LaundryStatus> status) {
         StringBuilder generated = new StringBuilder("(");

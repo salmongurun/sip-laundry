@@ -1,138 +1,106 @@
 package siplaundry.controller.admin;
 
+import java.io.IOException;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.function.Consumer;
+
+import org.controlsfx.control.PopOver;
+
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.controlsfx.control.PopOver;
-import siplaundry.data.LaundryStatus;
-import siplaundry.entity.TransactionEntity;
+import siplaundry.entity.ExpenseEntity;
+import siplaundry.repository.ReportExpRepository;
 import siplaundry.repository.ReportRepository;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.ReportView;
-import siplaundry.view.admin.components.column.ReportColumn;
+import siplaundry.view.admin.components.column.ReportExpColumn;
 import siplaundry.view.util.EmptyData;
 
-import java.io.IOException;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.function.Consumer;
-
 public class ReportExpenseController {
-    @FXML
-    private VBox report_table;
-    @FXML
-    private Text total_text, first_date_text, second_date_text;
-    @FXML
-    private HBox status_filter, first_date_filter, second_date_filter;
+   @FXML
+   private VBox report_table;
 
-    private BorderPane parentRoot, shadowRoot;
-    private ReportRepository reportRepo = new ReportRepository();
-    private PopOver statusPopover = new PopOver();
-    private PopOver datePopover = new PopOver();
-    private Set<LaundryStatus> statusFilters = new HashSet<>();
-    private LocalDate firstDate, secondDate;
+   @FXML
+   private Text total_text, first_date_text, second_date_text;
 
-    public ReportExpenseController(BorderPane parentRoot, BorderPane shadowRoot) {
-        this.parentRoot = parentRoot;
-        this.shadowRoot = shadowRoot;
-    }
+   @FXML
+   private HBox first_date_filter, second_date_filter;
 
-    @FXML
-    void initialize() {
-        for(LaundryStatus status: LaundryStatus.values()) {
-            statusFilters.add(status);
-        }
+   private BorderPane parentRoot, shadowRoot;
+   private ReportExpRepository reportRepo = new ReportExpRepository();
+   private PopOver datePopOver = new PopOver();
+   private LocalDate firstDate, secondDate;
 
+   public ReportExpenseController(BorderPane parentRoot, BorderPane shadowRoot){
+    this.parentRoot = parentRoot;
+    this.shadowRoot = shadowRoot;
+   }
+
+   @FXML
+   void initialize(){
+    showTable();
+   }
+
+   @FXML
+   void exportData(){
+
+   }
+
+   @FXML
+   void showFirstDateFilter(){
+    datePopOver.show(first_date_filter);
+    datePopOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
+    datePopOver.setContentNode(dateFilterElement(firstDate, (value) -> {
+        firstDate = value;
+        first_date_text.setText(ViewUtil.formatDate(value, "dd/MM/YYYY"));
         showTable();
-    }
+    }));
+   }
 
-    @FXML
-    void exportData() {
+   @FXML
+   void showSecondDateFilter(){
+    datePopOver.show(second_date_filter);
+    datePopOver.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
+    datePopOver.setContentNode(dateFilterElement(secondDate, (value) -> {
+        secondDate = value;
+        second_date_text.setText(ViewUtil.formatDate(value, "dd/MM/YYYY"));
+        showTable();
+    }));
+   }
 
-    }
-
-    @FXML
-    void showStatusFilter() {
-        statusPopover.show(status_filter);
-        statusPopover.setArrowLocation(PopOver.ArrowLocation.TOP_LEFT);
-        statusPopover.setContentNode(statusFilterElement());
-    }
-
-    @FXML
-    void showFirstDateFilter() {
-        datePopover.show(first_date_filter);
-        datePopover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
-        datePopover.setContentNode(dateFilterElement(firstDate, (value) -> {
-            firstDate = value;
-            first_date_text.setText(ViewUtil.formatDate(value, "dd/MM/YYYY"));
-            showTable();
-        }));
-    }
-
-    @FXML
-    void showSecondDateFilter() {
-        datePopover.show(second_date_filter);
-        datePopover.setArrowLocation(PopOver.ArrowLocation.TOP_CENTER);
-        datePopover.setContentNode(dateFilterElement(secondDate, (value) -> {
-            secondDate = value;
-            second_date_text.setText(ViewUtil.formatDate(value, "dd/MM/YYYY"));
-            showTable();
-        }));
-    }
-
-    @FXML
-    void showTransactionReport() throws IOException {
+   @FXML
+   void showTransactionReport() throws IOException{
         parentRoot.setCenter(new ReportView(parentRoot, shadowRoot));
+   }
+
+   void showTable(){
+    List<ExpenseEntity> expense = reportRepo.resultExp(firstDate, secondDate);
+    report_table.getChildren().clear();
+
+    if(expense.size() < 1){
+        report_table.getChildren().add(new EmptyData(null, null));
     }
 
-    void showTable() {
-        List<TransactionEntity> transactions = reportRepo.result(statusFilters, firstDate, secondDate);
-        report_table.getChildren().clear();
+    for(int i = 0; i < expense.size(); i++){
+        ExpenseEntity exp = expense.get(i);
+        System.out.println("exp");
+        ReportExpColumn column = new ReportExpColumn(shadowRoot, exp);
 
-        if(transactions.size() < 1){
-            report_table.getChildren().add(new EmptyData(null, String.valueOf(statusFilters.size())));
-        }
-
-        for(int i = 0; i < transactions.size(); i++) {
-            TransactionEntity transaction = transactions.get(i);
-            ReportColumn column = new ReportColumn(shadowRoot, transaction);
-
-            if(i % 2 == 1) column.getStyleClass().add("stripped");
-            report_table.getChildren().add(column);
-        }
-
-        total_text.setText("Menampilkan " + transactions.size() + " data laporan");
+        if(i % 2 == 1) column.getStyleClass().add("stripped");
+        report_table.getChildren().add(column);
     }
 
-    private VBox statusFilterElement() {
-        VBox filterContainer = new VBox();
-        filterContainer.getStyleClass().add("filter-container");
+    total_text.setText("Menampilkan " + expense.size() + " data laporan");
 
-        for(LaundryStatus status: LaundryStatus.values()) {
-            CheckBox filterCheck = new CheckBox(ViewUtil.toStatusString(status));
+   }
 
-            filterContainer.getChildren().add(filterCheck);
-            filterCheck.setSelected(statusFilters.contains(status));
-            filterCheck.getStyleClass().add("filter-item");
-
-            filterCheck.selectedProperty().addListener(event -> {
-                boolean added = statusFilters.contains(status) ?
-                        statusFilters.remove(status) :
-                        statusFilters.add(status);
-                showTable();
-            });
-        }
-
-        return filterContainer;
-    }
-
-    private VBox dateFilterElement(LocalDate date, Consumer<LocalDate> callback) {
+   private VBox dateFilterElement(LocalDate date, Consumer<LocalDate> callback){
         VBox filterContainer = new VBox();
         DatePicker datePicker = new DatePicker();
 
@@ -145,5 +113,6 @@ public class ReportExpenseController {
         filterContainer.getChildren().add(datePicker);
 
         return filterContainer;
-    }
+   }
+
 }
