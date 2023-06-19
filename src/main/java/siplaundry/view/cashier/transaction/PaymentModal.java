@@ -16,6 +16,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import org.kordamp.ikonli.javafx.FontIcon;
+import retrofit2.Call;
 import siplaundry.data.LaundryStatus;
 import siplaundry.data.PaymentStatus;
 import siplaundry.data.SessionData;
@@ -34,6 +35,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class PaymentModal {
     @FXML
@@ -52,11 +54,15 @@ public class PaymentModal {
     private TransactionRepo transRepo = new TransactionRepo();
     private TransactionDetailRepo transDetailRepo = new TransactionDetailRepo();
     private int grandTotal = 0;
+    private boolean isExpress;
+    private Callable resetAction;
 
-    public PaymentModal(BorderPane shadowRoot, List<TransactionDetailEntity> details, CustomerEntity customer) {
+    public PaymentModal(BorderPane shadowRoot, List<TransactionDetailEntity> details, CustomerEntity customer, boolean isExpress, Callable resetAction) {
         this.shadowRoot = shadowRoot;
         this.details = details;
         this.customer = customer;
+        this.isExpress = isExpress;
+        this.resetAction = resetAction;
 
         for(TransactionDetailEntity detail: details) {
             this.grandTotal += detail.getSubtotal();
@@ -79,7 +85,7 @@ public class PaymentModal {
     }
 
     @FXML
-    void saveTransaction() {
+    void saveTransaction() throws Exception {
         Date nowDate = new Date();
         Calendar calendar = Calendar.getInstance();
         Integer totalPay = NumberUtil.convertToInteger(input_total.getText());
@@ -97,15 +103,18 @@ public class PaymentModal {
         transaction.setPaid_off(totalPay);
         transaction.setUserID(SessionData.user);
         transaction.setstatus(LaundryStatus.process);
+        transaction.setIsExpress(this.isExpress);
 
         int tranId = transRepo.add(transaction);
         TransactionEntity trans = transRepo.get(tranId);
 
         saveDetails(trans);
+        resetAction.call();
         printReceipt(trans);
 
         new Toast((AnchorPane) shadowRoot.getScene().getRoot())
                 .show(ToastType.SUCCESS, "Berhasil melakukan transaksi", null);
+
         closeModal();
     }
 
