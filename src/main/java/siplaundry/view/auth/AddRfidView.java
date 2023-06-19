@@ -1,6 +1,7 @@
 package siplaundry.view.auth;
 
 import java.io.IOException;
+import java.util.function.Consumer;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -13,9 +14,9 @@ import javafx.stage.StageStyle;
 import siplaundry.controller.admin.account.AddRfidController;
 
 public class AddRfidView {
-    public AddRfidView(Node shadowRoot, Stage primaryStage){
+    public AddRfidView(Node shadowRoot, Stage primaryStage, Consumer<String> addAction){
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/auth/login-rfid.fxml"));
-        loader.setController(new AddRfidController(primaryStage));
+        loader.setController(new AddRfidController(shadowRoot, primaryStage, addAction));
 
         try {
             Parent root = loader.load();

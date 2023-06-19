@@ -8,8 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import siplaundry.data.AccountRole;
@@ -31,27 +34,23 @@ import org.kordamp.ikonli.javafx.FontIcon;
 
 public class AccountModal {
     @FXML
-    private Text modal_title, modal_subtitle;
+    private Text modal_title, modal_subtitle, set_rfid_text;
     @FXML
     private Button close_btn;
-
     @FXML
     private TextField txt_fullname, txt_phone, txt_username;
-
     @FXML
-    private HBox password_container;
-
+    private HBox password_container, set_rfid_container;
     @FXML
     private TextArea txt_address;
-
     @FXML
     private RadioButton chs_admin, chs_cashier;
-
     @FXML
     private  ToggleGroup roleGroup;
-
     @FXML
-    private FontIcon toggle_icon;
+    private FontIcon toggle_icon, set_rfid_icon;
+    @FXML
+    private BorderPane shadow_modal;
 
     private UsersRepo userRepo = new UsersRepo();
     private AccountRole accRole;
@@ -59,7 +58,7 @@ public class AccountModal {
     private UserEntity account;
     private Consumer<List<UserEntity>> refreshTable;
     private Map<String, Node> fields;
-    private String password;
+    private String password, rfid = "0";
     private boolean isPasswordShown = false;
 
     public AccountModal(Node shadowRoot, Consumer<List<UserEntity>> refreshTable, UserEntity account) {
@@ -80,6 +79,8 @@ public class AccountModal {
         chs_admin.setSelected(true);
         if(this.account != null) {
             changeUpdate();
+            setAccountRfid(this.account.getRfid());
+
             password = this.account.getPassword();
         }
 
@@ -115,8 +116,13 @@ public class AccountModal {
     }
 
     @FXML
-    void showRfid(){
-        new AddRfidView(shadowRoot, (Stage) shadowRoot.getScene().getWindow());
+    void manageRfid(){
+        if(this.rfid.isBlank() || this.rfid.equals("0")) {
+            new AddRfidView(shadow_modal, (Stage) shadowRoot.getScene().getWindow(), this::setAccountRfid);
+            return;
+        }
+
+        setAccountRfid("0");
     }
 
     @FXML
@@ -129,6 +135,8 @@ public class AccountModal {
             txt_address.getText(),
             accRole
         );
+
+        user.setRfid(rfid);
 
         Set<ConstraintViolation<UserEntity>> vols = ValidationUtil.validate(user);
         ValidationUtil.renderErrors(vols, this.fields);
@@ -180,6 +188,7 @@ public class AccountModal {
         account.setPassword(password);
         account.setAddress(txt_address.getText());
         account.setRole(accRole);
+        account.setRfid(rfid);
 
         validateAccount();
         userRepo.Update(account);
@@ -231,4 +240,25 @@ public class AccountModal {
         password_container.getChildren().add(0, field);
     }
 
+    void setAccountRfid(String rfid) {
+        if(rfid.isBlank() || rfid.equals("0")) {
+            this.rfid = "0";
+
+            set_rfid_container.setStyle(set_rfid_container.getStyle() + " -fx-background-color: #ECECEC;");
+            set_rfid_text.setFill(Paint.valueOf("#9c9c9c"));
+            set_rfid_text.setText("Klik untuk pair");
+            set_rfid_icon.setIconLiteral("bx-memory-card");
+            set_rfid_icon.setFill(Paint.valueOf("#9c9c9c"));
+
+            return;
+        }
+
+        this.rfid = rfid;
+
+        set_rfid_container.setStyle(set_rfid_container.getStyle() + " -fx-background-color: #fbe7ea;");
+        set_rfid_text.setFill(Paint.valueOf("#E96479"));
+        set_rfid_text.setText("Hapus kartu");
+        set_rfid_icon.setIconLiteral("bx-x-circle");
+        set_rfid_icon.setFill(Paint.valueOf("#E96479"));
+    }
 }

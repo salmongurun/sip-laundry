@@ -8,6 +8,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -120,10 +121,23 @@
                               </HBox>
                            </children>
                         </HBox>
-                        <HBox fx:id="showRfid" layoutX="144.0" layoutY="10.0" onMouseClicked="#showRfid" prefHeight="43.0" prefWidth="67.0" style="-fx-border-color: #005F82; -fx-border-radius: 8; -fx-padding: 12 25;">
+                     </children>
+                  </VBox>
+                  <VBox layoutX="10.0" layoutY="10.0" prefHeight="70.0" styleClass="form-control">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="RFID" />
+                        <HBox fx:id="set_rfid_container" alignment="CENTER" onMouseClicked="#manageRfid" prefHeight="16.0" spacing="10.0" style="-fx-padding: 13; -fx-background-color: #ECECEC; -fx-background-radius: 8;">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RFID?" />
+                              <FontIcon fx:id="set_rfid_icon" fill="#9c9c9c" iconLiteral="bx-memory-card" iconSize="18" />
+                              <Text fx:id="set_rfid_text" fill="#9c9c9c" strokeType="OUTSIDE" strokeWidth="0.0" text="Klik untuk pair">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font>
+                              </Text>
                            </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </HBox>
                      </children>
                   </VBox>
@@ -137,5 +151,6 @@
             </VBox>
          </children>
       </VBox>
+      <BorderPane fx:id="shadow_modal" opacity="0.5" prefHeight="200.0" prefWidth="200.0" style="-fx-background-radius: 10; -fx-border-radius: 10; -fx-background-color: black;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
