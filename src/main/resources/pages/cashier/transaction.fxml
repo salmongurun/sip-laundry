@@ -28,12 +28,13 @@
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="90.0" layoutY="62.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Tanggal" wrappingWidth="90.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Transaksi" wrappingWidth="95.0" />
+                  <Text layoutX="30.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Tanggal" wrappingWidth="90.0" />
                   <Text layoutX="160.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Nama Pelanggan" wrappingWidth="180.0" />
                   <Text layoutX="266.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Total Harga" wrappingWidth="125.0" />
                   <Text layoutX="409.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Pembayaran" wrappingWidth="135.0" />
                   <Text layoutX="517.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Status Cucian" wrappingWidth="140.0" />
-                  <Text layoutX="674.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="150.0" />
+                  <Text layoutX="674.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="60.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">
@@ -71,11 +72,11 @@
             <Font name="Poppins SemiBold" size="14.0" />
          </font>
       </Text>
-      <HBox layoutX="478.0" layoutY="70.0" onMouseClicked="#showBarcodeModal" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="50.0">
+      <HBox layoutX="478.0" layoutY="70.0" onMouseClicked="#showBarcodeModal" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="50.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
-            <String fx:value="primary-outline" />
+            <String fx:value="danger-outline" />
          </styleClass>
          <children>
             <FontIcon iconLiteral="bx-barcode" styleClass="icon" />

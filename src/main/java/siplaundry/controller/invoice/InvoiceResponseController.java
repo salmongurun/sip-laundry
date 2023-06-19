@@ -8,6 +8,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import siplaundry.data.AccountRole;
 import siplaundry.data.LaundryStatus;
+import siplaundry.data.PaymentStatus;
 import siplaundry.data.SessionData;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.entity.TransactionEntity;
@@ -26,11 +27,11 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 
-public class InvoiceDetailController {
+public class InvoiceResponseController {
     @FXML
-    private Text transaction_name, customer_name, cashier_name, transaction_date, due_date, total_text, status_text, payment_text, retard_text;
+    private Text transaction_name, customer_name, cashier_name, transaction_date, due_date, total_text, status_text, payment_text, retard_text, amount_due_text;
     @FXML
-    private HBox payment_background, status_background, retard_element, cancel_btn;
+    private HBox payment_background, status_background, retard_element, amount_due_container, taken_button;
     @FXML
     private VBox detail_container;
 
@@ -38,7 +39,7 @@ public class InvoiceDetailController {
     private TransactionEntity transaction;
     private TransactionDetailRepo detailRepo = new TransactionDetailRepo();
 
-    public InvoiceDetailController(BorderPane parentRoot, BorderPane shadowRoot, TransactionEntity transaction) {
+    public InvoiceResponseController(BorderPane parentRoot, BorderPane shadowRoot, TransactionEntity transaction) {
         this.parent_root = parentRoot;
         this.shadow_root = shadowRoot;
         this.transaction = transaction;
@@ -53,11 +54,13 @@ public class InvoiceDetailController {
         transaction_date.setText(ViewUtil.formatDate(transaction.gettransactionDate(), "dd/MM/YYYY"));
         due_date.setText(ViewUtil.formatDate(transaction.getpickupDate(), "dd/MM/YYYY"));
         retard_text.setText("Tertunda " + transaction.getRetard() + " Hari");
-
+        amount_due_text.setText("Rp " + NumberUtil.rupiahFormat(transaction.getamount() - transaction.getPaid_off()));
 
         if(transaction.getRetard() < 1) retard_element.setVisible(false);
-        if(transaction.getstatus() == LaundryStatus.taken || SessionData.user.getRole() != AccountRole.cashier || transaction.getstatus() == LaundryStatus.canceled)
-            cancel_btn.setVisible(false);
+        if(transaction.getPaid_off() >= transaction.getamount())
+            amount_due_container.setVisible(false);
+        if(transaction.getstatus() == LaundryStatus.taken)
+            taken_button.setVisible(false);
 
         paymentStatusColor();
         setTransactionColor();
@@ -75,15 +78,17 @@ public class InvoiceDetailController {
     }
 
     @FXML
-    void cancelAction() {
+    void takenAction() {
         new ConfirmDialog(shadow_root, () -> {
-            transaction.setstatus(LaundryStatus.canceled);
+            transaction.setstatus(LaundryStatus.taken);
+            transaction.setPaymentSatatus(PaymentStatus.paid);
+
             new TransactionRepo().Update(transaction);
+            new Toast((AnchorPane) shadow_root.getScene().getRoot())
+                    .show(ToastType.SUCCESS, "Berhasil mengupdate transaksi", null);
 
             parent_root.setCenter(new InvoiceDetailView(parent_root, shadow_root, transaction));
-            new Toast((AnchorPane) shadow_root.getScene().getRoot())
-                    .show(ToastType.SUCCESS, "Berhasil membatalkan transaksi", null);
-        }, "Anda akan membatalkan transaksi ini", true);
+        }, "Pastikan customer telah membayar lunas", true);
     }
 
     void addDetailElements() {

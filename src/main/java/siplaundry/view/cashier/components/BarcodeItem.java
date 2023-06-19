@@ -7,8 +7,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Window;
 import javafx.stage.WindowEvent;
+import siplaundry.controller.invoice.InvoiceResponseController;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.view.invoice.InvoiceDetailView;
+import siplaundry.view.invoice.InvoiceResponseView;
 
 import java.io.IOException;
 
@@ -43,6 +45,6 @@ public class BarcodeItem extends HBox {
     @FXML
     void nextAction() {
         modal.fireEvent(new WindowEvent(modal, WindowEvent.WINDOW_CLOSE_REQUEST));
-        parentRoot.setCenter(new InvoiceDetailView(parentRoot, shadowRoot, transaction));
+        parentRoot.setCenter(new InvoiceResponseView(parentRoot, shadowRoot, transaction));
     }
 }

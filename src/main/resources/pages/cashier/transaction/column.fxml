@@ -6,6 +6,7 @@
 
 <fx:root alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="1022.0" styleClass="table-content" stylesheets="@../../../style/cashier.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <Text fx:id="txt_transName" layoutX="31.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Transaksi#196" wrappingWidth="95.0" />
       <Text fx:id="txt_date" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="01/06/2023" wrappingWidth="90.0" />
       <Text fx:id="txt_custName" layoutX="169.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="muhammad rofiqi" wrappingWidth="180.0" />
       <Text fx:id="txt_amount" layoutX="263.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="20000" wrappingWidth="125.0" />
@@ -14,12 +15,12 @@
             <Text fx:id="txt_payment" fill="#f45050" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="Belum Lunas" />
          </children>
       </HBox>
-      <HBox fx:id="status_background" alignment="CENTER" layoutX="381.0" layoutY="19.0" prefWidth="140.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: fef4f4;">
+      <HBox fx:id="status_background" alignment="CENTER" layoutX="381.0" layoutY="19.0" prefWidth="140.0" style="-fx-padding: 6 12; -fx-background-radius: 20; -fx-background-color: E0F4FB;">
          <children>
-            <Text fx:id="txt_status" fill="#f45050" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: F45050;" styleClass="text" text="Proses" />
+            <Text fx:id="txt_status" fill="#278aa6" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-fill: 278AA6;" styleClass="text" text="Diproses" />
          </children>
       </HBox>
-      <HBox prefWidth="150.0" styleClass="table-action">
+      <HBox prefWidth="60.0" styleClass="table-action">
          <children>
             <HBox fx:id="detail_btn" styleClass="detail-button">
                <children>

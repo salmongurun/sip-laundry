@@ -26,13 +26,13 @@ public class TransactionColumn extends HBox {
     private Text txt_date, txt_custName, txt_amount;
 
     @FXML
-    private Text txt_status, txt_payment;
+    private Text txt_status, txt_payment, txt_transName;
 
     @FXML
     private HBox payment_background, status_background, edit_btn, detail_btn;
 
     private String payment = "Belum Lunas";
-    private String status = "Prosess";
+    private String status = "Diproses";
 
     private TransactionEntity trans;
     private TransactionRepo transRepo = new TransactionRepo();
@@ -65,6 +65,7 @@ public class TransactionColumn extends HBox {
         txt_amount.setText(String.valueOf(trans.getamount()));
         txt_payment.setText(payment);
         txt_status.setText(status);
+        txt_transName.setText("Transaksi#" + trans.getid());
 
         detail_btn.setOnMouseClicked(event -> {
             parentRoot.setCenter(new InvoiceDetailView(parentRoot, shadowRoot, trans));
@@ -93,6 +94,10 @@ public class TransactionColumn extends HBox {
             status = "Diambil";
             txt_status.setStyle("-fx-fill: #6A9A98;");
             status_background.setStyle(status_background.getStyle() + "-fx-background-color: #f0f4f4;");
+        } else if(trans.getstatus() == LaundryStatus.canceled) {
+            status = "Dibatalkan";
+            txt_status.setStyle("-fx-fill: #f45050;");
+            status_background.setStyle(status_background.getStyle() + "-fx-background-color: #fef4f4;");
         }
     }
 }
