@@ -24,7 +24,7 @@ public class WhatsAppService {
         this.verifEndpoint = retrofit.create(VerificationEndpoints.class);
     }
 
-    public void sendVerification(WhatsappMessage message) {
+    public void send(WhatsappMessage message) {
         Call<Void> call = verifEndpoint.storeMessage(message);
         call.enqueue(new Callback<Void>() {
             @Override

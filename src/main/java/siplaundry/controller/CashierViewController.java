@@ -73,7 +73,7 @@ public class CashierViewController {
         removeAllStates();
         btn_sb_retard.getStyleClass().add("active");
 
-        parent_root.setCenter(new RetardView());
+        parent_root.setCenter(new RetardView(shadow));
     }
 
     @FXML

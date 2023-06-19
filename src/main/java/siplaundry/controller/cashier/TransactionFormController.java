@@ -33,7 +33,6 @@ public class TransactionFormController {
     private BorderPane parent_root, shadow_root;
     private LaundryRepo laundryRepo = new LaundryRepo();
     private ArrayList<TransactionDetailEntity> details = new ArrayList<>();
-    private Set<LaundryEntity> laundries = new HashSet<>();
     private PopOver custPopover = new PopOver();
     private CustomerEntity customer;
     private boolean expressMode = false;
@@ -70,7 +69,9 @@ public class TransactionFormController {
         new PaymentModal(
             shadow_root,
             this.details,
-            this.customer
+            this.customer,
+            this.expressMode,
+            this::resetAllEntries
         );
     }
 
@@ -140,7 +141,6 @@ public class TransactionFormController {
         detail.setSubtotal(laundry.getcost());
 
         this.details.add(detail);
-        this.laundries.add(laundry);
         showCartItems(this.details);
     }
 
@@ -171,10 +171,25 @@ public class TransactionFormController {
     }
 
     void setCustomer(CustomerEntity customer) {
-        customer_name.setText(customer.getname());
-        customer_phone.setText(customer.getphone());
+        if(customer == null) {
+            customer_name.setText("-");
+            customer_phone.setText("-");
+        } else {
+            customer_name.setText(customer.getname());
+            customer_phone.setText(customer.getphone());
+        }
 
         this.customer = customer;
         custPopover.hide();
+    }
+
+    boolean resetAllEntries() {
+        setCustomer(null);
+        expressMode = false;
+
+        details.clear();
+        showCartItems(details);
+
+        return true;
     }
 }

@@ -27,6 +27,7 @@ import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
 import siplaundry.view.cashier.TransactionFormView;
 import siplaundry.view.cashier.components.column.TransactionColumn;
+import siplaundry.view.cashier.components.modal.BarcodeModal;
 import siplaundry.view.util.EmptyData;
 import toast.Toast;
 import toast.ToastType;
@@ -109,6 +110,11 @@ public class TransactionController {
             this.searchableValues()
         );
         showTable(trans);
+    }
+
+    @FXML
+    void showBarcodeModal() {
+        new BarcodeModal(parent_root, shadow_root);
     }
 
     private HashMap<String, Object> searchableValues(){

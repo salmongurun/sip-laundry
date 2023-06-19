@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+<fx:root alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="350.0" spacing="10.0" styleClass="card" stylesheets="@../../../style/cashier.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox style="-fx-padding: 10; -fx-background-color: #c5efff; -fx-background-radius: 8;">
+         <children>
+            <FontIcon fill="#0096ce" iconLiteral="bxs-grid-alt" iconSize="30" />
+         </children>
+      </HBox>
+      <VBox alignment="CENTER_LEFT" prefWidth="100.0" spacing="2.5">
+         <children>
+            <Text fx:id="transaction_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaksi#345">
+               <font>
+                  <Font name="Poppins SemiBold" size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="transaction_customer" strokeType="OUTSIDE" strokeWidth="0.0" text="Cust: Bella Rahmat" wrappingWidth="200.0">
+               <font>
+                  <Font name="Poppins Medium" size="13.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <Text fill="#0096ce" onMouseClicked="#nextAction" strokeType="OUTSIDE" strokeWidth="0.0" text="Lanjutkan">
+         <font>
+            <Font name="Poppins Medium" size="12.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+   </children>
+</fx:root>
