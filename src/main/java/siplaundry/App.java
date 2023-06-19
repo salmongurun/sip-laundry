@@ -4,14 +4,11 @@ package siplaundry;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import siplaundry.repository.TransactionRepo;
-import siplaundry.service.ReportService;
 import siplaundry.service.StatusService;
 import siplaundry.view.auth.LoginView;
 
 public class App {
     public static void main(String[] args) {
-//        new ReportService().generatePdf(new TransactionRepo().get());
          Timer timer = new Timer();
          TimerTask task = new TimerTask() {
              @Override

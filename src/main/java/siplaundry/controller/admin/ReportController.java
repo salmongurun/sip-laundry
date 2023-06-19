@@ -11,6 +11,7 @@ import org.controlsfx.control.PopOver;
 import siplaundry.data.LaundryStatus;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.ReportRepository;
+import siplaundry.service.ReportService;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.ReportExpenseView;
 import siplaundry.view.admin.components.column.ReportColumn;
@@ -54,7 +55,9 @@ public class ReportController {
 
     @FXML
     void exportData() {
-
+        new ReportService().generateReportPdf(
+            reportRepo.result(statusFilters, firstDate, secondDate)
+        );
     }
 
     @FXML
