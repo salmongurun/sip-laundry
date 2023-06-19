@@ -85,7 +85,7 @@
             </VBox>
          </children>
       </AnchorPane>
-      <Pane fx:id="btn_edit" layoutX="1204.0" layoutY="-72.0" onMouseClicked="#showEditProfile" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #414F8C; -fx-background-radius: 20px;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="11.0">
+      <Pane layoutX="1204.0" layoutY="-72.0" onMouseClicked="#showEditProfile" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #414F8C; -fx-background-radius: 20px;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="11.0">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Pane>
