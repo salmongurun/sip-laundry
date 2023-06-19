@@ -46,6 +46,7 @@ public class EmptyData extends VBox {
     }
 
     private boolean isSearching(String keyword) {
+        if(keyword == null) return false;
         return !keyword.isEmpty();
     }
 }

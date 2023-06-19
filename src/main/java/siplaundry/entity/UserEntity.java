@@ -10,7 +10,7 @@ public class UserEntity extends Entity {
 
     private Integer user_id;
 
-    private String rfid;
+    private String rfid = "0";
 
     @NotBlank(message = "Username harap diisi")
     private String username;

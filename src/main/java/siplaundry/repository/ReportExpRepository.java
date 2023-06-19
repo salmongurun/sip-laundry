@@ -13,7 +13,7 @@ public class ReportExpRepository extends Repo<ExpenseEntity>{
 
     public List<ExpenseEntity> resultExp(LocalDate startDate, LocalDate endDate) {
         List<ExpenseEntity> expense = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT * FROM expense WHERE ");
+        StringBuilder sql = new StringBuilder("SELECT * FROM expense ");
 
         sql.append(generateBetween(startDate, endDate));
         sql.append(" ORDER BY expense_date DESC");
@@ -28,7 +28,7 @@ public class ReportExpRepository extends Repo<ExpenseEntity>{
     }
 
     private String generateBetween(LocalDate startDate, LocalDate endDate) {
-        String generated = "expense_date ";
+        String generated = "WHHERE expense_date ";
 
        if(startDate != null && endDate != null) {
            generated += "BETWEEN '" + startDate.toString() + "' AND '" + endDate.toString() + "' ";
@@ -39,7 +39,7 @@ public class ReportExpRepository extends Repo<ExpenseEntity>{
            generated += "BETWEEN '" + startDate.toString() + "' AND NOW() ";
            return generated;
        }
-       return " ";
+       return "";
     }
 
 
