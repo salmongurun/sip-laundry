@@ -19,6 +19,9 @@ import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.service.PrinterService;
+import siplaundry.util.ViewUtil;
+
+import javax.swing.text.View;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.List;
@@ -62,7 +65,7 @@ public class ReceiptPrint {
 
     @FXML
     void initialize() {
-        Image barcodeImage = generateBarcodeImage("120032023");
+        Image barcodeImage = generateBarcodeImage(ViewUtil.formatDate(transaction.gettransactionDate(), "ddMMYYYYY"));
 
         barcode_image.setImage(barcodeImage);
         customer_name.setText(transaction.getCustomerID().getname());

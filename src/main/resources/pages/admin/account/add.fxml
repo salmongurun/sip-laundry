@@ -3,7 +3,6 @@
 <?import java.lang.String?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -55,11 +54,11 @@
                   <VBox prefWidth="306.0" scaleShape="false" styleClass="form-control">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Kata sandi" />
-                        <HBox fx:id="password_container" prefHeight="39.0" prefWidth="452.0" styleClass="form-input" stylesheets="@../../../style/auth/login.css">
+                        <HBox fx:id="password_container" prefHeight="39.0" prefWidth="452.0" stylesheets="@../../../style/auth/login.css">
                            <children>
-                              <HBox alignment="CENTER" onMouseClicked="#togglePassword">
+                              <HBox alignment="CENTER" onMouseClicked="#togglePassword" style="-fx-padding: 5 7;">
                                  <children>
-                                    <FontIcon fx:id="toggle_icon" iconLiteral="bx-show" iconSize="22">
+                                    <FontIcon fx:id="toggle_icon" iconColor="#616161" iconLiteral="bx-show" iconSize="22">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
@@ -85,8 +84,8 @@
                   </VBox>
                   <VBox prefWidth="306.0" scaleShape="false" styleClass="form-control">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="no Whats app" />
-                        <PasswordField fx:id="txt_phone" styleClass="input" />
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="No WhatsApp" />
+                        <TextField fx:id="txt_phone" styleClass="input" />
                      </children>
                   </VBox>
                </children>

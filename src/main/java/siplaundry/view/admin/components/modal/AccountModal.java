@@ -86,9 +86,10 @@ public class AccountModal {
             put("username", txt_username);
             put("fullname", txt_fullname);
             put("phone", txt_phone);
-            put("password", password_container.getChildren().get(0));
+            put("password", password_container);
             put("address", txt_address);
         }};
+
         addPasswordElement();
     }
 
