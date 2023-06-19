@@ -30,12 +30,12 @@
             <HBox alignment="CENTER_LEFT" layoutX="90.0" layoutY="62.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
                <children>
                   <CheckBox fx:id="check_bulk_all" mnemonicParsing="false" onMouseClicked="#selectBulkAll" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Tanggal" wrappingWidth="100.0" />
-                  <Text layoutX="160.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Nama Pelanggan" wrappingWidth="210.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Tanggal" wrappingWidth="90.0" />
+                  <Text layoutX="160.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Nama Pelanggan" wrappingWidth="180.0" />
                   <Text layoutX="266.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Total Harga" wrappingWidth="125.0" />
                   <Text layoutX="409.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Pembayaran" wrappingWidth="135.0" />
                   <Text layoutX="517.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Status Cucian" wrappingWidth="140.0" />
-                  <Text layoutX="674.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="110.0" />
+                  <Text layoutX="674.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Aksi" wrappingWidth="150.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER_LEFT" layoutX="20.0" layoutY="28.0" styleClass="table-search">

@@ -5,6 +5,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import siplaundry.data.AccountRole;
+import siplaundry.data.SessionData;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.TransactionDetailRepo;
@@ -12,7 +14,6 @@ import siplaundry.util.NumberUtil;
 import siplaundry.util.TransactionUtil;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.TransactionView;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
@@ -55,6 +56,11 @@ public class InvoiceDetailController {
 
     @FXML
     void backAction() throws IOException {
+        if(SessionData.user.getRole().equals(AccountRole.cashier)){
+            parent_root.setCenter(new siplaundry.view.cashier.TransactionView(parent_root, shadow_root));
+            return;
+        }
+
         parent_root.setCenter(new TransactionView(parent_root, shadow_root));
     }
 

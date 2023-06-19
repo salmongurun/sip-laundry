@@ -155,7 +155,7 @@ public class ExpenseController {
         if(accTotal < 1) 
             expense_table.getChildren().add(new EmptyData(this::showAddExpense, txt_keyword.getText()));
 
-        total_text.setText("Menampilkan total " + exp.size() + " data pengeluaran");
+        total_text.setText("Menampilkan total " + accTotal + " data pengeluaran");
     }
 
     protected void toggleBulkItem(ExpenseEntity exp){
