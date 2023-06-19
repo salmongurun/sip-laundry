@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 18, 2023 at 10:39 AM
+-- Generation Time: Jun 19, 2023 at 07:22 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -159,48 +159,10 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`option_id`, `key`, `value`) VALUES
-(15, 'alamat20', 'sumbersari'),
-(17, 'alamat20', 'sumbersari'),
-(19, 'alamat20', 'sumbersari'),
-(21, 'alamat20', 'sumbersari'),
-(23, 'alamat20', 'sumbersari'),
-(25, 'alamat20', 'sumbersari'),
-(27, 'alamat20', 'sumbersari'),
-(29, 'alamat20', 'sumbersari'),
-(31, 'alamat20', 'sumbersari'),
-(33, 'alamat20', 'sumbersari'),
-(35, 'alamat20', 'sumbersari'),
-(37, 'alamat20', 'sumbersari'),
-(39, 'alamat20', 'sumbersari'),
-(41, 'alamat20', 'sumbersari'),
-(43, 'alamat20', 'sumbersari'),
-(45, 'alamat20', 'sumbersari'),
-(47, 'alamat20', 'sumbersari'),
-(49, 'alamat20', 'sumbersari'),
-(51, 'alamat20', 'sumbersari'),
-(53, 'alamat20', 'sumbersari'),
-(55, 'alamat20', 'sumbersari'),
-(57, 'alamat20', 'sumbersari'),
-(59, 'alamat20', 'sumbersari'),
-(61, 'alamat20', 'sumbersari'),
-(63, 'alamat20', 'sumbersari'),
-(65, 'alamat20', 'sumbersari'),
-(67, 'alamat20', 'sumbersari'),
-(69, 'alamat20', 'sumbersari'),
-(71, 'alamat20', 'sumbersari'),
-(73, 'alamat20', 'sumbersari'),
-(75, 'alamat20', 'sumbersari'),
-(77, 'alamat20', 'sumbersari'),
-(79, 'alamat20', 'sumbersari'),
-(81, 'alamat20', 'sumbersari'),
-(83, 'alamat20', 'sumbersari'),
-(85, 'alamat20', 'sumbersari'),
-(87, 'alamat20', 'sumbersari'),
-(89, 'alamat20', 'sumbersari'),
-(91, 'alamat20', 'sumbersari'),
-(93, 'alamat20', 'sumbersari'),
-(95, 'alamat20', 'sumbersari'),
-(97, 'alamat20', 'sumbersari');
+(99, 'name', 'SIP Laundry'),
+(100, 'costExpress', '2000'),
+(101, 'address', 'Jember'),
+(102, 'phone', '081358301632');
 
 -- --------------------------------------------------------
 
@@ -259,7 +221,9 @@ INSERT INTO `transactions` (`transaction_id`, `transaction_date`, `retard`, `pic
 (204, '2023-06-07 08:40:09', 0, '2023-06-12 03:40:09', 'taken', 'paid', 3000, 0, 0, 317, 261),
 (205, '2023-06-06 08:40:09', 0, '2023-06-12 03:40:09', 'finish', 'paid', 5000, 0, 0, 317, 269),
 (206, '2023-06-06 08:41:09', 0, '2023-06-12 03:41:09', 'finish', 'paid', 2000, 0, 0, 317, 263),
-(207, '2023-06-14 08:01:46', 0, '2023-06-14 08:01:46', 'process', 'paid', 2000, 0, 0, 324, 249);
+(207, '2023-06-14 08:01:46', 0, '2023-06-14 08:01:46', 'process', 'paid', 2000, 0, 0, 324, 249),
+(227, '2023-06-18 00:00:00', 0, '2023-06-21 00:00:00', 'process', 'paid', 5000, 0, 5000, 317, 248),
+(228, '2023-06-18 00:00:00', 0, '2023-06-21 00:00:00', 'process', 'paid', 3000, 0, 3000, 317, 247);
 
 -- --------------------------------------------------------
 
@@ -284,7 +248,9 @@ INSERT INTO `transaction_details` (`qty`, `subtotal`, `transaction_id`, `laundry
 (2, 20000, 195, 191),
 (5, 6000, 196, 189),
 (2, 12000, 197, 187),
-(1, 10000, 197, 191);
+(1, 10000, 197, 191),
+(1, 5000, 227, 187),
+(1, 3000, 228, 189);
 
 --
 -- Triggers `transaction_details`
@@ -440,13 +406,13 @@ ALTER TABLE `laundries`
 -- AUTO_INCREMENT for table `options`
 --
 ALTER TABLE `options`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `transactions`
 --
 ALTER TABLE `transactions`
-  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=227;
+  MODIFY `transaction_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT for table `users`

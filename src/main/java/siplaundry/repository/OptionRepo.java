@@ -32,6 +32,22 @@ public class OptionRepo extends Repo<OptionEntity> {
         return 0;
     }
 
+    public boolean update(String key, String value){
+        String sql = "UPDATE " + tableName + " SET value = ? WHERE `key` = ?"; 
+
+        try (PreparedStatement stmt = conn.prepareStatement(sql)){
+            stmt.setString(1, value);
+            stmt.setString(2, key);
+
+            stmt.executeUpdate();
+            return stmt.getUpdateCount() > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
     public List<OptionEntity> get() {
         return super.getAll(tableName);
     }

@@ -101,7 +101,7 @@ public class AdminViewController {
 
     @FXML
     void showEditProfile()throws IOException{
-         parent_root.setCenter(new EditProfileView(shadow));
+         parent_root.setCenter(new EditProfileView(shadow, parent_root));
     }
 
     @FXML

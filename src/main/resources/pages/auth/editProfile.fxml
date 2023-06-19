@@ -27,12 +27,24 @@
                <children>
                   <HBox alignment="TOP_RIGHT" prefHeight="42.0" prefWidth="706.0" spacing="10.0">
                      <children>
-                        <HBox fx:id="btn_delete" alignment="CENTER" onMouseClicked="#clearAction" prefHeight="36.0" prefWidth="104.0" style="-fx-border-color: #F45050; -fx-background-color: white; -fx-padding: 12 5; -fx-border-radius: 8;">
+                        <HBox fx:id="btn_delete" alignment="CENTER" onMouseClicked="#close" prefHeight="36.0" prefWidth="104.0" style="-fx-border-color: #F45050; -fx-background-color: white; -fx-padding: 12 5; -fx-border-radius: 8;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kembali">
+                                 <font>
+                                    <Font name="Poppins Medium" size="12.0" />
+                                 </font></Text>
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                        <HBox fx:id="btn_delete1" alignment="CENTER" onMouseClicked="#clearAction" prefHeight="36.0" prefWidth="104.0" style="-fx-border-color: #F45050; -fx-background-color: white; -fx-padding: 12 5; -fx-border-radius: 8;">
                            <children>
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hapus">
                                  <font>
                                     <Font name="Poppins Medium" size="12.0" />
-                                 </font></Text>
+                                 </font>
+                              </Text>
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -43,7 +55,8 @@
                               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Simpan">
                                  <font>
                                     <Font name="Poppins Medium" size="12.0" />
-                                 </font></Text>
+                                 </font>
+                              </Text>
                            </children>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -160,6 +173,11 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+      </Text>
+      <Text fx:id="btn_option" layoutX="338.0" layoutY="632.0" onMouseClicked="#showAddOption" strokeType="OUTSIDE" strokeWidth="0.0" text="Pengaturan Toko">
+         <font>
+            <Font name="Poppins Medium Italic" size="12.0" />
+         </font>
       </Text>
    </children>
 </fx:root>

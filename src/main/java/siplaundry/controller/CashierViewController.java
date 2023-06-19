@@ -8,9 +8,9 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.*;
-import javafx.stage.Window;
 import siplaundry.data.SessionData;
 import siplaundry.view.cashier.CustomerView;
+import siplaundry.view.EditProfileView;
 import siplaundry.view.admin.components.modal.logOutConfirm;
 import siplaundry.view.auth.LoginView;
 import siplaundry.view.cashier.DashboardView;
@@ -98,6 +98,11 @@ public class CashierViewController {
         btn_sb_expense.getStyleClass().add("active");
 
         parent_root.setCenter(new ExpenseView(shadow));
+    }
+
+   @FXML
+    void showEditProfile()throws IOException{
+         parent_root.setCenter(new EditProfileView(shadow, parent_root));
     }
 
     private void removeAllStates(){

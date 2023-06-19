@@ -8,11 +8,11 @@ import javafx.scene.layout.BorderPane;
 import siplaundry.controller.auth.EditProfileController;
 
 public class EditProfileView extends AnchorPane{
-    public EditProfileView(BorderPane shadow) throws IOException{
+    public EditProfileView(BorderPane shadow, BorderPane parent_root) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/auth/editProfile.fxml"));
 
         loader.setRoot(this);
-        loader.setController(new EditProfileController(shadow));
+        loader.setController(new EditProfileController(shadow, parent_root));
         loader.load();
     }
 }

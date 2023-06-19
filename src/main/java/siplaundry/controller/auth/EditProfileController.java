@@ -1,5 +1,6 @@
 package siplaundry.controller.auth;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -13,12 +14,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+import siplaundry.data.AccountRole;
 import siplaundry.data.SessionData;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.util.ValidationUtil;
+import siplaundry.view.admin.DashboardView;
 import toast.Toast;
 import toast.ToastType;
 
@@ -38,17 +43,25 @@ public class EditProfileController {
     @FXML
     private PasswordField txt_password;
 
+    @FXML
+    private Text btn_option;
+
     private UsersRepo userRepo = new UsersRepo();
     private UserEntity user = SessionData.user;
     private Map<String, Node> fields;
-    private BorderPane shadowRoot;
+    private BorderPane shadowRoot, parent_root;
     public static String password;
 
-    public EditProfileController(BorderPane shadow){ this.shadowRoot = shadow; }
+    public EditProfileController(BorderPane shadow, BorderPane parent_root){
+         this.shadowRoot = shadow;
+          this.parent_root = parent_root; 
+    }
 
     @FXML
     public void initialize(){
         password = user.getPassword();
+
+        if(SessionData.user.getRole().equals(AccountRole.cashier)) btn_option.setVisible(false);
 
         txt_fullname.setText(user.getFullname());
         txt_username.setText(user.getUsername());
@@ -112,6 +125,20 @@ public class EditProfileController {
         txt_password.setText("");
         txt_phone.setText("");
         txt_address.setText("");
+    }
+
+    @FXML
+    void close() throws IOException{
+        if(SessionData.user.getRole().equals(AccountRole.cashier)){
+            parent_root.setCenter(new siplaundry.view.cashier.DashboardView(shadowRoot));
+            return;
+        }
+        parent_root.setCenter(new DashboardView());
+    }
+
+    @FXML
+    void showAddOption(){
+        new OptionModalController(shadowRoot);
     }
 
 }
