@@ -63,7 +63,7 @@
             <Text fx:id="total_text" fill="#7f7f7f" layoutX="24.0" layoutY="555.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menampilkan 10 data akun" />
          </children>
       </AnchorPane>
-      <HBox fx:id="btn_bulk_delete" disable="true" layoutX="741.0" layoutY="60.0" onMouseClicked="#bulkDelete" AnchorPane.topAnchor="50.0">
+      <HBox fx:id="btn_bulk_delete" disable="true" layoutX="741.0" layoutY="60.0" onMouseClicked="#bulkDelete" AnchorPane.rightAnchor="205.0" AnchorPane.topAnchor="50.0">
          <styleClass>
             <String fx:value="icon-button" />
             <String fx:value="btn-outline" />
@@ -84,5 +84,16 @@
             <Font name="Poppins SemiBold" size="14.0" />
          </font>
       </Text>
+      <HBox layoutX="478.0" layoutY="70.0" onMouseClicked="#showBarcodeModal" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="50.0">
+         <styleClass>
+            <String fx:value="icon-button" />
+            <String fx:value="btn-outline" />
+            <String fx:value="primary-outline" />
+         </styleClass>
+         <children>
+            <FontIcon iconLiteral="bx-barcode" styleClass="icon" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="Scan Barcode" />
+         </children>
+      </HBox>
    </children>
 </fx:root>

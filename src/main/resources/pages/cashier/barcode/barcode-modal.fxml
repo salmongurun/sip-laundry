@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="475.0" style="-fx-background-color: white; -fx-background-radius: 4; -fx-border-radius: 4;" stylesheets="@../../../style/cashier.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER_LEFT" layoutX="115.0" layoutY="26.0" prefWidth="245.0" styleClass="table-search">
+         <children>
+            <FontIcon iconColor="DIMGRAY" iconLiteral="bx-search" iconSize="20" />
+            <TextField fx:id="barcode_input" onKeyReleased="#searchAction" prefHeight="25.0" prefWidth="188.0" promptText="Kode barcode..." styleClass="input" />
+         </children>
+      </HBox>
+      <HBox fx:id="notify_container" alignment="CENTER" layoutX="63.0" layoutY="257.0" prefWidth="350.0" spacing="10.0" styleClass="card" AnchorPane.topAnchor="125.0">
+         <children>
+            <FontIcon fx:id="notify_icon" iconColor="DIMGRAY" iconLiteral="bx-barcode" iconSize="40" />
+            <Text fx:id="notify_text" fill="DIMGRAY" strokeType="OUTSIDE" strokeWidth="0.0" text="Menunggu Barcode...">
+               <font>
+                  <Font name="Poppins SemiBold" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </HBox>
+      <VBox fx:id="transaction_container" layoutX="63.0" layoutY="100.0" prefWidth="350.0" AnchorPane.topAnchor="125.0" />
+      <HBox fx:id="close_btn" onMouseClicked="#closeModal" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <children>
+            <FontIcon iconColor="#005f82" iconLiteral="bx-x-circle" iconSize="23" onMouseClicked="#closeModal" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</AnchorPane>
