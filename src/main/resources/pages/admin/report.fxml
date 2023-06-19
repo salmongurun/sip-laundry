@@ -12,6 +12,30 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/admin.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <HBox alignment="CENTER" layoutX="214.0" layoutY="96.0" onMouseClicked="#showExpenseReport" prefWidth="200.0" style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8;" AnchorPane.topAnchor="87.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Laporan Pengeluaran" textAlignment="CENTER">
+               <font>
+                  <Font name="Poppins Medium" size="13.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+      <HBox alignment="CENTER" layoutX="53.0" layoutY="71.0" prefWidth="200.0" style="-fx-background-color: #E0F4FB; -fx-padding: 15; -fx-background-radius: 8;" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="80.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Laporan Transaksi" textAlignment="CENTER">
+               <font>
+                  <Font name="Poppins Medium" size="13.0" />
+               </font>
+            </Text>
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
       <AnchorPane layoutX="111.0" layoutY="152.0" prefHeight="200.0" prefWidth="200.0" styleClass="card" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="120.0">
          <children>
             <HBox alignment="CENTER_LEFT" layoutX="86.0" layoutY="51.0" prefHeight="54.0" prefWidth="200.0" styleClass="table-header" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="70.0">
@@ -95,7 +119,7 @@
             <Font name="Poppins Bold" size="25.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Laporan Transaksi" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="34.3">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Laporan Transaksi dan Pengeluaran" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="34.3">
          <font>
             <Font name="Poppins SemiBold" size="14.0" />
          </font>

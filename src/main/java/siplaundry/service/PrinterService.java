@@ -10,6 +10,7 @@ import javax.print.*;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.standard.Copies;
+import javax.print.attribute.standard.OrientationRequested;
 
 public class PrinterService {
     public static void printReceipt(BufferedImage image) {
@@ -33,6 +34,7 @@ public class PrinterService {
             DocPrintJob printJob = printService.createPrintJob();
 
             PrintRequestAttributeSet attributeSet = new HashPrintRequestAttributeSet();
+            attributeSet.add(OrientationRequested.PORTRAIT);
             attributeSet.add(new Copies(1));
 
             try {

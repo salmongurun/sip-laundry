@@ -12,7 +12,7 @@ import siplaundry.data.LaundryStatus;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.ReportRepository;
 import siplaundry.util.ViewUtil;
-import siplaundry.view.admin.ReportExpenseView;
+import siplaundry.view.admin.ReportView;
 import siplaundry.view.admin.components.column.ReportColumn;
 import siplaundry.view.util.EmptyData;
 
@@ -23,7 +23,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.Consumer;
 
-public class ReportController {
+public class ReportExpenseController {
     @FXML
     private VBox report_table;
     @FXML
@@ -38,7 +38,7 @@ public class ReportController {
     private Set<LaundryStatus> statusFilters = new HashSet<>();
     private LocalDate firstDate, secondDate;
 
-    public ReportController(BorderPane parentRoot, BorderPane shadowRoot) {
+    public ReportExpenseController(BorderPane parentRoot, BorderPane shadowRoot) {
         this.parentRoot = parentRoot;
         this.shadowRoot = shadowRoot;
     }
@@ -87,8 +87,8 @@ public class ReportController {
     }
 
     @FXML
-    void showExpenseReport() throws IOException {
-        parentRoot.setCenter(new ReportExpenseView(parentRoot, shadowRoot));
+    void showTransactionReport() throws IOException {
+        parentRoot.setCenter(new ReportView(parentRoot, shadowRoot));
     }
 
     void showTable() {

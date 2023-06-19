@@ -8,11 +8,11 @@ import siplaundry.controller.admin.ReportController;
 import java.io.IOException;
 
 public class ReportView extends AnchorPane {
-    public ReportView(BorderPane shadowRoot) throws IOException {
+    public ReportView(BorderPane parentRoot, BorderPane shadowRoot) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/admin/report.fxml"));
 
         loader.setRoot(this);
-        loader.setController(new ReportController(shadowRoot));
+        loader.setController(new ReportController(parentRoot, shadowRoot));
         loader.load();
     }
 }

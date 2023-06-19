@@ -90,36 +90,40 @@
                   </VBox>
                </children>
             </HBox>
-            <VBox prefWidth="100.0" styleClass="form-control">
+            <HBox layoutX="10.0" layoutY="99.0" prefWidth="200.0" spacing="16.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Peran" />
-                  <HBox prefWidth="200.0" spacing="20.0">
+                  <VBox prefHeight="70.0" prefWidth="306.0" styleClass="form-control">
                      <children>
-                        <HBox prefWidth="114.0" style="-fx-border-color: #005F82; -fx-border-radius: 8; -fx-padding: 12 25;">
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Peran" />
+                        <HBox prefWidth="200.0" spacing="20.0">
                            <children>
-                              <RadioButton fx:id="chs_admin" mnemonicParsing="false" text="Admin" textFill="#005f82">
-                                 <font>
-                                    <Font name="Poppins SemiBold" size="12.0" />
-                                 </font>
-                                 <toggleGroup>
-                                    <ToggleGroup fx:id="roleGroup" />
-                                 </toggleGroup>
-                              </RadioButton>
-                           </children>
-                        </HBox>
-                        <HBox layoutX="10.0" layoutY="10.0" prefWidth="114.0" style="-fx-border-color: #E96479; -fx-border-radius: 8; -fx-padding: 12 25;">
-                           <children>
-                              <RadioButton fx:id="chs_cashier" mnemonicParsing="false" text="Kasir" textFill="#e96479" toggleGroup="$roleGroup">
-                                 <font>
-                                    <Font name="Poppins SemiBold" size="12.0" />
-                                 </font>
-                              </RadioButton>
+                              <HBox prefWidth="114.0" style="-fx-border-color: #005F82; -fx-border-radius: 8; -fx-padding: 12 25;">
+                                 <children>
+                                    <RadioButton fx:id="chs_admin" mnemonicParsing="false" text="Admin" textFill="#005f82">
+                                       <font>
+                                          <Font name="Poppins SemiBold" size="12.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="roleGroup" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
+                              <HBox layoutX="10.0" layoutY="10.0" prefWidth="114.0" style="-fx-border-color: #6A9A98; -fx-border-radius: 8; -fx-padding: 12 25;">
+                                 <children>
+                                    <RadioButton fx:id="chs_cashier" mnemonicParsing="false" text="Kasir" textFill="#6a9a98" toggleGroup="$roleGroup">
+                                       <font>
+                                          <Font name="Poppins SemiBold" size="12.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </HBox>
                            </children>
                         </HBox>
                      </children>
-                  </HBox>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
             <VBox prefWidth="306.0" scaleShape="false" styleClass="form-control">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label" text="Alamat" />

@@ -1,11 +1,6 @@
 package siplaundry.repository;
 
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -30,10 +25,9 @@ public class TransactionRepo extends Repo<TransactionEntity> {
                 + " (`transaction_date`,`retard` ,`pickup_date`, `status`, `payment_status`, `amount`, `IsExpress`, `paid_off`, `user_id`, `customer_id`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,  ?)";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            
-            stmt.setDate(1, new Date(trans.gettransactionDate().getTime()));
+            stmt.setTimestamp(1, new Timestamp(trans.gettransactionDate().getTime()));
             stmt.setInt(2, trans.getRetard());
-            stmt.setDate(3, new Date(trans.getpickupDate().getTime()));
+            stmt.setTimestamp(3, new Timestamp(trans.getpickupDate().getTime()));
             stmt.setString(4, trans.getstatus().toString());
             stmt.setString(5, trans.getPaymentStatus().toString());
             stmt.setInt(6, trans.getamount());
@@ -138,9 +132,9 @@ public class TransactionRepo extends Repo<TransactionEntity> {
                 + " SET transaction_date = ?, retard = ?, pickup_date = ?, status = ?, payment_status = ?, amount = ?, IsExpress = ? ,paid_off = ?, user_id = ?, customer_id = ? WHERE transaction_id = ?";
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setDate(1, new Date(trans.gettransactionDate().getTime()));
+            stmt.setTimestamp(1, new Timestamp(trans.gettransactionDate().getTime()));
             stmt.setInt(2, trans.getRetard());
-            stmt.setDate(3, new Date(trans.getpickupDate().getTime()));
+            stmt.setTimestamp(3, new Timestamp(trans.getpickupDate().getTime()));
             stmt.setString(4, trans.getstatus().toString());
             stmt.setString(5, trans.getPaymentStatus().toString());
             stmt.setInt(6, trans.getamount());
@@ -207,9 +201,9 @@ public class TransactionRepo extends Repo<TransactionEntity> {
         int userId = result.getInt("user_id");
 
         TransactionEntity transaction = new TransactionEntity(
-                result.getDate("transaction_date"),
+                result.getTimestamp("transaction_date"),
                 result.getInt("retard"),
-                result.getDate("pickup_date"),
+                result.getTimestamp("pickup_date"),
                 LaundryStatus.valueOf(result.getString("status")),
                 PaymentStatus.valueOf(result.getString("payment_status")),
                 result.getInt("amount"),

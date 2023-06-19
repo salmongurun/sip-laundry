@@ -18,7 +18,9 @@ import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.entity.TransactionEntity;
+import siplaundry.repository.TransactionRepo;
 import siplaundry.service.PrinterService;
+import siplaundry.util.NumberUtil;
 import siplaundry.util.ViewUtil;
 
 import javax.swing.text.View;
@@ -28,7 +30,7 @@ import java.util.List;
 
 public class ReceiptPrint {
     @FXML
-    private Text store_name, cashier_name, customer_name;
+    private Text store_name, cashier_name, customer_name, transaction_date, transaction_time, transaction_total;
     @FXML
     private AnchorPane print_body;
     @FXML
@@ -39,12 +41,16 @@ public class ReceiptPrint {
     private List<TransactionDetailEntity> details;
     private TransactionEntity transaction;
     private Stage receiptStage;
+    private Integer grandTotal = 0;
 
     public ReceiptPrint(TransactionEntity transaction, List<TransactionDetailEntity> details) {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/print/receipt.fxml"));
 
         this.details = details;
         this.transaction = transaction;
+
+        for(TransactionDetailEntity detail: details)
+            grandTotal += detail.getSubtotal();
 
         try {
             loader.setController(this);
@@ -65,11 +71,14 @@ public class ReceiptPrint {
 
     @FXML
     void initialize() {
-        Image barcodeImage = generateBarcodeImage(ViewUtil.formatDate(transaction.gettransactionDate(), "ddMMYYYYY"));
+        Image barcodeImage = generateBarcodeImage(transaction.getid() + ViewUtil.formatDate(transaction.gettransactionDate(), "ddMMYYYY"));
 
         barcode_image.setImage(barcodeImage);
         customer_name.setText(transaction.getCustomerID().getname());
         cashier_name.setText(transaction.getUserID().getFullname());
+        transaction_date.setText(ViewUtil.formatDate(transaction.gettransactionDate(), "dd/MM/YYYY"));
+        transaction_time.setText(ViewUtil.formatDate(transaction.gettransactionDate(), "HH:mm"));
+        transaction_total.setText("Rp " + NumberUtil.rupiahFormat(grandTotal));
 
         for(TransactionDetailEntity detail: this.details) {
             this.detail_container.getChildren().add(

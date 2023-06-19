@@ -5,10 +5,11 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="print_body" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="print_body" minHeight="400.0" minWidth="-Infinity" prefWidth="300.0" style="-fx-background-color: white; -fx-padding: 0 0 10 0;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Text fx:id="store_name" layoutX="53.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIP Laundry" textAlignment="CENTER" wrappingWidth="200.0" AnchorPane.topAnchor="14.0">
          <font>
@@ -33,7 +34,7 @@
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>
                   </Text>
-                  <Text layoutX="75.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="29/10/2023" wrappingWidth="180.0">
+                  <Text fx:id="transaction_date" layoutX="75.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="29/10/2023" wrappingWidth="180.0">
                      <font>
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>
@@ -52,7 +53,7 @@
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>
                   </Text>
-                  <Text layoutX="75.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:26" wrappingWidth="180.0">
+                  <Text fx:id="transaction_time" layoutX="75.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="17:26" wrappingWidth="180.0">
                      <font>
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>
@@ -97,10 +98,37 @@
                   </Text>
                </children>
             </HBox>
-            <Pane prefHeight="15.0" prefWidth="200.0" style="-fx-border-color: transparent transparent #5c5c5c transparent;" />
+            <Pane prefHeight="10.0" prefWidth="200.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="3.0" stroke="WHITE" strokeType="INSIDE" width="275.0" />
             <VBox fx:id="detail_container" />
             <Pane layoutX="10.0" layoutY="57.0" prefHeight="30.0" prefWidth="200.0" />
+            <HBox spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="60.0">
+                     <font>
+                        <Font name="Azeret Mono Regular" size="11.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="Azeret Mono Regular" size="11.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="transaction_total" layoutX="75.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rp 20.000" textAlignment="RIGHT" wrappingWidth="180.0">
+                     <font>
+                        <Font name="Azeret Mono Regular" size="11.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <Pane layoutX="10.0" layoutY="196.0" prefHeight="20.0" prefWidth="200.0" />
             <ImageView fx:id="barcode_image" fitHeight="55.0" fitWidth="260.0" pickOnBounds="true" preserveRatio="true" />
+            <Pane prefHeight="20.0" prefWidth="200.0" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="*nota ini digunakan untuk bukti pengambilan laundry" wrappingWidth="275.0">
+               <font>
+                  <Font name="Azeret Mono Regular" size="11.0" />
+               </font>
+            </Text>
          </children>
       </VBox>
    </children>
