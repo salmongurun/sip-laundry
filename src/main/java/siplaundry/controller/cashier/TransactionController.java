@@ -156,7 +156,7 @@ public class TransactionController {
         if(trans == null) trans = transRepo.get();
         for(TransactionEntity transEn: trans){
                 if(transEn.getUserID().getID().equals(SessionData.user.getID())){
-                TransactionColumn column = new TransactionColumn(shadow_root, this::showTable, transEn);
+                TransactionColumn column = new TransactionColumn(parent_root, shadow_root, this::showTable, transEn);
                 column.setBulkAction(this::toggleBulkItem);
 
                 if(i % 2 == 1) column.getStyleClass().add("stripped");

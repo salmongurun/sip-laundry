@@ -17,6 +17,7 @@ import siplaundry.data.PaymentStatus;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.TransactionRepo;
 import siplaundry.view.admin.components.modal.ConfirmDialog;
+import siplaundry.view.invoice.InvoiceDetailView;
 import toast.Toast;
 import toast.ToastType;
 
@@ -28,7 +29,7 @@ public class TransactionColumn extends HBox {
     private Text txt_status, txt_payment;
 
     @FXML
-    private HBox payment_background, status_background, edit_btn, delete_btn;
+    private HBox payment_background, status_background, edit_btn, delete_btn, detail_btn;
 
     @FXML
     private CheckBox bulk_Check;
@@ -38,13 +39,14 @@ public class TransactionColumn extends HBox {
 
     private TransactionEntity trans;
     private TransactionRepo transRepo = new TransactionRepo();
-    private BorderPane shadowRoot;
+    private BorderPane shadowRoot, parentRoot;
     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
     private Consumer<List<TransactionEntity>> refreshTable;
 
-    public TransactionColumn(BorderPane shadowRoot, Consumer<List<TransactionEntity>> refreshTable, TransactionEntity trans){
+    public TransactionColumn(BorderPane parentRoot ,BorderPane shadowRoot, Consumer<List<TransactionEntity>> refreshTable, TransactionEntity trans){
         this.trans = trans;
         this.shadowRoot = shadowRoot;
+        this.parentRoot = parentRoot;
         this.refreshTable = refreshTable;
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/cashier/transaction/column.fxml"));
@@ -75,6 +77,10 @@ public class TransactionColumn extends HBox {
                     .show(ToastType.SUCCESS, "Berhasil menghapus Data Transaksi", null);
                 refreshTable.accept(null);
             });
+        });
+
+        detail_btn.setOnMouseClicked(event -> {
+            parentRoot.setCenter(new InvoiceDetailView(parentRoot, shadowRoot, trans));
         });
 
     }
