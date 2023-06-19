@@ -16,6 +16,7 @@ import siplaundry.data.AccountRole;
 import siplaundry.entity.UserEntity;
 import siplaundry.repository.UsersRepo;
 import siplaundry.util.ValidationUtil;
+import siplaundry.view.auth.AddRfidView;
 import toast.Toast;
 import toast.ToastType;
 
@@ -111,6 +112,11 @@ public class AccountModal {
         (new Toast((AnchorPane) shadowRoot.getScene().getRoot()))
             .show(ToastType.SUCCESS, "Berhasil menambahkan akun", null);
         closeModal();
+    }
+
+    @FXML
+    void showRfid(){
+        new AddRfidView(shadowRoot, (Stage) shadowRoot.getScene().getWindow());
     }
 
     @FXML

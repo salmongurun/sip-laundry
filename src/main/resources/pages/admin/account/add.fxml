@@ -120,6 +120,11 @@
                               </HBox>
                            </children>
                         </HBox>
+                        <HBox fx:id="showRfid" layoutX="144.0" layoutY="10.0" onMouseClicked="#showRfid" prefHeight="43.0" prefWidth="67.0" style="-fx-border-color: #005F82; -fx-border-radius: 8; -fx-padding: 12 25;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="RFID?" />
+                           </children>
+                        </HBox>
                      </children>
                   </VBox>
                </children>
