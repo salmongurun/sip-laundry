@@ -14,7 +14,7 @@ import java.io.IOException;
 
 public class BarcodeItem extends HBox {
     @FXML
-    private Text transaction_name, getTransaction_customer;
+    private Text transaction_name, transaction_customer;
 
     private TransactionEntity transaction;
     private BorderPane parentRoot, shadowRoot;
@@ -37,7 +37,7 @@ public class BarcodeItem extends HBox {
     @FXML
     void initialize() {
         transaction_name.setText("Transaction#" + transaction.getid());
-        getTransaction_customer.setText("Cust: " + transaction.getCustomerID().getname());
+        transaction_customer.setText("Cust: " + transaction.getCustomerID().getname());
     }
 
     @FXML

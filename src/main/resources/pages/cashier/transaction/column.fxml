@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
 <fx:root alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="1022.0" styleClass="table-content" stylesheets="@../../../style/cashier.css" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <CheckBox fx:id="bulk_Check" mnemonicParsing="false" styleClass="check-item" />
       <Text fx:id="txt_date" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="01/06/2023" wrappingWidth="90.0" />
       <Text fx:id="txt_custName" layoutX="169.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="muhammad rofiqi" wrappingWidth="180.0" />
       <Text fx:id="txt_amount" layoutX="263.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="text" text="20000" wrappingWidth="125.0" />
@@ -26,16 +24,6 @@
             <HBox fx:id="detail_btn" styleClass="detail-button">
                <children>
                   <FontIcon iconLiteral="bx-info-circle" iconSize="18" styleClass="icon" />
-               </children>
-            </HBox>
-            <HBox fx:id="edit_btn" styleClass="edit-button">
-               <children>
-                  <FontIcon iconLiteral="bx-pencil" iconSize="18" styleClass="icon" text="" />
-               </children>
-            </HBox>
-            <HBox fx:id="delete_btn" layoutX="10.0" layoutY="10.0" styleClass="delete-button">
-               <children>
-                  <FontIcon iconLiteral="bx-trash" iconSize="18" styleClass="icon" />
                </children>
             </HBox>
          </children>

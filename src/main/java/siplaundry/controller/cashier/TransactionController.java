@@ -36,9 +36,6 @@ public class TransactionController {
     private BorderPane parent_root, shadow_root;
 
     @FXML
-    private HBox btn_bulk_delete;
-
-    @FXML
     private VBox trans_table;
 
     @FXML
@@ -55,7 +52,6 @@ public class TransactionController {
 
     private SortingOrder sortOrder = SortingOrder.DESC;
     private TransactionRepo transRepo = new TransactionRepo();
-    private Set<TransactionEntity> bulkItems = new HashSet<>();
     private ArrayList<TransactionColumn> accColumns = new ArrayList<>();
     private String keyword;
 
@@ -134,43 +130,22 @@ public class TransactionController {
         }};
     }
 
-    @FXML
-    void selectBulkAll(){
-        for(TransactionColumn column: accColumns){
-            column.toggleBulk();
-        }
-    }
-
-    @FXML
-    void bulkDelete(){
-        new ConfirmDialog(shadow_root, () -> {
-            for(TransactionEntity trans: this.bulkItems){
-                transRepo.delete(trans.getid());
-            }
-
-            new Toast((AnchorPane) btn_bulk_delete.getScene().getRoot())
-                    .show(ToastType.SUCCESS, "Berhasil melakukan hapus semua", null);
-            showTable(transRepo.get());
-        });
-    }
-
     public void showTable(List<TransactionEntity> trans){
         int i = 0;
         accColumns.clear();
         trans_table.getChildren().clear();
 
         if(trans == null) trans = transRepo.get();
-        for(TransactionEntity transEn: trans){
+            for(TransactionEntity transEn: trans){
                 if(transEn.getUserID().getID().equals(SessionData.user.getID())){
                 TransactionColumn column = new TransactionColumn(parent_root, shadow_root, this::showTable, transEn);
-                column.setBulkAction(this::toggleBulkItem);
 
                 if(i % 2 == 1) column.getStyleClass().add("stripped");
 
                 trans_table.getChildren().add(column);
                 accColumns.add(column);
-                i++; 
-        }
+                i++;
+            }
         }
         
         int accTotal = trans_table.getChildren().size();
@@ -178,16 +153,6 @@ public class TransactionController {
         if(accTotal < 1) 
             trans_table.getChildren().add(new EmptyData(this::showAddTransaction, txt_keyword.getText()));
         total_text.setText("Menampilkan total " + accTotal + " data akun");
-    }
-
-    protected void toggleBulkItem(TransactionEntity trans){
-        if(this.bulkItems.contains(trans)){
-            this.bulkItems.remove(trans);
-        } else {
-            this.bulkItems.add(trans);
-        }
-
-        btn_bulk_delete.setDisable(this.bulkItems.size() < 1);
     }
 
     @FXML

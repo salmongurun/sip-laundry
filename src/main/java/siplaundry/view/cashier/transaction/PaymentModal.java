@@ -92,7 +92,7 @@ public class PaymentModal {
         TransactionEntity transaction = new TransactionEntity();
 
         calendar.setTime(nowDate);
-        calendar.add(Calendar.DAY_OF_YEAR, 3);
+        calendar.add(Calendar.DAY_OF_YEAR, (this.isExpress) ? 1 : 3);
         if(totalPay == null) totalPay = 0;
 
         transaction.settransactionDate(nowDate);

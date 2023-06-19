@@ -29,10 +29,7 @@ public class TransactionColumn extends HBox {
     private Text txt_status, txt_payment;
 
     @FXML
-    private HBox payment_background, status_background, edit_btn, delete_btn, detail_btn;
-
-    @FXML
-    private CheckBox bulk_Check;
+    private HBox payment_background, status_background, edit_btn, detail_btn;
 
     private String payment = "Belum Lunas";
     private String status = "Prosess";
@@ -69,31 +66,11 @@ public class TransactionColumn extends HBox {
         txt_payment.setText(payment);
         txt_status.setText(status);
 
-        delete_btn.setOnMouseClicked(event -> {
-            new ConfirmDialog(shadowRoot, () -> {
-                transRepo.delete(trans.getid());
-                
-                new Toast((AnchorPane) shadowRoot.getScene().getRoot())
-                    .show(ToastType.SUCCESS, "Berhasil menghapus Data Transaksi", null);
-                refreshTable.accept(null);
-            });
-        });
-
         detail_btn.setOnMouseClicked(event -> {
             parentRoot.setCenter(new InvoiceDetailView(parentRoot, shadowRoot, trans));
         });
 
     }
-
-    public void setBulkAction(Consumer<TransactionEntity> action) {
-        bulk_Check.selectedProperty().addListener((ob, ov, nv) -> {
-            action.accept(this.trans);
-        });
-    }
-    public void toggleBulk(){
-        bulk_Check.setSelected(!bulk_Check.isSelected());
-    }
-
 
     void setPaymentColor(){
         if(trans.getPaymentStatus() == PaymentStatus.instalment){
