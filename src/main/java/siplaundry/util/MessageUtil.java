@@ -10,4 +10,20 @@ public class MessageUtil {
 
         return builder.toString();
     }
+
+    public static String retardMessGen(int day, String reason) {
+        StringBuilder builder = new StringBuilder("Mohon maaf atas ketidaknyamanan anda\n");
+
+        builder.append("Memberitahukan bahwa pesanan laundry anda tidak dapat kami selesaikan tepat waktu dikarenakan:");
+
+        if(reason.isBlank()) {
+            builder.append("terdapat kendala\n");
+        } else {
+            builder.append(reason + "\n");
+        }
+
+        builder.append("Pesanan tersebut akan terlambat " + day + " hari, terima kasih");
+
+        return builder.toString();
+    }
 }

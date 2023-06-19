@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="235.0" spacing="10.0" style="-fx-padding: 10; -fx-border-color: transparent transparent #D9D9D9 transparent;" type="HBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox fx:id="icon_background" alignment="CENTER" maxHeight="33.0" maxWidth="35.0" prefHeight="33.0" prefWidth="35.0" style="-fx-background-color: #c5efff; -fx-background-radius: 5; -fx-border-radius: 5;">
+         <children>
+            <FontIcon fx:id="laundry_icon" fill="#0096ce" iconLiteral="bxs-grid-alt" iconSize="20" />
+         </children>
+      </HBox>
+      <VBox prefWidth="125.0">
+         <children>
+            <Text fx:id="transaction_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Transaksi#26">
+               <font>
+                  <Font name="Poppins SemiBold" size="13.0" />
+               </font>
+            </Text>
+            <Text fx:id="transaction_customer" strokeType="OUTSIDE" strokeWidth="0.0" text="Cust: Aldea">
+               <font>
+                  <Font name="Poppins Medium" size="12.0" />
+               </font>
+            </Text>
+         </children>
+      </VBox>
+      <HBox fx:id="delete_btn" alignment="CENTER" style="-fx-padding: 5;">
+         <children>
+            <FontIcon iconColor="#8a8a8a" iconLiteral="bx-x" iconSize="18" />
+         </children>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </HBox>
+   </children>
+</fx:root>

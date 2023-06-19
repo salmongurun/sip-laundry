@@ -15,16 +15,16 @@
             <Font name="Poppins Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="103.0" layoutY="249.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan menghapus ini secara permanen">
+      <Text fx:id="modal_message" layoutX="27.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Anda akan menghapus ini secara permanen" textAlignment="CENTER" wrappingWidth="425.0">
          <font>
             <Font name="Poppins SemiBold" size="12.0" />
          </font>
       </Text>
-      <HBox alignment="CENTER" layoutX="95.0" layoutY="290.0" prefWidth="280.0" scaleShape="false" spacing="15.0">
+      <HBox alignment="CENTER" layoutX="87.0" layoutY="290.0" prefWidth="280.0" scaleShape="false" spacing="15.0">
          <children>
             <HBox fx:id="cancel_btn" alignment="CENTER" onMouseClicked="#closeDialog" style="-fx-padding: 8 40; -fx-background-radius: 7; -fx-border-radius: 7; -fx-border-color: #CBCBCB;">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Batal" textAlignment="CENTER" wrappingWidth="50.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Batal" textAlignment="CENTER" wrappingWidth="60.0">
                      <font>
                         <Font name="Poppins Medium" size="12.0" />
                      </font>
@@ -36,7 +36,7 @@
             </HBox>
             <HBox fx:id="confirm_btn" alignment="CENTER" layoutX="10.0" layoutY="10.0" onMouseClicked="#confirmAction" style="-fx-padding: 8 40; -fx-background-color: E96479; -fx-background-radius: 7;">
                <children>
-                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hapus" textAlignment="CENTER" wrappingWidth="50.0">
+                  <Text fx:id="confirm_text" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Hapus" textAlignment="CENTER" wrappingWidth="60.0">
                      <font>
                         <Font name="Poppins Medium" size="12.0" />
                      </font>

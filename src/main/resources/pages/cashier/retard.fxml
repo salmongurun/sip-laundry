@@ -1,11 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <fx:root accessibleRole="TEXT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.0" prefWidth="1096.0" stylesheets="@../../style/cashier.css" type="AnchorPane" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Keterlambatan Pesanan" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Keterlambatan Pesanan" AnchorPane.topAnchor="-7.25">
+         <font>
+            <Font name="Poppins Bold" size="25.0" />
+         </font>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="page-title" text="Tambah Keterlambatan" AnchorPane.topAnchor="34.3">
+         <font>
+            <Font name="Poppins Medium" size="14.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="23.0" layoutY="82.0" prefHeight="604.0" prefWidth="689.0" styleClass="card" AnchorPane.leftAnchor="0.0">
+         <children>
+            <HBox layoutX="37.0" layoutY="47.0" spacing="35.0" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="31.0">
+               <children>
+                  <VBox styleClass="form-control">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tambah Transaksi">
+                           <font>
+                              <Font name="Poppins SemiBold" size="12.0" />
+                           </font>
+                        </Text>
+                        <HBox fx:id="choose_transaction" alignment="CENTER_LEFT" onMouseClicked="#showTransactionList" prefWidth="250.0" styleClass="input">
+                           <children>
+                              <Text fill="#595959" strokeType="OUTSIDE" strokeWidth="0.0" text="Pilih Transaksi" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox styleClass="form-control">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Durasi Keterlambatan">
+                           <font>
+                              <Font name="Poppins SemiBold" size="12.0" />
+                           </font>
+                        </Text>
+                        <HBox spacing="5.0">
+                           <children>
+                              <TextField fx:id="retard_day" prefWidth="70.0" styleClass="input" />
+                              <HBox alignment="CENTER" prefWidth="60.0" styleClass="input">
+                                 <children>
+                                    <Text fill="#595959" strokeType="OUTSIDE" strokeWidth="0.0" text="Hari" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox layoutX="37.0" layoutY="150.0" spacing="35.0">
+               <children>
+                  <VBox styleClass="form-control">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transaksi Terpilih">
+                           <font>
+                              <Font name="Poppins SemiBold" size="12.0" />
+                           </font>
+                        </Text>
+                        <ScrollPane prefHeight="300.0" prefWidth="250.0" styleClass="table-scroll">
+                           <content>
+                              <VBox fx:id="transactions_container" prefHeight="40.0" prefWidth="235.0" styleClass="table-content-container" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+                  <VBox styleClass="form-control">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Keterangan">
+                           <font>
+                              <Font name="Poppins SemiBold" size="12.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="retard_note" prefHeight="300.0" prefWidth="338.0" styleClass="input" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="458.0" layoutY="526.0" onMouseClicked="#askSaveRetard" prefHeight="47.0" prefWidth="188.0" style="-fx-padding: 15; -fx-background-color: #005F82; -fx-background-radius: 5;" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Simpan Data">
+                     <font>
+                        <Font name="Poppins SemiBold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+            <HBox alignment="CENTER" layoutX="255.0" layoutY="520.0" prefHeight="47.0" prefWidth="188.0" style="-fx-padding: 15; -fx-border-color: #005F82; -fx-border-radius: 5;" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="220.0">
+               <children>
+                  <Text fill="#005f82" strokeType="OUTSIDE" strokeWidth="0.0" text="Reset Data">
+                     <font>
+                        <Font name="Poppins SemiBold" size="12.0" />
+                     </font>
+                  </Text>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </HBox>
+         </children>
+      </AnchorPane>
    </children>
 </fx:root>

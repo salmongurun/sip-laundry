@@ -56,7 +56,7 @@ public class VerificationView {
         String code = NumberUtil.generateCode();
 
         loader.setController(new CodeVerifyController(user));
-        message.sendVerification(new WhatsappMessage(
+        message.send(new WhatsappMessage(
                 user.getPhone(),
                 MessageUtil.verifyMessGen(code)
         ));
