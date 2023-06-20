@@ -6,6 +6,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javafx.fxml.FXML;
@@ -14,24 +15,29 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import siplaundry.entity.TransactionDashboardEntity;
+import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.entity.TransactionEntity;
+import siplaundry.repository.TransactionDetailRepo;
 import siplaundry.repository.TransactionRepo;
+import siplaundry.util.NumberUtil;
+import siplaundry.util.ViewUtil;
+import siplaundry.view.invoice.InvoiceDetailView;
 
 public class DashboardColumn extends HBox{
     @FXML
-    private Text txt_name, txt_amount, txt_time;
+    private Text detail_name, detail_total, detail_hours;
 
-    private BorderPane shadowRoot;
+    private BorderPane parentRoot, shadowRoot;
     private TransactionDashboardEntity transDashboard;
-    private TransactionEntity trans;
     private TransactionRepo transRepo = new TransactionRepo();
     Map<String, String> totalItem = new HashMap<>();
     
     Date date;
     
 
-    public DashboardColumn(BorderPane shadowRoot, TransactionDashboardEntity transDashboard){
+    public DashboardColumn(BorderPane parentRoot, BorderPane shadowRoot, TransactionDashboardEntity transDashboard){
         this.shadowRoot = shadowRoot;
+        this.parentRoot = parentRoot;
         this.transDashboard = transDashboard;
 
          FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/cashier/dashboard/column.fxml"));
@@ -45,18 +51,17 @@ public class DashboardColumn extends HBox{
 
     @FXML
     void initialize(){
+        TransactionEntity trans = transDashboard.getTransaction();
         totalItem = transRepo.detailCount();
         date = transDashboard.getTransaction().getpickupDate();
-        Instant instant = date.toInstant();
-        LocalDate pickup_date = instant.atZone(java.time.ZoneId.systemDefault()).toLocalDate();
-        LocalDate now = LocalDate.now(); 
 
-        Duration duration = Duration.between(now, pickup_date);
-        long hour = duration.toHours();
+        detail_name.setText("Transaksi#" + trans.getid() + " - " + transDashboard.getItemsCount() + " item");
+        detail_total.setText("Total: Rp " + NumberUtil.rupiahFormat(trans.getamount()));
+        detail_hours.setText(ViewUtil.diffHuman(transDashboard.getDiffHours()));
+    }
 
-        txt_name.setText(trans.getCustomerID().getname() + " - " + totalItem.get(transDashboard.getTransaction()) + " items");
-        txt_time.setText(Long.toString(hour) + " jam lagi");
-        txt_amount.setText(String.valueOf(trans.getamount()));
-
+    @FXML
+    void showDetail() {
+        parentRoot.setCenter(new InvoiceDetailView(parentRoot, shadowRoot, transDashboard.getTransaction()));
     }
 }

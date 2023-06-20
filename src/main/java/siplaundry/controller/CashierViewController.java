@@ -41,7 +41,7 @@ public class CashierViewController {
 
     @FXML
     void initialize() throws IOException{
-        parent_root.setCenter(new DashboardView(shadow));
+        parent_root.setCenter(new DashboardView(parent_root, shadow));
         topbar_name.setText(SessionData.user.getFullname());
         shadow.setVisible(false);
 
@@ -57,7 +57,7 @@ public class CashierViewController {
         removeAllStates();
         btn_sb_dashboard.getStyleClass().add("active");
 
-        parent_root.setCenter(new DashboardView(shadow));
+        parent_root.setCenter(new DashboardView(parent_root, shadow));
     }
 
     @FXML

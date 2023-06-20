@@ -34,16 +34,19 @@ public class DashboarController {
     private BarChart<String, Number> statistic_chart;
 
     @FXML
-    private VBox dash_table;
+    private VBox invoice_container;
 
-    private BorderPane shadowRoot;
+    private BorderPane shadowRoot, parentRoot;
 
     TransactionRepo transRepo = new TransactionRepo();
 
 
     private String cust, process, taken;
 
-    public DashboarController(BorderPane shadow){ this.shadowRoot = shadow; }
+    public DashboarController(BorderPane parentRoot, BorderPane shadow){
+        this.shadowRoot = shadow;
+        this.parentRoot = parentRoot;
+    }
 
     @FXML
     void initialize() {
@@ -99,12 +102,13 @@ public class DashboarController {
     }
 
     public void showTable(List<TransactionDashboardEntity> trans){
-        dash_table.getChildren().clear();
+        invoice_container.getChildren().clear();
 
         if(trans == null) transRepo.DashboardTable();
+
         for(TransactionDashboardEntity transEn: trans){
-            DashboardColumn column = new DashboardColumn(shadowRoot, transEn);
-            dash_table.getChildren().add(column);
+            DashboardColumn column = new DashboardColumn(parentRoot, shadowRoot, transEn);
+            invoice_container.getChildren().add(column);
         }
     }
 

@@ -77,4 +77,23 @@ public class ViewUtil {
 
         return converted;
     }
+
+    public static String diffHuman(long seconds) {
+        long remainingSeconds = seconds;
+        long days = remainingSeconds / (24 * 60 * 60);
+        remainingSeconds = remainingSeconds % (24 * 60 * 60);
+        long hours = remainingSeconds / (60 * 60);
+        remainingSeconds = remainingSeconds % (60 * 60);
+        long minutes = remainingSeconds / 60;
+
+        if (days > 0) {
+            return days + " hari";
+        } else if (hours > 0) {
+            return hours + " jam";
+        } else if (minutes > 0) {
+            return minutes + " menit";
+        } else {
+            return "-1 menit";
+        }
+    }
 }

@@ -130,9 +130,10 @@ public class EditProfileController {
     @FXML
     void close() throws IOException{
         if(SessionData.user.getRole().equals(AccountRole.cashier)){
-            parent_root.setCenter(new siplaundry.view.cashier.DashboardView(shadowRoot));
+            parent_root.setCenter(new siplaundry.view.cashier.DashboardView(parent_root, shadowRoot));
             return;
         }
+
         parent_root.setCenter(new DashboardView());
     }
 

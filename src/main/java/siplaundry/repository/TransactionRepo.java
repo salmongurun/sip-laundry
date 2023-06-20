@@ -14,6 +14,7 @@ import siplaundry.entity.UserEntity;
 import siplaundry.util.DatabaseUtil;
 import siplaundry.entity.TransactionDashboardEntity;
 import siplaundry.entity.TransactionEntity;
+import siplaundry.util.ViewUtil;
 
 public class TransactionRepo extends Repo<TransactionEntity> {
 
@@ -39,7 +40,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
             if (trans.getCustomerID() == null) {
                 stmt.setNull(3, Types.DATE);
             } else {
-                stmt.setDate(3, new Date(trans.getpickupDate().getTime()));
+                stmt.setTimestamp(3, new Timestamp(trans.getpickupDate().getTime()));
             }
 
             stmt.executeUpdate();
@@ -108,7 +109,7 @@ public class TransactionRepo extends Repo<TransactionEntity> {
     }
 
     public List<TransactionDashboardEntity> DashboardTable(){
-        String sql = "SELECT `transactions`.`transaction_id` AS transaction_id, `customers`.`customer_id` AS customer_id, TIMESTAMPDIFF(HOUR, `transactions`.`transaction_date`, NOW()) AS diff_hours, COUNT(`transaction_details`.`transaction_id`) AS items_count FROM `transactions` JOIN `customers` ON `transactions`.`customer_id` = `customers`.`customer_id` JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` GROUP BY `transaction_details`.`transaction_id` ORDER BY diff_hours ASC;";
+        String sql = "SELECT `transactions`.`transaction_id` AS transaction_id, `customers`.`customer_id` AS customer_id, TIMESTAMPDIFF(SECOND, NOW(), `transactions`.`pickup_date`) AS diff_hours, COUNT(`transaction_details`.`transaction_id`) AS items_count FROM `transactions` JOIN `customers` ON `transactions`.`customer_id` = `customers`.`customer_id` JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` WHERE NOT `transactions`.`status` = 'canceled' AND NOT `transactions`.`status` = 'taken' GROUP BY `transaction_details`.`transaction_id` HAVING diff_hours > 1 ORDER BY diff_hours ASC;";
         List<TransactionDashboardEntity> transactions = new ArrayList<>();
 
         try (PreparedStatement stmt = conn.prepareStatement(sql)){
@@ -201,16 +202,16 @@ public class TransactionRepo extends Repo<TransactionEntity> {
         int userId = result.getInt("user_id");
 
         TransactionEntity transaction = new TransactionEntity(
-                result.getTimestamp("transaction_date"),
-                result.getInt("retard"),
-                result.getTimestamp("pickup_date"),
-                LaundryStatus.valueOf(result.getString("status")),
-                PaymentStatus.valueOf(result.getString("payment_status")),
-                result.getInt("amount"),
-                result.getBoolean("IsExpress"),
-                result.getInt("paid_off"),
-                new UsersRepo().get(userId),
-                new CustomerRepo().get(custId));
+            result.getTimestamp("transaction_date"),
+            result.getInt("retard"),
+            result.getTimestamp("pickup_date"),
+            LaundryStatus.valueOf(result.getString("status")),
+            PaymentStatus.valueOf(result.getString("payment_status")),
+            result.getInt("amount"),
+            result.getBoolean("IsExpress"),
+            result.getInt("paid_off"),
+            new UsersRepo().get(userId),
+            new CustomerRepo().get(custId));
 
         transaction.setid(result.getInt("transaction_id"));
         return transaction;

@@ -87,18 +87,20 @@ public class PaymentModal {
     @FXML
     void saveTransaction() throws Exception {
         Date nowDate = new Date();
-        Calendar calendar = Calendar.getInstance();
+
         Integer totalPay = NumberUtil.convertToInteger(input_total.getText());
         TransactionEntity transaction = new TransactionEntity();
 
-        calendar.setTime(nowDate);
-        calendar.add(Calendar.DAY_OF_YEAR, (this.isExpress) ? 1 : 3);
+        Calendar calender = Calendar.getInstance();
+        calender.setTime(nowDate);
+        calender.add(Calendar.HOUR_OF_DAY, (isExpress) ? 24 : 72);
+
         if(totalPay == null) totalPay = 0;
 
         transaction.settransactionDate(nowDate);
         transaction.setCustomerID(customer);
         transaction.setPaymentSatatus(paymentStatus);
-        transaction.setpickupDate(calendar.getTime());
+        transaction.setpickupDate(calender.getTime());
         transaction.setRetard(0);
         transaction.setPaid_off(totalPay);
         transaction.setUserID(SessionData.user);
