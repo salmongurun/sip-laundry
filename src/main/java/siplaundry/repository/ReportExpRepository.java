@@ -57,6 +57,6 @@ public class ReportExpRepository extends Repo<ExpenseEntity>{
         );
 
     expense.setid(result.getInt("expense_id"));
-        return null;
+        return expense;
     }
 }

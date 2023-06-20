@@ -1,7 +1,6 @@
-package siplaundry.controller.admin;
+package siplaundry.controller.cashier;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Consumer;
@@ -14,16 +13,16 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import siplaundry.data.SessionData;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ReportExpRepository;
-import siplaundry.repository.ReportRepository;
 import siplaundry.util.ViewUtil;
-import siplaundry.view.admin.ReportView;
-import siplaundry.view.admin.components.column.ReportExpColumn;
+import siplaundry.view.cashier.ReportView;
+import siplaundry.view.cashier.components.column.ReportExpColumn;
 import siplaundry.view.util.EmptyData;
 
 public class ReportExpenseController {
-   @FXML
+    @FXML
    private VBox report_table;
 
    @FXML
@@ -86,14 +85,13 @@ public class ReportExpenseController {
     if(expense.size() < 1){
         report_table.getChildren().add(new EmptyData(null, null));
     }
-System.out.println("exp");
     for(int i = 0; i < expense.size(); i++){
         ExpenseEntity exp = expense.get(i);
-        System.out.println("exp");
         ReportExpColumn column = new ReportExpColumn(shadowRoot, exp);
-
+        if(exp.getUser_id().getID().equals(SessionData.user.getID())){
         if(i % 2 == 1) column.getStyleClass().add("stripped");
         report_table.getChildren().add(column);
+        }
     }
 
     total_text.setText("Menampilkan " + expense.size() + " data laporan");
@@ -114,5 +112,4 @@ System.out.println("exp");
 
         return filterContainer;
    }
-
 }

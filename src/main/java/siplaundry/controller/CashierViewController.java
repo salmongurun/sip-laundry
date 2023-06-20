@@ -89,7 +89,7 @@ public class CashierViewController {
         removeAllStates();
         btn_sb_report.getStyleClass().add("active");
 
-        parent_root.setCenter(new ReportView(shadow));
+        parent_root.setCenter(new ReportView(parent_root, shadow));
     }
 
     @FXML

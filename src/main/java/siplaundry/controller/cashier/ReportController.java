@@ -1,5 +1,6 @@
 package siplaundry.controller.cashier;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
@@ -20,26 +21,28 @@ import siplaundry.data.SessionData;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.ReportRepository;
 import siplaundry.util.ViewUtil;
+import siplaundry.view.cashier.ReportExpenseView;
 import siplaundry.view.cashier.components.column.ReportColumn;
 import siplaundry.view.util.EmptyData;
 
 public class ReportController {
-     @FXML
+    @FXML
     private VBox report_table;
     @FXML
     private Text total_text, first_date_text, second_date_text;
     @FXML
     private HBox status_filter, first_date_filter, second_date_filter;
 
-    private BorderPane shadowRoot;
+    private BorderPane shadowRoot, parent_root;
     private ReportRepository reportRepo = new ReportRepository();
     private PopOver statusPopover = new PopOver();
     private PopOver datePopover = new PopOver();
     private Set<LaundryStatus> statusFilters = new HashSet<>();
     private LocalDate firstDate, secondDate;
 
-     public ReportController(BorderPane shadowRoot) {
+     public ReportController(BorderPane parent_root ,BorderPane shadowRoot) {
         this.shadowRoot = shadowRoot;
+        this.parent_root = parent_root;
     }
 
     @FXML
@@ -49,6 +52,11 @@ public class ReportController {
         }
 
         showTable();
+    }
+
+    @FXML
+    void showExpenseReport() throws IOException{
+        parent_root.setCenter(new ReportExpenseView(parent_root, shadowRoot));
     }
 
     @FXML
