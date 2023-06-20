@@ -11,7 +11,7 @@ public class CustomerEntity extends Entity {
     private String name;
 
     @NotBlank(message = "No telepon harus diisi")
-    @Size(max = 12, min = 11, message = "No telepon harus valid")
+    @Size(max = 15, min = 11, message = "No telepon harus valid")
     private String phone;
 
     @NotBlank(message = "Alamat harus diisi")
@@ -19,7 +19,7 @@ public class CustomerEntity extends Entity {
 
     public CustomerEntity(String name, String phone, String address) {
         this.name = name;
-        this.phone = phone;
+        this.phone = formatPhone(phone);
         this.address = address;
     };
 
@@ -44,7 +44,7 @@ public class CustomerEntity extends Entity {
     }
 
     public void setphone(String phone) {
-        this.phone = phone;
+        this.phone = formatPhone(phone);
     }
 
     public String getAddress() {
@@ -55,4 +55,15 @@ public class CustomerEntity extends Entity {
         this.address = address;
     }
 
+    private String formatPhone(String phone) {
+        if(phone.startsWith("0")) {
+            phone = phone.replaceFirst("0", "62");
+        }
+
+        if(phone.startsWith("+")) {
+            phone = phone.replaceFirst("/+", "");
+        }
+
+        return phone;
+    }
 }

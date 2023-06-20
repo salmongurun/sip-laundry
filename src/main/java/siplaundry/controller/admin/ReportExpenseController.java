@@ -86,7 +86,7 @@ public class ReportExpenseController {
     if(expense.size() < 1){
         report_table.getChildren().add(new EmptyData(null, null));
     }
-System.out.println("exp");
+
     for(int i = 0; i < expense.size(); i++){
         ExpenseEntity exp = expense.get(i);
         System.out.println("exp");
@@ -97,7 +97,6 @@ System.out.println("exp");
     }
 
     total_text.setText("Menampilkan " + expense.size() + " data laporan");
-
    }
 
    private VBox dateFilterElement(LocalDate date, Consumer<LocalDate> callback){
