@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.swing.JFileChooser;
@@ -29,6 +30,7 @@ import javafx.scene.chart.BarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.Cell;
 import javafx.scene.control.ComboBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.web.WebView;
@@ -36,8 +38,11 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import siplaundry.data.SessionData;
+import siplaundry.entity.LaundryDashboardEntity;
 import siplaundry.repository.ExpanseRepo;
+import siplaundry.repository.LaundryRepo;
 import siplaundry.repository.TransactionRepo;
+import siplaundry.view.admin.components.column.DashboardColumn;
 
 public class DashboardController {
     @FXML
@@ -48,6 +53,8 @@ public class DashboardController {
 
     @FXML
     private ComboBox<String> CB_chart;
+    @FXML
+    private VBox laundries_container;
 
     TransactionRepo transRepo = new TransactionRepo();
     private String cust, process, taken;
@@ -57,6 +64,7 @@ public class DashboardController {
     @FXML
     void initialize() {
        fillInformations();
+       showTable(new LaundryRepo().getMostUsed());
 
        Timeline timeline = new Timeline();
        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(300), new EventHandler<ActionEvent>() {
@@ -127,7 +135,6 @@ public class DashboardController {
         statistic_chart.getData().clear();
         statistic_chart.getXAxis().setAnimated(false);
         drawChart(CB_chart.getValue());
-        
     }
 
     @FXML
@@ -185,4 +192,12 @@ public class DashboardController {
         }
     }
 
+    public void showTable(List<LaundryDashboardEntity> laundries) {
+        laundries_container.getChildren().clear();
+
+        for(LaundryDashboardEntity laundry: laundries) {
+            DashboardColumn column = new DashboardColumn(laundry);
+            laundries_container.getChildren().add(column);
+        }
     }
+}

@@ -11,6 +11,7 @@ import java.util.Map;
 import siplaundry.data.Laundryunit;
 import siplaundry.data.SortingOrder;
 import siplaundry.entity.CustomerEntity;
+import siplaundry.entity.LaundryDashboardEntity;
 import siplaundry.entity.LaundryEntity;
 
 public class LaundryRepo extends Repo<LaundryEntity> {
@@ -76,10 +77,23 @@ public class LaundryRepo extends Repo<LaundryEntity> {
         return false;
     }
 
-//    public List<LaundryEntity> getMostUsed() {
-//        List<LaundryEntity> laundries = new ArrayList<>();
-//        String sql = "SELECT * FROM";
-//    }
+    public List<LaundryDashboardEntity> getMostUsed() {
+        List<LaundryDashboardEntity> laundries = new ArrayList<>();
+        String sql = "SELECT *, COUNT(*) AS usages  FROM `transaction_details` JOIN `laundries` ON `transaction_details`.`laundry_id` = `laundries`.`laundry_id` GROUP BY `transaction_details`.`transaction_id` ORDER BY usages DESC;";
+
+        try(PreparedStatement stmt = conn.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
+
+            while(rs.next()) {
+                laundries.add(new LaundryDashboardEntity(
+                    this.get(rs.getInt("laundry_id")),
+                    rs.getInt("usages")
+                ));
+            }
+        } catch(SQLException e) { e.printStackTrace(); }
+
+        return laundries;
+    }
 
     public List<LaundryEntity> sortBy(String column, String condition){
         return super.sortBy(tableName, column, condition);

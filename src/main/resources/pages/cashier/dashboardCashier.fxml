@@ -81,7 +81,7 @@
                   <Font name="Poppins SemiBold" size="14.0" />
                </font>
             </Text>
-            <ScrollPane layoutX="22.0" layoutY="72.0" prefHeight="300.0" prefWidth="285.0" styleClass="table-scroll" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="56.0">
+            <ScrollPane layoutX="22.0" layoutY="72.0" prefHeight="300.0" prefWidth="285.0" styleClass="table-scroll" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="45.0">
                <content>
                   <VBox fx:id="invoice_container" prefHeight="50.0" prefWidth="265.0" styleClass="table-content-container" />
                </content>
