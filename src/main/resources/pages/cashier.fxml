@@ -3,6 +3,8 @@
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -77,6 +79,11 @@
                   <Insets top="50.0" />
                </padding>
             </VBox>
+            <ImageView fitHeight="45.0" fitWidth="174.0" layoutX="40.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/brand-logo2.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <Pane layoutX="1204.0" layoutY="-72.0" onMouseClicked="#showEditProfile" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #414F8C; -fx-background-radius: 20;" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="11.0">

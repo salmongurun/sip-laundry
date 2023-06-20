@@ -73,7 +73,6 @@ public class EditProfileController {
             put("password", txt_password);
             put("address", txt_address);
         }};
-
     }
 
 
@@ -90,7 +89,6 @@ public class EditProfileController {
         
         new Toast((AnchorPane) shadowRoot.getScene().getRoot())
             .show(ToastType.SUCCESS, "Berhasil mengupdate akun", null);
-        
     }
 
     @FXML

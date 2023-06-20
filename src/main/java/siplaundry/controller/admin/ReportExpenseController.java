@@ -84,9 +84,8 @@ public class ReportExpenseController {
     List<ExpenseEntity> expense = reportRepo.resultExp(firstDate, secondDate);
     report_table.getChildren().clear();
 
-    if(expense.size() < 1){
-        report_table.getChildren().add(new EmptyData(null, null));
-    }
+       if(expense.size() < 1)
+           report_table.getChildren().add(new EmptyData(null, "dsabfsjaghsags"));
 
     for(int i = 0; i < expense.size(); i++){
         ExpenseEntity exp = expense.get(i);
