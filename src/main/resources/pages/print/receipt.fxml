@@ -16,7 +16,7 @@
             <Font name="Azeret Mono SemiBold" size="18.0" />
          </font>
       </Text>
-      <Text layoutX="15.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jl. Mastrip No 5, Sumbersari, Jember" textAlignment="CENTER" wrappingWidth="275.0" AnchorPane.topAnchor="41.819000244140625">
+      <Text fx:id="store_address" layoutX="15.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Jl. Mastrip No 5, Sumbersari, Jember" textAlignment="CENTER" wrappingWidth="275.0" AnchorPane.topAnchor="41.819000244140625">
          <font>
             <Font name="Azeret Mono Regular" size="13.0" />
          </font></Text>
@@ -24,7 +24,7 @@
          <children>
             <HBox spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal" wrappingWidth="60.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tanggal" wrappingWidth="65.0">
                      <font>
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>
@@ -43,7 +43,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="10.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Waktu" wrappingWidth="60.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Waktu" wrappingWidth="65.0">
                      <font>
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>
@@ -60,9 +60,28 @@
                   </Text>
                </children>
             </HBox>
+            <HBox layoutX="10.0" layoutY="55.0" spacing="5.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Transaksi" wrappingWidth="65.0">
+                     <font>
+                        <Font name="Azeret Mono Regular" size="11.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="10.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text=":">
+                     <font>
+                        <Font name="Azeret Mono Regular" size="11.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="transaction_id" layoutX="75.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="#1" wrappingWidth="180.0">
+                     <font>
+                        <Font name="Azeret Mono Regular" size="11.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
             <HBox layoutX="10.0" layoutY="10.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kasir" wrappingWidth="60.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Kasir" wrappingWidth="65.0">
                      <font>
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>
@@ -81,7 +100,7 @@
             </HBox>
             <HBox layoutX="10.0" layoutY="41.0" spacing="5.0">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Customer" wrappingWidth="60.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Customer" wrappingWidth="65.0">
                      <font>
                         <Font name="Azeret Mono Regular" size="11.0" />
                      </font>

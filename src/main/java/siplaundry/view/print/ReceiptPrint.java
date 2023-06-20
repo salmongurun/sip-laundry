@@ -18,6 +18,7 @@ import org.krysalis.barcode4j.impl.code128.Code128Bean;
 import org.krysalis.barcode4j.output.bitmap.BitmapCanvasProvider;
 import siplaundry.entity.TransactionDetailEntity;
 import siplaundry.entity.TransactionEntity;
+import siplaundry.repository.OptionRepo;
 import siplaundry.repository.TransactionRepo;
 import siplaundry.service.PrinterService;
 import siplaundry.util.NumberUtil;
@@ -30,7 +31,7 @@ import java.util.List;
 
 public class ReceiptPrint {
     @FXML
-    private Text store_name, cashier_name, customer_name, transaction_date, transaction_time, transaction_total;
+    private Text store_name, cashier_name, customer_name, transaction_date, transaction_time, transaction_total, store_address, transaction_id;
     @FXML
     private AnchorPane print_body;
     @FXML
@@ -71,6 +72,7 @@ public class ReceiptPrint {
 
     @FXML
     void initialize() {
+        OptionRepo optRepo = new OptionRepo();
         Image barcodeImage = generateBarcodeImage(transaction.getid() + ViewUtil.formatDate(transaction.gettransactionDate(), "ddMMYYYY"));
 
         barcode_image.setImage(barcodeImage);
@@ -79,6 +81,9 @@ public class ReceiptPrint {
         transaction_date.setText(ViewUtil.formatDate(transaction.gettransactionDate(), "dd/MM/YYYY"));
         transaction_time.setText(ViewUtil.formatDate(transaction.gettransactionDate(), "HH:mm"));
         transaction_total.setText("Rp " + NumberUtil.rupiahFormat(grandTotal));
+        store_name.setText(optRepo.get("name").getValue());
+        store_address.setText(optRepo.get("address").getValue());
+        transaction_id.setText("#" + transaction.getid());
 
         for(TransactionDetailEntity detail: this.details) {
             this.detail_container.getChildren().add(

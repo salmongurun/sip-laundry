@@ -29,7 +29,7 @@ import toast.ToastType;
 
 public class EditProfileController {
     @FXML
-    private HBox btn_delete, btn_save, password_container;
+    private HBox btn_delete, btn_save, password_container, btn_option;
 
     @FXML
     private TextField txt_fullname, txt_username, txt_phone;
@@ -42,9 +42,6 @@ public class EditProfileController {
 
     @FXML
     private PasswordField txt_password;
-
-    @FXML
-    private Text btn_option;
 
     private UsersRepo userRepo = new UsersRepo();
     private UserEntity user = SessionData.user;

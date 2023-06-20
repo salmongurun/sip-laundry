@@ -17,6 +17,7 @@ import javafx.scene.text.Text;
 import siplaundry.entity.ExpenseEntity;
 import siplaundry.repository.ReportExpRepository;
 import siplaundry.repository.ReportRepository;
+import siplaundry.service.ExpenseReportService;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.admin.ReportView;
 import siplaundry.view.admin.components.column.ReportExpColumn;
@@ -49,7 +50,7 @@ public class ReportExpenseController {
 
    @FXML
    void exportData(){
-
+    new ExpenseReportService().generateReportPdf(reportRepo.resultExp(firstDate, secondDate));
    }
 
    @FXML

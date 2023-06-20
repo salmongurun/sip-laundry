@@ -11,6 +11,7 @@ import javafx.scene.text.Text;
 import javafx.scene.transform.Translate;
 import javafx.util.Duration;
 import siplaundry.entity.LaundryEntity;
+import siplaundry.repository.OptionRepo;
 import siplaundry.util.NumberUtil;
 
 import java.io.IOException;
@@ -74,6 +75,8 @@ public class TransactionCard extends AnchorPane {
 
     private void askExpressMode() {
         LaundryEntity selectedLaundry = new LaundryEntity();
+        OptionRepo optRepo = new OptionRepo();
+
         selectedLaundry.setid(laundry.getid());
         selectedLaundry.setcost(laundry.getcost());
         selectedLaundry.setunit(laundry.getunit());
@@ -83,7 +86,7 @@ public class TransactionCard extends AnchorPane {
             shadowRoot,
             () -> {
                 selectedLaundry.setIsExpress(true);
-                selectedLaundry.setcost(selectedLaundry.getcost() + 1000);
+                selectedLaundry.setcost(selectedLaundry.getcost() + Integer.parseInt(optRepo.get("costExpress").getValue()));
 
                 addAction.accept(selectedLaundry);
                 return true;
