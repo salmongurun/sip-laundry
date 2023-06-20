@@ -101,7 +101,7 @@ public class ExpenseModal {
         expRepo.add(validateExp());
 
         (new Toast((AnchorPane) shadowRoot.getScene().getRoot()))
-            .show(ToastType.SUCCESS, "Berhasil menambahkan akun", null);
+            .show(ToastType.SUCCESS, "Berhasil menambahkan pengeluaran", null);
         closeModal();
     }
 
@@ -178,7 +178,8 @@ public class ExpenseModal {
         exp.setQty(NumberUtil.convertToInteger(txt_qty.getText()));
         exp.setOptional(txt_optional.getText());
 
-        expRepo.Update(validateExp());
+        validateExp();
+        expRepo.Update(exp);
 
         new Toast((AnchorPane) shadowRoot.getScene().getRoot())
             .show(ToastType.SUCCESS, "Berhasil mengupdate akun", null);

@@ -9,11 +9,11 @@ import siplaundry.controller.cashier.ReportController;
 
 public class ReportView extends AnchorPane {
 
-    public ReportView(BorderPane shadow) throws IOException{
+    public ReportView(BorderPane parent_root, BorderPane shadow) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/pages/cashier/report.fxml"));
 
         loader.setRoot(this);
-        loader.setController(new ReportController(shadow));
+        loader.setController(new ReportController(parent_root, shadow));
         loader.load();
     }
     
