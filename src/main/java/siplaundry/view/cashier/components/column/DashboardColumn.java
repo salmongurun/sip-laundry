@@ -52,7 +52,6 @@ public class DashboardColumn extends HBox{
     @FXML
     void initialize(){
         TransactionEntity trans = transDashboard.getTransaction();
-        totalItem = transRepo.detailCount();
         date = transDashboard.getTransaction().getpickupDate();
 
         detail_name.setText("Transaksi#" + trans.getid() + " - " + transDashboard.getItemsCount() + " item");

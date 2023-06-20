@@ -94,19 +94,6 @@ public class TransactionRepo extends Repo<TransactionEntity> {
     public LinkedHashMap<String, Integer> chartCount(String condition, String groupName,String function, String count, String duration, String time){
         return super.chartCount(tableName, condition, groupName, function,count, duration, time);
     }
-    
-    public Map<String, String> detailCount(){
-        String sql = "SELECT `transactions`.`transaction_id` AS id , COUNT(`transaction_details`.`qty`) AS items FROM `transactions` JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` GROUP BY `transactions`.`transaction_id`;";
-        Map<String, String> table = new HashMap<>();
-
-        try (PreparedStatement stmt = conn.prepareStatement(sql)){
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                table.put(rs.getString(0), rs.getString(1));
-            }
-        } catch (SQLException e) { }
-        return table;
-    }
 
     public List<TransactionDashboardEntity> DashboardTable(){
         String sql = "SELECT `transactions`.`transaction_id` AS transaction_id, `customers`.`customer_id` AS customer_id, TIMESTAMPDIFF(SECOND, NOW(), `transactions`.`pickup_date`) AS diff_hours, COUNT(`transaction_details`.`transaction_id`) AS items_count FROM `transactions` JOIN `customers` ON `transactions`.`customer_id` = `customers`.`customer_id` JOIN `transaction_details` ON `transactions`.`transaction_id` = `transaction_details`.`transaction_id` WHERE NOT `transactions`.`status` = 'canceled' AND NOT `transactions`.`status` = 'taken' GROUP BY `transaction_details`.`transaction_id` HAVING diff_hours > 1 ORDER BY diff_hours ASC;";
