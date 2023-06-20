@@ -28,7 +28,7 @@ public class ReportExpRepository extends Repo<ExpenseEntity>{
     }
 
     private String generateBetween(LocalDate startDate, LocalDate endDate) {
-        String generated = "WHHERE expense_date ";
+        String generated = "WHERE expense_date ";
 
        if(startDate != null && endDate != null) {
            generated += "BETWEEN '" + startDate.toString() + "' AND '" + endDate.toString() + "' ";
@@ -39,6 +39,7 @@ public class ReportExpRepository extends Repo<ExpenseEntity>{
            generated += "BETWEEN '" + startDate.toString() + "' AND NOW() ";
            return generated;
        }
+
        return "";
     }
 
@@ -47,13 +48,13 @@ public class ReportExpRepository extends Repo<ExpenseEntity>{
     public ExpenseEntity mapToEntity(ResultSet result) throws SQLException {
     int userId = result.getInt("user_id");
         ExpenseEntity expense = new ExpenseEntity(
-                result.getString("name"),
-                result.getDate("expense_date"),
-                result.getInt("qty"),
-                result.getInt("subtotal"),
-                result.getInt("amount"),
-                result.getString("optional"),
-                new UsersRepo().get(userId)
+            result.getString("name"),
+            result.getDate("expense_date"),
+            result.getInt("qty"),
+            result.getInt("subtotal"),
+            result.getInt("amount"),
+            result.getString("optional"),
+            new UsersRepo().get(userId)
         );
 
     expense.setid(result.getInt("expense_id"));

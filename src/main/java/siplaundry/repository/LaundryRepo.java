@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -74,6 +75,11 @@ public class LaundryRepo extends Repo<LaundryEntity> {
 
         return false;
     }
+
+//    public List<LaundryEntity> getMostUsed() {
+//        List<LaundryEntity> laundries = new ArrayList<>();
+//        String sql = "SELECT * FROM";
+//    }
 
     public List<LaundryEntity> sortBy(String column, String condition){
         return super.sortBy(tableName, column, condition);
