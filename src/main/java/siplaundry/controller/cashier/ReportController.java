@@ -21,7 +21,6 @@ import siplaundry.data.SessionData;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.ReportRepository;
 import siplaundry.util.ViewUtil;
-import siplaundry.view.cashier.ReportExpenseView;
 import siplaundry.view.cashier.components.column.ReportColumn;
 import siplaundry.view.util.EmptyData;
 
@@ -54,10 +53,6 @@ public class ReportController {
         showTable();
     }
 
-    @FXML
-    void showExpenseReport() throws IOException{
-        parent_root.setCenter(new ReportExpenseView(parent_root, shadowRoot));
-    }
 
     @FXML
     void exportData() {
