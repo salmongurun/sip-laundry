@@ -20,6 +20,7 @@ import siplaundry.data.LaundryStatus;
 import siplaundry.data.SessionData;
 import siplaundry.entity.TransactionEntity;
 import siplaundry.repository.ReportRepository;
+import siplaundry.service.ReportService;
 import siplaundry.util.ViewUtil;
 import siplaundry.view.cashier.components.column.ReportColumn;
 import siplaundry.view.util.EmptyData;
@@ -56,7 +57,9 @@ public class ReportController {
 
     @FXML
     void exportData() {
-
+        new ReportService().generateReportPdf(
+            reportRepo.result(statusFilters, firstDate, secondDate)
+        );
     }
 
     @FXML

@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Text?>
 <?import org.kordamp.ikonli.javafx.FontIcon?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="478.0" style="-fx-background-radius: 4; -fx-border-radius: 4; -fx-background-color: white;" stylesheets="@../../style/auth/verification.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="534.0" prefWidth="478.0" style="-fx-background-radius: 4; -fx-border-radius: 4; -fx-background-color: white;" stylesheets="@../../style/auth/verification.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane layoutX="117.0" layoutY="320.0" prefHeight="42.5" prefWidth="265.0" styleClass="input-background" AnchorPane.leftAnchor="120.0" AnchorPane.topAnchor="320.0" />
       <HBox fx:id="close_btn" layoutX="343.0" layoutY="18.0" onMouseClicked="#closeModal" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">

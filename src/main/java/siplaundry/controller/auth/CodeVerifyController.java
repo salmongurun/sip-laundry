@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -14,6 +15,8 @@ import siplaundry.entity.UserEntity;
 import siplaundry.entity.VerificationEntity;
 import siplaundry.repository.VerificationRepo;
 import siplaundry.util.NumberUtil;
+import toast.Toast;
+import toast.ToastType;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -28,6 +31,8 @@ public class CodeVerifyController {
 
     @FXML
     private TextField code_input;
+    @FXML
+    private AnchorPane rootAnchor;
 
     private UserEntity user;
     private VerificationRepo verifyRepo = new VerificationRepo();
@@ -55,6 +60,10 @@ public class CodeVerifyController {
         }});
 
         if(verifyData.size() < 1) {
+            Toast toast = new Toast(rootAnchor);
+            String message = (code_input.getText().isBlank()) ? "Kode verifikasi harus diisi" : "Kode verifikasi tidak sesuai";
+
+            toast.show(ToastType.FAILED, message, null);
             return;
         }
 
