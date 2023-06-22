@@ -1,6 +1,7 @@
 package siplaundry.controller;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
@@ -9,6 +10,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.*;
 import siplaundry.data.SessionData;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.cashier.CustomerView;
 import siplaundry.view.EditProfileView;
 import siplaundry.view.admin.components.modal.logOutConfirm;
@@ -32,7 +34,7 @@ public class CashierViewController {
     private BorderPane parent_root;
 
     @FXML
-    private Text topbar_name;
+    private Text topbar_name, sb_date;
 
     @FXML
     private HBox btn_LogOut;
@@ -41,6 +43,7 @@ public class CashierViewController {
 
     @FXML
     void initialize() throws IOException{
+        sb_date.setText(ViewUtil.formatDate(new Date(), "dd/MM/YYYY"));
         parent_root.setCenter(new DashboardView(parent_root, shadow));
         topbar_name.setText(SessionData.user.getFullname());
         shadow.setVisible(false);

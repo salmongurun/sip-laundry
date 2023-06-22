@@ -9,12 +9,14 @@ import javafx.scene.text.Text;
 import javafx.stage.*;
 import javafx.stage.Window;
 import siplaundry.data.SessionData;
+import siplaundry.util.ViewUtil;
 import siplaundry.view.EditProfileView;
 import siplaundry.view.admin.*;
 import siplaundry.view.admin.components.modal.logOutConfirm;
 import siplaundry.view.auth.LoginView;
 
 import java.io.IOException;
+import java.util.Date;
 
 public class AdminViewController {
     @FXML
@@ -30,7 +32,7 @@ public class AdminViewController {
     private BorderPane parent_root;
 
     @FXML
-    private Text topbar_name;
+    private Text topbar_name, sb_date;
 
     @FXML
     private BorderPane shadow;
@@ -39,6 +41,7 @@ public class AdminViewController {
 
     @FXML
     void initialize() throws IOException {
+        sb_date.setText(ViewUtil.formatDate(new Date(), "dd/MM/YYYY"));
         parent_root.setCenter(new DashboardView());
         topbar_name.setText(SessionData.user.getFullname());
         shadow.setVisible(false);
