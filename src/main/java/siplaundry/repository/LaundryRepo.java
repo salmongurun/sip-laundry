@@ -79,7 +79,7 @@ public class LaundryRepo extends Repo<LaundryEntity> {
 
     public List<LaundryDashboardEntity> getMostUsed() {
         List<LaundryDashboardEntity> laundries = new ArrayList<>();
-        String sql = "SELECT *, COUNT(*) AS usages  FROM `transaction_details` JOIN `laundries` ON `transaction_details`.`laundry_id` = `laundries`.`laundry_id` GROUP BY `transaction_details`.`transaction_id` ORDER BY usages DESC;";
+        String sql = "SELECT *, COUNT(*) AS usages  FROM `transaction_details` JOIN `laundries` ON `transaction_details`.`laundry_id` = `laundries`.`laundry_id` GROUP BY `transaction_details`.`transaction_id` ORDER BY usages DESC LIMIT 5;";
 
         try(PreparedStatement stmt = conn.prepareStatement(sql)) {
             ResultSet rs = stmt.executeQuery();

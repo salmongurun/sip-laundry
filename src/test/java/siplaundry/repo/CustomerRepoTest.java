@@ -44,7 +44,7 @@ public class CustomerRepoTest {
 
         assertTrue(repo.add(acc) > 0);
         assertEquals("joki", acc.getname());
-        assertEquals("081238560", acc2.getphone());
+        assertEquals("6281238560", acc2.getphone());
     }
 
     @Test
@@ -66,7 +66,7 @@ public class CustomerRepoTest {
         put("customer_id", accountId);
     }}).get(0);
 
-    assertEquals("081238560", acc2.getphone());
+    assertEquals("6281238560", acc2.getphone());
     }
 
     @Test @Order(5)
