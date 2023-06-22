@@ -16,6 +16,8 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
+    <exec.mainClass>siplaundry.App</exec.mainClass>
+    <mainClass>siplaundry.App</mainClass>
   </properties>
 
    <dependencies>
