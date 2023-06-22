@@ -34,7 +34,7 @@ public class CashierViewController {
     private BorderPane parent_root;
 
     @FXML
-    private Text topbar_name, sb_date;
+    private Text topbar_name, sb_date, topbar_alias;
 
     @FXML
     private HBox btn_LogOut;
@@ -46,6 +46,7 @@ public class CashierViewController {
         sb_date.setText(ViewUtil.formatDate(new Date(), "dd/MM/YYYY"));
         parent_root.setCenter(new DashboardView(parent_root, shadow));
         topbar_name.setText(SessionData.user.getFullname());
+        topbar_alias.setText(ViewUtil.generateAlias(SessionData.user.getFullname()));
         shadow.setVisible(false);
 
         btn_LogOut.setOnMouseClicked(event -> {

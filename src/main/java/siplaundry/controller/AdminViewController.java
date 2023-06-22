@@ -32,7 +32,7 @@ public class AdminViewController {
     private BorderPane parent_root;
 
     @FXML
-    private Text topbar_name, sb_date;
+    private Text topbar_name, sb_date, topbar_alias;
 
     @FXML
     private BorderPane shadow;
@@ -44,6 +44,7 @@ public class AdminViewController {
         sb_date.setText(ViewUtil.formatDate(new Date(), "dd/MM/YYYY"));
         parent_root.setCenter(new DashboardView());
         topbar_name.setText(SessionData.user.getFullname());
+        topbar_alias.setText(ViewUtil.generateAlias(SessionData.user.getFullname()));
         shadow.setVisible(false);
     
         btn_logOut.setOnMouseClicked(event -> {

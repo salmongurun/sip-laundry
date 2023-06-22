@@ -96,4 +96,15 @@ public class ViewUtil {
             return "-1 menit";
         }
     }
+
+    public static String generateAlias(String name) {
+        String[] words = name.split(" ");
+        StringBuilder alias = new StringBuilder();
+
+        for (String word : words)
+            if (!word.isEmpty())
+                alias.append(word.charAt(0));
+
+        return alias.toString().toUpperCase();
+    }
 }
